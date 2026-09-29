@@ -433,6 +433,7 @@ def test_plan_review_ark_includes_article_and_rejects_missing_verdict(tmp_path, 
     result = PR.review(plan([item(1)]), article)
     assert result["items"][0]["reasonable"] is False
     assert result["_reviewer"].startswith("ark_agent_plan:")
+    assert captured[0]["reasoning"] == {"effort": "low"}
     assert "未确认就不发送" in captured[0]["input"][0]["content"][0]["text"]
     verdict["missed_positions"] = [""]
     with pytest.raises(RuntimeError, match="没有给出完整结论"):

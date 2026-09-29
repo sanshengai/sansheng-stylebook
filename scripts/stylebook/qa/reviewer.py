@@ -128,8 +128,8 @@ def _review_ark(image: Path, contract: dict, expected_text: list[str] | None, te
         body = json.dumps({
             "model": name,
             "input": [{"role": "user", "content": content}],
-            "max_output_tokens": 3500,
-            "thinking": {"type": "disabled"},
+            "max_output_tokens": 8000,
+            **({"reasoning": {"effort": "low"}} if name.startswith("doubao-seed-") else {}),
         }, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
         req = urllib.request.Request(base + "/responses", body,
                                      {"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
