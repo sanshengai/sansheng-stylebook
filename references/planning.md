@@ -115,6 +115,7 @@ python3 scripts/sb.py style-for <场景> [--explicit C31] [--project 项目锁�
 - 对角色或道具的**精确数量**有要求时，在每张计划项写非空的 `inventory`，例如 `"Exactly one fox sticker. No extra character, prop, letter or caption."`；计划生成清单时会原样传给编译器。逐张透明表情要显式选择 `"scene": "sticker", "format": "sticker-single"`，并在每张计划项附同一角色的 `references`（身份图从第二张起）。
 - 出图前逐字复核 `text.items` 与 `points`：标题不能把原文主题换成别的说法；图上的步骤、条件和数字要能在原文定位。编译器将 `points` 送进生图提示词和看图验收要求；它们不自动变成图中文字。五个名词标签不足以替代教程中的操作方法。
 - 用户手动指定某一张（换形式、换样式）时写 `"manual": true`，只影响那一张。
+- 精确叠字图若在 `subject` 或 `relations` 指定无字底图，可另填 `final_subject` / `final_relations` 描述排字后的成品；生成仍使用底图描述，成品 QA 使用最终描述，并继续检查原文 `points` 与逐字文字。两项不填时沿用原描述。
 
 ```bash
 python3 scripts/sb.py plan plan.json                     # 检查 + 打印确认表
