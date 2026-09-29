@@ -106,6 +106,8 @@ def run(plan: dict, out_dir: Path, *, provider: str | None = None, model: str | 
     errs, warns = PL.check(plan, base_path=base_path)
     if errs:
         raise ValueError("计划不合格：" + "；".join(errs))
+    if not plan["items"]:
+        raise ValueError("本篇计划不需要新增图片，无需运行 batch")
     if gen_fn is None:
         gen_fn = B.generate
         provider, model = B.choose(provider, model, need_refs=True)

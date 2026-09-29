@@ -379,7 +379,7 @@ def cmd_plan_review(a) -> int:
     r = PR.review(plan, Path(a.article), a.model)
     if a.report:
         Path(a.report).write_text(json.dumps(r, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    s = PR.summarize([(Path(a.article).parent.name, r)])
+    s = PR.summarize([(Path(a.article).parent.name, r)], allow_no_images=not plan["items"])
     print(json.dumps(s, ensure_ascii=False, indent=2))
     return 0 if s["qualified"] else 1
 

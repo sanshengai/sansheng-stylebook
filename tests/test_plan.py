@@ -144,6 +144,32 @@ def test_version_three_article_requires_reviewable_core_coverage(tmp_path):
     assert any("coverage[2] source_quote 在原文中找不到" in error for error in PL.check(p, base_path=tmp_path)[0])
 
 
+def test_version_three_article_can_explicitly_choose_no_new_images(tmp_path):
+    from stylebook import batch as BT
+    from stylebook.qa import plan_review as PR
+    article = tmp_path / "article.md"
+    article.write_text("现有截图已经说明界面。正文也清楚说明下一步。", encoding="utf-8")
+    p = plan([], version=3, source={"path": "article.md", "sha256": hashlib.sha256(article.read_bytes()).hexdigest()},
+             coverage=[{"claim": "界面", "source_quote": "现有截图已经说明界面", "decision": "existing_visual",
+                        "image_ids": [], "why": "现有截图准确展示了整段描述的界面，重新画只会重复"},
+                       {"claim": "下一步", "source_quote": "正文也清楚说明下一步", "decision": "text_sufficient",
+                        "image_ids": [], "why": "这句话只有一个明确动作，文字已经足够，不需要配图"}])
+    assert PL.check(p, base_path=tmp_path)[0] == []
+    assert PL.manifests(p) == []
+    assert "无需新增配图" in PL.table(p)
+    clean = PR.summarize([("article", {"items": [], "missed_positions": []})], allow_no_images=True)
+    assert clean["qualified"] and clean["no_new_images"]
+    assert not PR.summarize([("article", {"items": [], "missed_positions": ["遗漏一个必配位置"]})], allow_no_images=True)["qualified"]
+    with pytest.raises(ValueError, match="无需运行 batch"):
+        BT.run(p, tmp_path / "out", base_path=tmp_path)
+    p["coverage"] = []
+    assert any("coverage" in error for error in PL.check(p, base_path=tmp_path)[0])
+    p["coverage"] = [{"claim": "界面", "source_quote": "现有截图已经说明界面", "decision": "existing_visual",
+                      "image_ids": [], "why": "现有截图准确展示了整段描述的界面，重新画只会重复"}]
+    p.pop("items")
+    assert any("items 须明确" in error for error in PL.check(p, base_path=tmp_path)[0])
+
+
 def test_unknown_plan_version_and_missing_source_fail_closed(tmp_path):
     p = plan([item(1)], version=9)
     assert any("不支持" in error for error in PL.check(p)[0])
