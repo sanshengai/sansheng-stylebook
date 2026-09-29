@@ -151,7 +151,7 @@ def review(plan: dict, article: Path, model: str | None = None, timeout: int = 6
     raise RuntimeError(f"复核进程没有给出完整结论：{last}")
 
 
-def summarize(results: list[tuple[str, dict]]) -> dict:
+def summarize(results: list[tuple[str, dict]], *, allow_no_images: bool = False) -> dict:
     for article, result in results:
         missed = result.get("missed_positions")
         if not isinstance(missed, list) or any(not isinstance(pos, str) or not pos.strip() for pos in missed):
@@ -163,7 +163,9 @@ def summarize(results: list[tuple[str, dict]]) -> dict:
     return {"total": total, "reasonable": ok, "rate": round(ok / total, 3) if total else 0.0,
             "required_missed": missed_count,
             "effective_rate": round(ok / denominator, 3) if denominator else 0.0,
-            "qualified": denominator > 0 and 10 * ok >= 9 * denominator,
+            "no_new_images": bool(allow_no_images and denominator == 0),
+            "qualified": (denominator == 0 and allow_no_images) or
+                         (denominator > 0 and 10 * ok >= 9 * denominator),
             "failed": [{"article": a, "id": i["id"], "why": i.get("why", "")} for a, r in results for i in r["items"] if not _item_passes(i)],
             "missed": {a: r.get("missed_positions", []) for a, r in results}}
 

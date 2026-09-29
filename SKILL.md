@@ -41,7 +41,7 @@ description: 叁笙画风手册（公开 beta）。用固定的风格码把文�
 4. **每张图出完** → 读 `references/qa.md` 验收；不合格按原因单张返修，最多重试 2 次，仍不合格就把图和原因交给用户。
 5. **图里要有中文字** → 另读 `references/text.md`。
 6. **出图报错（额度、繁忙、密钥、组织验证、内容被拒）** → 读 `references/backends.md`。
-7. **给一篇文章配图 / 做一套小红书卡片或 PPT** → 读 `references/planning.md` 写 `plan.json`，`sb.py plan` 检查；文章新计划用 v3 `coverage` 逐项记录核心内容的画／不画决定，出图前运行 `sb.py plan-review`，有漏项就保留旧计划与报告、修订并复核。复核服务暂不可用时可试图，但标记“内容规划待复核”，不能称完整组已验收。尚未确定内容与样式时给用户确认表，已有明确授权或项目锁定则直接执行。已配置外部服务时可用 `sb.py batch`；使用 Codex 内置生图时，用 `sb.py plan --manifests` 生成逐张清单，逐张编译、出图、导出、验收。系列先选正文或样板图作母版，只有独立看图通过才作为后续图的画风参考；验收失败就停在该依赖点。PPT 再用 `sb.py pptx` 组装。版式规格见 `references/formats.md`。
+7. **给一篇文章配图 / 做一套小红书卡片或 PPT** → 读 `references/planning.md` 写 `plan.json`，`sb.py plan` 检查；文章新计划用 v3 `coverage` 逐项记录核心内容的画／不画决定，出图前运行 `sb.py plan-review`，有漏项就保留旧计划与报告、修订并复核。已有配图须核对实际文件和画面；若全部核心项已覆盖，允许零新增图，独立复核通过后直接结束本次配图，不运行 `batch`。复核服务暂不可用时可试图，但标记“内容规划待复核”，不能称完整组已验收。尚未确定内容与样式时给用户确认表，已有明确授权或项目锁定则直接执行。已配置外部服务时可用 `sb.py batch`；使用 Codex 内置生图时，用 `sb.py plan --manifests` 生成逐张清单，逐张编译、出图、导出、验收。系列先选正文或样板图作母版，只有独立看图通过才作为后续图的画风参考；验收失败就停在该依赖点。PPT 再用 `sb.py pptx` 组装。版式规格见 `references/formats.md`。
 7a. **系列里有固定角色** → 读 `references/consistency.md`：先写角色圣经、出设定网格，之后每张拿它当身份参考；系列写项目锁定文件。
 7b. **用户说“以后都这样”、要求记住或清除偏好** → 读 `references/preferences.md`，用 `sb.py preferences` 写入或管理；单次改图只改本次计划。
 7c. **用户用语言改整组或某张** → 按 `references/selection.md` 更新选择记录，用 `selection impact` 找受影响图片；精炼文字仍由宿主对原文改写并复核。局部修改若碰到系列母版，先明确是单图候选还是替换全系列母版。

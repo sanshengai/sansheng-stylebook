@@ -147,8 +147,16 @@ def check(plan: dict, *, base_path: Path | None = None) -> tuple[list[str], list
         current = CT.load(code)["revision"]
         if not re.fullmatch(rf"{re.escape(code.split('@')[0])}@r{current}", code):
             errs.append(f"样式修订 {code} 与当前合同 r{current} 不一致")
-    items = plan.get("items") or []
-    if not items:
+    raw_items = plan.get("items")
+    if not isinstance(raw_items, list):
+        errs.append("items 须明确写为图片列表；无需新增图时写 []")
+        items = []
+    elif any(not isinstance(it, dict) for it in raw_items):
+        errs.append("items 每项须为对象")
+        items = [it for it in raw_items if isinstance(it, dict)]
+    else:
+        items = raw_items
+    if not items and not (version == 3 and plan.get("scene") == "wxillus"):
         errs.append("计划里一张图都没有")
     series = plan.get("series")
     if series is not None and series is not False:
@@ -304,6 +312,8 @@ def table(plan: dict) -> str:
         cells = [str(i), it["position"], it["what"], "；".join(it.get("points") or []) or "—",
                  form + ("（手动）" if it.get("manual") else ""), dens, it["why"]]
         head.append("| " + " | ".join(c.replace("|", "/").replace("\n", " ") for c in cells) + " |")
+    if not plan["items"]:
+        head.extend(["", "本篇现有视觉或文字已覆盖核心内容，无需新增配图；逐项理由见 coverage。"])
     return "\n".join(head)
 
 
