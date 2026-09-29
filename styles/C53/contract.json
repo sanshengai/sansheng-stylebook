@@ -1,0 +1,73 @@
+{
+  "code": "C53",
+  "revision": 2,
+  "name": {
+    "zh": "中世纪暗黑墨线",
+    "en": "Medieval Dark Ink"
+  },
+  "family": "个性趣味",
+  "fit": [
+    "封面",
+    "讲故事"
+  ],
+  "facets": {
+    "medium": "中世纪暗黑墨线",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "handraw-style #244（描述已重写，不含人名）",
+    "license": "MIT",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "细密墨线排线",
+    "赭色羊皮纸背景",
+    "中世纪暗黑手稿气氛"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): Medieval dark-fantasy ink and ochre illustration: meticulous pen cross-hatching, dark warm ochre parchment tones, heavy dramatic atmosphere, detailed engraving-like rendering, old manuscript feeling.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "细密墨线排线",
+      "赭色羊皮纸背景",
+      "中世纪暗黑手稿气氛"
+    ],
+    "must_not_see": [
+      "明亮扁平矢量或现代霓虹",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "未在基础合同上完成模型实测",
+    "date": "2026-09-29",
+    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "b94286101f2bb2d8bf69654cd42dc8df30dd398499379c41f8d8de3bbc4202f3",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

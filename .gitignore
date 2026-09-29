@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+logs/
+out/
+.env
+*.env
+!.env.example
+!.githooks/pre-commit
+.githooks/pre-commit.local
+.venv/
+*.local.json
+gallery/build/

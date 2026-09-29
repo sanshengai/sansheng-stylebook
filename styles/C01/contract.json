@@ -1,0 +1,104 @@
+{
+  "code": "C01",
+  "revision": 4,
+  "name": {
+    "zh": "暖光手绘动画",
+    "en": "Warm Hand-painted Animation"
+  },
+  "family": "温暖手绘·绘本动画",
+  "fit": [
+    "讲故事",
+    "封面"
+  ],
+  "facets": {
+    "medium": "手绘动画 + 水彩渐变",
+    "mood": [
+      "温暖",
+      "怀旧",
+      "治愈"
+    ],
+    "use": [
+      "分镜",
+      "绘本",
+      "封面"
+    ],
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "改写自 threerocks/hand-drawn-styles #3 与 baoyu-skills@1567581 fantasy-animation",
+    "license": "MIT",
+    "notes": "原提示词的否定句（not 3D、not cluttered…）改写成正面描述；公开名称不用人名与工作室名"
+  },
+  "essence": [
+    "哑光纸面手绘动画长片",
+    "透明水彩叠色与细微变化的笔触边缘",
+    "从上方柔和洒下的暖光",
+    "明亮而淡饱和的和谐配色",
+    "画面干净，一个焦点，留白从容"
+  ],
+  "recipe": {
+    "positive": "Warm hand-painted animated-feature watercolor on a matte paper surface. Forms are built from soft translucent watercolor washes and gentle layered pigment; contours are hand-drawn with slightly varied line strength and soft brush edges, never uniform mechanical cel outlines. Characters have rounded natural proportions and small expressive eyes. Broad skies, walls, fields, water and roads remain calm, smooth color washes with restrained pigment variation rather than all-over grain. In rain-wet scenes stone stays damp and matte, with only short broken blurred watercolor reflection marks. Warm daylight diffuses softly from above with a tender glow. Bright but lightly saturated harmonious colors, a dreamy nostalgic heartwarming mood. Keep one clear focal subject, a simplified setting and restful negative space. When a scene contains several required elements, give the central character or action one clearly dominant foreground focal group. Preserve non-interacting context cues, but paint them visibly smaller, softer and lower-contrast farther back so they support rather than compete. If required characters interact, their shared action is one focal group. Keep spacious calm visual hierarchy without omitting required facts.",
+    "text_style": "Titles are soft, rounded hand-lettering in warm colours, painted into the scene.",
+    "text_mode": [
+      "none",
+      "overlay",
+      "native"
+    ]
+  },
+  "prompt_bans": [
+    "photorealistic",
+    "3d render",
+    "neon",
+    "gritty"
+  ],
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "matte hand-painted watercolor animation with visible restrained wash and subtly varied brush edges",
+      "hand-drawn contours with varied line strength rather than uniform cel outlines",
+      "warm soft light with a gentle glow",
+      "bright but lightly saturated harmonious palette",
+      "clear focal hierarchy with one dominant subject or one connected group of interacting required characters; in a wide establishing shot, the environment may be the main focal area while small story cues remain subordinate"
+    ],
+    "must_not_see": [
+      "3D-rendered, photoreal or glossy digital-vector look",
+      "uniform flat cel fills with razor-sharp mechanical outlines",
+      "busy, fragmented or over-detailed composition",
+      "all-over speckles or coarse noisy grain overwhelming broad calm washes",
+      "broad continuous high-gloss or sharp mirror reflections covering most of a wet road, even when paving joints remain visible; matte wet stone with short broken soft watercolor highlights is acceptable",
+      "harsh high-contrast lighting or dark gloomy palette"
+    ]
+  },
+  "drifts": [],
+  "evidence": {
+    "admission": "admitted",
+    "model": "Codex 内置生图（底层模型 ID 未暴露）",
+    "date": "2026-09-28",
+    "notes": "r4 配方与题库 v6 在当前编译器下锁定八题，从零生成；T1–T5、T7、T8 各经两次无历史上下文的 Ark Agent Plan 看图通过，T3/T8 必过。T6 整图看图两次假阳性，维护者直接看图发现大片镜面湿路，同一区域裁图两次独立复核均拒绝，最终判失败，矩阵 7/8。T1 同词三图已并排裁定画法稳定，本轮新 T1 的提示词哈希相同且画法一致。T3/T6 与 C08、C25、C32、C56、C58 匿名并排辨认共 12/12，C01/C58 两题均正确分离；对照样式图片来自既往修订，不能代替其自身准入。逐题原图、锁定输入、双评、路面局部复核、预测先落盘的盲测键与哈希见维护者保留的证据记录（SHA-256 ce3ad882117f335ac4c66808ac33dd9b17e5fa1fa82947e37c2a6e26f2215162）。只准入 C01 单样式；T6 失败，不能据此声称湿路远景或分镜远景能力；首轮跨版式复评与阶段 2 仍待完成。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-25",
+      "note": "首版合同"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-27",
+      "note": "候选：纸面水彩笔触、可控湿地短反光与 C58 线稿平涂画法分界"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-27",
+      "note": "Candidate: general foreground focal group and receding secondary context for multi-element scenes; not admitted."
+    },
+    {
+      "revision": 4,
+      "date": "2026-09-27",
+      "note": "QA 明确互动人物可组成一个焦点及湿路镜面边界；配方沿用 r3。锁定题库 v6 八题、同词稳定与匿名跨样式辨认后准入；T6 湿路失败。"
+    }
+  ]
+}

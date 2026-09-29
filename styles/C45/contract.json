@@ -1,0 +1,73 @@
+{
+  "code": "C45",
+  "revision": 2,
+  "name": {
+    "zh": "复古动画概念稿",
+    "en": "Mid-Century Animation Gouache"
+  },
+  "family": "封面与海报",
+  "fit": [
+    "封面",
+    "讲故事"
+  ],
+  "facets": {
+    "medium": "复古动画概念稿",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "hand-drawn-styles #11",
+    "license": "MIT",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "高调白纸与杏色干刷痕",
+    "桃粉大块面部塑形",
+    "断续深棕彩铅线与水粉边"
+  ],
+  "recipe": {
+    "positive": "Bright mid-century animation character concept on near-white paper. Use thin matte gouache and coloured pencil, a few visible cream and apricot dry-brush marks behind the subject, broad peach-pink face shadow shapes, expressive simplified features and broken dark-brown contour accents. Leave generous raw paper and rough brush edges.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "高调白纸与杏色干刷痕",
+      "桃粉大块面部塑形",
+      "断续深棕彩铅线与水粉边"
+    ],
+    "must_not_see": [
+      "深暗背景或三维油亮渲染",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "未在基础合同上完成模型实测",
+    "date": "2026-09-29",
+    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "9f046af92af92a46c552a3bf01a02f0768741e24ee756a889e2c23ee937a96c5",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

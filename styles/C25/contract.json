@@ -1,0 +1,89 @@
+{
+  "code": "C25",
+  "revision": 2,
+  "name": {
+    "zh": "毛绒玩具 3D",
+    "en": "Plush Toy 3D"
+  },
+  "family": "立体材质",
+  "fit": [
+    "讲故事",
+    "封面"
+  ],
+  "facets": {
+    "medium": "毛绒 3D",
+    "mood": [
+      "治愈",
+      "可爱"
+    ],
+    "use": [
+      "播客与音乐封面",
+      "表情包",
+      "绘本"
+    ],
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "yang0/handraw-style #232（描述已改写，去掉创作者名）",
+    "license": "MIT"
+  },
+  "essence": [
+    "毛绒、雪尼尔线的玩偶角色",
+    "看得见的蓬松纤维与针织纹理",
+    "圆润柔软的造型",
+    "冰淇淋马卡龙亮色",
+    "柔和棚拍光，治愈可爱"
+  ],
+  "recipe": {
+    "positive": "Fuzzy plush-toy 3D characters: healing, cuddly plush and chenille yarn dolls, realistic fluffy fibres and knitted texture, rounded soft shapes, bright ice-cream macaron colours, soft studio lighting, cute and cosy. Keep the bright ice-cream macaron colours even in evening, outdoor or night scenes.",
+    "text_style": "Titles and labels look like soft felt or plush lettering in the same macaron colours.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "prompt_bans": [
+    "photorealistic",
+    "horror",
+    "metallic",
+    "dark background"
+  ],
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "characters and objects look like plush or chenille yarn toys with visible fluffy fibres",
+      "rounded soft shapes",
+      "bright ice-cream macaron colours",
+      "soft, even lighting with a cosy feel"
+    ],
+    "must_not_see": [
+      "large hard plastic, clay or glossy surfaces (small bead eyes and noses on plush toys are fine)",
+      "realistic human skin or photographic people",
+      "dark, gloomy or harsh lighting",
+      "flat 2D illustration without fibre texture"
+    ]
+  },
+  "drifts": [],
+  "evidence": {
+    "admission": "admitted",
+    "model": "Codex 内置生图（底层模型 ID 未暴露）",
+    "date": "2026-09-27",
+    "notes": "r2 默认配方、题库 v5 八题从零生成并各做两次无历史上下文的独立看图：T1–T5、T7、T8 通过，T6 因硬质高光路面和多余动物失败，矩阵 7/8 且 T3/T8 必过。T4 初次双评分歧，第三次独立复核与维护者直接看图均判定柯基为坐姿，原始否决保留。T1 同词三图画法稳定，新增两图均通过单图 QA；T3/T6 与 C01、C08、C32、C58 匿名乱序并排识别，C25 两题均被认出。证据见本地 C25-r2-v5-current-matrix/adjudication.json。只准入 C25 单样式；T6 不合格，不据此标记远景或分镜能力，阶段 1 仍未完成。题库 v6 只重出 T2/T5：当前编译器与 Codex 内置生图生成，两题各经 Ark Agent Plan 两次独立看图及内容数量核验通过；另六题清单与提示词正文一致，沿用 v5 证据。补充裁定见本地 v6-inventory-regression-final/adjudication.json。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-25",
+      "note": "首版合同"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-25",
+      "note": "8 题矩阵 r1 只过 1 题：多数卡在判据过严——户外场景不可能是「棚拍光」，毛绒玩具的珠子眼睛本就是亮面。光线改为柔和均匀，禁止项注明小颗珠子眼睛不算；远景画成黄昏暖金是真实漂移，锁定层补一句傍晚户外也保持马卡龙亮色"
+    }
+  ]
+}

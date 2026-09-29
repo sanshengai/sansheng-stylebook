@@ -1,0 +1,72 @@
+{
+  "code": "C11",
+  "revision": 2,
+  "name": {
+    "zh": "温暖清线漫画",
+    "en": "Warm Clear-Line Comic"
+  },
+  "family": "温暖手绘·绘本动画",
+  "fit": [
+    "讲故事"
+  ],
+  "facets": {
+    "medium": "温暖清线漫画",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "baoyu-skills comic；baoyu-skills comic ligne-claire + warm",
+    "license": "MIT",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "粗细统一的干净轮廓",
+    "平涂色块与亲切人物",
+    "温暖易读的漫画场景"
+  ],
+  "recipe": {
+    "positive": "Warm European clear-line comic illustration. Use clean contours of uniform weight, simple readable forms and flat colour fills. Characters look approachable and expressive; interiors and everyday props feel cosy. Keep panel and scene hierarchy easy to follow, with gentle warm light and restrained nostalgic colours.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "粗细统一的干净轮廓",
+      "平涂色块与亲切人物",
+      "温暖易读的漫画场景"
+    ],
+    "must_not_see": [
+      "照片质感或柔焦渐变",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "未在基础合同上完成模型实测",
+    "date": "2026-09-29",
+    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "72e24f83990ef339a29b6b5200fd02ee7d7666815ed08754e30890a58f6bde58",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

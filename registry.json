@@ -1,0 +1,3425 @@
+{
+  "version": 1,
+  "private": false,
+  "styles": [
+    {
+      "code": "C01",
+      "zh": "暖光手绘动画",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "hand-drawn-styles #3；baoyu-skills fantasy-animation",
+      "status": "admitted",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Warm Hand-painted Animation",
+      "revision": 4,
+      "essence": [
+        "哑光纸面手绘动画长片",
+        "透明水彩叠色与细微变化的笔触边缘",
+        "从上方柔和洒下的暖光",
+        "明亮而淡饱和的和谐配色",
+        "画面干净，一个焦点，留白从容"
+      ],
+      "colors": [],
+      "text_mode": [
+        "none",
+        "overlay",
+        "native"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "手绘动画 + 水彩渐变",
+        "mood": [
+          "温暖",
+          "怀旧",
+          "治愈"
+        ],
+        "use": [
+          "分镜",
+          "绘本",
+          "封面"
+        ],
+        "density": "中等"
+      },
+      "admission": "admitted",
+      "tests": {},
+      "recipe_sha": "6efd436e9084"
+    },
+    {
+      "code": "C02",
+      "zh": "情绪淡彩速写",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "hand-drawn-styles #10",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "locked",
+      "recolor_note": "靛蓝线 + 全画一处橙",
+      "en": "Expressive Pale-Wash Sketch",
+      "revision": 2,
+      "essence": [
+        "靛蓝松弛速写线",
+        "大片白纸留白",
+        "全画一处橙色焦点"
+      ],
+      "colors": [
+        {
+          "name": "靛蓝 ink indigo",
+          "hex": "#273D63"
+        },
+        {
+          "name": "橙色焦点 orange accent",
+          "hex": "#E47B34"
+        },
+        {
+          "name": "白纸 paper white",
+          "hex": "#FAFAF6"
+        }
+      ],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "情绪淡彩速写",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "cbec0fdef64e"
+    },
+    {
+      "code": "C03",
+      "zh": "暖光童画·动画概念稿",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "hand-drawn-styles #12；hand-drawn-styles #16",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Warm Gouache Animation Concept",
+      "revision": 2,
+      "essence": [
+        "可见方向的干刷水粉笔触",
+        "人物表情与暖光",
+        "未完成的浅色概念稿背景"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "暖光童画·动画概念稿",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "f8fb2fde0c90"
+    },
+    {
+      "code": "C04",
+      "zh": "北欧绘本水粉",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "hand-drawn-styles #14",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "locked",
+      "recolor_note": "丹宁蓝 × 芥末黄",
+      "en": "Nordic Gouache Picture Book",
+      "revision": 2,
+      "essence": [
+        "近白纸底与细纸纹",
+        "丹宁蓝和芥末黄",
+        "细长童话人物与哑光水粉"
+      ],
+      "colors": [
+        {
+          "name": "丹宁蓝 denim blue",
+          "hex": "#5079A5"
+        },
+        {
+          "name": "芥末黄 mustard yellow",
+          "hex": "#D2A640"
+        },
+        {
+          "name": "纸白 paper white",
+          "hex": "#F8F7F1"
+        }
+      ],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "北欧绘本水粉",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "b49e8b27647b"
+    },
+    {
+      "code": "C05",
+      "zh": "墨线绘本",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "hand-drawn-styles #17",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Sketchy Ink Picture Book",
+      "revision": 2,
+      "essence": [
+        "局部色呼应的松散墨线",
+        "大眼睛与少量排线细节",
+        "四边露出暖白纸边"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "墨线绘本",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "7ebbbc591461"
+    },
+    {
+      "code": "C06",
+      "zh": "松散墨线淡彩绘本",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #036（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Loose Ink-and-Wash Storybook",
+      "revision": 2,
+      "essence": [
+        "快速抖动的蘸水笔墨线",
+        "松散透明水彩",
+        "夸张肢体与白纸留白"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "松散墨线淡彩绘本",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "5ed696c3b7a3"
+    },
+    {
+      "code": "C07",
+      "zh": "透明水彩人物",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #088（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Airy Transparent Watercolour Figures",
+      "revision": 2,
+      "essence": [
+        "轻透水彩与湿边晕染",
+        "柔和圆润的人物",
+        "大面积未上色纸面"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "透明水彩人物",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "0405afb73aef"
+    },
+    {
+      "code": "C08",
+      "zh": "空灵留白诗意绘本",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #254（描述已重写，不含人名）",
+      "status": "admitted",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Poetic White-space Picture Book",
+      "revision": 3,
+      "essence": [
+        "大面积安静留白",
+        "主体周围的安静纸面",
+        "细腻的手绘细线",
+        "淡淡的水彩晕染",
+        "童真好奇又带一点安静的忧伤"
+      ],
+      "colors": [],
+      "text_mode": [
+        "none",
+        "overlay"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "细线 + 淡水彩",
+        "mood": [
+          "空灵",
+          "安静",
+          "童真"
+        ],
+        "use": [
+          "绘本",
+          "封面"
+        ],
+        "density": "极简留白"
+      },
+      "admission": "admitted",
+      "tests": {},
+      "recipe_sha": "ec059ab0205c"
+    },
+    {
+      "code": "C09",
+      "zh": "蜡笔水墨和风绘本",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #252（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Crayon-and-Ink Japanese Storybook",
+      "revision": 2,
+      "essence": [
+        "蜡笔炭笔颗粒",
+        "柔和墨色晕染",
+        "低饱和土色与少量翠绿"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "蜡笔水墨和风绘本",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "feb23dfcda57"
+    },
+    {
+      "code": "C10",
+      "zh": "极简单线创意小品",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #207（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Minimal Narrative Line Sketch",
+      "revision": 3,
+      "essence": [
+        "极少量自信黑线",
+        "米白留白与一两处柔色",
+        "巧妙而易懂的视觉点子"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "极简单线创意小品",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "6688c6f5472a"
+    },
+    {
+      "code": "C11",
+      "zh": "温暖清线漫画",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "baoyu-skills comic；baoyu-skills comic ligne-claire + warm",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Warm Clear-Line Comic",
+      "revision": 2,
+      "essence": [
+        "粗细统一的干净轮廓",
+        "平涂色块与亲切人物",
+        "温暖易读的漫画场景"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "温暖清线漫画",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "efce8399684a"
+    },
+    {
+      "code": "C12",
+      "zh": "细线都市小人",
+      "family": "细线与生活",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #003（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Fine-Line Urban Miniature",
+      "revision": 2,
+      "essence": [
+        "极细钢笔线",
+        "大场景中的小人物",
+        "稀疏水彩与宽裕留白"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "细线都市小人",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "f7e5d41668c3"
+    },
+    {
+      "code": "C13",
+      "zh": "柔和关系线稿",
+      "family": "细线与生活",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #015（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Soft Relationship Line Art",
+      "revision": 2,
+      "essence": [
+        "简约流畅的人物线稿",
+        "珊瑚粉鼠尾草绿沙色少量色块",
+        "清楚的人物情绪关系"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "柔和关系线稿",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "01b88586c9d6"
+    },
+    {
+      "code": "C14",
+      "zh": "北欧细线奇趣",
+      "family": "细线与生活",
+      "fit": [
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #037（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Nordic Fine-Line Whimsy",
+      "revision": 2,
+      "essence": [
+        "轻细墨线",
+        "稍显奇趣的圆润生物",
+        "安静大留白与柔和色彩"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "北欧细线奇趣",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "a73b3775f237"
+    },
+    {
+      "code": "C15",
+      "zh": "清秀生活漫画线",
+      "family": "细线与生活",
+      "fit": [
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #101（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Clean Everyday Manga Line",
+      "revision": 2,
+      "essence": [
+        "清秀纤细漫画线",
+        "简化现代人物与室内日常",
+        "轻柔平涂色与松弛情绪"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "清秀生活漫画线",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "4580ce56bdcb"
+    },
+    {
+      "code": "C16",
+      "zh": "平成少女手帐",
+      "family": "细线与生活",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #181（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Heisei Diary Scrapbook",
+      "revision": 2,
+      "essence": [
+        "手帐圆珠笔涂鸦",
+        "贴纸胶带与小图标",
+        "九十年代少女杂志的粉彩感"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "平成少女手帐",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "b214f1380876"
+    },
+    {
+      "code": "C17",
+      "zh": "新国潮工笔扁平",
+      "family": "中国风",
+      "fit": [
+        "封面",
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #189（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Modern Guochao Gongbi Flat Art",
+      "revision": 2,
+      "essence": [
+        "工笔细线与平面色块",
+        "中国传统纹样与少量金色",
+        "大胆而协调的现代构图"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "新国潮工笔扁平",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "c8f5e388a61a"
+    },
+    {
+      "code": "C18",
+      "zh": "宋画淡彩现代化",
+      "family": "中国风",
+      "fit": [
+        "封面",
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #191（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "locked",
+      "recolor_note": "青绿赭石",
+      "en": "Modern Song-Dynasty Light Colour",
+      "revision": 2,
+      "essence": [
+        "米白宣纸与充足留白",
+        "细线和青绿赭石淡彩",
+        "安静克制的古典气息"
+      ],
+      "colors": [
+        {
+          "name": "矿物青绿 mineral blue green",
+          "hex": "#658F83"
+        },
+        {
+          "name": "赭石 ochre",
+          "hex": "#B27C4D"
+        },
+        {
+          "name": "宣纸 rice paper",
+          "hex": "#F5F0E5"
+        }
+      ],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "宋画淡彩现代化",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "3e76fc51cd0d"
+    },
+    {
+      "code": "C19",
+      "zh": "新中式水墨小人",
+      "family": "中国风",
+      "fit": [
+        "封面",
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #192（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Modern Chinese Ink Miniatures",
+      "revision": 2,
+      "essence": [
+        "大面积水墨留白",
+        "广阔空间中的小人物",
+        "一处小红色点睛"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "新中式水墨小人",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "13bceaf9e059"
+    },
+    {
+      "code": "C20",
+      "zh": "海派月份牌",
+      "family": "中国风",
+      "fit": [
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #194（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Shanghai Calendar-Poster Retro",
+      "revision": 2,
+      "essence": [
+        "柔和喷绘式月份牌人物",
+        "桃色玉色奶油色复古配色",
+        "装饰边框与旧广告氛围"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "海派月份牌",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "ced744fb720a"
+    },
+    {
+      "code": "C21",
+      "zh": "八九十年代课本插图",
+      "family": "中国风",
+      "fit": [
+        "讲故事",
+        "讲道理"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #271（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Retro Chinese Textbook Illustration",
+      "revision": 2,
+      "essence": [
+        "朴素墨线与略褪色水彩",
+        "真实亲切的日常人物",
+        "旧课本印刷纸感"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "八九十年代课本插图",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "d6984230afd3"
+    },
+    {
+      "code": "C22",
+      "zh": "老式木偶定格",
+      "family": "中国风",
+      "fit": [
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #277（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Vintage Wooden Puppet Stop-Motion",
+      "revision": 2,
+      "essence": [
+        "手刻上色木偶质感",
+        "布料服装与微缩布景",
+        "略生硬的定格动作"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "老式木偶定格",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "09551b6c607a"
+    },
+    {
+      "code": "C24",
+      "zh": "黏土定格",
+      "family": "立体材质",
+      "fit": [
+        "讲故事",
+        "讲道理"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #248（描述已重写，不含人名）；baoyu-skills claymation",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Clay Stop-motion",
+      "revision": 4,
+      "essence": [
+        "一切物体都是橡皮泥手捏",
+        "看得见的指纹和小瑕疵",
+        "圆润的雕塑造型与柔和阴影",
+        "微缩布景的定格动画感",
+        "饱和但略哑的黏土色，中性棚拍背景"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "橡皮泥定格",
+        "mood": [
+          "童趣",
+          "温暖"
+        ],
+        "use": [
+          "表情包",
+          "公众号配图",
+          "绘本"
+        ],
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "2b2cd35bd328"
+    },
+    {
+      "code": "C25",
+      "zh": "毛绒玩具 3D",
+      "family": "立体材质",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #232（描述已重写，不含人名）",
+      "status": "admitted",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Plush Toy 3D",
+      "revision": 2,
+      "essence": [
+        "毛绒、雪尼尔线的玩偶角色",
+        "看得见的蓬松纤维与针织纹理",
+        "圆润柔软的造型",
+        "冰淇淋马卡龙亮色",
+        "柔和棚拍光，治愈可爱"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "毛绒 3D",
+        "mood": [
+          "治愈",
+          "可爱"
+        ],
+        "use": [
+          "播客与音乐封面",
+          "表情包",
+          "绘本"
+        ],
+        "density": "中等"
+      },
+      "admission": "admitted",
+      "tests": {},
+      "recipe_sha": "152cdf803124"
+    },
+    {
+      "code": "C26",
+      "zh": "马海毛定格人偶",
+      "family": "立体材质",
+      "fit": [
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #234（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Mohair Puppet Stop-Motion",
+      "revision": 2,
+      "essence": [
+        "清楚可见的粗针织环与长绒",
+        "点状眼睛与人偶造型",
+        "手工微缩布景和定格灯光"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "马海毛定格人偶",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "59004978f838"
+    },
+    {
+      "code": "C27",
+      "zh": "纸雕层叠",
+      "family": "立体材质",
+      "fit": [
+        "封面",
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "hand-drawn-styles #13",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Layered Paper Sculpture",
+      "revision": 2,
+      "essence": [
+        "多层纸雕形成真实厚度",
+        "纸边与投影清晰可辨",
+        "暖光下的微缩立体舞台"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "纸雕层叠",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "bdcd51412260"
+    },
+    {
+      "code": "C28",
+      "zh": "儿童蜡笔稚拙",
+      "family": "儿童与教育",
+      "fit": [
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #197（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Naive Childlike Crayon",
+      "revision": 2,
+      "essence": [
+        "歪扭稚拙的蜡笔形状",
+        "越界蜡笔笔触",
+        "白纸上明亮单纯的颜色"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "儿童蜡笔稚拙",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "65b102ad0935"
+    },
+    {
+      "code": "C29",
+      "zh": "粉笔黑板",
+      "family": "儿童与教育",
+      "fit": [
+        "讲道理"
+      ],
+      "visibility": "public",
+      "origin": "baoyu-skills chalkboard",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "locked",
+      "recolor_note": "黑板底",
+      "en": "Colorful Chalkboard Drawing",
+      "revision": 2,
+      "essence": [
+        "深色黑板底",
+        "彩色粉笔颗粒与手绘擦痕",
+        "课堂讲解式层级"
+      ],
+      "colors": [
+        {
+          "name": "黑板 chalkboard",
+          "hex": "#202B2A"
+        },
+        {
+          "name": "白粉笔 white chalk",
+          "hex": "#EEECE2"
+        },
+        {
+          "name": "彩粉笔 accent chalk",
+          "hex": "#E8B561"
+        }
+      ],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "粉笔黑板",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "5e131ccfd0cb"
+    },
+    {
+      "code": "C30",
+      "zh": "彩铅绘本",
+      "family": "儿童与教育",
+      "fit": [
+        "讲故事",
+        "讲道理"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Coloured Pencil Picture Book",
+      "revision": 2,
+      "essence": [
+        "清楚的彩铅笔触与纸纹",
+        "柔和叠色和圆润人物",
+        "温暖明亮的儿童绘本感"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "彩铅绘本",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "4dff0f323a94"
+    },
+    {
+      "code": "C31",
+      "zh": "手绘视觉笔记",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理"
+      ],
+      "visibility": "public",
+      "origin": "baoyu-skills sketch-notes",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Hand-drawn Sketch Notes",
+      "revision": 4,
+      "essence": [
+        "暖奶油色纸底，带细纸纹",
+        "线条、箭头、小涂鸦与文字都是黑色手绘线",
+        "信息放在圆角马卡龙浅色块里",
+        "只有一两处珊瑚红强调",
+        "清爽留白，像手绘概念图幻灯片"
+      ],
+      "colors": [
+        {
+          "name": "暖奶油 warm cream",
+          "hex": "#F5F0E8",
+          "role": "Paper background"
+        },
+        {
+          "name": "墨黑 black",
+          "hex": "#1A1A1A",
+          "role": "ALL outlines, text, arrows, doodles"
+        },
+        {
+          "name": "浅蓝 light blue",
+          "hex": "#A8D8EA",
+          "role": "Info block fill (cool / tech)"
+        },
+        {
+          "name": "薄荷绿 mint green",
+          "hex": "#B5E5CF",
+          "role": "Info block fill (growth / positive)"
+        },
+        {
+          "name": "薰衣草紫 lavender",
+          "hex": "#D5C6E0",
+          "role": "Info block fill (concept / abstract)"
+        },
+        {
+          "name": "蜜桃 peach",
+          "hex": "#FFD5C2",
+          "role": "Info block fill (warm / human)"
+        },
+        {
+          "name": "珊瑚红 coral red",
+          "hex": "#E8655A",
+          "role": "One or two emphasis points only"
+        },
+        {
+          "name": "暖灰 warm gray",
+          "hex": "#6B6B6B",
+          "role": "Small annotations"
+        }
+      ],
+      "text_mode": [
+        "native",
+        "overlay"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "黑色手绘线 + 马卡龙色块",
+        "mood": [
+          "友好",
+          "清楚"
+        ],
+        "use": [
+          "信息图",
+          "小红书知识卡",
+          "公众号配图"
+        ],
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "0aed16fe4454"
+    },
+    {
+      "code": "C32",
+      "zh": "技术简报（旧纸双语）",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理"
+      ],
+      "visibility": "public",
+      "origin": "baoyu-skills intuition-machine",
+      "status": "admitted",
+      "has_contract": true,
+      "recolor": "lightness_only",
+      "recolor_note": "",
+      "en": "Technical Briefing on Aged Paper",
+      "revision": 4,
+      "essence": [
+        "做旧奶油纸底，有细纸纹和浅折痕",
+        "青绿、暖棕、酒红的沉稳配色，深炭描边",
+        "平面或等距的技术插图",
+        "信息多但层级清楚：主图框、辅助细节框与纸面分栏；有字时再加说明框和要点框",
+        "复古蓝图感加现代的清楚"
+      ],
+      "colors": [
+        {
+          "name": "做旧奶油 aged cream",
+          "hex": "#F5F0E6",
+          "role": "Primary background"
+        },
+        {
+          "name": "暖白 warm white",
+          "hex": "#F5F0E1",
+          "role": "Blueprint effect"
+        },
+        {
+          "name": "深酒红 dark maroon",
+          "hex": "#5D3A3A",
+          "role": "Headlines, titles"
+        },
+        {
+          "name": "近黑 near black",
+          "hex": "#1A1A1A",
+          "role": "Content text"
+        },
+        {
+          "name": "青绿 teal",
+          "hex": "#2F7373",
+          "role": "Primary illustrations"
+        },
+        {
+          "name": "暖棕 warm brown",
+          "hex": "#8B7355",
+          "role": "Secondary elements"
+        },
+        {
+          "name": "酒红 maroon",
+          "hex": "#722F37",
+          "role": "Emphasis"
+        },
+        {
+          "name": "深炭 deep charcoal",
+          "hex": "#2D2D2D",
+          "role": "Element outlines"
+        }
+      ],
+      "text_mode": [
+        "native",
+        "overlay"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "做旧纸 + 技术插图",
+        "mood": [
+          "严谨",
+          "复古"
+        ],
+        "use": [
+          "PPT",
+          "信息图"
+        ],
+        "density": "细节丰富"
+      },
+      "admission": "admitted",
+      "tests": {},
+      "recipe_sha": "31b68ad98e00"
+    },
+    {
+      "code": "C34",
+      "zh": "杂志编辑信息图",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "baoyu-skills editorial-infographic",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Editorial Magazine Infographic",
+      "revision": 2,
+      "essence": [
+        "杂志式信息层级",
+        "清楚的插图与视觉隐喻",
+        "有节制的分栏和重点框"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "杂志编辑信息图",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "faa37e7d4414"
+    },
+    {
+      "code": "C35",
+      "zh": "Notion 知识线稿",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理"
+      ],
+      "visibility": "public",
+      "origin": "baoyu-skills notion",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Minimal Knowledge Doodle",
+      "revision": 2,
+      "essence": [
+        "轻微手抖的简洁线稿",
+        "单一概念和大留白",
+        "少量柔和强调色"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "Notion 知识线稿",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "5c87e6c517e0"
+    },
+    {
+      "code": "C36",
+      "zh": "极简火柴人讲解",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理"
+      ],
+      "visibility": "public",
+      "origin": "hand-drawn-styles #1",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Minimal Stick-Figure Explainer",
+      "revision": 2,
+      "essence": [
+        "米白纸上的细黑轮廓线",
+        "圆头单线四肢的火柴人",
+        "无填色的平面讲解漫画"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "极简火柴人讲解",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "34037b6a1847"
+    },
+    {
+      "code": "C38",
+      "zh": "宜家说明书线稿",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理"
+      ],
+      "visibility": "public",
+      "origin": "baoyu-skills ikea-manual",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Assembly Instruction Line Art",
+      "revision": 2,
+      "essence": [
+        "清楚统一的说明书线稿",
+        "白色或奶油纸底",
+        "少量红色警示与蓝色标记"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "宜家说明书线稿",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "ec6ae5cfa89a"
+    },
+    {
+      "code": "C39",
+      "zh": "工程蓝图",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "baoyu-skills blueprint",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "locked",
+      "recolor_note": "蓝底白线",
+      "en": "Engineering Blueprint",
+      "revision": 2,
+      "essence": [
+        "网格对齐的精密制图线",
+        "蓝图色系与白色标注",
+        "等距或正交技术视图"
+      ],
+      "colors": [
+        {
+          "name": "蓝图底 blueprint blue",
+          "hex": "#173E65"
+        },
+        {
+          "name": "制图白 drafting white",
+          "hex": "#F2F6F4"
+        }
+      ],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "工程蓝图",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "5a79ac8ca81d"
+    },
+    {
+      "code": "C40",
+      "zh": "等距插画",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Friendly Isometric Miniature",
+      "revision": 2,
+      "essence": [
+        "一致的三十度等距视角",
+        "简洁几何体与三面平涂明暗",
+        "蓝珊瑚绿白色的友好配色"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "等距插画",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "4244009c3eb3"
+    },
+    {
+      "code": "C41",
+      "zh": "复古矢量描边",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "baoyu-skills vector-illustration",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Retro Outlined Vector",
+      "revision": 2,
+      "essence": [
+        "等粗黑色封闭轮廓",
+        "复古柔和彩色平面",
+        "几何简化的玩具造型"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "复古矢量描边",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "4d957e9492c3"
+    },
+    {
+      "code": "C42",
+      "zh": "清透扁平",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #276（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Airy Flat Vector",
+      "revision": 2,
+      "essence": [
+        "大块清透平涂色",
+        "保留识别点的圆润几何造型",
+        "宽松明亮的留白"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "清透扁平",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "baa2685a0957"
+    },
+    {
+      "code": "C44",
+      "zh": "双色半调编辑印刷",
+      "family": "封面与海报",
+      "fit": [
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Two-Ink Halftone Editorial Print",
+      "revision": 2,
+      "essence": [
+        "钴蓝与陶土红两色油墨",
+        "可见半调网点",
+        "轻微套印错位的纸面印刷感"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "双色半调编辑印刷",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "2bc8df5922b8"
+    },
+    {
+      "code": "C45",
+      "zh": "复古动画概念稿",
+      "family": "封面与海报",
+      "fit": [
+        "封面",
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "hand-drawn-styles #11",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Mid-Century Animation Gouache",
+      "revision": 2,
+      "essence": [
+        "高调白纸与杏色干刷痕",
+        "桃粉大块面部塑形",
+        "断续深棕彩铅线与水粉边"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "复古动画概念稿",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "185b846571cf"
+    },
+    {
+      "code": "C46",
+      "zh": "复古旧纸",
+      "family": "封面与海报",
+      "fit": [
+        "封面",
+        "讲道理"
+      ],
+      "visibility": "public",
+      "origin": "baoyu-skills vintage",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Nostalgic Aged Paper",
+      "revision": 2,
+      "essence": [
+        "泛黄旧纸与历史档案质感",
+        "复古地图或探险日志装饰",
+        "克制的棕褐色层次"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "复古旧纸",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "ecfc85c17dd1"
+    },
+    {
+      "code": "C48",
+      "zh": "日式黑白漫画",
+      "family": "漫画与分镜",
+      "fit": [
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "baoyu-skills manga",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Black-and-White Manga",
+      "revision": 2,
+      "essence": [
+        "干净而有轻重的漫画墨线",
+        "表情夸张的动态人物",
+        "网点与速度线的黑白叙事"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "日式黑白漫画",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "d2bbb17f36bd"
+    },
+    {
+      "code": "C49",
+      "zh": "条漫厚涂",
+      "family": "漫画与分镜",
+      "fit": [
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Painterly Webtoon",
+      "revision": 2,
+      "essence": [
+        "清晰人物线与柔和厚涂赛璐璐明暗",
+        "发光肤色与有表情的眼睛",
+        "电影感轮廓光和纵向叙事"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "条漫厚涂",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "012535e24c4c"
+    },
+    {
+      "code": "C50",
+      "zh": "电影感写实数字绘画",
+      "family": "漫画与分镜",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "baoyu-skills realistic",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Cinematic Realistic Digital Painting",
+      "revision": 2,
+      "essence": [
+        "准确的人体比例与材质",
+        "自然灯光与丰富渐变",
+        "电影感场景和细腻表情"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "电影感写实数字绘画",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "d666327dbd17"
+    },
+    {
+      "code": "C51",
+      "zh": "Q 版可爱",
+      "family": "漫画与分镜",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Cute Chibi",
+      "revision": 2,
+      "essence": [
+        "二点五头身的大头小身",
+        "闪亮大眼与圆润造型",
+        "柔和粉彩和贴纸感"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "Q 版可爱",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "1e960484f9e8"
+    },
+    {
+      "code": "C52",
+      "zh": "怪诞古典漫画肖像",
+      "family": "个性趣味",
+      "fit": [
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #074（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Grotesque Classical Comic Portrait",
+      "revision": 2,
+      "essence": [
+        "夸张扭曲的肖像五官",
+        "古典绘画和漫画混合笔触",
+        "怪诞又带幽默的情绪"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "怪诞古典漫画肖像",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "0b5fe3758034"
+    },
+    {
+      "code": "C53",
+      "zh": "中世纪暗黑墨线",
+      "family": "个性趣味",
+      "fit": [
+        "封面",
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "handraw-style #244（描述已重写，不含人名）",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Medieval Dark Ink",
+      "revision": 2,
+      "essence": [
+        "细密墨线排线",
+        "赭色羊皮纸背景",
+        "中世纪暗黑手稿气氛"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "中世纪暗黑墨线",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "6c353fc057fc"
+    },
+    {
+      "code": "C54",
+      "zh": "复古像素",
+      "family": "个性趣味",
+      "fit": [
+        "封面",
+        "讲道理"
+      ],
+      "visibility": "public",
+      "origin": "hand-drawn-styles #9",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Retro Pixel Art",
+      "revision": 2,
+      "essence": [
+        "统一网格的清楚方形像素",
+        "八到十六色有限调色板",
+        "点阵抖动明暗与游戏精灵感"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "复古像素",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "8d17d7fb877b"
+    },
+    {
+      "code": "C55",
+      "zh": "故意画烂涂鸦",
+      "family": "个性趣味",
+      "fit": [
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "hand-drawn-styles #5",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Deliberately Bad Doodle",
+      "revision": 2,
+      "essence": [
+        "笨拙抖动的鼠标线",
+        "明显越界的粗糙色块",
+        "纯白底上故意失衡的比例"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "故意画烂涂鸦",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "188c29f9003f"
+    },
+    {
+      "code": "C56",
+      "zh": "光影写实动画",
+      "family": "日式动画",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "lightness_only",
+      "recolor_note": "",
+      "en": "Luminous Cinematic Anime",
+      "revision": 2,
+      "essence": [
+        "通透发光的动画背景美术",
+        "壮阔天空、积云、光束与镜头光晕",
+        "湿润表面上闪烁的光",
+        "深饱和的蓝与暖金色光的对比",
+        "干净的动画人物线稿，人物常在广阔空间里"
+      ],
+      "colors": [
+        {
+          "name": "暗部深棕 deep shadow brown",
+          "hex": "#201916"
+        },
+        {
+          "name": "暖木棕 warm wood brown",
+          "hex": "#8D6A54"
+        },
+        {
+          "name": "暖光奶白 warm light cream",
+          "hex": "#F6EBD5"
+        },
+        {
+          "name": "锈红棕 rust brown",
+          "hex": "#6E3F2C"
+        },
+        {
+          "name": "灰蓝 grey blue",
+          "hex": "#76899D"
+        },
+        {
+          "name": "暖杏光 warm apricot light",
+          "hex": "#DFB38B"
+        },
+        {
+          "name": "浅天蓝 pale sky blue",
+          "hex": "#96AFC4"
+        },
+        {
+          "name": "深石板蓝 deep slate blue",
+          "hex": "#32495C"
+        }
+      ],
+      "text_mode": [
+        "none",
+        "overlay",
+        "native"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "日式动画背景美术",
+        "mood": [
+          "怀旧",
+          "壮阔",
+          "抒情"
+        ],
+        "use": [
+          "分镜",
+          "封面",
+          "视频"
+        ],
+        "density": "细节丰富",
+        "region": "日本"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "1ba116cddb34"
+    },
+    {
+      "code": "C57",
+      "zh": "九十年代赛璐璐动画",
+      "family": "日式动画",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "1990s Cel Animation",
+      "revision": 2,
+      "essence": [
+        "九十年代赛璐璐硬边双色明暗",
+        "轻微胶片颗粒与手绘水彩背景",
+        "清楚的动画线与锐利表情"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "overlay",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "九十年代赛璐璐动画",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "524a7c01e038"
+    },
+    {
+      "code": "C58",
+      "zh": "日系清新校园动画",
+      "family": "日式动画",
+      "fit": [
+        "讲故事"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "admitted",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Fresh Japanese School Anime",
+      "revision": 9,
+      "essence": [
+        "细而干净的线稿",
+        "柔和粉彩光与轻微光晕",
+        "大而有神的亮眼睛",
+        "明亮通透的配色",
+        "日常校园的温暖感"
+      ],
+      "colors": [],
+      "text_mode": [
+        "none",
+        "overlay",
+        "native"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "日式电视动画",
+        "mood": [
+          "清新",
+          "温暖"
+        ],
+        "use": [
+          "四格漫画",
+          "绘本",
+          "分镜"
+        ],
+        "density": "中等",
+        "region": "日本"
+      },
+      "admission": "admitted",
+      "tests": {},
+      "recipe_sha": "f9b0b2376614"
+    }
+  ],
+  "removed": [
+    "C23",
+    "C33",
+    "C37",
+    "C43",
+    "C47"
+  ],
+  "scenes": [
+    {
+      "id": "xhs",
+      "zh": "小红书知识卡",
+      "job": "讲道理",
+      "formats": [
+        "xhs-carousel",
+        "xhs-cover"
+      ],
+      "preview_test": "T8",
+      "uses_structure": true,
+      "default_density": "balanced",
+      "default": "C31",
+      "alternates": [
+        "C35",
+        "C42",
+        "C16"
+      ]
+    },
+    {
+      "id": "wxillus",
+      "zh": "公众号文章配图",
+      "job": "讲道理",
+      "formats": [
+        "article-illustration"
+      ],
+      "preview_test": "T7",
+      "uses_structure": true,
+      "default_density": "balanced",
+      "default": "C24",
+      "alternates": [
+        "C31",
+        "C42",
+        "C05"
+      ]
+    },
+    {
+      "id": "wxcover",
+      "zh": "公众号封面",
+      "job": "封面",
+      "formats": [
+        "wechat-cover-head",
+        "wechat-cover-square"
+      ],
+      "preview_test": "T6",
+      "uses_structure": false,
+      "default_density": "sparse",
+      "default": "C44",
+      "alternates": [
+        "C19",
+        "C45",
+        "C17"
+      ]
+    },
+    {
+      "id": "ppt",
+      "zh": "PPT",
+      "job": "讲道理",
+      "formats": [
+        "ppt"
+      ],
+      "preview_test": "T7",
+      "uses_structure": true,
+      "default_density": "balanced",
+      "default": "C32",
+      "alternates": [
+        "C42",
+        "C34",
+        "C41",
+        "C40"
+      ]
+    },
+    {
+      "id": "info",
+      "zh": "信息图",
+      "job": "讲道理",
+      "formats": [
+        "infographic"
+      ],
+      "preview_test": "T7",
+      "uses_structure": true,
+      "default_density": "dense",
+      "default": "C31",
+      "alternates": [
+        "C34",
+        "C38",
+        "C40"
+      ]
+    },
+    {
+      "id": "comic4",
+      "zh": "四格漫画",
+      "job": "讲故事",
+      "formats": [
+        "comic-4panel"
+      ],
+      "preview_test": "T2",
+      "uses_structure": false,
+      "default_density": null,
+      "default": "C58",
+      "alternates": [
+        "C36",
+        "C11",
+        "C15",
+        "C48"
+      ]
+    },
+    {
+      "id": "book",
+      "zh": "绘本故事",
+      "job": "讲故事",
+      "formats": [
+        "picturebook-page"
+      ],
+      "preview_test": "T3",
+      "uses_structure": false,
+      "default_density": null,
+      "default": "C08",
+      "alternates": [
+        "C04",
+        "C05",
+        "C30",
+        "C03"
+      ]
+    },
+    {
+      "id": "board",
+      "zh": "视频分镜首帧",
+      "job": "讲故事",
+      "formats": [
+        "storyboard-frame"
+      ],
+      "preview_test": "T6",
+      "uses_structure": false,
+      "default_density": null,
+      "default": "C01",
+      "alternates": [
+        "C56",
+        "C50",
+        "C45",
+        "C57"
+      ]
+    },
+    {
+      "id": "audio",
+      "zh": "播客 / 音乐封面",
+      "job": "封面",
+      "formats": [
+        "podcast-cover",
+        "music-cover"
+      ],
+      "preview_test": "T4",
+      "uses_structure": false,
+      "default_density": "sparse",
+      "default": "C25",
+      "alternates": [
+        "C44",
+        "C02",
+        "C20"
+      ]
+    },
+    {
+      "id": "sticker",
+      "zh": "表情包",
+      "job": "讲故事",
+      "formats": [
+        "sticker-grid",
+        "sticker-single"
+      ],
+      "preview_test": "T1",
+      "uses_structure": false,
+      "default_density": null,
+      "default": "C24",
+      "alternates": [
+        "C51",
+        "C25",
+        "C55",
+        "C28"
+      ]
+    }
+  ],
+  "structures": [
+    {
+      "id": "flow",
+      "zh": "流程",
+      "family": "顺序",
+      "en": "a step-by-step flow of connected stages from left to right or top to bottom",
+      "signals": [
+        "先后顺序的步骤",
+        "第一步、然后、最后"
+      ],
+      "example_image": "xhs-images-layouts-flow"
+    },
+    {
+      "id": "timeline",
+      "zh": "横向时间线",
+      "family": "顺序",
+      "en": "a horizontal timeline with dated milestones",
+      "signals": [
+        "带日期或年份的变化",
+        "历史、演进"
+      ],
+      "example_image": "infographic-layouts-timeline-horizontal"
+    },
+    {
+      "id": "journey",
+      "zh": "旅程路径",
+      "family": "顺序",
+      "en": "a winding journey path with stops along the way",
+      "signals": [
+        "有起点终点的历程",
+        "成长路径、用户旅程"
+      ],
+      "example_image": "infographic-layouts-journey-path"
+    },
+    {
+      "id": "cycle",
+      "zh": "循环流程",
+      "family": "顺序",
+      "en": "a circular cycle where the last step returns to the first",
+      "signals": [
+        "周而复始",
+        "循环、迭代、闭环"
+      ],
+      "example_image": "infographic-layouts-circular-flow"
+    },
+    {
+      "id": "compare",
+      "zh": "左右对比",
+      "family": "对比",
+      "en": "a side-by-side comparison of two options",
+      "signals": [
+        "两三个对象比较",
+        "A 和 B、前后对照"
+      ],
+      "example_image": "xhs-images-layouts-comparison"
+    },
+    {
+      "id": "table",
+      "zh": "对比表",
+      "family": "对比",
+      "en": "a comparison table with rows of criteria",
+      "signals": [
+        "多维度比较多个对象",
+        "参数、指标对比"
+      ],
+      "example_image": "infographic-layouts-comparison-table"
+    },
+    {
+      "id": "dodont",
+      "zh": "该做 / 别做",
+      "family": "对比",
+      "en": "a do / don't contrast",
+      "signals": [
+        "做法的对与错",
+        "该做、别做、误区"
+      ],
+      "example_image": "infographic-layouts-do-dont"
+    },
+    {
+      "id": "balance",
+      "zh": "天平",
+      "family": "对比",
+      "en": "a balance scale weighing two sides",
+      "signals": [
+        "权衡取舍",
+        "利弊、得失"
+      ],
+      "example_image": "infographic-layouts-scale-balance"
+    },
+    {
+      "id": "pyramid",
+      "zh": "金字塔",
+      "family": "层级",
+      "en": "a pyramid of stacked levels from base to top",
+      "signals": [
+        "层级、由基础到顶端",
+        "需求层次、金字塔"
+      ],
+      "example_image": "infographic-layouts-pyramid"
+    },
+    {
+      "id": "layers",
+      "zh": "层叠",
+      "family": "层级",
+      "en": "stacked layers from bottom to top",
+      "signals": [
+        "层层叠加的组成",
+        "技术栈、分层架构"
+      ],
+      "example_image": "infographic-layouts-layers-stack"
+    },
+    {
+      "id": "iceberg",
+      "zh": "冰山",
+      "family": "层级",
+      "en": "an iceberg: a small visible part above water and a larger hidden part below",
+      "signals": [
+        "表面与深层原因",
+        "看得见与看不见"
+      ],
+      "example_image": "infographic-layouts-iceberg"
+    },
+    {
+      "id": "tree",
+      "zh": "树状层级",
+      "family": "层级",
+      "en": "a tree hierarchy branching from one root",
+      "signals": [
+        "从一个根分出的层级",
+        "分类、组织结构"
+      ],
+      "example_image": "infographic-layouts-tree-hierarchy"
+    },
+    {
+      "id": "nested",
+      "zh": "同心圆",
+      "family": "层级",
+      "en": "nested concentric circles from core to outer rings",
+      "signals": [
+        "由核心到外圈",
+        "影响圈、同心关系"
+      ],
+      "example_image": "infographic-layouts-nested-circles"
+    },
+    {
+      "id": "venn",
+      "zh": "韦恩图",
+      "family": "关系",
+      "en": "a Venn diagram of overlapping sets",
+      "signals": [
+        "交集、共同点",
+        "重叠、既是又是"
+      ],
+      "example_image": "infographic-layouts-venn"
+    },
+    {
+      "id": "mindmap",
+      "zh": "思维导图",
+      "family": "关系",
+      "en": "a mind map radiating from a central idea",
+      "signals": [
+        "围绕一个中心展开",
+        "发散、主题分支"
+      ],
+      "example_image": "infographic-layouts-mind-map"
+    },
+    {
+      "id": "bridge",
+      "zh": "桥接",
+      "family": "关系",
+      "en": "a bridge connecting a current state to a goal",
+      "signals": [
+        "从现状到目标",
+        "差距、跨越"
+      ],
+      "example_image": "infographic-layouts-bridge"
+    },
+    {
+      "id": "equation",
+      "zh": "等式",
+      "family": "关系",
+      "en": "a visual equation: A + B = C",
+      "signals": [
+        "几样东西组合出一个结果",
+        "A + B = C"
+      ],
+      "example_image": "infographic-layouts-equation"
+    },
+    {
+      "id": "fishbone",
+      "zh": "鱼骨图",
+      "family": "关系",
+      "en": "a fishbone cause-and-effect diagram",
+      "signals": [
+        "多个原因导致一个结果",
+        "根因分析"
+      ],
+      "example_image": "infographic-layouts-fishbone"
+    },
+    {
+      "id": "list",
+      "zh": "清单",
+      "family": "归类",
+      "en": "a clean numbered list",
+      "signals": [
+        "并列的要点",
+        "清单、排行"
+      ],
+      "example_image": "xhs-images-layouts-list"
+    },
+    {
+      "id": "grid",
+      "zh": "卡片网格",
+      "family": "归类",
+      "en": "a grid of equal cards, one idea per card",
+      "signals": [
+        "由几个部分组成",
+        "模块、卡片"
+      ],
+      "example_image": "infographic-layouts-grid-cards"
+    },
+    {
+      "id": "features",
+      "zh": "特性清单",
+      "family": "归类",
+      "en": "a feature list with icons",
+      "signals": [
+        "一个对象的多个特性",
+        "功能、卖点"
+      ],
+      "example_image": "infographic-layouts-feature-list"
+    },
+    {
+      "id": "quadrant",
+      "zh": "优先级四象限",
+      "family": "归类",
+      "en": "a 2×2 priority quadrant",
+      "signals": [
+        "按两个维度排序",
+        "优先级、紧急重要"
+      ],
+      "example_image": "infographic-layouts-priority-quadrants"
+    },
+    {
+      "id": "funnel",
+      "zh": "漏斗",
+      "family": "转化",
+      "en": "a funnel narrowing from many to few",
+      "signals": [
+        "层层筛选或转化",
+        "转化率、漏斗"
+      ],
+      "example_image": "infographic-layouts-funnel"
+    }
+  ],
+  "palettes": {
+    "version": 1,
+    "adjust": {
+      "space": "OKLCH",
+      "lightness_step": 0.09,
+      "lightness_clamp": [
+        0.18,
+        0.97
+      ],
+      "lightness_levels": {
+        "浅": 1,
+        "标准": 0,
+        "深": -1
+      },
+      "chroma_multiplier": {
+        "柔和": 0.6,
+        "标准": 1.0,
+        "鲜艳": 1.3
+      },
+      "gamut": "shrink chroma by 5% steps until inside sRGB"
+    },
+    "palettes": [
+      {
+        "id": "orig",
+        "name": "样式原色",
+        "colors": []
+      },
+      {
+        "id": "macaron",
+        "name": "马卡龙",
+        "colors": [
+          {
+            "name": "粉蓝 powder blue",
+            "hex": "#A8D8EA"
+          },
+          {
+            "name": "薰衣草紫 lavender",
+            "hex": "#D5C6E0"
+          },
+          {
+            "name": "薄荷绿 mint",
+            "hex": "#B5E5CF"
+          },
+          {
+            "name": "蜜桃粉 peach",
+            "hex": "#F8D5C4"
+          },
+          {
+            "name": "奶油白 cream",
+            "hex": "#F5F0E8"
+          }
+        ]
+      },
+      {
+        "id": "earth",
+        "name": "大地",
+        "colors": [
+          {
+            "name": "咖啡棕 coffee brown",
+            "hex": "#8B5E3C"
+          },
+          {
+            "name": "焦糖 caramel",
+            "hex": "#C08552"
+          },
+          {
+            "name": "沙色 sand",
+            "hex": "#DDB892"
+          },
+          {
+            "name": "橄榄绿 olive",
+            "hex": "#7F8C5A"
+          },
+          {
+            "name": "亚麻白 linen",
+            "hex": "#F3E9DC"
+          }
+        ]
+      },
+      {
+        "id": "morandi",
+        "name": "莫兰迪",
+        "colors": [
+          {
+            "name": "灰蓝 grey blue",
+            "hex": "#8E9AA6"
+          },
+          {
+            "name": "豆沙粉 dusty rose",
+            "hex": "#B99A96"
+          },
+          {
+            "name": "灰绿 sage grey",
+            "hex": "#9DA9A0"
+          },
+          {
+            "name": "燕麦 oat",
+            "hex": "#C4B7A6"
+          },
+          {
+            "name": "雾白 mist white",
+            "hex": "#E8E4DE"
+          }
+        ]
+      },
+      {
+        "id": "forest",
+        "name": "森林",
+        "colors": [
+          {
+            "name": "松绿 pine green",
+            "hex": "#2F5D50"
+          },
+          {
+            "name": "苔绿 moss",
+            "hex": "#6B8F71"
+          },
+          {
+            "name": "嫩叶绿 leaf green",
+            "hex": "#A7C4A0"
+          },
+          {
+            "name": "麦秆黄 straw",
+            "hex": "#D9C9A3"
+          },
+          {
+            "name": "米白 off-white",
+            "hex": "#F4F1E8"
+          }
+        ]
+      },
+      {
+        "id": "ocean",
+        "name": "海洋清透",
+        "colors": [
+          {
+            "name": "深海蓝 deep sea blue",
+            "hex": "#1F6F8B"
+          },
+          {
+            "name": "海水蓝 sea blue",
+            "hex": "#4FA3C7"
+          },
+          {
+            "name": "浅水蓝 shallow blue",
+            "hex": "#9ED3E6"
+          },
+          {
+            "name": "沙滩金 beach gold",
+            "hex": "#F2C57C"
+          },
+          {
+            "name": "浪花白 foam white",
+            "hex": "#F7FBFC"
+          }
+        ]
+      },
+      {
+        "id": "film",
+        "name": "复古胶片",
+        "colors": [
+          {
+            "name": "砖红 brick red",
+            "hex": "#C8553D"
+          },
+          {
+            "name": "橘黄 amber orange",
+            "hex": "#F2A65A"
+          },
+          {
+            "name": "奶黄 butter",
+            "hex": "#F5D6A1"
+          },
+          {
+            "name": "灰青 muted teal",
+            "hex": "#588B8B"
+          },
+          {
+            "name": "相纸白 print white",
+            "hex": "#EFE7DA"
+          }
+        ]
+      },
+      {
+        "id": "qinglv",
+        "name": "国风青绿",
+        "colors": [
+          {
+            "name": "石青 azurite teal",
+            "hex": "#2E6E65"
+          },
+          {
+            "name": "石绿 malachite",
+            "hex": "#5C9E8F"
+          },
+          {
+            "name": "浅碧 pale jade",
+            "hex": "#A7C7B5"
+          },
+          {
+            "name": "赭石 ochre",
+            "hex": "#C9A56B"
+          },
+          {
+            "name": "宣纸白 rice paper",
+            "hex": "#F3EDE0"
+          }
+        ]
+      },
+      {
+        "id": "zhusha",
+        "name": "国风朱砂金",
+        "colors": [
+          {
+            "name": "朱砂红 cinnabar red",
+            "hex": "#B83B2E"
+          },
+          {
+            "name": "泥金 muted gold",
+            "hex": "#D9A441"
+          },
+          {
+            "name": "墨黑 ink black",
+            "hex": "#2B2B2B"
+          },
+          {
+            "name": "缃色 pale yellow",
+            "hex": "#E8D9B5"
+          },
+          {
+            "name": "宣纸白 rice paper",
+            "hex": "#F6F0E4"
+          }
+        ]
+      },
+      {
+        "id": "mono",
+        "name": "一墨单色",
+        "colors": [
+          {
+            "name": "墨黑 ink black",
+            "hex": "#1A1A1A"
+          },
+          {
+            "name": "深灰 dark grey",
+            "hex": "#555555"
+          },
+          {
+            "name": "中灰 mid grey",
+            "hex": "#9A9A9A"
+          },
+          {
+            "name": "浅灰 light grey",
+            "hex": "#D6D6D6"
+          },
+          {
+            "name": "纸白 paper white",
+            "hex": "#F7F5F0"
+          }
+        ]
+      },
+      {
+        "id": "neon",
+        "name": "夜色霓虹",
+        "colors": [
+          {
+            "name": "夜空蓝 night navy",
+            "hex": "#0F1026"
+          },
+          {
+            "name": "电光紫 electric violet",
+            "hex": "#7B2FF7"
+          },
+          {
+            "name": "霓虹青 neon cyan",
+            "hex": "#00D1FF"
+          },
+          {
+            "name": "霓虹粉 neon pink",
+            "hex": "#FF3CAC"
+          },
+          {
+            "name": "柠檬黄 lemon",
+            "hex": "#F9F871"
+          }
+        ]
+      },
+      {
+        "id": "brand",
+        "name": "品牌自定义",
+        "colors": []
+      }
+    ]
+  },
+  "formats": [
+    {
+      "id": "wechat-cover-head",
+      "zh": "公众号头条封面",
+      "family": "单张封面",
+      "ratio": "2.35:1",
+      "export_px": [
+        900,
+        383
+      ],
+      "safe_zone": {
+        "center_square": true,
+        "note": "历史消息与分享会裁成居中方形，关键内容放中间"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 14
+      },
+      "count": [
+        1,
+        1
+      ],
+      "source": "微信开放社区官方问答",
+      "density_max": "sparse",
+      "compose": "A wide banner cover; keep the main subject and any title inside the central square so a centred square crop still reads."
+    },
+    {
+      "id": "wechat-cover-square",
+      "zh": "公众号次条 / 分享封面",
+      "family": "单张封面",
+      "ratio": "1:1",
+      "export_px": [
+        900,
+        900
+      ],
+      "thumbnail_px": 46,
+      "safe_zone": {
+        "note": "小尺寸显示，只放一个主体与极少字"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 8
+      },
+      "count": [
+        1,
+        1
+      ],
+      "source": "业内口径",
+      "density_max": "sparse",
+      "compose": "A small square thumbnail: one main subject, very few words, readable at small size."
+    },
+    {
+      "id": "xhs-cover",
+      "zh": "小红书封面",
+      "family": "单张封面",
+      "ratio": "3:4",
+      "export_px": [
+        1242,
+        1656
+      ],
+      "safe_zone": {
+        "center_square": true,
+        "note": "主页与分享裁成居中 1:1"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 16
+      },
+      "count": [
+        1,
+        1
+      ],
+      "source": "业内一致口径",
+      "density_max": "sparse",
+      "compose": "The first page of a vertical card series: one bold title area and one clear visual; keep key content inside the central square."
+    },
+    {
+      "id": "x-image",
+      "zh": "X 配图",
+      "family": "单张封面",
+      "ratio": "16:9",
+      "export_px": [
+        1200,
+        675
+      ],
+      "safe_zone": {
+        "note": "比例须在 2:1 到 1:1 之间，超出会被裁"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 20
+      },
+      "count": [
+        1,
+        1
+      ],
+      "source": "help.x.com",
+      "density_max": "sparse"
+    },
+    {
+      "id": "og-image",
+      "zh": "链接预览图",
+      "family": "单张封面",
+      "ratio": "1.91:1",
+      "export_px": [
+        1200,
+        630
+      ],
+      "safe_zone": {
+        "note": "完整显示在 1.91:1 内"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 20
+      },
+      "count": [
+        1,
+        1
+      ],
+      "source": "developers.facebook.com",
+      "density_max": "sparse"
+    },
+    {
+      "id": "podcast-cover",
+      "zh": "播客封面",
+      "family": "单张封面",
+      "ratio": "1:1",
+      "export_px": [
+        3000,
+        3000
+      ],
+      "safe_zone": {
+        "note": "列表里只有 46–66 像素，一个大轮廓；无透明通道"
+      },
+      "text": {
+        "default": "none"
+      },
+      "count": [
+        1,
+        1
+      ],
+      "source": "podcasters.apple.com",
+      "density_max": "sparse",
+      "compose": "One bold, iconic main subject on a simple background, readable as a clear silhouette even at 46–66 pixels."
+    },
+    {
+      "id": "music-cover",
+      "zh": "音乐 / 单曲封面",
+      "family": "单张封面",
+      "ratio": "1:1",
+      "export_px": [
+        3000,
+        3000
+      ],
+      "safe_zone": {
+        "note": "sRGB、无损；不得放大"
+      },
+      "text": {
+        "default": "none"
+      },
+      "count": [
+        1,
+        1
+      ],
+      "source": "support.spotify.com",
+      "density_max": "sparse",
+      "compose": "One bold, iconic main subject on a simple background, readable as a clear silhouette even at 46–66 pixels."
+    },
+    {
+      "id": "weibo-head",
+      "zh": "微博头条封面",
+      "family": "单张封面",
+      "ratio": "16:9",
+      "export_px": [
+        1000,
+        562
+      ],
+      "safe_zone": {
+        "note": "非 16:9 会被裁"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 16
+      },
+      "count": [
+        1,
+        1
+      ],
+      "source": "教材引用",
+      "density_max": "sparse"
+    },
+    {
+      "id": "xhs-carousel",
+      "zh": "小红书轮播",
+      "family": "多张轮播",
+      "ratio": "3:4",
+      "export_px": [
+        1242,
+        1656
+      ],
+      "safe_zone": {
+        "center_square": true
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 16
+      },
+      "count": [
+        6,
+        9
+      ],
+      "source": "业内一致口径；最多 9 张",
+      "density_max": "balanced",
+      "compose": "One page of a vertical card series: same margins, title position and visual language on every page; one idea per page."
+    },
+    {
+      "id": "x-multi",
+      "zh": "X 多图",
+      "family": "多张轮播",
+      "ratio": "16:9",
+      "export_px": [
+        1200,
+        675
+      ],
+      "safe_zone": {
+        "note": "多图时每张可被裁成方形预览"
+      },
+      "text": {
+        "default": "native"
+      },
+      "count": [
+        2,
+        4
+      ],
+      "source": "help.x.com",
+      "density_max": "balanced"
+    },
+    {
+      "id": "ppt",
+      "zh": "PPT",
+      "family": "多张轮播",
+      "ratio": "16:9",
+      "export_px": [
+        1920,
+        1080
+      ],
+      "safe_zone": {
+        "note": "四边留 5%"
+      },
+      "text": {
+        "default": "overlay",
+        "title_max_chars": 24
+      },
+      "count": [
+        5,
+        30
+      ],
+      "modes": [
+        "整页图",
+        "插画 + 可编辑文字"
+      ],
+      "source": "软件默认",
+      "density_max": "dense",
+      "compose": "A 16:9 presentation slide with 5% margins on every side and a clear visual hierarchy."
+    },
+    {
+      "id": "courseware",
+      "zh": "课件插图",
+      "family": "多张轮播",
+      "ratio": "4:3",
+      "export_px": [
+        1600,
+        1200
+      ],
+      "safe_zone": {
+        "note": "文字区域留白"
+      },
+      "text": {
+        "default": "overlay"
+      },
+      "count": [
+        1,
+        20
+      ],
+      "alt_ratio": "16:9",
+      "density_max": "balanced",
+      "compose": "A 4:3 teaching slide with a calm, uncluttered area for text."
+    },
+    {
+      "id": "picturebook-page",
+      "zh": "绘本故事页",
+      "family": "叙事分格",
+      "ratio": "4:3",
+      "export_px": [
+        1600,
+        1200
+      ],
+      "safe_zone": {
+        "note": "下方或一侧留文字区"
+      },
+      "text": {
+        "default": "overlay"
+      },
+      "count": [
+        4,
+        16
+      ],
+      "density_max": "sparse",
+      "compose": "A picture-book page: the illustration fills the upper part and the lower third stays a calm, empty area for text."
+    },
+    {
+      "id": "comic-4panel",
+      "zh": "四格漫画",
+      "family": "叙事分格",
+      "ratio": "1:1",
+      "export_px": [
+        1536,
+        1536
+      ],
+      "safe_zone": {
+        "note": "四格等大，起承转合"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 10
+      },
+      "count": [
+        1,
+        1
+      ],
+      "alt_ratio": "3:4",
+      "density_max": "sparse",
+      "compose": "A four-panel comic laid out as a 2×2 grid of equal panels with thin gutters, read left to right, top to bottom: setup, development, twist, payoff."
+    },
+    {
+      "id": "comic-page",
+      "zh": "单页多格漫画",
+      "family": "叙事分格",
+      "ratio": "3:4",
+      "export_px": [
+        1536,
+        2048
+      ],
+      "safe_zone": {
+        "note": "上线后再做（P26）"
+      },
+      "text": {
+        "default": "native"
+      },
+      "count": [
+        1,
+        12
+      ],
+      "postponed": true,
+      "density_max": "sparse"
+    },
+    {
+      "id": "infographic",
+      "zh": "信息图",
+      "family": "信息结构",
+      "ratio": "3:4",
+      "export_px": [
+        1242,
+        1656
+      ],
+      "safe_zone": {
+        "note": "上下留标题与结尾区"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 16
+      },
+      "count": [
+        1,
+        1
+      ],
+      "alt_ratio": "9:16",
+      "density_max": "dense",
+      "compose": "A vertical infographic: a title area at the top, the content in the middle and one short closing line at the bottom."
+    },
+    {
+      "id": "article-illustration",
+      "zh": "文章配图",
+      "family": "信息结构",
+      "ratio": "16:9",
+      "export_px": [
+        1600,
+        900
+      ],
+      "safe_zone": {
+        "note": "公众号正文宽 900–1080"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 12
+      },
+      "count": [
+        1,
+        16
+      ],
+      "alt_ratio": "4:3",
+      "density_max": "balanced",
+      "compose": "An inline article illustration, read at phone width: one clear focal point, large simple shapes, no tiny details."
+    },
+    {
+      "id": "storyboard-frame",
+      "zh": "视频分镜首帧",
+      "family": "视频帧",
+      "ratio": "16:9",
+      "export_px": [
+        1920,
+        1080
+      ],
+      "safe_zone": {
+        "note": "为运镜留白，不放字"
+      },
+      "text": {
+        "default": "none"
+      },
+      "count": [
+        1,
+        60
+      ],
+      "alt_ratio": "9:16",
+      "density_max": "sparse",
+      "compose": "A cinematic establishing frame with room for camera movement; no text."
+    },
+    {
+      "id": "video-thumbnail",
+      "zh": "横版视频缩略图",
+      "family": "视频帧",
+      "ratio": "16:9",
+      "export_px": [
+        1280,
+        720
+      ],
+      "safe_zone": {
+        "note": "YouTube 右下角被时长遮挡；B 站用 16:10 1146×717 且左下被分区标签遮挡"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 12
+      },
+      "count": [
+        1,
+        1
+      ],
+      "source": "support.google.com/youtube/answer/72431",
+      "density_max": "sparse",
+      "compose": "A video thumbnail: one strong subject and a short bold title; keep the bottom-right corner clear for the duration badge."
+    },
+    {
+      "id": "vertical-cover",
+      "zh": "竖版短视频封面",
+      "family": "视频帧",
+      "ratio": "9:16",
+      "export_px": [
+        1080,
+        1920
+      ],
+      "safe_zone": {
+        "bottom_unsafe": 0.15,
+        "note": "底部约 15% 被进度条与界面遮挡；主页按 3:4 裁"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 10
+      },
+      "count": [
+        1,
+        1
+      ],
+      "density_max": "sparse",
+      "compose": "A 9:16 vertical cover: keep the bottom 15% clear of anything important."
+    },
+    {
+      "id": "sticker-single",
+      "zh": "单张透明表情",
+      "family": "透明底单图",
+      "ratio": "1:1",
+      "export_px": [
+        512,
+        512
+      ],
+      "safe_zone": {
+        "note": "角色完整入画，正式导出后四边透明留白至少 10%"
+      },
+      "text": {
+        "default": "none",
+        "title_max_chars": 0
+      },
+      "count": [
+        1,
+        1
+      ],
+      "transparent": true,
+      "density_max": "sparse",
+      "compose": "One complete isolated sticker character centered on a genuinely transparent square canvas. The entire silhouette, including ears, tail and feet, fits inside the central 72% of canvas height with at least 12% fully transparent padding on all four sides. No shadow, floor, scene, colored glow, or detached colored fragments."
+    },
+    {
+      "id": "sticker-grid",
+      "zh": "表情包宫格",
+      "family": "透明底多宫格",
+      "ratio": "1:1",
+      "export_px": [
+        1536,
+        1536
+      ],
+      "safe_zone": {
+        "note": "2×2 到 4×4，每格一个表情，切片后透明底"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 4
+      },
+      "count": [
+        4,
+        16
+      ],
+      "transparent": true,
+      "density_max": "sparse",
+      "compose": "A grid of separate stickers of the same character, one expression per cell, on a fully transparent canvas. Leave transparent gutters at every cell boundary and clear transparent space around every figure so each cell can be cut out as its own PNG."
+    }
+  ],
+  "tests": {
+    "T1": "半身表情",
+    "T2": "两人互动",
+    "T3": "老人与孩子",
+    "T4": "动物",
+    "T5": "静物",
+    "T6": "远景",
+    "T7": "抽象概念",
+    "T8": "中文标题卡"
+  }
+}

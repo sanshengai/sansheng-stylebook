@@ -1,0 +1,540 @@
+{
+  "version": 1,
+  "families": [
+    "单张封面",
+    "多张轮播",
+    "叙事分格",
+    "信息结构",
+    "视频帧",
+    "透明底多宫格",
+    "透明底单图"
+  ],
+  "generation": {
+    "gpt-image": "宽高须为 16 的倍数、最长边不超过 3840、宽高比不超过 3:1；先按比例生成再裁切缩放到导出像素"
+  },
+  "formats": [
+    {
+      "id": "wechat-cover-head",
+      "zh": "公众号头条封面",
+      "family": "单张封面",
+      "ratio": "2.35:1",
+      "export_px": [
+        900,
+        383
+      ],
+      "safe_zone": {
+        "center_square": true,
+        "note": "历史消息与分享会裁成居中方形，关键内容放中间"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 14
+      },
+      "count": [
+        1,
+        1
+      ],
+      "source": "微信开放社区官方问答",
+      "density_max": "sparse",
+      "compose": "A wide banner cover; keep the main subject and any title inside the central square so a centred square crop still reads."
+    },
+    {
+      "id": "wechat-cover-square",
+      "zh": "公众号次条 / 分享封面",
+      "family": "单张封面",
+      "ratio": "1:1",
+      "export_px": [
+        900,
+        900
+      ],
+      "thumbnail_px": 46,
+      "safe_zone": {
+        "note": "小尺寸显示，只放一个主体与极少字"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 8
+      },
+      "count": [
+        1,
+        1
+      ],
+      "source": "业内口径",
+      "density_max": "sparse",
+      "compose": "A small square thumbnail: one main subject, very few words, readable at small size."
+    },
+    {
+      "id": "xhs-cover",
+      "zh": "小红书封面",
+      "family": "单张封面",
+      "ratio": "3:4",
+      "export_px": [
+        1242,
+        1656
+      ],
+      "safe_zone": {
+        "center_square": true,
+        "note": "主页与分享裁成居中 1:1"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 16
+      },
+      "count": [
+        1,
+        1
+      ],
+      "source": "业内一致口径",
+      "density_max": "sparse",
+      "compose": "The first page of a vertical card series: one bold title area and one clear visual; keep key content inside the central square."
+    },
+    {
+      "id": "x-image",
+      "zh": "X 配图",
+      "family": "单张封面",
+      "ratio": "16:9",
+      "export_px": [
+        1200,
+        675
+      ],
+      "safe_zone": {
+        "note": "比例须在 2:1 到 1:1 之间，超出会被裁"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 20
+      },
+      "count": [
+        1,
+        1
+      ],
+      "source": "help.x.com",
+      "density_max": "sparse"
+    },
+    {
+      "id": "og-image",
+      "zh": "链接预览图",
+      "family": "单张封面",
+      "ratio": "1.91:1",
+      "export_px": [
+        1200,
+        630
+      ],
+      "safe_zone": {
+        "note": "完整显示在 1.91:1 内"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 20
+      },
+      "count": [
+        1,
+        1
+      ],
+      "source": "developers.facebook.com",
+      "density_max": "sparse"
+    },
+    {
+      "id": "podcast-cover",
+      "zh": "播客封面",
+      "family": "单张封面",
+      "ratio": "1:1",
+      "export_px": [
+        3000,
+        3000
+      ],
+      "safe_zone": {
+        "note": "列表里只有 46–66 像素，一个大轮廓；无透明通道"
+      },
+      "text": {
+        "default": "none"
+      },
+      "count": [
+        1,
+        1
+      ],
+      "source": "podcasters.apple.com",
+      "density_max": "sparse",
+      "compose": "One bold, iconic main subject on a simple background, readable as a clear silhouette even at 46–66 pixels."
+    },
+    {
+      "id": "music-cover",
+      "zh": "音乐 / 单曲封面",
+      "family": "单张封面",
+      "ratio": "1:1",
+      "export_px": [
+        3000,
+        3000
+      ],
+      "safe_zone": {
+        "note": "sRGB、无损；不得放大"
+      },
+      "text": {
+        "default": "none"
+      },
+      "count": [
+        1,
+        1
+      ],
+      "source": "support.spotify.com",
+      "density_max": "sparse",
+      "compose": "One bold, iconic main subject on a simple background, readable as a clear silhouette even at 46–66 pixels."
+    },
+    {
+      "id": "weibo-head",
+      "zh": "微博头条封面",
+      "family": "单张封面",
+      "ratio": "16:9",
+      "export_px": [
+        1000,
+        562
+      ],
+      "safe_zone": {
+        "note": "非 16:9 会被裁"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 16
+      },
+      "count": [
+        1,
+        1
+      ],
+      "source": "教材引用",
+      "density_max": "sparse"
+    },
+    {
+      "id": "xhs-carousel",
+      "zh": "小红书轮播",
+      "family": "多张轮播",
+      "ratio": "3:4",
+      "export_px": [
+        1242,
+        1656
+      ],
+      "safe_zone": {
+        "center_square": true
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 16
+      },
+      "count": [
+        6,
+        9
+      ],
+      "source": "业内一致口径；最多 9 张",
+      "density_max": "balanced",
+      "compose": "One page of a vertical card series: same margins, title position and visual language on every page; one idea per page."
+    },
+    {
+      "id": "x-multi",
+      "zh": "X 多图",
+      "family": "多张轮播",
+      "ratio": "16:9",
+      "export_px": [
+        1200,
+        675
+      ],
+      "safe_zone": {
+        "note": "多图时每张可被裁成方形预览"
+      },
+      "text": {
+        "default": "native"
+      },
+      "count": [
+        2,
+        4
+      ],
+      "source": "help.x.com",
+      "density_max": "balanced"
+    },
+    {
+      "id": "ppt",
+      "zh": "PPT",
+      "family": "多张轮播",
+      "ratio": "16:9",
+      "export_px": [
+        1920,
+        1080
+      ],
+      "safe_zone": {
+        "note": "四边留 5%"
+      },
+      "text": {
+        "default": "overlay",
+        "title_max_chars": 24
+      },
+      "count": [
+        5,
+        30
+      ],
+      "modes": [
+        "整页图",
+        "插画 + 可编辑文字"
+      ],
+      "source": "软件默认",
+      "density_max": "dense",
+      "compose": "A 16:9 presentation slide with 5% margins on every side and a clear visual hierarchy."
+    },
+    {
+      "id": "courseware",
+      "zh": "课件插图",
+      "family": "多张轮播",
+      "ratio": "4:3",
+      "export_px": [
+        1600,
+        1200
+      ],
+      "safe_zone": {
+        "note": "文字区域留白"
+      },
+      "text": {
+        "default": "overlay"
+      },
+      "count": [
+        1,
+        20
+      ],
+      "alt_ratio": "16:9",
+      "density_max": "balanced",
+      "compose": "A 4:3 teaching slide with a calm, uncluttered area for text."
+    },
+    {
+      "id": "picturebook-page",
+      "zh": "绘本故事页",
+      "family": "叙事分格",
+      "ratio": "4:3",
+      "export_px": [
+        1600,
+        1200
+      ],
+      "safe_zone": {
+        "note": "下方或一侧留文字区"
+      },
+      "text": {
+        "default": "overlay"
+      },
+      "count": [
+        4,
+        16
+      ],
+      "density_max": "sparse",
+      "compose": "A picture-book page: the illustration fills the upper part and the lower third stays a calm, empty area for text."
+    },
+    {
+      "id": "comic-4panel",
+      "zh": "四格漫画",
+      "family": "叙事分格",
+      "ratio": "1:1",
+      "export_px": [
+        1536,
+        1536
+      ],
+      "safe_zone": {
+        "note": "四格等大，起承转合"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 10
+      },
+      "count": [
+        1,
+        1
+      ],
+      "alt_ratio": "3:4",
+      "density_max": "sparse",
+      "compose": "A four-panel comic laid out as a 2×2 grid of equal panels with thin gutters, read left to right, top to bottom: setup, development, twist, payoff."
+    },
+    {
+      "id": "comic-page",
+      "zh": "单页多格漫画",
+      "family": "叙事分格",
+      "ratio": "3:4",
+      "export_px": [
+        1536,
+        2048
+      ],
+      "safe_zone": {
+        "note": "上线后再做（P26）"
+      },
+      "text": {
+        "default": "native"
+      },
+      "count": [
+        1,
+        12
+      ],
+      "postponed": true,
+      "density_max": "sparse"
+    },
+    {
+      "id": "infographic",
+      "zh": "信息图",
+      "family": "信息结构",
+      "ratio": "3:4",
+      "export_px": [
+        1242,
+        1656
+      ],
+      "safe_zone": {
+        "note": "上下留标题与结尾区"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 16
+      },
+      "count": [
+        1,
+        1
+      ],
+      "alt_ratio": "9:16",
+      "density_max": "dense",
+      "compose": "A vertical infographic: a title area at the top, the content in the middle and one short closing line at the bottom."
+    },
+    {
+      "id": "article-illustration",
+      "zh": "文章配图",
+      "family": "信息结构",
+      "ratio": "16:9",
+      "export_px": [
+        1600,
+        900
+      ],
+      "safe_zone": {
+        "note": "公众号正文宽 900–1080"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 12
+      },
+      "count": [
+        1,
+        16
+      ],
+      "alt_ratio": "4:3",
+      "density_max": "balanced",
+      "compose": "An inline article illustration, read at phone width: one clear focal point, large simple shapes, no tiny details."
+    },
+    {
+      "id": "storyboard-frame",
+      "zh": "视频分镜首帧",
+      "family": "视频帧",
+      "ratio": "16:9",
+      "export_px": [
+        1920,
+        1080
+      ],
+      "safe_zone": {
+        "note": "为运镜留白，不放字"
+      },
+      "text": {
+        "default": "none"
+      },
+      "count": [
+        1,
+        60
+      ],
+      "alt_ratio": "9:16",
+      "density_max": "sparse",
+      "compose": "A cinematic establishing frame with room for camera movement; no text."
+    },
+    {
+      "id": "video-thumbnail",
+      "zh": "横版视频缩略图",
+      "family": "视频帧",
+      "ratio": "16:9",
+      "export_px": [
+        1280,
+        720
+      ],
+      "safe_zone": {
+        "note": "YouTube 右下角被时长遮挡；B 站用 16:10 1146×717 且左下被分区标签遮挡"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 12
+      },
+      "count": [
+        1,
+        1
+      ],
+      "source": "support.google.com/youtube/answer/72431",
+      "density_max": "sparse",
+      "compose": "A video thumbnail: one strong subject and a short bold title; keep the bottom-right corner clear for the duration badge."
+    },
+    {
+      "id": "vertical-cover",
+      "zh": "竖版短视频封面",
+      "family": "视频帧",
+      "ratio": "9:16",
+      "export_px": [
+        1080,
+        1920
+      ],
+      "safe_zone": {
+        "bottom_unsafe": 0.15,
+        "note": "底部约 15% 被进度条与界面遮挡；主页按 3:4 裁"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 10
+      },
+      "count": [
+        1,
+        1
+      ],
+      "density_max": "sparse",
+      "compose": "A 9:16 vertical cover: keep the bottom 15% clear of anything important."
+    },
+    {
+      "id": "sticker-single",
+      "zh": "单张透明表情",
+      "family": "透明底单图",
+      "ratio": "1:1",
+      "export_px": [
+        512,
+        512
+      ],
+      "safe_zone": {
+        "note": "角色完整入画，正式导出后四边透明留白至少 10%"
+      },
+      "text": {
+        "default": "none",
+        "title_max_chars": 0
+      },
+      "count": [
+        1,
+        1
+      ],
+      "transparent": true,
+      "density_max": "sparse",
+      "compose": "One complete isolated sticker character centered on a genuinely transparent square canvas. The entire silhouette, including ears, tail and feet, fits inside the central 72% of canvas height with at least 12% fully transparent padding on all four sides. No shadow, floor, scene, colored glow, or detached colored fragments."
+    },
+    {
+      "id": "sticker-grid",
+      "zh": "表情包宫格",
+      "family": "透明底多宫格",
+      "ratio": "1:1",
+      "export_px": [
+        1536,
+        1536
+      ],
+      "safe_zone": {
+        "note": "2×2 到 4×4，每格一个表情，切片后透明底"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 4
+      },
+      "count": [
+        4,
+        16
+      ],
+      "transparent": true,
+      "density_max": "sparse",
+      "compose": "A grid of separate stickers of the same character, one expression per cell, on a fully transparent canvas. Leave transparent gutters at every cell boundary and clear transparent space around every figure so each cell can be cut out as its own PNG."
+    }
+  ],
+  "note": "density_max：该格式一张图允许的最高信息密度（sparse 1–2 点 / balanced 3–4 点 / dense 5–8 点），手机上小图放不下更多要点。"
+}

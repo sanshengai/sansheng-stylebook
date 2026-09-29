@@ -1,0 +1,72 @@
+{
+  "code": "C06",
+  "revision": 2,
+  "name": {
+    "zh": "松散墨线淡彩绘本",
+    "en": "Loose Ink-and-Wash Storybook"
+  },
+  "family": "温暖手绘·绘本动画",
+  "fit": [
+    "讲故事"
+  ],
+  "facets": {
+    "medium": "松散墨线淡彩绘本",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "handraw-style #036（描述已重写，不含人名）",
+    "license": "MIT",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "快速抖动的蘸水笔墨线",
+    "松散透明水彩",
+    "夸张肢体与白纸留白"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): Loose ink-and-wash storybook illustration: jittery, scratchy dip-pen ink lines drawn fast and confidently, loose transparent watercolour washes that do not fill the outlines exactly, exaggerated long limbs and lively gestures, expressive tiny faces, lots of white paper, energetic quick-sketch feeling, warm and humorous.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "快速抖动的蘸水笔墨线",
+      "松散透明水彩",
+      "夸张肢体与白纸留白"
+    ],
+    "must_not_see": [
+      "精密矢量线或厚涂水彩",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "未在基础合同上完成模型实测",
+    "date": "2026-09-29",
+    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "c639e641fd3ea26687c9ae3bb5450186256faedcf4f26cd9ebc3f03270bd0f8d",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

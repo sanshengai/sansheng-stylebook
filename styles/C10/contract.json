@@ -1,0 +1,78 @@
+{
+  "code": "C10",
+  "revision": 3,
+  "name": {
+    "zh": "极简单线创意小品",
+    "en": "Minimal Narrative Line Sketch"
+  },
+  "family": "温暖手绘·绘本动画",
+  "fit": [
+    "讲道理",
+    "封面"
+  ],
+  "facets": {
+    "medium": "极简单线创意小品",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "handraw-style #207（描述已重写，不含人名）",
+    "license": "MIT",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "极少量自信黑线",
+    "米白留白与一两处柔色",
+    "巧妙而易懂的视觉点子"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): Minimal warm narrative sketch: a clever visual idea drawn with very few confident black lines on a clean off-white ground, one or two flat soft accent colours only, simple rounded characters, witty visual pun or gentle everyday insight, lots of empty space, calm and warm.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "极少量自信黑线",
+      "米白留白与一两处柔色",
+      "巧妙而易懂的视觉点子"
+    ],
+    "must_not_see": [
+      "复杂写实背景或多色装饰",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "Codex 内置生图（底层模型 ID 未提供）",
+    "date": "2026-09-29",
+    "notes": "C10 新题材单张抽查：旧同题锚点迁入蜡笔质感与较复杂人物画法；无题材单线板明显减少细节和纹理，但柔色超过两处，仍未通过正式八题、稳定性与版式准入。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-29",
+      "note": "同题原图锚点使新题材偏蜡笔绘本；改用无题材单线样板，保持 pending，证据见本地 C10-codex-native-smoke"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "965104143c0056c503da9425dda3dece21df811ed9fdf99701a5390010682298",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

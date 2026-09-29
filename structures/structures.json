@@ -1,0 +1,266 @@
+{
+  "version": 1,
+  "families": [
+    "顺序",
+    "对比",
+    "层级",
+    "关系",
+    "归类",
+    "转化"
+  ],
+  "structures": [
+    {
+      "id": "flow",
+      "zh": "流程",
+      "family": "顺序",
+      "en": "a step-by-step flow of connected stages from left to right or top to bottom",
+      "signals": [
+        "先后顺序的步骤",
+        "第一步、然后、最后"
+      ],
+      "example_image": "xhs-images-layouts-flow"
+    },
+    {
+      "id": "timeline",
+      "zh": "横向时间线",
+      "family": "顺序",
+      "en": "a horizontal timeline with dated milestones",
+      "signals": [
+        "带日期或年份的变化",
+        "历史、演进"
+      ],
+      "example_image": "infographic-layouts-timeline-horizontal"
+    },
+    {
+      "id": "journey",
+      "zh": "旅程路径",
+      "family": "顺序",
+      "en": "a winding journey path with stops along the way",
+      "signals": [
+        "有起点终点的历程",
+        "成长路径、用户旅程"
+      ],
+      "example_image": "infographic-layouts-journey-path"
+    },
+    {
+      "id": "cycle",
+      "zh": "循环流程",
+      "family": "顺序",
+      "en": "a circular cycle where the last step returns to the first",
+      "signals": [
+        "周而复始",
+        "循环、迭代、闭环"
+      ],
+      "example_image": "infographic-layouts-circular-flow"
+    },
+    {
+      "id": "compare",
+      "zh": "左右对比",
+      "family": "对比",
+      "en": "a side-by-side comparison of two options",
+      "signals": [
+        "两三个对象比较",
+        "A 和 B、前后对照"
+      ],
+      "example_image": "xhs-images-layouts-comparison"
+    },
+    {
+      "id": "table",
+      "zh": "对比表",
+      "family": "对比",
+      "en": "a comparison table with rows of criteria",
+      "signals": [
+        "多维度比较多个对象",
+        "参数、指标对比"
+      ],
+      "example_image": "infographic-layouts-comparison-table"
+    },
+    {
+      "id": "dodont",
+      "zh": "该做 / 别做",
+      "family": "对比",
+      "en": "a do / don't contrast",
+      "signals": [
+        "做法的对与错",
+        "该做、别做、误区"
+      ],
+      "example_image": "infographic-layouts-do-dont"
+    },
+    {
+      "id": "balance",
+      "zh": "天平",
+      "family": "对比",
+      "en": "a balance scale weighing two sides",
+      "signals": [
+        "权衡取舍",
+        "利弊、得失"
+      ],
+      "example_image": "infographic-layouts-scale-balance"
+    },
+    {
+      "id": "pyramid",
+      "zh": "金字塔",
+      "family": "层级",
+      "en": "a pyramid of stacked levels from base to top",
+      "signals": [
+        "层级、由基础到顶端",
+        "需求层次、金字塔"
+      ],
+      "example_image": "infographic-layouts-pyramid"
+    },
+    {
+      "id": "layers",
+      "zh": "层叠",
+      "family": "层级",
+      "en": "stacked layers from bottom to top",
+      "signals": [
+        "层层叠加的组成",
+        "技术栈、分层架构"
+      ],
+      "example_image": "infographic-layouts-layers-stack"
+    },
+    {
+      "id": "iceberg",
+      "zh": "冰山",
+      "family": "层级",
+      "en": "an iceberg: a small visible part above water and a larger hidden part below",
+      "signals": [
+        "表面与深层原因",
+        "看得见与看不见"
+      ],
+      "example_image": "infographic-layouts-iceberg"
+    },
+    {
+      "id": "tree",
+      "zh": "树状层级",
+      "family": "层级",
+      "en": "a tree hierarchy branching from one root",
+      "signals": [
+        "从一个根分出的层级",
+        "分类、组织结构"
+      ],
+      "example_image": "infographic-layouts-tree-hierarchy"
+    },
+    {
+      "id": "nested",
+      "zh": "同心圆",
+      "family": "层级",
+      "en": "nested concentric circles from core to outer rings",
+      "signals": [
+        "由核心到外圈",
+        "影响圈、同心关系"
+      ],
+      "example_image": "infographic-layouts-nested-circles"
+    },
+    {
+      "id": "venn",
+      "zh": "韦恩图",
+      "family": "关系",
+      "en": "a Venn diagram of overlapping sets",
+      "signals": [
+        "交集、共同点",
+        "重叠、既是又是"
+      ],
+      "example_image": "infographic-layouts-venn"
+    },
+    {
+      "id": "mindmap",
+      "zh": "思维导图",
+      "family": "关系",
+      "en": "a mind map radiating from a central idea",
+      "signals": [
+        "围绕一个中心展开",
+        "发散、主题分支"
+      ],
+      "example_image": "infographic-layouts-mind-map"
+    },
+    {
+      "id": "bridge",
+      "zh": "桥接",
+      "family": "关系",
+      "en": "a bridge connecting a current state to a goal",
+      "signals": [
+        "从现状到目标",
+        "差距、跨越"
+      ],
+      "example_image": "infographic-layouts-bridge"
+    },
+    {
+      "id": "equation",
+      "zh": "等式",
+      "family": "关系",
+      "en": "a visual equation: A + B = C",
+      "signals": [
+        "几样东西组合出一个结果",
+        "A + B = C"
+      ],
+      "example_image": "infographic-layouts-equation"
+    },
+    {
+      "id": "fishbone",
+      "zh": "鱼骨图",
+      "family": "关系",
+      "en": "a fishbone cause-and-effect diagram",
+      "signals": [
+        "多个原因导致一个结果",
+        "根因分析"
+      ],
+      "example_image": "infographic-layouts-fishbone"
+    },
+    {
+      "id": "list",
+      "zh": "清单",
+      "family": "归类",
+      "en": "a clean numbered list",
+      "signals": [
+        "并列的要点",
+        "清单、排行"
+      ],
+      "example_image": "xhs-images-layouts-list"
+    },
+    {
+      "id": "grid",
+      "zh": "卡片网格",
+      "family": "归类",
+      "en": "a grid of equal cards, one idea per card",
+      "signals": [
+        "由几个部分组成",
+        "模块、卡片"
+      ],
+      "example_image": "infographic-layouts-grid-cards"
+    },
+    {
+      "id": "features",
+      "zh": "特性清单",
+      "family": "归类",
+      "en": "a feature list with icons",
+      "signals": [
+        "一个对象的多个特性",
+        "功能、卖点"
+      ],
+      "example_image": "infographic-layouts-feature-list"
+    },
+    {
+      "id": "quadrant",
+      "zh": "优先级四象限",
+      "family": "归类",
+      "en": "a 2×2 priority quadrant",
+      "signals": [
+        "按两个维度排序",
+        "优先级、紧急重要"
+      ],
+      "example_image": "infographic-layouts-priority-quadrants"
+    },
+    {
+      "id": "funnel",
+      "zh": "漏斗",
+      "family": "转化",
+      "en": "a funnel narrowing from many to few",
+      "signals": [
+        "层层筛选或转化",
+        "转化率、漏斗"
+      ],
+      "example_image": "infographic-layouts-funnel"
+    }
+  ]
+}

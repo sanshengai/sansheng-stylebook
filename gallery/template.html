@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>叁笙画风手册</title>
+<style>
+:root{
+  --bg:#F5F5F2; --surface:#FFFFFF; --sunk:#ECECE7; --ink:#1B1E23; --muted:#62666E; --line:#D9DAD4;
+  --accent:#2447A8; --accent-ink:#FFFFFF; --accent-soft:#E3E9F8; --warn:#B4452B; --warn-soft:#F6E3DD;
+  --sans:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root{--bg:#131416;--surface:#1C1E21;--sunk:#25282C;--ink:#ECECE7;--muted:#9A9EA6;--line:#33363B;--accent:#8AA6F4;--accent-ink:#0F1420;--accent-soft:#1F2A45;--warn:#E98B72;--warn-soft:#3A241F;color-scheme:dark}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.6;padding-inline:16px;padding-block:0 60px}
+header.top{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-16px;padding:10px 16px}
+.top-in{max-width:1360px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+h1{font-size:19px;margin:0}
+.tabs{display:flex;gap:4px;background:var(--sunk);padding:3px;border-radius:8px}
+.tab{border:0;background:transparent;color:var(--muted);font:inherit;font-weight:600;padding:6px 12px;border-radius:6px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.sp{flex:1}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-weight:600;padding:6px 12px;border-radius:7px;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1360px;margin:0 auto}
+.intro{color:var(--muted);max-width:80ch;margin:16px 0 8px}
+.intro b{color:var(--ink)}
+.bar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0 16px}
+.chip{border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:13px;padding:4px 10px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip .n{opacity:.6;margin-left:4px;font-size:12px}
+.lbl{font-size:12px;color:var(--muted);margin-right:4px}
+/* 反选卡片 */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.card.out{opacity:.45;border-color:var(--warn)}
+.card.out .thumbs{filter:grayscale(1)}
+.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--sunk)}
+.thumbs button{border:0;padding:0;background:none;cursor:zoom-in;aspect-ratio:1/1;display:block;position:relative}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb-label{position:absolute;left:4px;bottom:4px;background:rgba(25,29,34,.82);color:#fff;font-size:10px;line-height:1.2;padding:3px 4px;border-radius:3px}
+.thumbs .miss{display:grid;place-items:center;font-size:12px;color:var(--muted);aspect-ratio:1/1}
+.meta{padding:10px 12px 12px;display:flex;flex-direction:column;gap:4px;flex:1}
+.row1{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.code{font-family:var(--mono);font-weight:700;color:var(--accent)}
+.name{font-weight:700;font-size:15px}
+.sub{font-size:12px;color:var(--muted)}
+.note{font-size:12px;background:var(--sunk);border-radius:6px;padding:4px 8px}
+.acts{margin-top:auto;display:flex;gap:6px;padding-top:4px}
+.kill{border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:13px;font-weight:600;padding:4px 12px;border-radius:6px;cursor:pointer}
+.card.out .kill{background:var(--warn);border-color:var(--warn);color:#fff}
+/* 同题矩阵 */
+.matrix{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.cell{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.cell.out{opacity:.4;border-color:var(--warn)}
+.cell button.img{border:0;padding:0;background:none;display:block;width:100%;aspect-ratio:1/1;cursor:zoom-in}
+.cell img{width:100%;height:100%;object-fit:cover;display:block}
+.cell .cap{display:flex;justify-content:space-between;gap:6px;align-items:center;padding:6px 8px;font-size:12px}
+.cell .cap button{border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:11px;padding:1px 6px;border-radius:5px;cursor:pointer}
+.cell.out .cap button{background:var(--warn);color:#fff;border-color:var(--warn)}
+/* 原型 */
+.steps{display:grid;gap:18px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.step h2{font-size:15px;margin:0 0 4px}
+.step .hint{color:var(--muted);font-size:13px;margin:0 0 10px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;padding:7px 12px;border-radius:8px;cursor:pointer}
+.opt[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent);font-weight:600}
+.opt:disabled{opacity:.35;cursor:not-allowed}
+.recs{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.rec{border:2px solid transparent;background:var(--sunk);border-radius:10px;overflow:hidden;cursor:pointer;padding:0;text-align:left;color:var(--ink);font:inherit}
+.rec[aria-pressed="true"]{border-color:var(--accent)}
+.rec img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.rec .t{padding:6px 8px;font-size:13px;font-weight:600}
+.rec .d{padding:0 8px 8px;font-size:11px;color:var(--muted)}
+.badge{display:inline-block;font-size:11px;background:var(--accent);color:var(--accent-ink);border-radius:4px;padding:0 5px;margin-left:4px}
+.structs{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+.st{border:2px solid transparent;background:var(--sunk);border-radius:8px;padding:0;cursor:pointer;font:inherit;color:var(--ink);text-align:left;overflow:hidden}
+.st[aria-pressed="true"]{border-color:var(--accent)}
+.st img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.st .t{padding:4px 6px;font-size:12px}
+.st .fam{font-size:10px;color:var(--muted)}
+.swatches{display:flex;gap:4px;margin-top:6px}
+.swatches span{width:34px;height:34px;border-radius:6px;border:1px solid var(--line)}
+.pal{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.pal .mini{display:flex;gap:2px}
+.pal .mini i{width:12px;height:12px;border-radius:3px;display:block}
+.out-box{display:grid;gap:12px}
+.out-box label{font-weight:600;font-size:13px}
+.out-box textarea,.out-box input{width:100%;font:inherit;font-size:13px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:8px}
+.out-box textarea{font-family:var(--mono);font-size:12px;min-height:90px}
+.codebox{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:8px;padding:8px 12px;display:inline-block}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(10,11,13,.86);display:flex;align-items:center;justify-content:center;padding:16px}
+.lb img{max-width:min(92vw,900px);max-height:88vh;border-radius:8px}
+.lb .cap{position:fixed;left:0;right:0;bottom:12px;text-align:center;color:#fff;font-size:14px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:13px;z-index:60}
+@media (max-width:700px){.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <h1>叁笙画风手册</h1>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" data-tab="defaults" aria-selected="true">① 出厂默认</button>
+    <button class="tab" role="tab" data-tab="pick" aria-selected="false">② 全部样式</button>
+    <button class="tab" role="tab" data-tab="proto" aria-selected="false">③ 选择器</button>
+    <button class="tab" role="tab" data-tab="prefs" aria-selected="false">④ 偏好</button>
+  </div>
+  <span class="sp"></span>
+  <span class="sub" id="keepCount"></span>
+  <button class="btn primary" id="copyOut">复制场景默认与去掉项</button>
+</div></header>
+
+<main class="wrap">
+<section id="defaults">
+  <p class="intro">每个场景一行：<b>第一张（带「默认」）是这台浏览器当前的推荐</b>，后面是备选。这里的调整只保存在本浏览器；复制后交给 Agent，才可由 Agent 按你的指令写入长期偏好。</p>
+  <div class="bar"><button class="btn" id="resetDefaults">恢复出厂默认</button></div>
+  <div id="defBody" class="steps"></div>
+</section>
+
+<section id="pick" hidden>
+  <p class="intro">卡片优先展示同题测试图：<b>老人与孩子</b>、<b>远景</b>、<b>抽象概念</b>。公开包另附画风材质参考或单张测试图；它们会单独标明，不能当作这三题已通过。缺图标“未出图”；正式准入状态请看卡片文字。点「去掉」会在本浏览器隐藏该样式。</p>
+  <div class="bar" id="viewBar"></div>
+  <div class="bar" id="famBar"></div>
+  <div id="pickBody"></div>
+</section>
+
+<section id="proto" hidden>
+  <p class="intro">选择流程：<b>用途 → 画风 → 表达方式 → 色调 → 逐图修改</b>。网页只记录选择；整篇内容的提炼、位置和最终提示词由 Agent 结合原文完成。可以导入 Agent 的选择记录，修改后再复制或下载。</p>
+  <div class="steps">
+    <div class="step"><h2>① 你要做什么</h2><p class="hint">选一个场景，后面的选项会跟着变。</p><div class="opts" id="sceneOpts"></div></div>
+    <div class="step"><h2>② 选样式</h2><p class="hint" id="styleHint"></p><div class="recs" id="styleRecs"></div><div style="margin-top:10px"><button class="btn" id="moreStyles">看全部适合这个场景的样式</button></div></div>
+    <div class="step"><h2>③ 表达方式</h2><p class="hint">默认按每张图的内容自动决定。故事可以是场景，观点可以是隐喻，关系或数据适合结构图；强制指定会交给 Agent 再核对原文。</p>
+      <div class="opts" id="formOpts" style="margin-bottom:12px"></div>
+      <div class="structs" id="structOpts"></div>
+      <div style="margin-top:12px"><label for="densitySelect">结构图信息密度：</label><select id="densitySelect"><option value="auto">按要点自动</option><option value="sparse">稀疏</option><option value="balanced">均衡</option><option value="dense">密集</option></select><span class="sub">固定密度须与原文要点数相符，Agent 会复核。</span></div></div>
+    <div class="step"><h2>④ 色彩</h2><p class="hint" id="colorHint"></p>
+      <div class="opts" id="palOpts"></div>
+      <div class="opts" style="margin-top:10px"><span class="lbl">深浅</span><span id="lightOpts" class="opts"></span><span class="lbl" style="margin-left:12px">鲜灰</span><span id="satOpts" class="opts"></span></div>
+      <div id="brandRow" hidden style="margin-top:8px"><input id="brandHex" placeholder="填你的品牌色，逗号分隔，如 #0E926F, #F2C57C" style="width:min(100%,420px);font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)"></div>
+      <div class="swatches" id="swatches"></div></div>
+    <div class="step"><h2>⑤ 逐图进阶设置</h2><p class="hint">已有配图计划时填写图片 ID，例如 03。单图改动只影响该图；Agent 会核对事实、文字和母版引用。</p>
+      <div class="out-box">
+        <div><label for="seriesId">系列 ID（可选）</label><input id="seriesId" placeholder="例如 article-1"></div>
+        <div><label for="itemId">图片 ID</label><input id="itemId" placeholder="例如 03"></div>
+        <div><label for="itemStyle">单图画风（可选）</label><select id="itemStyle"><option value="">沿用整组</option></select></div>
+        <div><label for="itemForm">单图表达</label><select id="itemForm"><option value="">沿用整组</option><option value="auto">自动</option><option value="scene">场景主体</option><option value="metaphor">视觉隐喻</option><option value="structure">结构图</option></select></div>
+        <div><label for="itemStructure">单图结构</label><select id="itemStructure"><option value="auto">自动</option></select></div>
+        <div><label for="itemText">文字修改要求（可选，最多 200 字）</label><input id="itemText" maxlength="200" placeholder="例如：标签短一些，条件不能省"></div>
+        <div><button class="btn" id="addItem">保存这张图的设置</button><div id="itemList" class="sub" aria-live="polite"></div></div>
+      </div>
+    </div>
+    <div class="step"><h2>⑥ 复制、下载或导入</h2>
+      <div class="out-box">
+        <div><label for="theme">本次主题（可选，只用于给 Agent 的话）</label><input id="theme" placeholder="例如：时间管理文章"></div>
+        <div><label>简短风格码（不包含品牌色和逐图设置）</label><div><span class="codebox" id="codeOut"></span></div></div>
+        <div><label for="selectionOut">版本化选择记录</label><textarea id="selectionOut" readonly style="min-height:230px"></textarea><button class="btn" data-copy="selectionOut">复制选择记录</button> <button class="btn" id="downloadSelection">下载 JSON</button></div>
+        <div><label for="skillOut">给 Agent 的指令</label><textarea id="skillOut" readonly></textarea><button class="btn" data-copy="skillOut">复制指令</button></div>
+        <div><label for="selectionIn">导入 Agent 回传的选择记录，或旧 sb1 风格码</label><textarea id="selectionIn" placeholder="粘贴 version: 1 的 JSON，或 sb1:C31-orig"></textarea><button class="btn" id="importSelection">导入</button> <input id="selectionFile" type="file" accept="application/json,.json" aria-label="从文件导入选择记录"><div id="selectionError" class="sub" role="alert"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="prefs" hidden>
+  <p class="intro">Agent 的长期偏好存在你自己的记忆文件中。先从 Agent 导出 <code>memory.json</code> 并在这里导入；页面只在当前打开期间读取它。这里添加或忘记的事件，要下载文件交给 Agent 导入后才会生效。浏览器中的“去掉样式”和场景推荐是另一套本机设置，不会自动写入 Agent。</p>
+  <div class="steps">
+    <div class="step"><h2>导入 Agent 偏好文件</h2><div class="out-box"><input id="prefFile" type="file" accept="application/json,.json" aria-label="导入 Agent 偏好文件"><div id="prefError" class="sub" role="alert"></div></div></div>
+    <div class="step"><h2>当前明确设定</h2><p class="hint">这里只显示明确设置；观察倾向列在下方，未达到三项独立任务证据不会自动成为推荐。</p><div id="prefExplicit"></div></div>
+    <div class="step"><h2>观察中的倾向</h2><div id="prefObserved"></div></div>
+    <div class="step"><h2>新增明确设定</h2><div class="out-box">
+      <div><label for="prefScene">场景范围</label><select id="prefScene"><option value="">全部场景</option></select></div>
+      <div><label for="prefProject">项目 ID（可选）</label><input id="prefProject" placeholder="留空则不限定项目"></div>
+      <div><label for="prefField">字段</label><select id="prefField"><option value="style">画风</option><option value="palette">色调</option><option value="form">表达方式</option><option value="structure">结构</option></select></div>
+      <div><label for="prefValue">值</label><input id="prefValue" placeholder="画风 C31；色调可填 {&quot;family&quot;:&quot;macaron&quot;,&quot;light&quot;:0,&quot;sat&quot;:0}"></div>
+      <div><button class="btn" id="prefSet">加入明确设定</button></div>
+    </div></div>
+    <div class="step"><h2>导出并交给 Agent</h2><p class="hint">下载后把文件交给 Agent，请它核对冲突并用 <code>preferences import</code> 导入。页面不会直接读取或修改 Agent 的本地文件。</p><button class="btn" id="prefPause">暂停观察学习</button> <button class="btn primary" id="prefDownload">下载偏好文件</button><div id="prefCount" class="sub" aria-live="polite"></div></div>
+  </div>
+</section>
+</main>
+
+<div class="lb" id="lb" hidden><img id="lbImg" alt=""><div class="cap" id="lbCap"></div></div>
+
+<script id="imgdata" type="application/json">__IMGS__</script>
+<script id="meta" type="application/json">__META__</script>
+<script>
+(function(){
+const IMG = JSON.parse(document.getElementById('imgdata').textContent);
+const M = JSON.parse(document.getElementById('meta').textContent);
+const CANDS = M.cands, STRUCTS = M.structs, PALS = M.pals, SCENES = M.scenes, TN = M.tests;
+const KEY = M.private ? 'sb-gallery-private-v1' : 'sb-gallery-v1';
+const load = (k, d)=>{ try{ const v = JSON.parse(localStorage.getItem(KEY+'-'+k)||'null'); return v===null? d : v; }catch(e){ return d; } };
+const store = (k, v)=>{ try{ localStorage.setItem(KEY+'-'+k, JSON.stringify(v)); }catch(e){} };
+let REC = load('rec', JSON.parse(JSON.stringify(M.recs)));
+Object.keys(M.recs).forEach(k=>{ if(!REC[k]) REC[k]=M.recs[k].slice(); });
+const saveRec = ()=>store('rec', REC);
+const $ = id => document.getElementById(id);
+let out = load('out', []).filter(id=>CANDS.some(c=>c.id===id));
+const save = ()=>store('out', out);
+const isOut = id => out.includes(id);
+const CARD_T = ['T3','T6','T7'];
+const SAMPLE_NAMES = {anchor:'画风材质参考（非成图验收）',example:'单张测试图（非整组验收）',q1:'参考样图 1',q2:'参考样图 2',q3:'参考样图 3'};
+const IMAGE_NAMES = {...TN,...SAMPLE_NAMES};
+const TESTS = Object.keys(IMAGE_NAMES).filter(t=>CANDS.some(c=>IMG[c.id+'-'+t]));
+function pimg(id, t, sample='q1'){ const order = t==='T8'||t==='T7' ? [t,'T8','T7'] : t==='T6' ? ['T6','T3'] : [t,'T3','T6','T7']; for(const x of [...order,sample,'q1','q2','q3','example','anchor']){ if(IMG[id+'-'+x]) return {k:id+'-'+x, t:x}; } return null; }
+function cardImage(id,t,i){ const x=IMG[id+'-'+t] ? t : i===0 ? (IMG[id+'-example']?'example':IMG[id+'-anchor']?'anchor':null) : null; return x?{k:id+'-'+x,t:x}:null; }
+function previewLabel(id,t){ const im=pimg(id,t); return im?IMAGE_NAMES[im.t]:'未出图'; }
+function toggleOut(id){ const i=out.indexOf(id); if(i>=0) out.splice(i,1); else out.push(id); if(isOut(S.style)){S.style=null;imported=null;} save(); renderBars(); renderPick(); renderProto(); renderDefaults(); count(); }
+function count(){ $('keepCount').textContent = '保留 '+(CANDS.length-out.length)+' / '+CANDS.length; }
+function esc(s){ return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function toast(t){ const d=document.createElement('div'); d.className='toast'; d.textContent=t; document.body.appendChild(d); setTimeout(()=>d.remove(),1600); }
+function lb(src,cap){ $('lbImg').src=src; $('lbCap').textContent=cap; $('lb').hidden=false; }
+function noteOf(c){ const n=[]; if(c.vis==='private') n.push('自用样式'); if(c.lock) n.push('换色：锁定'+(c.lockNote?'（'+c.lockNote+'）':'')); n.push(c.contract? '风格合同 r'+c.rev : '配方整理中'); if(c.contract) n.push(c.admission==='admitted'?'已通过正式准入':'可试出图 · 待正式准入'); return n.join(' · '); }
+$('lb').onclick=()=>{$('lb').hidden=true;};
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') $('lb').hidden=true; });
+
+// ---------- 页签 ----------
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected', x===b));
+  ['pick','proto','defaults','prefs'].forEach(id=>{ $(id).hidden = b.dataset.tab!==id; }); window.scrollTo(0,0);
+});
+
+// ---------- 全部样式（反选） ----------
+let view='cards', fam='全部';
+function renderBars(){
+  const views=[['cards','按样式看']].concat(TESTS.map(t=>[t,((t.startsWith('q')||t==='anchor'||t==='example')?'参考：':'测试：')+IMAGE_NAMES[t]]));
+  $('viewBar').innerHTML = '<span class="lbl">看法</span>'+views.map(([k,t])=>'<button class="chip" data-v="'+k+'" aria-pressed="'+(view===k)+'">'+esc(t)+'</button>').join('')
+    +'<button class="chip" data-v="out" aria-pressed="'+(view==='out')+'">只看已去掉<span class="n">'+out.length+'</span></button>';
+  $('viewBar').querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{view=b.dataset.v; renderBars(); renderPick();});
+  const fams = {}; CANDS.forEach(c=>fams[c.fam]=(fams[c.fam]||0)+1);
+  $('famBar').innerHTML = '<span class="lbl">家族</span>'+[['全部',CANDS.length]].concat(Object.entries(fams)).map(([k,n])=>'<button class="chip" data-f="'+esc(k)+'" aria-pressed="'+(fam===k)+'">'+esc(k)+'<span class="n">'+n+'</span></button>').join('');
+  $('famBar').querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{fam=b.dataset.f; renderBars(); renderPick();});
+}
+function list(){ return CANDS.filter(c=>(fam==='全部'||c.fam===fam)&&(view!=='out'||isOut(c.id))); }
+function renderPick(){
+  const L=list(); const body=$('pickBody');
+  if(view==='cards'||view==='out'){
+    body.innerHTML='<div class="cards">'+L.map(c=>{
+      const th=CARD_T.map((t,i)=>{ const im=cardImage(c.id,t,i); const label=im?.t==='anchor'?'画风参考':im?.t==='example'?'单张测试':''; return im?'<button data-z="'+im.k+'" aria-label="放大 '+esc(c.name)+' '+IMAGE_NAMES[im.t]+'" title="'+IMAGE_NAMES[im.t]+'"><img src="'+IMG[im.k]+'" alt="'+esc(c.name)+' '+IMAGE_NAMES[im.t]+'">'+(label?'<span class="thumb-label">'+label+'</span>':'')+'</button>':'<div class="miss">未出图</div>'; }).join('');
+      return '<article class="card'+(isOut(c.id)?' out':'')+'"><div class="thumbs">'+th+'</div><div class="meta"><div class="row1"><span class="code">'+c.id+'</span><span class="name">'+esc(c.name)+'</span></div><div class="sub">'+esc(c.fam)+' · 适合：'+esc(c.tags)+'</div><div class="sub">来源：'+esc(c.src)+'</div><div class="note">'+esc(noteOf(c))+'</div><div class="acts"><button class="kill" data-k="'+c.id+'">'+(isOut(c.id)?'已去掉（点击恢复）':'去掉')+'</button></div></div></article>';
+    }).join('')+'</div>';
+  } else {
+    body.innerHTML='<div class="matrix">'+L.map(c=>{ const k=c.id+'-'+view; return '<div class="cell'+(isOut(c.id)?' out':'')+'">'+(IMG[k]?'<button class="img" data-z="'+k+'"><img src="'+IMG[k]+'" alt="'+esc(c.name)+'"></button>':'<div class="miss" style="aspect-ratio:1/1;display:grid;place-items:center">未出图</div>')+'<div class="cap"><span><b class="code">'+c.id+'</b> '+esc(c.name)+'</span><button data-k="'+c.id+'">'+(isOut(c.id)?'恢复':'去掉')+'</button></div></div>'; }).join('')+'</div>';
+  }
+  body.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>toggleOut(b.dataset.k));
+  body.querySelectorAll('[data-z]').forEach(b=>b.onclick=()=>zoom(b.dataset.z));
+}
+function zoom(k){ const i=k.lastIndexOf('-'); const c=cand(k.slice(0,i)); lb(IMG[k], c.id+' '+c.name+' · '+IMAGE_NAMES[k.slice(i+1)]); }
+function copyText(){
+  const lines=['【出厂默认】'];
+  SCENES.forEach(sc=>{ const ids=(REC[sc.id]||[]).filter(id=>!isOut(id)); const orig=(M.recs[sc.id]||[]).filter(id=>!isOut(id)); const d=cand(ids[0]);
+    const changed = (ids[0]!==orig[0]) ? '（改过，原为 '+orig[0]+' '+(cand(orig[0])||{}).name+'）' : '';
+    lines.push(sc.name+'：默认 '+(d?d.id+' '+d.name:'无')+changed+'；备选 '+ids.slice(1).map(id=>id+' '+(cand(id)||{}).name).join('、')); });
+  const sorted=out.slice().sort();
+  lines.push(''); lines.push('【去掉的样式】'+(sorted.map(id=>id+' '+cand(id).name).join('、')||'无')+'（保留 '+(CANDS.length-out.length)+' 种）');
+  return lines.join('\n');
+}
+async function copyAll(){ const text=copyText(); try{ await navigator.clipboard.writeText(text); toast('已复制：出厂默认 + 去掉的样式'); }catch(e){ prompt('复制下面的文字', text); } }
+$('copyOut').onclick=copyAll;
+
+// ---------- 选择器 ----------
+const S = {scene: SCENES[0].id, style: null, form: 'auto', struct: 'auto', density: 'auto', pal: 'orig', light: 0, sat: 0, brand: '', items: {}};
+let imported = null, importedState = null;
+function scene(){ return SCENES.find(s=>s.id===S.scene); }
+function cand(id){ return CANDS.find(c=>c.id===id); }
+function kept(){ return CANDS.filter(c=>!isOut(c.id)); }
+function recsFor(sc){ return (REC[sc.id]||[]).filter(id=>!isOut(id)&&cand(id)); }
+let showAll=false;
+function tile(id, t, extra){ const im=pimg(id,t); return (im?'<img src="'+IMG[im.k]+'" alt="'+esc(IMAGE_NAMES[im.t])+'" title="'+esc(IMAGE_NAMES[im.t])+'"'+(extra||'')+' data-zk="'+im.k+'">':'<div style="aspect-ratio:1/1;display:grid;place-items:center;color:var(--muted)">未出图</div>'); }
+function renderProto(){
+  const sc = scene();
+  $('sceneOpts').innerHTML = SCENES.map(s=>'<button class="opt" data-s="'+s.id+'" aria-pressed="'+(S.scene===s.id)+'">'+esc(s.name)+'</button>').join('');
+  $('sceneOpts').querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{ S.scene=b.dataset.s; S.style=null; S.form='auto'; S.struct='auto'; S.density='auto'; S.items={}; imported=null; showAll=false; renderProto(); });
+  const recs = recsFor(sc);
+  if(!S.style || !cand(S.style)) S.style = recs[0] || (kept()[0]||{}).id;
+  let ids = recs.slice();
+  if(showAll){ kept().filter(c=>!ids.includes(c.id)).forEach(c=>ids.push(c.id)); }
+  if(S.style && !ids.includes(S.style)) ids.push(S.style);
+  $('styleHint').textContent = '推荐按「'+sc.tag+'」类挑；缩略图优先用「'+TN[sc.t]+'」这道题。第一个是当前浏览器默认。';
+  $('styleRecs').innerHTML = ids.map((id,i)=>{ const c=cand(id); return '<button class="rec" data-st="'+id+'" aria-pressed="'+(S.style===id)+'">'+tile(id, sc.t)+'<div class="t">'+id+' '+esc(c.name)+(i===0?'<span class="badge">默认</span>':'')+'</div><div class="d">'+esc(c.fam)+' · '+(c.tags.includes(sc.tag)?'目录推荐':'此用途未验证')+' · '+esc(previewLabel(id,sc.t))+'</div></button>'; }).join('');
+  $('styleRecs').querySelectorAll('[data-st]').forEach(b=>b.onclick=()=>{ S.style=b.dataset.st; if(cand(S.style).lock){ S.pal='orig'; S.light=0; S.sat=0; } else if(cand(S.style).recolor==='lightness_only'){ S.pal='orig'; S.sat=0; } renderProto(); });
+  $('moreStyles').textContent = showAll ? '只看推荐' : '看全部画风（含此用途未验证）';
+  $('moreStyles').onclick = ()=>{ showAll=!showAll; renderProto(); };
+  const forms=[['auto','按内容自动'],['scene','场景主体'],['metaphor','视觉隐喻'],['structure','结构图']];
+  $('formOpts').innerHTML=forms.map(([k,t])=>'<button class="opt" data-form="'+k+'" aria-pressed="'+(S.form===k)+'">'+t+'</button>').join('');
+  $('formOpts').querySelectorAll('[data-form]').forEach(b=>b.onclick=()=>{S.form=b.dataset.form; if(S.form!=='structure') S.struct='auto'; if(['scene','metaphor'].includes(S.form)) S.density='auto'; renderProto();});
+  $('structOpts').innerHTML = '<button class="st" data-x="auto" aria-pressed="'+(S.struct==='auto')+'"><div style="aspect-ratio:4/3;display:grid;place-items:center;font-weight:700;color:var(--accent)">自动</div><div class="t">每张按内容判断<div class="fam">默认</div></div></button>'+STRUCTS.map(s=>'<button class="st" data-x="'+s.id+'" aria-pressed="'+(S.struct===s.id)+'">'+(IMG['S-'+s.id]?'<img src="'+IMG['S-'+s.id]+'" alt="">':'<div style="aspect-ratio:4/3;display:grid;place-items:center;color:var(--muted);font-size:12px">'+esc(s.name)+'</div>')+'<div class="t">'+esc(s.name)+'<div class="fam">'+esc(s.fam)+'</div></div></button>').join('');
+  $('structOpts').hidden=S.form!=='structure';
+  $('structOpts').querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>{S.struct=b.dataset.x; renderProto();});
+  $('densitySelect').value=S.density;
+  $('densitySelect').disabled=['scene','metaphor'].includes(S.form);
+  $('densitySelect').onchange=()=>{S.density=$('densitySelect').value;renderOut();};
+  const c = cand(S.style); const lock = !!(c&&c.lock);
+  $('colorHint').textContent = lock ? '此画风锁色，只能用原色。' : c.recolor==='lightness_only' ? '此画风只允许调整原色深浅。' : '默认沿用原色；换色系不应改变画风的笔触和材质。';
+  $('palOpts').innerHTML = PALS.map(p=>{ const dis = (lock || c.recolor==='lightness_only') && p.id!=='orig'; const mini = p.colors.length? '<span class="mini">'+p.colors.map(x=>'<i style="background:'+x.hex+'"></i>').join('')+'</span>':''; return '<button class="opt pal" data-p="'+p.id+'" aria-pressed="'+(S.pal===p.id)+'"'+(dis?' disabled':'')+'>'+esc(p.name)+mini+'</button>'; }).join('');
+  $('palOpts').querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{S.pal=b.dataset.p; renderProto();});
+  const lights=[[1,'浅'],[0,'标准'],[-1,'深']], sats=[[-1,'柔和'],[0,'标准'],[1,'鲜艳']];
+  const noOrigColors=S.pal==='orig'&&!c.colors.length;
+  $('lightOpts').innerHTML = lights.map(([v,t])=>'<button class="opt" data-l="'+v+'" aria-pressed="'+(S.light===v)+'"'+(lock||noOrigColors?' disabled':'')+'>'+t+'</button>').join('');
+  $('satOpts').innerHTML = sats.map(([v,t])=>'<button class="opt" data-a="'+v+'" aria-pressed="'+(S.sat===v)+'"'+(lock||c.recolor==='lightness_only'||noOrigColors?' disabled':'')+'>'+t+'</button>').join('');
+  $('lightOpts').querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{S.light=+b.dataset.l; renderProto();});
+  $('satOpts').querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{S.sat=+b.dataset.a; renderProto();});
+  $('brandRow').hidden = S.pal!=='brand';
+  const cols = paletteColors();
+  $('swatches').innerHTML = cols.map(x=>'<span title="'+esc(x.name+' '+x.hex)+'" style="background:'+x.hex+'"></span>').join('');
+  $('itemStyle').innerHTML='<option value="">沿用整组</option>'+kept().filter(x=>x.contract).map(x=>'<option value="'+x.id+'">'+x.id+' '+esc(x.name)+'</option>').join('');
+  $('itemStructure').innerHTML='<option value="auto">自动</option>'+STRUCTS.map(x=>'<option value="'+x.id+'">'+esc(x.name)+'</option>').join('');
+  renderItems();
+  renderOut();
+}
+// ---- 色彩：OKLCH 调整（与 scripts/stylebook/palette.py 同一算法） ----
+function hex2rgb(h){ h=h.replace('#',''); return [0,2,4].map(i=>parseInt(h.substr(i,2),16)/255); }
+function lin(c){ return c<=0.04045? c/12.92 : Math.pow((c+0.055)/1.055,2.4); }
+function delin(c){ return c<=0.0031308? 12.92*c : 1.055*Math.pow(c,1/2.4)-0.055; }
+function rgb2oklch(rgb){ const [r,g,b]=rgb.map(lin);
+  const l=Math.cbrt(0.4122214708*r+0.5363325363*g+0.0514459929*b), m=Math.cbrt(0.2119034982*r+0.6806995451*g+0.1073969566*b), s=Math.cbrt(0.0883024619*r+0.2817188376*g+0.6299787005*b);
+  const L=0.2104542553*l+0.7936177850*m-0.0040720468*s, A=1.9779984951*l-2.4285922050*m+0.4505937099*s, B=0.0259040371*l+0.7827717662*m-0.8086757660*s;
+  return [L, Math.hypot(A,B), Math.atan2(B,A)]; }
+function oklch2rgb([L,C,H]){ const A=C*Math.cos(H), B=C*Math.sin(H);
+  const l=Math.pow(L+0.3963377774*A+0.2158037573*B,3), m=Math.pow(L-0.1055613458*A-0.0638541728*B,3), s=Math.pow(L-0.0894841775*A-1.2914855480*B,3);
+  return [4.0767416621*l-3.3077115913*m+0.2309699292*s, -1.2684380046*l+2.6097574011*m-0.3413193965*s, -0.0041960863*l-0.7034186147*m+1.7076147010*s]; }
+function inGamut(rgb){ return rgb.every(v=>v>=-0.0005&&v<=1.0005); }
+function toHex(rgb){ return '#'+rgb.map(v=>Math.round(Math.min(1,Math.max(0,delin(Math.min(1,Math.max(0,v)))))*255).toString(16).padStart(2,'0')).join('').toUpperCase(); }
+function adjust(hex, dl, ds){ let [L,C,H]=rgb2oklch(hex2rgb(hex)); L=Math.min(0.97,Math.max(0.18,L+dl*0.09)); C=C*(ds<0?0.6:ds>0?1.3:1);
+  let rgb=oklch2rgb([L,C,H]); let n=0; while(!inGamut(rgb)&&n<40){ C*=0.95; rgb=oklch2rgb([L,C,H]); n++; } return toHex(rgb); }
+function paletteColors(){
+  if(S.pal==='orig'){const c=cand(S.style);return (c?.colors||[]).map(x=>({name:x.name,hex:(S.light||S.sat)?adjust(x.hex,S.light,S.sat):x.hex}));}
+  let base;
+  if(S.pal==='brand'){ base=(S.brand||$('brandHex').value||'').split(/[,，\s]+/).filter(x=>/^#?[0-9a-fA-F]{6}$/.test(x)).map((h,i)=>({name:'品牌色'+(i+1)+' brand colour '+(i+1),hex:(h[0]==='#'?h:'#'+h).toUpperCase()})); }
+  else base = PALS.find(p=>p.id===S.pal).colors;
+  return base.map(x=>({name:x.name, hex: (S.light||S.sat)? adjust(x.hex,S.light,S.sat) : x.hex}));
+}
+$('brandHex').oninput=()=>{ S.brand=$('brandHex').value; renderProto(); };
+$('theme').oninput=()=>renderOut();
+function styleCode(){
+  const lk={'1':'浅','0':'标准','-1':'深'}[S.light], st={'-1':'柔和','0':'标准','1':'鲜艳'}[S.sat];
+  const parts=[S.style];
+  if(S.form==='structure') parts.push(S.struct==='auto'?'结构自动':STRUCTS.find(x=>x.id===S.struct).name);
+  else if(S.form!=='auto') parts.push(S.form==='scene'?'场景主体':'视觉隐喻');
+  parts.push(S.pal==='orig'?'原色':(PALS.find(p=>p.id===S.pal).name+'·'+lk+'·'+st));
+  const simple=(S.form==='structure'||(S.form==='auto'&&S.density==='auto'))&&!(S.pal==='orig'&&(S.light||S.sat));
+  const mach=[S.style+'@r'+cand(S.style).rev, S.form==='structure'?S.struct:null,S.form==='structure'?S.density:null, S.pal+(S.pal==='orig'?'':'.L'+S.light+'S'+S.sat)].filter(Boolean).join('-');
+  return {human: parts.join(' / '), mach: S.pal==='brand'||!simple||Object.keys(S.items).length?'JSON 记录见下方':'sb1:'+mach};
+}
+const deep=v=>JSON.parse(JSON.stringify(v));
+const stable=v=>JSON.stringify(v);
+function snapshot(){ return {scene:S.scene,style:S.style,form:S.form,struct:S.struct,density:S.density,pal:S.pal,light:S.light,sat:S.sat,brand:S.brand,items:deep(S.items)}; }
+function selectionRecord(){
+  const c=cand(S.style); if(!c||!c.contract) throw Error('所选画风没有可用合同');
+  if(c.recolor==='locked'&&(S.pal!=='orig'||S.light||S.sat)) throw Error(c.id+' 锁色，不能换色');
+  if(c.recolor==='lightness_only'&&(S.pal!=='orig'||S.sat)) throw Error(c.id+' 只允许调整原色深浅');
+  if(S.pal==='orig'&&(S.light||S.sat)&&!c.colors.length) throw Error(c.id+' 没有登记原色，无法调整原色');
+  const custom=S.pal==='brand'?S.brand.split(/[,，\s]+/).filter(Boolean).map(x=>x.toUpperCase()):[];
+  if(S.pal==='brand'&&(!custom.length||custom.some(x=>!/^#[0-9A-F]{6}$/.test(x)))) throw Error('品牌色须填写 #RRGGBB，可用逗号分隔');
+  const base=imported?deep(imported):{version:1,scene:S.scene,style:{source:'factory',scope:'series',locked:false},palette:{source:'factory',scope:'series',locked:false},expression:{source:'factory',scope:'series',locked:false},items:{}};
+  const before=importedState;
+  const changed=(...ks)=>!!before&&ks.some(k=>stable(S[k])!==stable(before[k]));
+  base.version=1; base.scene=S.scene;
+  const series=$('seriesId').value.trim(); if(series) base.series_id=series; else delete base.series_id;
+  base.style.code=S.style; base.style.revision=c.rev;
+  if(changed('style')) Object.assign(base.style,{source:'explicit',scope:'series',locked:true});
+  base.palette.family=S.pal; base.palette.light=S.light; base.palette.sat=S.sat;
+  if(S.pal==='brand') base.palette.custom=custom; else delete base.palette.custom;
+  if(changed('pal','light','sat','brand')) Object.assign(base.palette,{source:'explicit',scope:'series',locked:true});
+  base.expression.form=S.form; base.expression.structure=S.form==='structure'?S.struct:'auto'; base.expression.density=S.density;
+  if(changed('form','struct','density')) Object.assign(base.expression,{source:'explicit',scope:'series',locked:true});
+  base.items=deep(S.items);
+  return validateSelection(base);
+}
+function checkKeys(v,allowed,label){ const extra=Object.keys(v).filter(k=>!allowed.includes(k)); if(extra.length) throw Error(label+' 有未知字段：'+extra.join(', ')); }
+function validateSelection(v){
+  if(!v||typeof v!=='object'||Array.isArray(v)) throw Error('选择记录须为 JSON 对象');
+  checkKeys(v,['version','scene','series_id','style','palette','expression','items'],'selection');
+  if(v.version!==1) throw Error('不支持的 selection 版本：'+v.version);
+  if(!SCENES.some(x=>x.id===v.scene)) throw Error('未知用途：'+v.scene);
+  if(v.series_id!==undefined&&(!String(v.series_id).trim()||typeof v.series_id!=='string')) throw Error('系列 ID 不能为空');
+  function provenance(x,label,scope){ if(!['explicit','project','preference','observed','author','factory'].includes(x.source||'explicit')) throw Error(label+' 来源不可用'); if(x.scope!==undefined&&x.scope!==scope) throw Error(label+' 的范围须为 '+scope); if(x.locked!==undefined&&typeof x.locked!=='boolean') throw Error(label+' 的锁定值须为布尔值'); }
+  function style(x,label,scope){ if(!x||typeof x!=='object'||Array.isArray(x)) throw Error(label+' 缺失'); checkKeys(x,['code','revision','source','scope','locked'],label); const c=cand(x.code); if(!c||!c.contract) throw Error(label+' 的画风在当前画廊不可用：'+x.code); if(x.revision!==undefined&&x.revision!==c.rev) throw Error(x.code+' 当前修订为 r'+c.rev+'，导入的是 r'+x.revision); provenance(x,label,scope); return c; }
+  const c=style(v.style,'style','series');
+  const p=v.palette||{family:'orig'}; checkKeys(p,['family','light','sat','custom','source','scope','locked'],'palette');
+  if(!PALS.some(x=>x.id===p.family)) throw Error('未知色系：'+p.family);
+  for(const k of ['light','sat']) if(p[k]!==undefined&&![-1,0,1].includes(p[k])) throw Error(k+' 只能是 -1、0、1');
+  if(p.family==='brand'&&(!Array.isArray(p.custom)||!p.custom.length||p.custom.some(x=>!/^#[0-9a-fA-F]{6}$/.test(x)))) throw Error('品牌色缺少具体 HEX');
+  if(p.family!=='brand'&&p.custom!==undefined) throw Error('只有品牌色可填写 custom');
+  if(c.recolor==='locked'&&(p.family!=='orig'||p.light||p.sat)) throw Error(c.id+' 锁色，不能换色');
+  if(c.recolor==='lightness_only'&&(p.family!=='orig'||p.sat)) throw Error(c.id+' 只允许调整原色深浅');
+  if(p.family==='orig'&&(p.light||p.sat)&&!c.colors.length) throw Error(c.id+' 没有登记原色，无法调整原色');
+  provenance(p,'palette','series');
+  function expression(x,label,scope){ if(!x||typeof x!=='object'||Array.isArray(x)) throw Error(label+' 缺失'); checkKeys(x,['form','structure','density','source','scope','locked'],label); const f=x.form||'auto',s=x.structure||'auto',d=x.density||'auto'; if(!['auto','scene','metaphor','structure'].includes(f)) throw Error(label+' 表达方式不可用'); if(s!=='auto'&&!STRUCTS.some(y=>y.id===s)) throw Error(label+' 结构不可用'); if(!['auto','sparse','balanced','dense'].includes(d)) throw Error(label+' 信息密度不可用'); if(f!=='structure'&&s!=='auto') throw Error(label+' 只有结构图能指定结构'); if(['scene','metaphor'].includes(f)&&d!=='auto') throw Error(label+' 只有结构图能指定信息密度'); provenance(x,label,scope); }
+  expression(v.expression||{},'expression','series');
+  if(v.items!==undefined&&(!v.items||typeof v.items!=='object'||Array.isArray(v.items))) throw Error('items 须为对象');
+  for(const [id,item] of Object.entries(v.items||{})){ if(!id||!item||typeof item!=='object'||Array.isArray(item)) throw Error('图片 ID 或设置无效'); checkKeys(item,['style','expression','text_direction'],'items.'+id); if(!Object.keys(item).length) throw Error('items.'+id+' 没有修改'); if(item.style){ const local=style(item.style,'items.'+id+'.style','item'); if(local.recolor==='locked'&&(p.family!=='orig'||p.light||p.sat)) throw Error(local.id+' 锁色，不能沿用当前色系'); if(local.recolor==='lightness_only'&&(p.family!=='orig'||p.sat)) throw Error(local.id+' 只允许调整原色深浅'); } if(item.expression) expression(item.expression,'items.'+id+'.expression','item'); if(item.text_direction!==undefined&&(typeof item.text_direction!=='string'||!item.text_direction.trim()||item.text_direction.length>200)) throw Error('items.'+id+' 文字要求须为 1–200 字'); }
+  return v;
+}
+function renderItems(){
+  $('itemList').innerHTML=Object.entries(S.items).map(([id,x])=>'<div style="padding:6px 0">'+esc(id)+' · '+esc([x.style?.code,x.expression?.form,x.expression?.structure,x.text_direction].filter(Boolean).join(' / '))+' <button class="kill" data-remove="'+esc(id)+'">移除</button></div>').join('') || '暂无逐图修改';
+  $('itemList').querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{delete S.items[b.dataset.remove];renderItems();renderOut();});
+}
+$('addItem').onclick=()=>{
+  try{ const id=$('itemId').value.trim(), styleId=$('itemStyle').value, form=$('itemForm').value, structure=$('itemStructure').value, direction=$('itemText').value.trim();
+    if(!/^[A-Za-z0-9_-]{1,40}$/.test(id)) throw Error('请填写计划中的图片 ID（字母、数字、- 或 _）');
+    if(!styleId&&!form&&!direction) throw Error('请至少设置画风、表达或文字要求');
+    if(structure!=='auto'&&form!=='structure') throw Error('指定结构时，单图表达须选“结构图”');
+    const x={}; if(styleId) x.style={code:styleId,revision:cand(styleId).rev,source:'explicit',scope:'item',locked:true};
+    if(form) x.expression={form,structure:form==='structure'?structure:'auto',density:'auto',source:'explicit',scope:'item',locked:true};
+    if(direction) x.text_direction=direction; const prior=S.items[id]; S.items[id]=x;
+    try{selectionRecord();}catch(e){if(prior)S.items[id]=prior;else delete S.items[id];throw e;}
+    $('selectionError').textContent=''; renderItems(); renderOut();
+  }catch(e){$('selectionError').textContent=e.message;}
+};
+function loadSelection(raw){
+  const v=validateSelection(raw); imported=deep(v); S.scene=v.scene; S.style=v.style.code; S.form=(v.expression||{}).form||'auto'; S.struct=(v.expression||{}).structure||'auto'; S.density=(v.expression||{}).density||'auto';
+  S.pal=(v.palette||{}).family||'orig'; S.light=(v.palette||{}).light||0; S.sat=(v.palette||{}).sat||0; S.brand=((v.palette||{}).custom||[]).join(', '); S.items=deep(v.items||{});
+  $('brandHex').value=S.brand; $('seriesId').value=v.series_id||''; importedState=snapshot(); showAll=true; renderProto(); $('selectionError').textContent=''; toast('已导入，检查后可继续调整');
+}
+function parseLegacy(raw){
+  const m=/^sb1:([CS]\d{2,3})(?:@r(\d+))?(?:-([a-z]+)-(auto|sparse|balanced|dense))?-([a-z]+)(?:\.L(-?1|0)S(-?1|0))?$/.exec(raw.trim());
+  if(!m) throw Error('旧 sb1 风格码格式不正确');
+  const [,code,rev,structure,density,palette,light,sat]=m;
+  if(palette==='brand') throw Error('旧 sb1 品牌色缺具体 HEX，请用 JSON 导入');
+  return {version:1,scene:S.scene,style:{code,revision:rev?Number(rev):undefined,source:'explicit',scope:'series',locked:true},palette:{family:palette,light:Number(light||0),sat:Number(sat||0),source:'explicit',scope:'series',locked:true},expression:{form:structure&&structure!=='auto'?'structure':'auto',structure:structure||'auto',density:density||'auto',source:'explicit',scope:'series',locked:true},items:{}};
+}
+function renderOut(){
+  const sc=scene(); const c=cand(S.style); if(!c) return;
+  const code=styleCode();
+  $('codeOut').textContent = code.human+'   ('+code.mach+')';
+  try{ const v=selectionRecord(); const json=JSON.stringify(v,null,2); $('selectionOut').value=json; $('skillOut').value='用叁笙画风手册，按下面的选择记录处理'+($('theme').value.trim()?'「'+$('theme').value.trim()+'」':'我的内容')+'。请先读原文提炼图意与位置，再按风格合同编译并验收。\n\n'+json+'\n\n（在这里附上文章、课件或故事原文）'; $('selectionError').textContent=''; }
+  catch(e){ $('selectionOut').value=''; $('skillOut').value=''; $('selectionError').textContent=e.message; }
+}
+$('seriesId').oninput=renderOut;
+$('importSelection').onclick=()=>{try{const raw=$('selectionIn').value.trim();loadSelection(raw.startsWith('sb1:')?parseLegacy(raw):JSON.parse(raw));}catch(e){$('selectionError').textContent=e.message;}};
+$('selectionFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{loadSelection(JSON.parse(await f.text()));}catch(err){$('selectionError').textContent=err.message;}};
+$('downloadSelection').onclick=()=>{if(!$('selectionOut').value)return;const blob=new Blob([$('selectionOut').value+'\n'],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='stylebook-selection-v1.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
+document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=async()=>{ const t=$(b.dataset.copy).value; try{ await navigator.clipboard.writeText(t); toast('已复制'); }catch(e){ $(b.dataset.copy).select(); toast('已选中，手动复制'); } });
+
+// ---------- 出厂默认 ----------
+function renderDefaults(){
+  const body=$('defBody');
+  body.innerHTML = SCENES.map(sc=>{
+    const ids=recsFor(sc);
+    const tiles=ids.map((id,i)=>{ const c=cand(id); return '<div class="rec" style="cursor:default'+(i===0?';border-color:var(--accent)':'')+'">'+tile(id, sc.t, ' style="cursor:zoom-in"')+'<div class="t">'+id+' '+esc(c.name)+(i===0?'<span class="badge">默认</span>':'')+'</div><div class="d">'+esc(c.fam)+' · '+esc(previewLabel(id,sc.t))+'</div><div style="padding:0 8px 8px">'+(i===0?'':'<button class="kill" data-mk="'+sc.id+'|'+id+'">设为默认</button>')+'</div></div>'; }).join('');
+    const opts = kept().filter(c=>!ids.includes(c.id)).map(c=>'<option value="'+c.id+'">'+c.id+' '+esc(c.name)+'（'+esc(c.fam)+'）</option>').join('');
+    return '<div class="step"><div class="row1" style="justify-content:space-between"><h2>'+esc(sc.name)+'<span class="sub" style="font-weight:400;margin-left:8px">'+esc(sc.format)+' · 缩略图优先用「'+esc(TN[sc.t])+'」</span></h2><label class="sub">换成：<select data-sw="'+sc.id+'" style="font:inherit;padding:4px"><option value="">从全部保留的样式里选…</option>'+opts+'</select></label></div><div class="recs" style="margin-top:8px">'+tiles+'</div></div>';
+  }).join('');
+  body.querySelectorAll('[data-mk]').forEach(b=>b.onclick=()=>{ const [sid,id]=b.dataset.mk.split('|'); REC[sid]=[id].concat(REC[sid].filter(x=>x!==id)); if(S.scene===sid){S.style=id;imported=null;} saveRec(); renderDefaults(); renderProto(); });
+  body.querySelectorAll('[data-sw]').forEach(sel=>sel.onchange=()=>{ const sid=sel.dataset.sw, id=sel.value; if(!id) return; REC[sid]=[id].concat(REC[sid].filter(x=>x!==id)); if(S.scene===sid){S.style=id;imported=null;} saveRec(); renderDefaults(); renderProto(); });
+  body.querySelectorAll('[data-zk]').forEach(im=>im.onclick=()=>zoom(im.dataset.zk));
+}
+$('resetDefaults').onclick=()=>{ REC=JSON.parse(JSON.stringify(M.recs)); S.style=(REC[S.scene]||[])[0]||null; imported=null; saveRec(); renderDefaults(); renderProto(); toast('已恢复出厂默认'); };
+// ---------- 偏好文件：只在本页内存中编辑，下载后由 Agent 显式导入 ----------
+let prefMemory={version:1,paused:false,events:[],forgotten_ids:[]};
+function prefScopeLabel(scope){return [scope.scene?(SCENES.find(s=>s.id===scope.scene)?.name||scope.scene):'全部场景',scope.project?'项目 '+scope.project:''].filter(Boolean).join(' / ');}
+function prefValueText(value){return typeof value==='string'?value:JSON.stringify(value);}
+function activePrefEvents(){
+  const revoked=new Set(prefMemory.events.filter(e=>e.kind==='revoke').map(e=>e.target));
+  const forgotten=new Set(prefMemory.forgotten_ids);
+  return prefMemory.events.filter(e=>e.kind!=='revoke'&&!revoked.has(e.id)&&!forgotten.has(e.id));
+}
+function renderPrefs(){
+  const active=activePrefEvents(), current=new Map();
+  for(const e of active){ if(!['explicit_set','explicit_clear'].includes(e.kind))continue; const key=JSON.stringify([e.scope,e.field]); if(e.kind==='explicit_set')current.set(key,e);else current.delete(key); }
+  $('prefExplicit').innerHTML=[...current.values()].map(e=>'<div class="note" style="margin:6px 0">'+esc(prefScopeLabel(e.scope)+' · '+e.field+' = '+prefValueText(e.value))+' <button class="kill" data-pref-clear="'+esc(e.id)+'">清除此设定</button> <button class="kill" data-pref-forget="'+esc(e.id)+'">忘记来源</button></div>').join('')||'<p class="sub">暂无明确设定。</p>';
+  $('prefExplicit').querySelectorAll('[data-pref-clear]').forEach(b=>b.onclick=()=>{const e=prefMemory.events.find(x=>x.id===b.dataset.prefClear);prefMemory.events.push(prefEvent('explicit_clear',e.scope,e.field));renderPrefs();});
+  $('prefExplicit').querySelectorAll('[data-pref-forget]').forEach(b=>b.onclick=()=>{const id=b.dataset.prefForget;prefMemory.events=prefMemory.events.filter(e=>e.id!==id&&e.target!==id);if(!prefMemory.forgotten_ids.includes(id))prefMemory.forgotten_ids.push(id);renderPrefs();});
+  const groups=new Map();for(const e of active.filter(x=>x.kind==='active_change')){const key=JSON.stringify([e.scope,e.field,prefValueText(e.value)]);const g=groups.get(key)||{scope:e.scope,field:e.field,value:e.value,tasks:new Set()};g.tasks.add(e.task_id);groups.set(key,g);}
+  $('prefObserved').innerHTML=[...groups.values()].map(g=>'<div class="note" style="margin:6px 0">'+esc(prefScopeLabel(g.scope)+' · '+g.field+' → '+prefValueText(g.value))+' · '+g.tasks.size+' 个独立任务'+(g.tasks.size>=3?'（候选倾向，仍受相反证据和明确设定约束）':'（未达推断门槛）')+'</div>').join('')||'<p class="sub">暂无主动改选证据。</p>';
+  $('prefCount').textContent=prefMemory.events.length+' 条事件 · '+prefMemory.forgotten_ids.length+' 条忘记记录 · 观察学习'+(prefMemory.paused?'已暂停':'开启');
+  $('prefPause').textContent=prefMemory.paused?'恢复观察学习':'暂停观察学习';
+}
+function prefEvent(kind,scope,field,value){const e={id:(globalThis.crypto?.randomUUID?.()||('b'+Date.now().toString(36)+Math.random().toString(36).slice(2))),at:new Date().toISOString(),kind,scope};if(field)e.field=field;if(value!==undefined)e.value=value;return e;}
+function validatePrefFile(v){
+  if(!v||v.version!==1||typeof v.paused!=='boolean'||!Array.isArray(v.events)||!Array.isArray(v.forgotten_ids))throw Error('偏好文件须为 version: 1，含 paused、events 和 forgotten_ids');
+  const ids=new Set();for(const e of v.events){if(!e||typeof e.id!=='string'||!e.id||ids.has(e.id)||!['explicit_set','explicit_clear','active_change','revoke'].includes(e.kind)||!e.scope||typeof e.scope!=='object')throw Error('偏好事件格式或 ID 重复');ids.add(e.id);if(e.kind==='revoke'){if(typeof e.target!=='string')throw Error('撤销事件缺 target');}else if(!['style','palette','form','structure'].includes(e.field))throw Error('偏好事件字段不可用');else if(['explicit_set','active_change'].includes(e.kind)&&e.value===undefined)throw Error('偏好事件缺 value');if(e.kind==='active_change'&&(!e.task_id||!Array.isArray(e.candidates)))throw Error('主动改选事件缺 task_id / candidates');}
+  if(v.forgotten_ids.some(id=>typeof id!=='string'||!id))throw Error('忘记记录格式错误');return v;
+}
+$('prefScene').innerHTML+=[...SCENES].map(s=>'<option value="'+s.id+'">'+esc(s.name)+'</option>').join('');
+$('prefFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{prefMemory=deep(validatePrefFile(JSON.parse(await f.text())));$('prefError').textContent='';renderPrefs();toast('偏好文件已导入本页');}catch(err){$('prefError').textContent=err.message;}};
+$('prefSet').onclick=()=>{try{const field=$('prefField').value,raw=$('prefValue').value.trim(),scope={};if($('prefScene').value)scope.scene=$('prefScene').value;if($('prefProject').value.trim())scope.project=$('prefProject').value.trim();if(!raw)throw Error('请填写偏好值');let value=raw;
+  if(field==='style'){if(!cand(raw)?.contract)throw Error('本画廊没有可用的画风 '+raw);}
+  if(field==='palette'){value=JSON.parse(raw);if(!value||!PALS.some(p=>p.id===value.family)||![-1,0,1].includes(value.light??0)||![-1,0,1].includes(value.sat??0))throw Error('色调须为有效的 family / light / sat');if(value.family==='brand'&&(!Array.isArray(value.custom)||!value.custom.length||value.custom.some(x=>!/^#[0-9a-fA-F]{6}$/.test(x))))throw Error('品牌色须填写 custom HEX');if(value.family!=='brand'&&value.custom!==undefined)throw Error('只有品牌色可填 custom');}
+  if(field==='form'&&!['auto','scene','metaphor','structure'].includes(value))throw Error('表达方式不可用');
+  if(field==='structure'&&value!=='auto'&&!STRUCTS.some(x=>x.id===value))throw Error('结构不可用');
+  prefMemory.events.push(prefEvent('explicit_set',scope,field,value));$('prefError').textContent='';renderPrefs();toast('已加入本页；下载后交给 Agent 导入');
+}catch(err){$('prefError').textContent=err.message;}};
+$('prefDownload').onclick=()=>{const blob=new Blob([JSON.stringify(prefMemory,null,2)+'\n'],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='stylebook-memory-v1.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
+$('prefPause').onclick=()=>{prefMemory.paused=!prefMemory.paused;prefMemory.apply_paused=true;renderPrefs();};
+renderBars(); renderPick(); renderProto(); renderDefaults(); count(); importedState=snapshot(); renderOut();
+renderPrefs();
+})();
+</script>
+</body>
+</html>

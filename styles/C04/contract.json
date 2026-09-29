@@ -1,0 +1,86 @@
+{
+  "code": "C04",
+  "revision": 2,
+  "name": {
+    "zh": "北欧绘本水粉",
+    "en": "Nordic Gouache Picture Book"
+  },
+  "family": "温暖手绘·绘本动画",
+  "fit": [
+    "讲故事"
+  ],
+  "facets": {
+    "medium": "北欧绘本水粉",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "hand-drawn-styles #14",
+    "license": "MIT",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "近白纸底与细纸纹",
+    "丹宁蓝和芥末黄",
+    "细长童话人物与哑光水粉"
+  ],
+  "recipe": {
+    "positive": "Soft gouache children's picture-book illustration in a modern Scandinavian storybook style, character-design sheet energy. PAPER (identity trait): the paper is VERY light and airy, close to near-white — never dark, never heavily tinted; subtle fine paper grain tooth texture visible across the ENTIRE image including the empty background. PALETTE (strict): cozy limited palette — denim cornflower blue and mustard butter yellow both clearly saturated enough to read cheerful, plus warm cream white and soft coral blush; hair only in auburn, dark umber, dark navy or silver grey; no other colors anywhere. CHARACTER RECIPE: stylized quirky storybook proportions — long thin neck, slender elongated limbs, small hands; expressive minimalist face: two small navy oval eyes (for a glasses character: big round navy eyes behind round mustard wire glasses; for an angular adult: tiny navy dot eyes), an expressive prominent nose with a slightly darker coral tip, thin expressive slightly-worried eyebrows, faint subtle mouth, round rosy coral blush cheeks; hair painted as a few soft masses with a few thin flyaway hair-line strokes escaping the silhouette (an angular adult may instead get one GEOMETRIC sculpted hair mass with a pointed swoop, a squared jaw and exaggerated elongated legs); gentle, slightly awkward endearing posture, NOT cute mainstream cartoon. TEXTURE: flat matte gouache color masses with granular dry-brush stippled texture inside the clothing and hair, NO hard outlines, no volumetric 3D rendering, no glossy digital shading. LIGHT & SHADOW: One single soft pale-blue oval shadow under the feet, no other shading or shadows anywhere. Timeless heartwarming Scandinavian picture-book aesthetic.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "locked",
+    "colors": [
+      {
+        "name": "丹宁蓝 denim blue",
+        "hex": "#5079A5"
+      },
+      {
+        "name": "芥末黄 mustard yellow",
+        "hex": "#D2A640"
+      },
+      {
+        "name": "纸白 paper white",
+        "hex": "#F8F7F1"
+      }
+    ]
+  },
+  "qa": {
+    "must_see": [
+      "近白纸底与细纸纹",
+      "丹宁蓝和芥末黄",
+      "细长童话人物与哑光水粉"
+    ],
+    "must_not_see": [
+      "厚重暗底或光滑三维渲染",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "未在基础合同上完成模型实测",
+    "date": "2026-09-29",
+    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "92471d01b2c010364c15b4d8f54ded826ced947345cb7d424561b20da2fde3d8",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

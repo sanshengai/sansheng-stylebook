@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -uo pipefail
+
+# Check only staged text blobs. This file is skipped so the pattern literals
+# below cannot reject the hook itself.
+patterns='(AIza[0-9A-Za-z_-]{20,})|(AQ\.[A-Za-z0-9_-]{20,})|(sk-[A-Za-z0-9]{20,})|(ghp_[A-Za-z0-9]{30,})|(fc-[0-9a-f]{32})|(-----BEGIN [A-Z ]*PRIVATE KEY-----)|([Cc]:\\Users\\)|(/Users/[^/[:space:]]+/)|(/home/[^/[:space:]]+/)'
+blocked=0
+while IFS= read -r -d '' file; do
+  case "$file" in .githooks/*) continue ;; esac
+  if git cat-file -e ":$file" 2>/dev/null; then
+    if git show ":$file" | grep -nEI "$patterns" >/dev/null; then
+      printf 'redact-guard: staged file contains a secret-shaped value or personal path: %s\n' "$file" >&2
+      blocked=1
+    fi
+  fi
+done < <(git diff --cached --name-only -z --diff-filter=ACMR)
+if [ "$blocked" -ne 0 ]; then
+  exit 1
+fi
+if [ -x .githooks/pre-commit.local ]; then
+  .githooks/pre-commit.local || exit $?
+fi
+exit 0

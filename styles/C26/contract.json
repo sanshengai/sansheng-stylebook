@@ -1,0 +1,72 @@
+{
+  "code": "C26",
+  "revision": 2,
+  "name": {
+    "zh": "马海毛定格人偶",
+    "en": "Mohair Puppet Stop-Motion"
+  },
+  "family": "立体材质",
+  "fit": [
+    "讲故事"
+  ],
+  "facets": {
+    "medium": "马海毛定格人偶",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "handraw-style #234（描述已重写，不含人名）",
+    "license": "MIT",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "清楚可见的粗针织环与长绒",
+    "点状眼睛与人偶造型",
+    "手工微缩布景和定格灯光"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): Chunky knit mohair stop-motion puppets: characters made of thick knitted mohair yarn with visible loops and long fuzzy fibres, deadpan dot eyes, handmade miniature set, stop-motion film lighting, quirky and droll.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "清楚可见的粗针织环与长绒",
+      "点状眼睛与人偶造型",
+      "手工微缩布景和定格灯光"
+    ],
+    "must_not_see": [
+      "光滑塑料皮肤或二维平面卡通",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "未在基础合同上完成模型实测",
+    "date": "2026-09-29",
+    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "7f82bc8a3c94eeaf76f9d0b57adcd61e727f5ce0c386a8e061c31f625e6f4fef",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

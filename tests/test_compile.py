@@ -1,0 +1,362 @@
+import copy
+import os
+import sys
+from pathlib import Path
+
+import pytest
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+from stylebook import compile as CP  # noqa: E402
+from stylebook import palette as PL  # noqa: E402
+from stylebook.sizes import gen_size  # noqa: E402
+
+FREE = {
+    "code": "C99", "revision": 2,
+    "name": {"zh": "测试风格", "en": "Test Style"},
+    "family": "测试", "fit": ["讲故事"], "visibility": "public",
+    "source": {"from": "单元测试", "license": "original"},
+    "essence": ["第一条命门特征", "第二条命门特征", "第三条命门特征"],
+    "recipe": {"positive": "Soft watercolour storybook illustration with visible paper grain and loose ink lines.",
+               "hard_constraints": ["Keep large calm areas of empty paper."]},
+    "prompt_bans": ["neon", "dark background"],
+    "palette": {"recolor": "free", "colors": [{"name": "测试蓝 test blue", "hex": "#1F6F8B"}]},
+    "qa": {"must_see": ["必须看到的一", "必须看到的二"], "must_not_see": ["不许看到的一", "不许看到的二"]},
+}
+LOCKED = dict(copy.deepcopy(FREE), code="C98", palette={"recolor": "locked", "colors": [{"name": "测试蓝 test blue", "hex": "#1F6F8B"}]})
+
+M = {
+    "style": "C99", "model": "gpt-image-2", "format": "xhs-carousel",
+    "content": {
+        "subject": "a grandmother and her grandson making dumplings",
+        "relations": "the grandmother on the left looks at the boy on the right",
+        "camera": {"shot": "medium shot", "angle": "eye-level", "lens": "50mm", "focus": "on the boy", "composition": "rule of thirds"},
+        "lighting": "soft morning window light from the left",
+        "background": "a small kitchen with a wooden table",
+        "purpose": "an illustration for a family story",
+    },
+    "structure": "flow", "density": "balanced",
+    "palette": {"family": "macaron", "light": 1, "sat": 0},
+    "text": {"mode": "native", "items": [{"text": "番茄工作法", "role": "title", "position": "top"}]},
+}
+
+
+def c(m=None, contract=FREE):
+    return CP.compile_manifest(copy.deepcopy(m or M), contract=copy.deepcopy(contract))
+
+
+def test_deterministic():
+    a, b = c(), c()
+    assert a.prompt == b.prompt and a.manifest_hash == b.manifest_hash
+
+
+def test_fixed_order():
+    p = c().prompt
+    marks = ["Visual style (follow exactly):", "Subject:", "Spatial relationships:", "Camera:", "Lighting:",
+             "Colour palette", "Background:", "Layout structure:", "Information density", "Purpose and mood:",
+             "Text in the image", "Aspect ratio", "Keep large calm areas"]
+    idx = [p.index(m) for m in marks]
+    assert idx == sorted(idx), list(zip(marks, idx))
+
+
+def test_lock_layer_verbatim():
+    assert FREE["recipe"]["positive"] in c().prompt
+
+
+def test_structure_prompt_only_on_explicit_matching_structure():
+    contract = copy.deepcopy(FREE)
+    contract["recipe"]["structure_prompts"] = {
+        "flow": "Keep flow panels in a simple straight reading order with visible arrowheads.",
+    }
+    flow = c(contract=contract).prompt
+    assert "Style layout for flow (follow exactly):" in flow
+    assert contract["recipe"]["structure_prompts"]["flow"] in flow
+    no_structure = copy.deepcopy(M)
+    no_structure.pop("structure")
+    assert "Style layout for flow" not in c(no_structure, contract=contract).prompt
+    other_structure = copy.deepcopy(M)
+    other_structure["structure"] = "timeline"
+    assert "Style layout for flow" not in c(other_structure, contract=contract).prompt
+
+
+def test_content_inventory_is_literal_and_optional():
+    baseline = c()
+    m = copy.deepcopy(M)
+    m["content"]["inventory"] = "Exactly two people and one cup; no background coworker."
+    compiled = c(m)
+    assert "Content inventory (literal): Exactly two people and one cup; no background coworker." in compiled.prompt
+    assert compiled.prompt.index("Subject:") < compiled.prompt.index("Content inventory (literal):") < compiled.prompt.index("Spatial relationships:")
+    assert compiled.manifest_hash != baseline.manifest_hash
+    for bad in ("", "  ", ["one cup"]):
+        m["content"]["inventory"] = bad
+        with pytest.raises(CP.CompileError, match="content.inventory"):
+            c(m)
+
+
+def test_bans_intercepted():
+    m = copy.deepcopy(M)
+    m["content"]["background"] = "a Dark Background with neon signs"
+    with pytest.raises(CP.CompileError, match="冲突词"):
+        c(m)
+
+
+def test_locked_palette_refuses_recolor():
+    with pytest.raises(CP.CompileError, match="锁定"):
+        c(contract=LOCKED)
+    m = copy.deepcopy(M)
+    m["palette"] = {"family": "orig", "light": 1}
+    with pytest.raises(CP.CompileError, match="锁定"):
+        c(m, contract=LOCKED)
+
+
+def test_free_palette_lighter():
+    base = next(p for p in PL.palettes()["palettes"] if p["id"] == "macaron")["colors"]
+    lighter = PL.resolve("macaron", light=1)
+    assert all(PL.luma(l["hex"]) >= PL.luma(b["hex"]) for l, b in zip(lighter, base))
+    assert lighter[0]["hex"] in c().prompt
+
+
+def test_dialects():
+    m = copy.deepcopy(M)
+    m["references"] = [{"path": "a.png", "role": "identity"}]
+    g = c(dict(m, model="gpt-image-2")).prompt
+    assert g.startswith("Image 1: character identity reference") and "「番茄工作法」" in g
+    ge = c(dict(m, model="gemini-3-pro-image")).prompt
+    assert ge.startswith("The first image is a character identity reference") and "Visual style (follow exactly):" not in ge
+    sd = c(dict(m, model="seedream")).prompt
+    assert sd.startswith("图一：角色身份参考")
+    mj = c(dict(m, model="midjourney"))
+    assert "--ar 3:4" in mj.prompt and "--no neon" in mj.prompt
+
+
+def test_composition_reference_keeps_style_lock():
+    m = copy.deepcopy(M)
+    m["references"] = [{"path": "layout-guide.png", "role": "composition"}]
+    g = c(dict(m, model="gpt-image-2"))
+    assert g.prompt.startswith("Image 1: composition guide only")
+    assert "do not copy its medium, colors, texture" in g.prompt
+    assert FREE["recipe"]["positive"] in g.prompt
+    assert g.references == m["references"]
+    sd = c(dict(m, model="seedream"))
+    assert sd.prompt.startswith("图一：只作构图参考")
+
+
+def test_face_identity_reference_does_not_lock_clothing():
+    m = copy.deepcopy(M)
+    m["references"] = [{"path": "face-crop.png", "role": "identity_face"}]
+    g = c(dict(m, model="gpt-image-2"))
+    assert g.references == m["references"]
+    assert g.prompt.startswith("Image 1: face identity reference only")
+    assert "take clothing, pose, body framing, setting and props only from the subject instructions" in g.prompt
+    sd = c(dict(m, model="seedream"))
+    assert sd.prompt.startswith("图一：只作面部身份参考")
+
+
+@pytest.mark.parametrize("model", ["gpt-image-2", "gemini-3-pro-image", "seedream", "flux", "midjourney"])
+def test_anchor_isolation_is_compiled_only_when_anchor_is_used(model):
+    contract = copy.deepcopy(FREE)
+    contract["anchor"] = {
+        "file": "anchor.png",
+        "sha256": "a" * 64,
+        "isolation": "Use only the pale clay material; never copy the dog or blanket.",
+    }
+    m = copy.deepcopy(M)
+    m["model"] = model
+    m["references"] = [{"path": "other-style.png", "role": "style"},
+                       {"path": "character.png", "role": "identity"}]
+    result = c(m, contract=contract)
+    assert result.references == [{"path": "anchor.png", "role": "style"},
+                                 {"path": "character.png", "role": "identity"}]
+    assert contract["anchor"]["isolation"] in result.prompt
+    assert result.prompt.count(contract["anchor"]["isolation"]) == 1
+
+    m["use_anchor"] = False
+    opted_out = c(m, contract=contract)
+    assert opted_out.references == m["references"]
+    assert contract["anchor"]["isolation"] not in opted_out.prompt
+
+
+def test_relative_anchor_resolves_from_contract_file(tmp_path):
+    contract = copy.deepcopy(FREE)
+    contract["_path"] = str(tmp_path / "styles" / "C99" / "contract.json")
+    contract["anchor"] = {"file": "anchor.png", "sha256": "a" * 64}
+    result = c(copy.deepcopy(M), contract=contract)
+    assert result.references == [{"path": str(tmp_path / "styles" / "C99" / "anchor.png"),
+                                  "role": "style"}]
+
+
+def test_text_none_and_overlay():
+    m = copy.deepcopy(M)
+    m["text"] = {"mode": "none"}
+    assert "No text, letters or captions anywhere" in c(m).prompt
+    m["text"] = {"mode": "overlay", "reserve": "the upper third"}
+    assert "empty space at the upper third" in c(m).prompt
+
+
+def test_hybrid_compiles_native_title_but_reserves_exact_command():
+    m = copy.deepcopy(M)
+    m["text"] = {"mode": "hybrid", "reserve": "a shallow inset below the title", "items": [
+        {"render": "native", "role": "title", "text": "第一步：安装", "position": "top"},
+        {"render": "overlay", "role": "code", "text": "uv tool install notebooklm-mcp-cli",
+         "box": [0.07, 0.37, 0.86, 0.09], "font_px": 58, "min_px": 58},
+    ]}
+    prompt = c(m).prompt
+    assert "「第一步：安装」" in prompt
+    assert "a shallow inset below the title" in prompt
+    assert "uv tool install notebooklm-mcp-cli" not in prompt
+    assert "no letters, symbols or pseudo-text in that reserved space" in prompt
+    bad = copy.deepcopy(m)
+    bad["text"].pop("reserve")
+    with pytest.raises(CP.CompileError, match="reserve"):
+        c(bad)
+
+
+def test_hybrid_text_style_is_scoped_to_hybrid_prompt():
+    k = copy.deepcopy(FREE)
+    k["recipe"]["text_mode"] = ["native", "hybrid"]
+    k["recipe"]["text_style"] = "Native titles and labels are dimensional matte clay letters."
+    k["recipe"]["text_style_hybrid"] = "Only the title is dimensional matte clay; reserve blank insets for exact operational text."
+    m = copy.deepcopy(M)
+    m["palette"] = {"family": "orig"}
+    native_before = CP.compile_manifest(m, {**k, "recipe": {key: value for key, value in k["recipe"].items()
+                                                         if key != "text_style_hybrid"}}).prompt
+    assert CP.compile_manifest(m, k).prompt == native_before
+    m["text"] = {"mode": "hybrid", "reserve": "one shallow blank inset", "items": [
+        {"render": "native", "role": "title", "text": "第一步：安装"},
+        {"render": "overlay", "role": "code", "text": "uv tool install notebooklm-mcp-cli",
+         "box": [0.07, 0.37, 0.86, 0.09], "font_px": 58, "min_px": 58},
+    ]}
+    hybrid = CP.compile_manifest(m, k).prompt
+    assert "Only the title is dimensional matte clay" in hybrid
+    assert "Native titles and labels are dimensional matte clay" not in hybrid
+
+
+def test_opaque_background_is_compiled_except_for_transparent_format():
+    assert "background fully opaque across the whole canvas" in c().prompt
+    m = copy.deepcopy(M)
+    m.pop("format")  # 矩阵题等没有显式格式时也按普通整图处理
+    assert "background fully opaque across the whole canvas" in c(m).prompt
+    m["format"] = "sticker-grid"
+    assert "background fully opaque across the whole canvas" not in c(m).prompt
+    m["format"] = "sticker-single"
+    single = c(m)
+    assert "background fully opaque across the whole canvas" not in single.prompt
+    assert "One complete isolated sticker character" in single.prompt
+    assert single.export_px == (512, 512)
+
+
+def test_revision_lock():
+    with pytest.raises(CP.CompileError, match="锁定在"):
+        c(dict(copy.deepcopy(M), style="C99@r1"))
+    assert c(dict(copy.deepcopy(M), style="C99@r2")).style == "C99@r2"
+
+
+def test_bad_inputs():
+    for bad in ({"structure": "spiral"}, {"density": "huge"}, {"references": [{"path": "x", "role": "mood"}]}):
+        with pytest.raises(CP.CompileError):
+            c(dict(copy.deepcopy(M), **bad))
+    m = copy.deepcopy(M)
+    m["content"].pop("subject")
+    with pytest.raises(CP.CompileError, match="subject"):
+        c(m)
+
+
+def test_gen_size_rules():
+    for ratio in ("1:1", "3:4", "16:9", "2.35:1", "9:16", "1.91:1"):
+        w, h = gen_size(ratio)
+        assert w % 16 == 0 and h % 16 == 0 and max(w, h) <= 3840 and max(w, h) / min(w, h) <= 3
+
+
+@pytest.mark.skipif(not os.environ.get("STYLEBOOK_PROFILE"), reason="未设置私有 profile")
+def test_private_s01_compiles_and_blocks_dark():
+    m = dict(copy.deepcopy(M), style="S01", palette={"family": "orig"})
+    m["content"]["background"] = "a warm ivory tabletop"
+    p = CP.compile_manifest(m).prompt
+    lock = p.split("\nSubject:")[0]
+    assert "A warm ivory background with a high-key pastel palette" in lock and "#" not in lock
+    assert "extruded clay letters" in p  # 这份清单有原生文字，文字材质句要附上
+    m["content"]["background"] = "a dark background"
+    with pytest.raises(CP.CompileError):
+        CP.compile_manifest(m)
+
+
+def test_ban_matches_across_hyphen_and_spacing():
+    """09-25 实跑：冲突词 mustard yellow 被 mustard-yellow 绕过。"""
+    m = copy.deepcopy(M)
+    m["palette"] = {"family": "orig"}
+    m["content"] = {"subject": "a woman in a Neon-Lit street"}
+    with pytest.raises(CP.CompileError):
+        CP.compile_manifest(m, FREE)
+    k = copy.deepcopy(FREE)
+    k["prompt_bans"] = ["dark background"]
+    m["content"] = {"subject": "a cat on a dark_background"}
+    with pytest.raises(CP.CompileError):
+        CP.compile_manifest(m, k)
+    m["content"] = {"subject": "a cat before a darkened backdrop"}
+    CP.compile_manifest(m, k)  # 不是同一个词，不拦
+
+
+def test_text_style_only_when_text_is_drawn():
+    k = copy.deepcopy(FREE)
+    k["recipe"]["text_style"] = "Text is sculpted as extruded clay letters standing free."
+    m = copy.deepcopy(M)
+    m["palette"] = {"family": "orig"}
+    with_text = CP.compile_manifest(m, k).prompt
+    assert "extruded clay letters" in with_text
+    m["text"] = {"mode": "none"}
+    assert "extruded clay letters" not in CP.compile_manifest(m, k).prompt
+    m["text"] = {"mode": "overlay"}
+    assert "extruded clay letters" not in CP.compile_manifest(m, k).prompt
+
+
+def test_label_role_is_not_called_label():
+    m = copy.deepcopy(M)
+    m["palette"] = {"family": "orig"}
+    m["text"] = {"mode": "native", "items": [{"role": "title", "text": "番茄工作法"}, {"role": "label", "text": "专注25分钟"}]}
+    p = CP.compile_manifest(m, FREE).prompt
+    assert "short text: 「专注25分钟」" in p and "label:" not in p and "title: 「番茄工作法」" in p
+    assert "Do not add step numbers or unrequested digits on props" in p
+    assert "show sequence with arrows or unnumbered marks" in p
+
+
+@pytest.mark.parametrize("ratio", ["1:1", "3:4", "4:3", "16:9", "9:16", "2.35:1", "1.91:1", "3:1", "1:3", "5:4"])
+@pytest.mark.parametrize("long_edge", [512, 1024, 1536, 1920, 2048, 3000, 3840])
+def test_gen_size_limits(ratio, long_edge):
+    w, h = gen_size(ratio, "gpt-image-2", long_edge)
+    assert w % 16 == 0 and h % 16 == 0
+    assert 655_360 <= w * h <= 8_294_400
+    assert max(w, h) <= 3840 and max(w, h) / min(w, h) <= 3.0 + 1e-9
+
+
+def test_format_export_size_drives_generation_size():
+    m = copy.deepcopy(M)
+    m["palette"] = {"family": "orig"}
+    m["format"] = "podcast-cover"
+    m["text"] = {"mode": "none"}
+    c = CP.compile_manifest(m, FREE)
+    assert c.size == (2880, 2880) and c.export_px == (3000, 3000)
+
+
+def test_format_compose_panels_and_fixes():
+    import re as _re
+    m = copy.deepcopy(M)
+    m["palette"] = {"family": "orig"}
+    m["format"] = "comic-4panel"
+    m["text"] = {"mode": "none"}
+    m["content"] = {"subject": "A girl tries to bake a cake.", "panels": ["She reads the recipe.", "Flour everywhere.",
+                                                                          "The cake collapses.", "She laughs and eats it anyway."],
+                    "relations": "The same collapsed cake from panel 3 stays collapsed in panel 4."}
+    m["fixes"] = ["the girl keeps her round glasses in every panel"]
+    p = CP.compile_manifest(m, FREE).prompt
+    assert "Panel 1: She reads the recipe." in p and "Panel 4:" in p
+    assert "2×2 grid of equal panels" in p
+    assert "Correct these points from the previous attempt: the girl keeps her round glasses in every panel." in p
+    for fmt in PL_FORMATS:  # 提示词里不再混进中文的安全区说明（会被画成字）
+        m2 = dict(copy.deepcopy(M), format=fmt, palette={"family": "orig"}, text={"mode": "none"})
+        if fmt == "comic-4panel":
+            m2["content"]["panels"] = ["First.", "Second.", "Third.", "Fourth."]
+        body = CP.compile_manifest(m2, FREE).prompt.split("Aspect ratio")[0].split("Visual style")[-1]
+        assert not _re.search(r"[一-鿿]", body.replace("番茄工作法", "")), fmt
+
+
+PL_FORMATS = ["wechat-cover-head", "xhs-cover", "podcast-cover", "picturebook-page", "storyboard-frame", "vertical-cover"]

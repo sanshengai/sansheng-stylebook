@@ -1,0 +1,73 @@
+{
+  "code": "C05",
+  "revision": 2,
+  "name": {
+    "zh": "墨线绘本",
+    "en": "Sketchy Ink Picture Book"
+  },
+  "family": "温暖手绘·绘本动画",
+  "fit": [
+    "讲故事",
+    "封面"
+  ],
+  "facets": {
+    "medium": "墨线绘本",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "hand-drawn-styles #17",
+    "license": "MIT",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "局部色呼应的松散墨线",
+    "大眼睛与少量排线细节",
+    "四边露出暖白纸边"
+  ],
+  "recipe": {
+    "positive": "Expressive storybook character illustration — confident sketchy ink linework over clean soft digital painting. LINES: every shape is defined by confident loose sketchy ink lines of slightly varying thickness; line color is keyed to each region — a much darker shade of the underlying local color (deep navy lines on blue hair, deep maroon lines on red fabric, warm sepia around the skin), overall reading as dark sepia-black; a few overlapping construction strokes are left visible but the drawing stays elegant, NOT a chaotic scribble mess; hair is drawn as smooth flowing individual strand lines following the hair volume, with a moderate number of fine whippy flyaway strands escaping the silhouette, plus a few lighter-tint painted highlight strands over the darker hair masses; clothing folds are a few loose quick line strokes. ACCENT HATCHING (signature detail): sparse deliberate hatch strokes in a darker shade of the local color appear ONLY as accents — fine diagonal blush hatching on the cheeks and across the nose bridge, light cross-hatch shading in hat/clothing shadow areas, and a few faint scratchy dry-brush marks in the background wash; everything else stays smooth. COLOR: underneath the lines the coloring is clean bright digital painting — smooth soft airbrushed gradients, fresh luminous colors, absolutely NO grainy colored-pencil fill, NO canvas texture; skin is smooth with soft rosy airbrushed blush underneath the blush hatching. EYES (critical): enormous round expressive eyes; the glossy dark-brown irises are VERY large and fill almost the entire eye with only tiny white sclera corners showing, one bright white highlight dot per eye, thick dark painterly upper lash line, bold expressive eyebrows. Tiny nose, small soft lips slightly parted, pointed chin, long slender neck. BACKGROUND: a loose atmospheric watercolor wash of warm peach fading to pale cream near the top, with visible soft brush streaks and gentle uneven mottling — painterly but low-detail, NO detailed scenery, NO detailed clouds. FRAME (signature, must have): the painting fills a large rough-edged rectangle that does NOT reach the image edges; all four sides show a flat, clean, pale warm-cream blank paper margin; the boundary between painting and margin is ragged dry-brush streaks, with one or two loose pale streaks overlapping into the painting, like a hand-painted page from an artist's sketchbook; only the faintest paper grain overall.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "局部色呼应的松散墨线",
+      "大眼睛与少量排线细节",
+      "四边露出暖白纸边"
+    ],
+    "must_not_see": [
+      "整幅满版无纸边或铅笔颗粒填色",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "未在基础合同上完成模型实测",
+    "date": "2026-09-29",
+    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "c4a4bee1dee53041cdb6e6b152a6c12bd1021c47f3d66478b05a601b2d35bb4d",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "code": "C30",
+  "revision": 2,
+  "name": {
+    "zh": "彩铅绘本",
+    "en": "Coloured Pencil Picture Book"
+  },
+  "family": "儿童与教育",
+  "fit": [
+    "讲故事",
+    "讲道理"
+  ],
+  "facets": {
+    "medium": "彩铅绘本",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "original",
+    "license": "original",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "清楚的彩铅笔触与纸纹",
+    "柔和叠色和圆润人物",
+    "温暖明亮的儿童绘本感"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): Coloured-pencil picture book: soft visible pencil strokes and paper grain, gentle layered colour, rounded friendly characters, warm natural light, cosy and clear, suitable for children's education.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "清楚的彩铅笔触与纸纹",
+      "柔和叠色和圆润人物",
+      "温暖明亮的儿童绘本感"
+    ],
+    "must_not_see": [
+      "油亮三维材质或硬边矢量",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "未在基础合同上完成模型实测",
+    "date": "2026-09-29",
+    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "5eb445934c8fb3022c89dbc2195ebff21b23766e3c867b63ad2f494f3c971c39",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

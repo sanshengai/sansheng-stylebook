@@ -1,0 +1,582 @@
+{
+  "version": 1,
+  "note": "公开样式总目录；status: draft（仅测试配方）/ contract（已有可调用合同、准入另看 evidence）/ admitted（已通过正式准入）",
+  "removed": [
+    "C23",
+    "C33",
+    "C37",
+    "C43",
+    "C47"
+  ],
+  "styles": [
+    {
+      "code": "C01",
+      "zh": "暖光手绘动画",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "origin": "hand-drawn-styles #3；baoyu-skills fantasy-animation",
+      "status": "admitted"
+    },
+    {
+      "code": "C02",
+      "zh": "情绪淡彩速写",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "origin": "hand-drawn-styles #10",
+      "status": "contract",
+      "recolor": "locked",
+      "recolor_note": "靛蓝线 + 全画一处橙"
+    },
+    {
+      "code": "C03",
+      "zh": "暖光童画·动画概念稿",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "origin": "hand-drawn-styles #12；hand-drawn-styles #16",
+      "status": "contract"
+    },
+    {
+      "code": "C04",
+      "zh": "北欧绘本水粉",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事"
+      ],
+      "origin": "hand-drawn-styles #14",
+      "status": "contract",
+      "recolor": "locked",
+      "recolor_note": "丹宁蓝 × 芥末黄"
+    },
+    {
+      "code": "C05",
+      "zh": "墨线绘本",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "origin": "hand-drawn-styles #17",
+      "status": "contract"
+    },
+    {
+      "code": "C06",
+      "zh": "松散墨线淡彩绘本",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事"
+      ],
+      "origin": "handraw-style #036（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C07",
+      "zh": "透明水彩人物",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事"
+      ],
+      "origin": "handraw-style #088（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C08",
+      "zh": "空灵留白诗意绘本",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "origin": "handraw-style #254（描述已重写，不含人名）",
+      "status": "admitted"
+    },
+    {
+      "code": "C09",
+      "zh": "蜡笔水墨和风绘本",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事"
+      ],
+      "origin": "handraw-style #252（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C10",
+      "zh": "极简单线创意小品",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "origin": "handraw-style #207（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C11",
+      "zh": "温暖清线漫画",
+      "family": "温暖手绘·绘本动画",
+      "fit": [
+        "讲故事"
+      ],
+      "origin": "baoyu-skills comic；baoyu-skills comic ligne-claire + warm",
+      "status": "contract"
+    },
+    {
+      "code": "C12",
+      "zh": "细线都市小人",
+      "family": "细线与生活",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "origin": "handraw-style #003（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C13",
+      "zh": "柔和关系线稿",
+      "family": "细线与生活",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "origin": "handraw-style #015（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C14",
+      "zh": "北欧细线奇趣",
+      "family": "细线与生活",
+      "fit": [
+        "讲故事"
+      ],
+      "origin": "handraw-style #037（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C15",
+      "zh": "清秀生活漫画线",
+      "family": "细线与生活",
+      "fit": [
+        "讲故事"
+      ],
+      "origin": "handraw-style #101（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C16",
+      "zh": "平成少女手帐",
+      "family": "细线与生活",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "origin": "handraw-style #181（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C17",
+      "zh": "新国潮工笔扁平",
+      "family": "中国风",
+      "fit": [
+        "封面",
+        "讲故事"
+      ],
+      "origin": "handraw-style #189（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C18",
+      "zh": "宋画淡彩现代化",
+      "family": "中国风",
+      "fit": [
+        "封面",
+        "讲故事"
+      ],
+      "origin": "handraw-style #191（描述已重写，不含人名）",
+      "status": "contract",
+      "recolor": "locked",
+      "recolor_note": "青绿赭石"
+    },
+    {
+      "code": "C19",
+      "zh": "新中式水墨小人",
+      "family": "中国风",
+      "fit": [
+        "封面",
+        "讲故事"
+      ],
+      "origin": "handraw-style #192（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C20",
+      "zh": "海派月份牌",
+      "family": "中国风",
+      "fit": [
+        "封面"
+      ],
+      "origin": "handraw-style #194（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C21",
+      "zh": "八九十年代课本插图",
+      "family": "中国风",
+      "fit": [
+        "讲故事",
+        "讲道理"
+      ],
+      "origin": "handraw-style #271（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C22",
+      "zh": "老式木偶定格",
+      "family": "中国风",
+      "fit": [
+        "讲故事"
+      ],
+      "origin": "handraw-style #277（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C24",
+      "zh": "黏土定格",
+      "family": "立体材质",
+      "fit": [
+        "讲故事",
+        "讲道理"
+      ],
+      "origin": "handraw-style #248（描述已重写，不含人名）；baoyu-skills claymation",
+      "status": "contract"
+    },
+    {
+      "code": "C25",
+      "zh": "毛绒玩具 3D",
+      "family": "立体材质",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "origin": "handraw-style #232（描述已重写，不含人名）",
+      "status": "admitted"
+    },
+    {
+      "code": "C26",
+      "zh": "马海毛定格人偶",
+      "family": "立体材质",
+      "fit": [
+        "讲故事"
+      ],
+      "origin": "handraw-style #234（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C27",
+      "zh": "纸雕层叠",
+      "family": "立体材质",
+      "fit": [
+        "封面",
+        "讲故事"
+      ],
+      "origin": "hand-drawn-styles #13",
+      "status": "contract"
+    },
+    {
+      "code": "C28",
+      "zh": "儿童蜡笔稚拙",
+      "family": "儿童与教育",
+      "fit": [
+        "讲故事"
+      ],
+      "origin": "handraw-style #197（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C29",
+      "zh": "粉笔黑板",
+      "family": "儿童与教育",
+      "fit": [
+        "讲道理"
+      ],
+      "origin": "baoyu-skills chalkboard",
+      "status": "contract",
+      "recolor": "locked",
+      "recolor_note": "黑板底"
+    },
+    {
+      "code": "C30",
+      "zh": "彩铅绘本",
+      "family": "儿童与教育",
+      "fit": [
+        "讲故事",
+        "讲道理"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C31",
+      "zh": "手绘视觉笔记",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理"
+      ],
+      "origin": "baoyu-skills sketch-notes",
+      "status": "contract"
+    },
+    {
+      "code": "C32",
+      "zh": "技术简报（旧纸双语）",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理"
+      ],
+      "origin": "baoyu-skills intuition-machine",
+      "status": "admitted"
+    },
+    {
+      "code": "C34",
+      "zh": "杂志编辑信息图",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "origin": "baoyu-skills editorial-infographic",
+      "status": "contract"
+    },
+    {
+      "code": "C35",
+      "zh": "Notion 知识线稿",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理"
+      ],
+      "origin": "baoyu-skills notion",
+      "status": "contract"
+    },
+    {
+      "code": "C36",
+      "zh": "极简火柴人讲解",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理"
+      ],
+      "origin": "hand-drawn-styles #1",
+      "status": "contract"
+    },
+    {
+      "code": "C38",
+      "zh": "宜家说明书线稿",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理"
+      ],
+      "origin": "baoyu-skills ikea-manual",
+      "status": "contract"
+    },
+    {
+      "code": "C39",
+      "zh": "工程蓝图",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "origin": "baoyu-skills blueprint",
+      "status": "contract",
+      "recolor": "locked",
+      "recolor_note": "蓝底白线"
+    },
+    {
+      "code": "C40",
+      "zh": "等距插画",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C41",
+      "zh": "复古矢量描边",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "origin": "baoyu-skills vector-illustration",
+      "status": "contract"
+    },
+    {
+      "code": "C42",
+      "zh": "清透扁平",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "origin": "handraw-style #276（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C44",
+      "zh": "双色半调编辑印刷",
+      "family": "封面与海报",
+      "fit": [
+        "封面"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C45",
+      "zh": "复古动画概念稿",
+      "family": "封面与海报",
+      "fit": [
+        "封面",
+        "讲故事"
+      ],
+      "origin": "hand-drawn-styles #11",
+      "status": "contract"
+    },
+    {
+      "code": "C46",
+      "zh": "复古旧纸",
+      "family": "封面与海报",
+      "fit": [
+        "封面",
+        "讲道理"
+      ],
+      "origin": "baoyu-skills vintage",
+      "status": "contract"
+    },
+    {
+      "code": "C48",
+      "zh": "日式黑白漫画",
+      "family": "漫画与分镜",
+      "fit": [
+        "讲故事"
+      ],
+      "origin": "baoyu-skills manga",
+      "status": "contract"
+    },
+    {
+      "code": "C49",
+      "zh": "条漫厚涂",
+      "family": "漫画与分镜",
+      "fit": [
+        "讲故事"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C50",
+      "zh": "电影感写实数字绘画",
+      "family": "漫画与分镜",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "origin": "baoyu-skills realistic",
+      "status": "contract"
+    },
+    {
+      "code": "C51",
+      "zh": "Q 版可爱",
+      "family": "漫画与分镜",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C52",
+      "zh": "怪诞古典漫画肖像",
+      "family": "个性趣味",
+      "fit": [
+        "封面"
+      ],
+      "origin": "handraw-style #074（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C53",
+      "zh": "中世纪暗黑墨线",
+      "family": "个性趣味",
+      "fit": [
+        "封面",
+        "讲故事"
+      ],
+      "origin": "handraw-style #244（描述已重写，不含人名）",
+      "status": "contract"
+    },
+    {
+      "code": "C54",
+      "zh": "复古像素",
+      "family": "个性趣味",
+      "fit": [
+        "封面",
+        "讲道理"
+      ],
+      "origin": "hand-drawn-styles #9",
+      "status": "contract"
+    },
+    {
+      "code": "C55",
+      "zh": "故意画烂涂鸦",
+      "family": "个性趣味",
+      "fit": [
+        "讲故事"
+      ],
+      "origin": "hand-drawn-styles #5",
+      "status": "contract"
+    },
+    {
+      "code": "C56",
+      "zh": "光影写实动画",
+      "family": "日式动画",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C57",
+      "zh": "九十年代赛璐璐动画",
+      "family": "日式动画",
+      "fit": [
+        "讲故事",
+        "封面"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C58",
+      "zh": "日系清新校园动画",
+      "family": "日式动画",
+      "fit": [
+        "讲故事"
+      ],
+      "origin": "original",
+      "status": "admitted"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "code": "C36",
+  "revision": 2,
+  "name": {
+    "zh": "极简火柴人讲解",
+    "en": "Minimal Stick-Figure Explainer"
+  },
+  "family": "讲道理·知识图解",
+  "fit": [
+    "讲道理"
+  ],
+  "facets": {
+    "medium": "极简火柴人讲解",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "hand-drawn-styles #1",
+    "license": "MIT",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "米白纸上的细黑轮廓线",
+    "圆头单线四肢的火柴人",
+    "无填色的平面讲解漫画"
+  ],
+  "recipe": {
+    "positive": "极简黑白火柴人讲解漫画,画在米白/奶油色纸上。 最重要·硬性负向约束：严禁实心黑色填充、严禁剪影、严禁排线与阴影、严禁明暗与体积感、严禁厚涂或氛围渲染。人物与物体一律只用细线描边。 角色:简单火柴人——圆圈头 + 极简点线五官,身体四肢是细单线;用小道具(帽子、杯子、书等)表示身份,不画细节。 线条:细、均匀、略带手抖的黑色钢笔线,纯轮廓线稿,平面二维,无透视。 色彩:纯黑白单色,黑线 + 米白纸,无任何其它颜色,无灰阶。 调性:概念化、示意图式、略带幽默的讲解感,像 minimal stick-figure / 技术科普涂鸦。",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "米白纸上的细黑轮廓线",
+      "圆头单线四肢的火柴人",
+      "无填色的平面讲解漫画"
+    ],
+    "must_not_see": [
+      "实心剪影或灰阶体积阴影",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "未在基础合同上完成模型实测",
+    "date": "2026-09-29",
+    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "e1a434a2668653f1d75d6d2100d5a05d19724cca23aabf0402c8e949175bfa6a",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

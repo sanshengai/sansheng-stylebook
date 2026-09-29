@@ -1,0 +1,294 @@
+{
+  "version": 1,
+  "adjust": {
+    "space": "OKLCH",
+    "lightness_step": 0.09,
+    "lightness_clamp": [
+      0.18,
+      0.97
+    ],
+    "lightness_levels": {
+      "浅": 1,
+      "标准": 0,
+      "深": -1
+    },
+    "chroma_multiplier": {
+      "柔和": 0.6,
+      "标准": 1.0,
+      "鲜艳": 1.3
+    },
+    "gamut": "shrink chroma by 5% steps until inside sRGB"
+  },
+  "palettes": [
+    {
+      "id": "orig",
+      "name": "样式原色",
+      "colors": []
+    },
+    {
+      "id": "macaron",
+      "name": "马卡龙",
+      "colors": [
+        {
+          "name": "粉蓝 powder blue",
+          "hex": "#A8D8EA"
+        },
+        {
+          "name": "薰衣草紫 lavender",
+          "hex": "#D5C6E0"
+        },
+        {
+          "name": "薄荷绿 mint",
+          "hex": "#B5E5CF"
+        },
+        {
+          "name": "蜜桃粉 peach",
+          "hex": "#F8D5C4"
+        },
+        {
+          "name": "奶油白 cream",
+          "hex": "#F5F0E8"
+        }
+      ]
+    },
+    {
+      "id": "earth",
+      "name": "大地",
+      "colors": [
+        {
+          "name": "咖啡棕 coffee brown",
+          "hex": "#8B5E3C"
+        },
+        {
+          "name": "焦糖 caramel",
+          "hex": "#C08552"
+        },
+        {
+          "name": "沙色 sand",
+          "hex": "#DDB892"
+        },
+        {
+          "name": "橄榄绿 olive",
+          "hex": "#7F8C5A"
+        },
+        {
+          "name": "亚麻白 linen",
+          "hex": "#F3E9DC"
+        }
+      ]
+    },
+    {
+      "id": "morandi",
+      "name": "莫兰迪",
+      "colors": [
+        {
+          "name": "灰蓝 grey blue",
+          "hex": "#8E9AA6"
+        },
+        {
+          "name": "豆沙粉 dusty rose",
+          "hex": "#B99A96"
+        },
+        {
+          "name": "灰绿 sage grey",
+          "hex": "#9DA9A0"
+        },
+        {
+          "name": "燕麦 oat",
+          "hex": "#C4B7A6"
+        },
+        {
+          "name": "雾白 mist white",
+          "hex": "#E8E4DE"
+        }
+      ]
+    },
+    {
+      "id": "forest",
+      "name": "森林",
+      "colors": [
+        {
+          "name": "松绿 pine green",
+          "hex": "#2F5D50"
+        },
+        {
+          "name": "苔绿 moss",
+          "hex": "#6B8F71"
+        },
+        {
+          "name": "嫩叶绿 leaf green",
+          "hex": "#A7C4A0"
+        },
+        {
+          "name": "麦秆黄 straw",
+          "hex": "#D9C9A3"
+        },
+        {
+          "name": "米白 off-white",
+          "hex": "#F4F1E8"
+        }
+      ]
+    },
+    {
+      "id": "ocean",
+      "name": "海洋清透",
+      "colors": [
+        {
+          "name": "深海蓝 deep sea blue",
+          "hex": "#1F6F8B"
+        },
+        {
+          "name": "海水蓝 sea blue",
+          "hex": "#4FA3C7"
+        },
+        {
+          "name": "浅水蓝 shallow blue",
+          "hex": "#9ED3E6"
+        },
+        {
+          "name": "沙滩金 beach gold",
+          "hex": "#F2C57C"
+        },
+        {
+          "name": "浪花白 foam white",
+          "hex": "#F7FBFC"
+        }
+      ]
+    },
+    {
+      "id": "film",
+      "name": "复古胶片",
+      "colors": [
+        {
+          "name": "砖红 brick red",
+          "hex": "#C8553D"
+        },
+        {
+          "name": "橘黄 amber orange",
+          "hex": "#F2A65A"
+        },
+        {
+          "name": "奶黄 butter",
+          "hex": "#F5D6A1"
+        },
+        {
+          "name": "灰青 muted teal",
+          "hex": "#588B8B"
+        },
+        {
+          "name": "相纸白 print white",
+          "hex": "#EFE7DA"
+        }
+      ]
+    },
+    {
+      "id": "qinglv",
+      "name": "国风青绿",
+      "colors": [
+        {
+          "name": "石青 azurite teal",
+          "hex": "#2E6E65"
+        },
+        {
+          "name": "石绿 malachite",
+          "hex": "#5C9E8F"
+        },
+        {
+          "name": "浅碧 pale jade",
+          "hex": "#A7C7B5"
+        },
+        {
+          "name": "赭石 ochre",
+          "hex": "#C9A56B"
+        },
+        {
+          "name": "宣纸白 rice paper",
+          "hex": "#F3EDE0"
+        }
+      ]
+    },
+    {
+      "id": "zhusha",
+      "name": "国风朱砂金",
+      "colors": [
+        {
+          "name": "朱砂红 cinnabar red",
+          "hex": "#B83B2E"
+        },
+        {
+          "name": "泥金 muted gold",
+          "hex": "#D9A441"
+        },
+        {
+          "name": "墨黑 ink black",
+          "hex": "#2B2B2B"
+        },
+        {
+          "name": "缃色 pale yellow",
+          "hex": "#E8D9B5"
+        },
+        {
+          "name": "宣纸白 rice paper",
+          "hex": "#F6F0E4"
+        }
+      ]
+    },
+    {
+      "id": "mono",
+      "name": "一墨单色",
+      "colors": [
+        {
+          "name": "墨黑 ink black",
+          "hex": "#1A1A1A"
+        },
+        {
+          "name": "深灰 dark grey",
+          "hex": "#555555"
+        },
+        {
+          "name": "中灰 mid grey",
+          "hex": "#9A9A9A"
+        },
+        {
+          "name": "浅灰 light grey",
+          "hex": "#D6D6D6"
+        },
+        {
+          "name": "纸白 paper white",
+          "hex": "#F7F5F0"
+        }
+      ]
+    },
+    {
+      "id": "neon",
+      "name": "夜色霓虹",
+      "colors": [
+        {
+          "name": "夜空蓝 night navy",
+          "hex": "#0F1026"
+        },
+        {
+          "name": "电光紫 electric violet",
+          "hex": "#7B2FF7"
+        },
+        {
+          "name": "霓虹青 neon cyan",
+          "hex": "#00D1FF"
+        },
+        {
+          "name": "霓虹粉 neon pink",
+          "hex": "#FF3CAC"
+        },
+        {
+          "name": "柠檬黄 lemon",
+          "hex": "#F9F871"
+        }
+      ]
+    },
+    {
+      "id": "brand",
+      "name": "品牌自定义",
+      "colors": []
+    }
+  ]
+}

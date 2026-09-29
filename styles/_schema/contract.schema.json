@@ -1,0 +1,515 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/sanshengai/sansheng-stylebook/styles/_schema/contract.schema.json",
+  "title": "Style contract (风格合同)",
+  "description": "One style = one contract. Machine-checkable: compile-time bans, post-generation checks, pixel thresholds, evidence and revision.",
+  "type": "object",
+  "required": [
+    "code",
+    "revision",
+    "name",
+    "family",
+    "fit",
+    "visibility",
+    "source",
+    "essence",
+    "recipe",
+    "palette",
+    "qa"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "code": {
+      "type": "string",
+      "pattern": "^(C|S)[0-9]{2,3}$",
+      "description": "风格码，如 C31；S 开头为自用私有风格"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "修订号；项目锁定写作 C31@r2"
+    },
+    "name": {
+      "type": "object",
+      "required": [
+        "zh",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "zh": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "family": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fit": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "讲故事",
+          "讲道理",
+          "封面"
+        ]
+      }
+    },
+    "facets": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "medium": {
+          "type": "string"
+        },
+        "mood": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "use": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "density": {
+          "enum": [
+            "极简留白",
+            "中等",
+            "细节丰富"
+          ]
+        },
+        "region": {
+          "type": "string"
+        }
+      }
+    },
+    "abilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "能力标签，只能来自测试题实测",
+      "properties": {
+        "character_consistency": {
+          "$ref": "#/$defs/level"
+        },
+        "chinese_text": {
+          "$ref": "#/$defs/level"
+        },
+        "video_frame": {
+          "$ref": "#/$defs/level"
+        },
+        "long_series": {
+          "$ref": "#/$defs/level"
+        },
+        "kids": {
+          "$ref": "#/$defs/level"
+        },
+        "adds_people": {
+          "type": "boolean",
+          "description": "无人场景也会画出人物（角色立绘型配方）"
+        }
+      }
+    },
+    "visibility": {
+      "enum": [
+        "public",
+        "private"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "from",
+        "license"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "from": {
+          "type": "string",
+          "minLength": 1
+        },
+        "license": {
+          "enum": [
+            "original",
+            "MIT",
+            "CC0"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "essence": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 6,
+      "items": {
+        "type": "string",
+        "minLength": 4
+      },
+      "description": "命门：不能妥协的视觉特征"
+    },
+    "recipe": {
+      "type": "object",
+      "required": [
+        "positive"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "positive": {
+          "type": "string",
+          "minLength": 40,
+          "description": "正向配方全文（锁定层，编译时原样使用，不许改写）"
+        },
+        "text_style": {
+          "type": "string",
+          "minLength": 20,
+          "description": "图里有字（原生写字）时才附上的文字材质描述；无字的图不加，避免诱导模型加字"
+        },
+        "text_style_hybrid": {
+          "type": "string",
+          "minLength": 20,
+          "description": "hybrid 模式专用文字材质描述；不改变 native 与无字模式的提示词"
+        },
+        "structure_prompts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 20
+          },
+          "description": "仅在清单明确指定对应 structure 时加入的样式布局规则"
+        },
+        "constraints_first": {
+          "type": "boolean",
+          "description": "硬约束是否前置（按测试题结果定）"
+        },
+        "hard_constraints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "已改写成正面描述的硬约束"
+        },
+        "text_mode": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "native",
+              "overlay",
+              "hybrid",
+              "none"
+            ]
+          },
+          "description": "适合的文字档位"
+        }
+      }
+    },
+    "prompt_bans": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "编译期冲突词：提示词里出现就拦截"
+    },
+    "palette": {
+      "type": "object",
+      "required": [
+        "recolor"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "colors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/color"
+          }
+        },
+        "recolor": {
+          "enum": [
+            "locked",
+            "lightness_only",
+            "free"
+          ],
+          "description": "换色程度"
+        }
+      }
+    },
+    "anchor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "file": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "isolation": {
+          "type": "string"
+        }
+      }
+    },
+    "qa": {
+      "type": "object",
+      "required": [
+        "must_see",
+        "must_not_see"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "must_see": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "minLength": 4
+          }
+        },
+        "must_not_see": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "minLength": 4
+          }
+        },
+        "mode_overrides": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "hybrid": {
+              "type": "object",
+              "required": ["must_see", "must_not_see"],
+              "additionalProperties": false,
+              "properties": {
+                "must_see": {"type": "array", "minItems": 2, "items": {"type": "string", "minLength": 4}},
+                "must_not_see": {"type": "array", "minItems": 2, "items": {"type": "string", "minLength": 4}},
+                "when_text": {"type": "array", "items": {"type": "string"}}
+              }
+            }
+          }
+        },
+        "pixel": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "mean_luma_min": {
+              "type": "number"
+            },
+            "mean_luma_max": {
+              "type": "number"
+            },
+            "dark_pixel_luma": {
+              "type": "number"
+            },
+            "dark_pixel_ratio_max": {
+              "type": "number"
+            },
+            "mean_saturation_max": {
+              "type": "number"
+            },
+            "mean_saturation_min": {
+              "type": "number"
+            },
+            "white_ratio_min": {
+              "type": "number"
+            }
+          }
+        },
+        "pixel_scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "像素阈值只对这些版式族或格式 id 生效；不填则对所有格式生效"
+        },
+        "center_square_margin_min": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.3,
+          "description": "需居中方形裁切的格式中，高对比内容距实际方形四边的最小比例；仍须独立看图"
+        },
+        "paper_margin_min": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.3,
+          "description": "暖色纸底上可检测墨线和明显色块距四边的最小比例；浅色细节仍须看图"
+        },
+        "paper_margin_min_by_text_mode": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "none": {"type": "number", "minimum": 0, "maximum": 0.3},
+            "native": {"type": "number", "minimum": 0, "maximum": 0.3},
+            "overlay": {"type": "number", "minimum": 0, "maximum": 0.3},
+            "hybrid": {"type": "number", "minimum": 0, "maximum": 0.3}
+          },
+          "description": "按文字模式覆盖 paper_margin_min；未列出的模式沿用通用阈值"
+        },
+        "overlay_layout": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "headline_min_font_px_ratio": {
+              "type": "number",
+              "description": "标题 font_px 占最终画布高度的必要下限；范围 (0, 0.5]"
+            },
+            "subtitle_max_lines": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "minProperties": 1,
+          "description": "叠字版式的必要条件；字号相对最终画布高度，仅能排除明显过小，不能代替实际字高看图"
+        },
+        "when_text": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "只在图里有文字时才检查的条目（必须是 must_see 或 must_not_see 中的原文）"
+        }
+      }
+    },
+    "drifts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "symptom",
+          "fix"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "symptom": {
+            "type": "string"
+          },
+          "fix": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "model_variants": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "append": {
+            "type": "string"
+          },
+          "verified": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tests": {
+          "type": "object",
+          "additionalProperties": {
+            "enum": [
+              "pass",
+              "fail",
+              "na",
+              "pending"
+            ]
+          }
+        },
+        "admission": {
+          "enum": [
+            "admitted",
+            "pending",
+            "rejected",
+            "hold"
+          ]
+        },
+        "model": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "changelog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "revision",
+          "date",
+          "note"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "revision": {
+            "type": "integer"
+          },
+          "date": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "level": {
+      "enum": [
+        "good",
+        "ok",
+        "weak",
+        "unknown"
+      ]
+    },
+    "color": {
+      "type": "object",
+      "required": [
+        "name",
+        "hex"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 2
+        },
+        "hex": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "role": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
