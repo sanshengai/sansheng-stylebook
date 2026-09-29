@@ -137,6 +137,7 @@ def test_version_three_article_requires_reviewable_core_coverage(tmp_path):
          "image_ids": ["01"], "why": "截图只显示字段值，层级关系需要新图说明"},
     ]
     assert PL.check(p, base_path=tmp_path)[0] == []
+    assert PL.manifests(p)[0]["source"] == {"sha256": p["source"]["sha256"], "quote": entry["source_quote"]}
     p["coverage"][1]["image_ids"] = ["99"]
     assert any("不存在的图片 id" in error for error in PL.check(p, base_path=tmp_path)[0])
     p["coverage"][1]["image_ids"] = ["01"]
