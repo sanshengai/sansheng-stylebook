@@ -166,12 +166,28 @@ def cmd_qa(a) -> int:
         with Image.open(source) as im:
             im.convert("RGB").resize((px, px), Image.Resampling.LANCZOS).save(thumb)
         c = {**c, "_thumbnail_expectation": str(thumb)}
+    from stylebook.qa.binding import snapshot, verify
+    binding_files = {"image": Path(a.image)}
+    if a.manifest:
+        binding_files["manifest"] = Path(a.manifest)
+    if c.get("_path"):
+        binding_files["contract"] = Path(c["_path"])
+    for key in ("_square_crop_expectation", "_thumbnail_expectation"):
+        if c.get(key):
+            binding_files[key] = Path(c[key])
+    if a.review_json:
+        binding_files["supplied_review"] = Path(a.review_json)
+    binding_values = {"contract": c, "expected_text": expected, "text_mode": mode, "format": fmt,
+                      "review_mode": "supplied" if a.review_json else "independent_call"}
+    binding = snapshot("image", files=binding_files, values=binding_values)
     if a.review_json:
         rv = json.loads(Path(a.review_json).read_text(encoding="utf-8"))
     else:
         from stylebook.qa.reviewer import review
         rv = review(Path(a.image), c, expected, mode)
     v = judge(Path(a.image), c, rv, expected, mode, fmt, manifest)
+    verify(binding, kind="image", files=binding_files, values=binding_values)
+    v.binding = binding
     if a.report:
         write_report([v], Path(a.report))
     print(json.dumps({"image": a.image, "passed": v.passed, "problems": v.problems, "pixel": v.pixel,
@@ -376,7 +392,13 @@ def cmd_plan_review(a) -> int:
         if hashlib.sha256(Path(a.article).read_bytes()).hexdigest() != plan["source"]["sha256"]:
             print("plan-review 的原文与计划 source.sha256 不同", file=sys.stderr)
             return 1
+    from stylebook.qa.binding import snapshot, verify
+    binding_files = {"article": Path(a.article), "plan": Path(a.plan)}
+    binding_values = {"plan": plan}
+    binding = snapshot("article-plan", files=binding_files, values=binding_values)
     r = PR.review(plan, Path(a.article), a.model)
+    verify(binding, kind="article-plan", files=binding_files, values=binding_values)
+    r["binding"] = binding
     if a.report:
         Path(a.report).write_text(json.dumps(r, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     s = PR.summarize([(Path(a.article).parent.name, r)], allow_no_images=not plan["items"])
