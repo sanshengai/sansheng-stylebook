@@ -214,6 +214,10 @@ def check(plan: dict, *, base_path: Path | None = None) -> tuple[list[str], list
             run_struct, run_len = None, 0
             if it.get("structure"):
                 errs.append(f"{tag} {FORM_ZH.get(form, form)}不写结构")
+            if "points" in it:
+                pts = it["points"]
+                if not isinstance(pts, list) or not pts or any(not isinstance(p, str) or not p.strip() for p in pts):
+                    errs.append(f"{tag} 场景或隐喻图的必要事实（points）必须是非空文字列表")
         if it.get("style") and not it.get("manual"):
             errs.append(f"{tag} 一篇只用一个样式；只有用户手动指定的那张（manual: true）才能单独换样式")
         if it.get("style") and it.get("manual"):
@@ -281,12 +285,13 @@ def manifests(plan: dict, model: str = "gpt-image-2") -> list[dict]:
         for k in ("references", "aspect"):
             if it.get(k):
                 m[k] = it[k]
+        if it.get("points"):
+            m["content"]["points"] = [point.strip() for point in it["points"]]
         if it.get("use_anchor") is False:
             m["use_anchor"] = False
         if it["form"] == "structure":
             m["structure"] = it["structure"]
             m["density"] = density_for(len(it["points"]))
-            m["content"]["points"] = [point.strip() for point in it["points"]]
         if plan.get("palette"):
             m["palette"] = plan["palette"]
         if it.get("text"):
