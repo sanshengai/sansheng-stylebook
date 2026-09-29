@@ -188,6 +188,15 @@ def compile_manifest(manifest: dict, contract: dict | None = None, *, stage: str
     model = manifest.get("model", "gpt-image-2")
     family = MODEL_FAMILY.get(model, "gpt-image")
     fmt = D.formats().get(manifest.get("format", "")) if manifest.get("format") else None
+    text = manifest.get("text") or {}
+    if fmt and text.get("mode", fmt.get("text", {}).get("default")) in ("native", "hybrid"):
+        title_limit = fmt.get("text", {}).get("title_max_chars")
+        if title_limit:
+            for item in native_items(text):
+                if item.get("role") == "title" and len(item["text"]) > title_limit:
+                    raise CompileError(
+                        f"标题「{item['text']}」{len(item['text'])} 字，超过「{fmt['zh']}」上限 {title_limit} 字"
+                    )
     if stage not in (None, "center_square_master"):
         raise CompileError(f"未知编译阶段 {stage}")
     if stage == "center_square_master" and manifest.get("format") != "wechat-cover-head":
