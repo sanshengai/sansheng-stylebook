@@ -83,6 +83,25 @@ def test_plan_can_use_approved_series_image_instead_of_anchor(tmp_path):
     assert compiled.references == [{"path": str(img), "role": "style"}]
 
 
+def test_overlay_plan_keeps_raw_generation_and_final_review_requirements_distinct():
+    from stylebook.qa import content_expectations
+    p = plan([item(1, subject="three blank cards without letters",
+                   relations="keep headline band empty",
+                   final_subject="three labelled cards showing the three source steps",
+                   final_relations="headline above cards, labels inside cards")])
+    m = PL.manifests(p)[0]
+    prompt = CP.compile_manifest(m).prompt
+    review = content_expectations(m["content"])["_content_expectation"]
+    assert "three blank cards without letters" in prompt
+    assert "keep headline band empty" in prompt
+    assert "three labelled cards" not in prompt
+    assert "three labelled cards" in review
+    assert "labels inside cards" in review
+    assert "keep headline band empty" not in review
+    assert "without letters" not in review
+    assert all(point in review for point in p["items"][0]["points"])
+
+
 def test_three_real_flows_warn_without_blocking():
     p = plan([item(1), item(2), item(3)])
     errors, warnings = PL.check(p)

@@ -91,7 +91,7 @@ def content_expectations(content: dict) -> dict:
     """核对最终成品；生成底图时的留白指令不属于成品事实要求。"""
     relations = content.get("final_relations", content.get("relations"))
     general = "; ".join(str(value).strip() for value in
-                        (content.get("subject"), relations, content.get("inventory")) if value)
+                        (content.get("final_subject", content.get("subject")), relations, content.get("inventory")) if value)
     if content.get("points"):
         general += "; 必须表达的要点（按顺序，保留条件、否定、数字与单位）: " + "；".join(content["points"])
     result = {"_content_expectation": general} if general else {}
