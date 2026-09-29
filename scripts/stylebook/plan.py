@@ -24,6 +24,7 @@ SHAPES: dict[str, dict] = {
     "story": {"zh": "讲故事", "def": "讲一件具体发生的事或一个人的经历（含真实人物的传记段）", "forms": ["scene"]},
     "opinion": {"zh": "观点", "def": "作者的判断或论点本身，没有可拆的步骤、组成或数据", "forms": ["metaphor"]},
     "steps": {"zh": "步骤", "def": "有先后顺序的步骤或一条单向因果链；原文明说首尾相接才算循环", "forms": ["structure"], "structures": ["flow", "timeline", "journey", "cycle"]},
+    "decision": {"zh": "条件判断", "def": "先检查一个条件，再沿不同分支采取不同动作；分支条件、去向与不适用情形都要写清", "forms": ["structure"], "structures": ["decision-tree"]},
     "options": {"zh": "选项", "def": "摆在读者面前、可以任选其一的两三种方案", "forms": ["structure"], "structures": ["compare", "table", "dodont", "balance"]},
     "hierarchy": {"zh": "层级", "def": "有上下、内外或主次之分的层级", "forms": ["structure"], "structures": ["pyramid", "layers", "tree", "nested", "iceberg"]},
     "parts": {"zh": "组成", "def": "一个整体拆成并列的几块，或几类人各自的做法、分工（谁负责什么）", "forms": ["structure"], "structures": ["grid", "features", "list", "mindmap"]},
@@ -38,10 +39,10 @@ SHAPES: dict[str, dict] = {
 # 判别要点：计划员（references/planning.md 原文收录）与独立复核员（qa/plan_review.py）用同一份
 PLANNING_RULES = [
     "值得配图的位置：核心论点、抽象概念、数据对比、流程与操作过程；纯装饰、泛泛的氛围图不配。",
-    "必须覆盖：全文的结论或行动建议、最具体的操作过程。",
+    "先列出全文 2–5 个核心论点，以及结论或行动建议、最具体的操作过程；每项都要决定配图、已有视觉足够或文字足够，并写出针对该项的理由。不能只画一个例子就把其余核心机制视为已覆盖。",
     "一节通常只放一张，除非它有两个互不相干的要点。",
     "图放在一个意思讲完的那段之后：不紧跟总起句，也不紧跟悬念式设问；位置引用原文那一句，写成「……」之后。",
-    "原文紧挨着已经用表格、清单、截图或作者供图呈现了同样内容时，不再画一张重复的图；只有新图补出关系、可信度或行动边界才保留。",
+    "原文已有表格、清单、截图或作者供图时，逐项判断它是否真正回答读者的问题。已有视觉只覆盖字段、界面或局部步骤，不自动覆盖跨步骤关系、易错分叉、判断边界；新图若补出这些信息就保留，完全同义重复才删除。",
     "段落里有现成的同口径数据时，优先画数据，而不是氛围。",
     "要点与画面细节都忠于原文：不漏环节、不编数字；原文说「可选」「这次没做」的照写；场景的动作和情绪与原文一致。",
     "因果链原文没说首尾相接就不画成循环；环节多于密度上限时合并相邻环节，不删环节。",
@@ -50,7 +51,7 @@ PLANNING_RULES = [
     "同一类对比在一篇里用同一种结构。",
     "标题保留原文核心信息；改写不得改变对象、结论或行动。图中文字与要点保留读者理解机制或完成步骤所必需的条件，不用空泛标签代替具体内容。",
     "数字、费用、能力边界和效果声明须能在原文找到依据；不得把有条件的效果写成绝对保证。读完图应能理解这一段的核心判断，教程图应能知道下一步做什么。",
-    "提交前把 2–5 个核心论点和文末结论／行动建议逐项对照：已配图、已有视觉足够或有明确不画理由；不得因张数已满漏掉结论。",
+    "提交前把核心论点、关键机制、文末结论／行动建议和最具体操作逐项对照：已配图、现有视觉已解决同一阅读问题，或文字足够且图没有增益。遗漏有独立视觉增益的核心机制时补图；不得因张数已满或只见一张示例图就忽略它。",
 ]
 FORM_ZH = {"scene": "人物场景", "metaphor": "单幅隐喻", "structure": "结构图"}
 DENSITY_ORDER = ["sparse", "balanced", "dense"]
@@ -105,10 +106,10 @@ def check(plan: dict, *, base_path: Path | None = None) -> tuple[list[str], list
     errs: list[str] = []
     warns: list[str] = []
     version = plan.get("version", 1)
-    if version not in (1, 2):
+    if version not in (1, 2, 3):
         errs.append(f"不支持的配图计划版本：{version!r}")
     source_text = None
-    if version == 2:
+    if version in (2, 3):
         source = plan.get("source") or {}
         if not isinstance(source, dict) or not source.get("path") or not re.fullmatch(r"[0-9a-f]{64}", str(source.get("sha256", ""))):
             errs.append("v2 计划的 source 须包含原文 path 和 sha256")
@@ -158,7 +159,7 @@ def check(plan: dict, *, base_path: Path | None = None) -> tuple[list[str], list
     ids, run_struct, run_len = set(), None, 0
     for i, it in enumerate(items, 1):
         tag = f"第 {i} 张（{it.get('id', '?')}）"
-        if version == 2:
+        if version in (2, 3):
             quote = it.get("source_quote")
             if not isinstance(quote, str) or len(quote.strip()) < 4:
                 errs.append(f"{tag} 缺原文短引用（source_quote）")
@@ -248,6 +249,43 @@ def check(plan: dict, *, base_path: Path | None = None) -> tuple[list[str], list
             for x in native_items(t):
                 if x.get("role") == "title" and limit and len(x["text"]) > limit:
                     errs.append(f"{tag} 标题「{x['text']}」{len(x['text'])} 字，超过该格式上限 {limit} 字")
+    if version == 3 and plan.get("scene") == "wxillus":
+        coverage = plan.get("coverage")
+        if not isinstance(coverage, list) or not coverage:
+            errs.append("v3 文章计划须逐项列出 coverage：核心论点、机制、结论或操作的配图决定")
+        else:
+            covered_ids: set[str] = set()
+            valid_ids = {str(it.get("id")) for it in items if isinstance(it, dict)}
+            for index, row in enumerate(coverage, 1):
+                tag = f"coverage[{index}]"
+                if not isinstance(row, dict):
+                    errs.append(f"{tag} 必须是对象")
+                    continue
+                if not str(row.get("claim", "")).strip() or len(str(row.get("why", "")).strip()) < 12:
+                    errs.append(f"{tag} 须有核心判断 claim 和针对性的理由 why")
+                quote = row.get("source_quote")
+                if not isinstance(quote, str) or len(quote.strip()) < 4:
+                    errs.append(f"{tag} 缺原文短引用 source_quote")
+                elif source_text is not None and re.sub(r"\s+", "", quote) not in re.sub(r"\s+", "", source_text):
+                    errs.append(f"{tag} source_quote 在原文中找不到")
+                decision = row.get("decision")
+                ids = row.get("image_ids", [])
+                if decision not in ("image", "existing_visual", "text_sufficient"):
+                    errs.append(f"{tag} decision 须是 image / existing_visual / text_sufficient")
+                if not isinstance(ids, list) or any(not isinstance(value, str) for value in ids):
+                    errs.append(f"{tag} image_ids 须是图片 id 列表")
+                    continue
+                if decision == "image":
+                    if not ids:
+                        errs.append(f"{tag} 选择 image 时须引用计划里的图片 id")
+                    for value in ids:
+                        if value not in valid_ids:
+                            errs.append(f"{tag} 引用了不存在的图片 id：{value}")
+                        covered_ids.add(value)
+                elif ids:
+                    errs.append(f"{tag} 未选择 image 时 image_ids 须为空")
+            for value in valid_ids - covered_ids:
+                errs.append(f"图片 {value} 未映射到 coverage 的核心判断")
     return errs, warns
 
 

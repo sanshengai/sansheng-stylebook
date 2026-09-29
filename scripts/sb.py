@@ -371,7 +371,7 @@ def cmd_plan_review(a) -> int:
     if errs:
         print("配图计划有问题：" + "；".join(errs), file=sys.stderr)
         return 1
-    if plan.get("version") == 2:
+    if plan.get("version") in (2, 3):
         import hashlib
         if hashlib.sha256(Path(a.article).read_bytes()).hexdigest() != plan["source"]["sha256"]:
             print("plan-review 的原文与计划 source.sha256 不同", file=sys.stderr)
