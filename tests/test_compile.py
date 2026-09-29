@@ -50,6 +50,21 @@ def test_deterministic():
     assert a.prompt == b.prompt and a.manifest_hash == b.manifest_hash
 
 
+def test_overlay_reservation_uses_actual_final_boxes_and_rejects_bad_geometry():
+    m = copy.deepcopy(M)
+    m["text"] = {"mode": "overlay", "reserve": "the card interior", "items": [
+        {"text": "精确文案", "box": [0.25, 0.17, 0.69, 0.11], "require_blank": True}]}
+    first = c(m)
+    assert "[[0.25,0.17,0.69,0.11]]" in first.prompt
+    m["text"]["items"][0]["box"] = [0.25, 0.3, 0.69, 0.11]
+    changed = c(m)
+    assert "[[0.25,0.3,0.69,0.11]]" in changed.prompt
+    assert first.prompt != changed.prompt
+    m["text"]["items"][0]["box"] = [0.9, 0.3, 0.69, 0.11]
+    with pytest.raises(CP.CompileError, match="overlay"):
+        c(m)
+
+
 def test_direct_manifest_rejects_title_too_long_for_square_thumbnail():
     m = copy.deepcopy(M)
     m["format"] = "wechat-cover-square"
