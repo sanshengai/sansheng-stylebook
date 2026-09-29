@@ -37,7 +37,7 @@ SCHEMA = {
 def prompt(plan: dict, article: Path) -> str:
     rows = []
     for it in plan["items"]:
-        rows.append({k: it.get(k) for k in ("id", "position", "shape", "form", "structure", "points", "what", "subject", "text", "why")})
+        rows.append({k: it.get(k) for k in ("id", "position", "source_quote", "shape", "form", "structure", "points", "what", "subject", "inventory", "relations", "text", "why")})
     shapes = "\n".join(f"- {k}（{v['zh']}）：{v['def']}；表达为{ '、'.join(PL.FORM_ZH[f] for f in v['forms']) }"
                        + (f"，可用结构 {', '.join(v['structures'])}" if v.get("structures") else "") for k, v in PL.SHAPES.items())
     rules = "\n".join(f"{i}. {r}" for i, r in enumerate(PL.PLANNING_RULES, 1))
@@ -58,7 +58,7 @@ def prompt(plan: dict, article: Path) -> str:
         "3. form_ok：表达形式与结构适合这段内容；要点与画面描述符合判别要点 6、7、8、10。",
         "4. basis_ok：依据句（why）说清了为什么在这里配图、为什么是这个形状，而且站得住。",
         "5. no_literal_metaphor_or_real_face：符合判别要点 9。",
-        "6. fidelity_ok：逐字检查 text.items 标题与标签、points、subject。标题保留原文核心信息；数字、效果与能力边界有原文依据；有条件的效果没有变成绝对保证。",
+        "6. fidelity_ok：对照 source_quote 所在段落及前后文，逐项检查 text.items、points、subject、inventory、relations。画面必需的题材线索不能被换成无关物件；标题保留原文核心信息；数字、效果与能力边界有原文依据；有条件的效果没有变成绝对保证。",
         "7. reader_value_ok：缩成图后仍有足够的具体信息让读者理解这段的机制、判断或下一步行动；不能只剩泛化口号或类别名称。",
         "reasonable=false 时，why 写具体哪项不成立、应该怎么改。missed_positions 只列判别要点 2 要求必须覆盖、但计划没有覆盖的结论／行动建议或最具体操作过程；每条引用原文并说明为何必配。仅属可选的补图建议放 notes，不计入 missed_positions。没有必配漏项就输出空数组。",
         "",

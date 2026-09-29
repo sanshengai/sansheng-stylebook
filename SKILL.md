@@ -36,7 +36,7 @@ description: 叁笙画风手册（公开 beta）。用固定的风格码把文�
 
 1. **消息里有风格码或网页选择 JSON** → 读 `references/selection.md`，用 `sb.py selection normalize` 归一化并核对场景、修订、作用范围；再按 3、4 走。简单旧 `sb1:` 仍可读；品牌 HEX 和逐图修改用 JSON。网页配置不包含原文提炼结果，仍需先读内容；网页不会代替编译器生成完整提示词。
 2. **第一次用 / 出图报「没有可用的生图服务」/ 用户问怎么配置** → 当前会话有 Codex 内置生图工具时直接走第 3 步；否则读 `references/setup.md`，跑 `sb.py doctor`，按向导配置。**绝不让用户把密钥贴进对话**，也不替用户写密钥文件。
-3. **要出单张或几张图** → 读 `references/compile.md` 写编译清单并运行 `sb.py compile 清单.json --json`。当前会话有 Codex 内置生图工具时，按 `references/backends.md` 把编译结果的完整 `prompt` 与 `references[].path` 交给该工具；否则用 `sb.py generate`。`model` 是编译方言，不代表内置工具的实际模型 ID。
+3. **要出单张或几张图** → 如果图来自文章、课件或讲稿，即使只出一张，也先按第 7 步对照完整原文做单项内容计划与复核；再读 `references/compile.md` 写编译清单并运行 `sb.py compile 清单.json --json`。当前会话有 Codex 内置生图工具时，按 `references/backends.md` 把编译结果的完整 `prompt` 与 `references[].path` 交给该工具；否则用 `sb.py generate`。`model` 是编译方言，不代表内置工具的实际模型 ID。
 3a. **作者私有 profile 中的 S02 公众号头条封面** → 读 `references/cover-flow.md`，用 `sb.py cover-flow` 编译方形母版与横向扩图两段提示词；先验方形，再扩图和正式导出验收。公开包没有 S02，不能把这条路由推荐给未安装私有 profile 的用户。
 4. **每张图出完** → 读 `references/qa.md` 验收；不合格按原因单张返修，最多重试 2 次，仍不合格就把图和原因交给用户。
 5. **图里要有中文字** → 另读 `references/text.md`。

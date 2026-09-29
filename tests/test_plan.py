@@ -59,6 +59,20 @@ def test_required_points_reach_prompt_and_visual_review():
         assert point in prompt and point in expectation
 
 
+def test_story_source_facts_reach_prompt_and_review():
+    from stylebook.qa import content_expectations
+    fact = "手机里的缩略图是父亲发来的育儿教育视频，不是天气或风景"
+    p = plan([item(1, shape="story", form="scene")])
+    p["items"][0]["points"] = [fact]
+    assert PL.check(p)[0] == []
+    manifest = PL.manifests(p)[0]
+    assert manifest["content"]["points"] == [fact]
+    assert fact in CP.compile_manifest(manifest).prompt
+    assert fact in content_expectations(manifest["content"])["_content_expectation"]
+    p["items"][0]["points"] = [" "]
+    assert any("必要事实" in error for error in PL.check(p)[0])
+
+
 def test_plan_can_use_approved_series_image_instead_of_anchor(tmp_path):
     img = tmp_path / "approved-master.png"
     img.write_bytes(b"series reference")
@@ -192,6 +206,8 @@ def test_plan_review_summary_and_prompt(tmp_path):
     assert "no_literal_metaphor_or_real_face" in text and "fidelity_ok" in text and "reader_value_ok" in text
     assert "可选的补图建议放 notes" in text
     assert "番茄钟三步" in text and '"subject"' in text and '"text"' in text and str(tmp_path / "a.md") in text
+    assert '"source_quote"' in text and '"inventory"' in text and '"relations"' in text
+    assert "画面必需的题材线索不能被换成无关物件" in text
     passed = {key: True for key in ("reasonable", "position_ok", "shape_ok", "form_ok", "basis_ok",
                                  "no_literal_metaphor_or_real_face", "fidelity_ok", "reader_value_ok")}
     r1 = {"items": [{"id": "01", **passed, "why": ""}, {"id": "02", **passed, "reasonable": False, "why": "位置是装饰"}],
