@@ -1,14 +1,20 @@
 {
   "name": "sansheng-stylebook-marketplace",
   "description": "Style-consistent static image workflows for Claude Code.",
-  "owner": {"name": "叁笙 (sansheng)", "email": "sandypoli@gmail.com"},
+  "owner": {
+    "name": "叁笙 (sansheng)",
+    "email": "sandypoli@gmail.com"
+  },
   "plugins": [
     {
       "name": "sansheng-stylebook",
       "description": "Keep a consistent visual style across article and other static images.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "source": "./",
-      "author": {"name": "叁笙 (sansheng)", "email": "sandypoli@gmail.com"}
+      "author": {
+        "name": "叁笙 (sansheng)",
+        "email": "sandypoli@gmail.com"
+      }
     }
   ]
 }

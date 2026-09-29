@@ -1,10 +1,20 @@
 {
   "name": "sansheng-stylebook",
   "description": "Keep a consistent visual style across article and other static images.",
-  "version": "0.1.0",
-  "author": {"name": "叁笙 (sansheng)", "email": "sandypoli@gmail.com"},
+  "version": "0.1.1",
+  "author": {
+    "name": "叁笙 (sansheng)",
+    "email": "sandypoli@gmail.com"
+  },
   "homepage": "https://github.com/sanshengai/sansheng-stylebook",
   "repository": "https://github.com/sanshengai/sansheng-stylebook",
   "license": "MIT",
-  "keywords": ["claude-code", "claude-code-skills", "agent-skills", "image-generation", "illustration", "chinese"]
+  "keywords": [
+    "claude-code",
+    "claude-code-skills",
+    "agent-skills",
+    "image-generation",
+    "illustration",
+    "chinese"
+  ]
 }
