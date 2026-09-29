@@ -94,7 +94,9 @@ def _review_ark(plan: dict, article: Path, model: str | None, timeout: int) -> d
     text += "\n\n## 原文全文（只读）\n" + article.read_text(encoding="utf-8")
     body = json.dumps({"model": name, "input": [{"role": "user", "content": [
         {"type": "input_text", "text": text}]}], "max_output_tokens": 5000,
-        "thinking": {"type": "disabled"}}, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+        **({"reasoning": {"effort": "low"}}
+           if name.startswith("doubao-seed-") else {})},
+        ensure_ascii=False, separators=(",", ":")).encode("utf-8")
     req = urllib.request.Request(base + "/responses", body,
                                  {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}, method="POST")
     try:

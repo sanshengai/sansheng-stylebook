@@ -484,7 +484,8 @@ def test_agent_plan_reviewer_sends_image_and_checks_model(tmp_path, monkeypatch)
         assert request.full_url == reviewer.ARK_PLAN_URL + "/responses"
         body = _j.loads(request.data)
         assert body["model"] == reviewer.ARK_MODEL
-        assert body["thinking"] == {"type": "disabled"}
+        assert "thinking" not in body
+        assert body["reasoning"] == {"effort": "low"}
         assert body["input"][0]["content"][2]["image_url"].startswith("data:image/png;base64,")
         return Reply()
 
