@@ -63,6 +63,7 @@ class Verdict:
     problems: list[str] = field(default_factory=list)
     pixel: dict = field(default_factory=dict)
     review: dict = field(default_factory=dict)
+    binding: dict = field(default_factory=dict)
 
     def to_dict(self) -> dict:
         return self.__dict__
