@@ -1,0 +1,87 @@
+{
+  "code": "C02",
+  "revision": 2,
+  "name": {
+    "zh": "情绪淡彩速写",
+    "en": "Expressive Pale-Wash Sketch"
+  },
+  "family": "温暖手绘·绘本动画",
+  "fit": [
+    "讲故事",
+    "封面"
+  ],
+  "facets": {
+    "medium": "情绪淡彩速写",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "hand-drawn-styles #10",
+    "license": "MIT",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "靛蓝松弛速写线",
+    "大片白纸留白",
+    "全画一处橙色焦点"
+  ],
+  "recipe": {
+    "positive": "一张情绪叙事风格的极简淡彩速写插画,画在干净白纸上,轻盈通透、略带稚拙的手绘感,不是数字精修插画、不是写实照片、不是水彩习作、不是日系动漫。 线条(最重要):用靛蓝/藏青色钢笔画松弛速写线,线条少而肯定、清爽通透,轮廓偶尔不闭合、带轻微手抖;画头发、发髻、圆形、蓬松或环形的东西时用来回缠绕的圈状\"搜索线\"叠画,而不是一根干净闭合线;绝不密集排线、绝不交叉排线、绝不用线涂黑或堆阴影。 造型:真人比例与神态,情绪到位、有故事感;大人画得半写实而简约,小孩画得更圆润可爱;都不是Q版大头、不是写实照片、不是动漫脸;脸颊轻点一小块淡淡腮红。 细节:主体旁寥寥几笔短促抖动线,暗示情绪或动作。 构图:单一主体或场景,主体偏置一侧,另一侧留大量空白,极简。 调性:怀旧、温柔、略带心酸的家庭叙事感,画面干净轻盈。 画面只保留靛蓝钢笔线和一处鲜橙色视觉焦点，其他区域以白纸为主。",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "locked",
+    "colors": [
+      {
+        "name": "靛蓝 ink indigo",
+        "hex": "#273D63"
+      },
+      {
+        "name": "橙色焦点 orange accent",
+        "hex": "#E47B34"
+      },
+      {
+        "name": "白纸 paper white",
+        "hex": "#FAFAF6"
+      }
+    ]
+  },
+  "qa": {
+    "must_see": [
+      "靛蓝松弛速写线",
+      "大片白纸留白",
+      "全画一处橙色焦点"
+    ],
+    "must_not_see": [
+      "密集排线或多处高饱和色",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "未在基础合同上完成模型实测",
+    "date": "2026-09-29",
+    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "eb0f7c46fb2679d311dfec2ff4f4490abd66093fe0c6a33c54bc120e56514aa3",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

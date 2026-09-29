@@ -1,0 +1,72 @@
+{
+  "code": "C49",
+  "revision": 2,
+  "name": {
+    "zh": "条漫厚涂",
+    "en": "Painterly Webtoon"
+  },
+  "family": "漫画与分镜",
+  "fit": [
+    "讲故事"
+  ],
+  "facets": {
+    "medium": "条漫厚涂",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "original",
+    "license": "original",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "清晰人物线与柔和厚涂赛璐璐明暗",
+    "发光肤色与有表情的眼睛",
+    "电影感轮廓光和纵向叙事"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): Webtoon painterly style: clean character line art with soft painterly cel shading, luminous skin, glossy expressive eyes, cinematic rim light, polished modern Korean/Chinese web-comic look, vivid but soft colours.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "清晰人物线与柔和厚涂赛璐璐明暗",
+      "发光肤色与有表情的眼睛",
+      "电影感轮廓光和纵向叙事"
+    ],
+    "must_not_see": [
+      "粗糙速写或完全平涂色块",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "未在基础合同上完成模型实测",
+    "date": "2026-09-29",
+    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "16d2485813d03c7046148e79cd9fa79136ef58676cf6aaf02ac118a4e5733965",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

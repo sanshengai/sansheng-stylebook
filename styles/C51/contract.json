@@ -1,0 +1,73 @@
+{
+  "code": "C51",
+  "revision": 2,
+  "name": {
+    "zh": "Q 版可爱",
+    "en": "Cute Chibi"
+  },
+  "family": "漫画与分镜",
+  "fit": [
+    "讲故事",
+    "封面"
+  ],
+  "facets": {
+    "medium": "Q 版可爱",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "original",
+    "license": "original",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "二点五头身的大头小身",
+    "闪亮大眼与圆润造型",
+    "柔和粉彩和贴纸感"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): Chibi cute style: characters with big heads and small bodies (about 2.5 heads tall), large sparkling eyes, simple rounded shapes, thick clean outlines, soft pastel flat colours, playful expressions, sticker-friendly clean silhouettes.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "二点五头身的大头小身",
+      "闪亮大眼与圆润造型",
+      "柔和粉彩和贴纸感"
+    ],
+    "must_not_see": [
+      "真实人体比例或冷峻写实",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "未在基础合同上完成模型实测",
+    "date": "2026-09-29",
+    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "4a1219ec86227b8e5c4842260f3c856ad12ac3e00373f4426693b2b28e337ad2",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

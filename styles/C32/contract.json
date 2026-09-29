@@ -1,0 +1,151 @@
+{
+  "code": "C32",
+  "revision": 4,
+  "name": {
+    "zh": "技术简报（旧纸双语）",
+    "en": "Technical Briefing on Aged Paper"
+  },
+  "family": "讲道理·知识图解",
+  "fit": [
+    "讲道理"
+  ],
+  "facets": {
+    "medium": "做旧纸 + 技术插图",
+    "mood": [
+      "严谨",
+      "复古"
+    ],
+    "use": [
+      "PPT",
+      "信息图"
+    ],
+    "density": "细节丰富"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "改写自 baoyu-skills@1567581 baoyu-infographic intuition-machine",
+    "license": "MIT",
+    "notes": "压缩成正面描述，去掉 Do / Don't 清单；色号只留在 palette.colors"
+  },
+  "essence": [
+    "做旧奶油纸底，有细纸纹和浅折痕",
+    "青绿、暖棕、酒红的沉稳配色，深炭描边",
+    "平面或等距的技术插图",
+    "信息多但层级清楚：主图框、辅助细节框与纸面分栏；有字时再加说明框和要点框",
+    "复古蓝图感加现代的清楚"
+  ],
+  "recipe": {
+    "positive": "Technical briefing infographic on aged cream paper with a subtle texture and light creases, like a vintage technical print. Clean 2D or isometric technical illustrations with crisp dark-charcoal outlines; a muted palette of teal for the main illustrations, warm brown for secondary elements and deep maroon for headlines and emphasis. Organized, information-rich layout with a clear visual hierarchy: bounded primary illustration panels or split/triptych sections, restrained secondary orthographic or detail panels, visible aged-paper gutters and fine construction lines. For title cards and other single-scene compositions, keep the scene within a bordered primary technical panel, add one or two smaller orthographic or detail panels of that same scene, and separate all panels with visible aged-paper gutters. Put titles and subtitles in distinct bordered callout boxes. When text is requested, add neat explanatory and key-insight boxes. Vintage blueprint feeling with modern clarity. Objects and scenes are drawn as matte, flat technical illustrations with clean outlines and simple fills, never glossy or photographic.",
+    "text_style": "Headlines are dark maroon and body text near-black, set in neat labeled boxes; when both Chinese and English wording is given, pair them as bilingual callouts.",
+    "text_mode": [
+      "native",
+      "overlay"
+    ]
+  },
+  "prompt_bans": [
+    "photorealistic",
+    "neon",
+    "glossy"
+  ],
+  "palette": {
+    "recolor": "lightness_only",
+    "colors": [
+      {
+        "name": "做旧奶油 aged cream",
+        "hex": "#F5F0E6",
+        "role": "Primary background"
+      },
+      {
+        "name": "暖白 warm white",
+        "hex": "#F5F0E1",
+        "role": "Blueprint effect"
+      },
+      {
+        "name": "深酒红 dark maroon",
+        "hex": "#5D3A3A",
+        "role": "Headlines, titles"
+      },
+      {
+        "name": "近黑 near black",
+        "hex": "#1A1A1A",
+        "role": "Content text"
+      },
+      {
+        "name": "青绿 teal",
+        "hex": "#2F7373",
+        "role": "Primary illustrations"
+      },
+      {
+        "name": "暖棕 warm brown",
+        "hex": "#8B7355",
+        "role": "Secondary elements"
+      },
+      {
+        "name": "酒红 maroon",
+        "hex": "#722F37",
+        "role": "Emphasis"
+      },
+      {
+        "name": "深炭 deep charcoal",
+        "hex": "#2D2D2D",
+        "role": "Element outlines"
+      }
+    ]
+  },
+  "qa": {
+    "must_see": [
+      "aged cream paper background with subtle texture or light creases",
+      "muted teal, warm brown and maroon palette with dark charcoal outlines",
+      "clean 2D or isometric technical illustration style",
+      "a clear hierarchy of bounded technical panels or split sections, separated by visible aged-paper gutters",
+      "neat labeled explanatory or key-insight boxes when text is requested"
+    ],
+    "must_not_see": [
+      "photorealistic 3D renders or glossy surfaces",
+      "bright saturated or neon colours",
+      "stamps or watermarks in a corner",
+      "a plain white or dark background instead of aged cream paper"
+    ],
+    "when_text": [
+      "neat labeled explanatory or key-insight boxes when text is requested"
+    ]
+  },
+  "drifts": [
+    {
+      "symptom": "讲解图自动补一堆英文说明与小字，超出给定文字",
+      "fix": "text.items 写全要出现的文字；要双语就把两种语言都写进 items"
+    },
+    {
+      "symptom": "竖版标题卡退化成普通故事插画，只有外边框，没有技术分栏与有界文字框",
+      "fix": "主场景放进有界技术主框，同一场景补一两个小辅助视图，标题和副标题分别放入有界框"
+    }
+  ],
+  "evidence": {
+    "admission": "admitted",
+    "model": "Codex 内置生图（底层模型 ID 未暴露）",
+    "date": "2026-09-27",
+    "notes": "r4 默认配方、题库 v5：八题各双评，T1–T5、T7、T8 通过，T6 的早点铺不够深入巷子，矩阵 7/8 且 T3/T8 必过。T1 同词三图经维护者裁定画法稳定；第二图全图发夹侧向评审仍有分歧，脸部裁剪独立双评确认位置，原始分歧保留，不称三图全图双评通过。与 C01、C08、C58 的 T3/T6 匿名并排识别中，C32 两题均被正确认出；C01/C58 在 T6 互相混淆，不据此准入。证据见本地 C32-r4-v5-current-matrix/adjudication.json。仅 C32 准入，阶段 1 未完成。题库 v6 只重出 T2/T5：当前编译器与 Codex 内置生图生成，两题各经 Ark Agent Plan 两次独立看图及内容数量核验通过；另六题清单与提示词正文一致，沿用 v5 证据。补充裁定见本地 v6-inventory-regression-final/adjudication.json。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-25",
+      "note": "首版合同"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-25",
+      "note": "8 题矩阵 r1：静物画出釉面高光、偏写实。补一句物件与场景也是哑光扁平技术插图"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-27",
+      "note": "无字 T4 满幅肖像漏过分栏检查：锁定纸面有界主图与辅助视图，把结构层级改为常规验收，有字标签独立设为 when_text"
+    },
+    {
+      "revision": 4,
+      "date": "2026-09-27",
+      "note": "T8 标题卡默认配方漏掉技术分栏和文字框；将任务级双评通过的布局补入通用风格配方"
+    }
+  ]
+}

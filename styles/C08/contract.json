@@ -1,0 +1,98 @@
+{
+  "code": "C08",
+  "revision": 3,
+  "name": {
+    "zh": "空灵留白诗意绘本",
+    "en": "Poetic White-space Picture Book"
+  },
+  "family": "温暖手绘·绘本动画",
+  "fit": [
+    "讲故事",
+    "封面"
+  ],
+  "facets": {
+    "medium": "细线 + 淡水彩",
+    "mood": [
+      "空灵",
+      "安静",
+      "童真"
+    ],
+    "use": [
+      "绘本",
+      "封面"
+    ],
+    "density": "极简留白"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "yang0/handraw-style #254（描述已改写，去掉作者名）",
+    "license": "MIT"
+  },
+  "essence": [
+    "大面积安静留白",
+    "主体周围的安静纸面",
+    "细腻的手绘细线",
+    "淡淡的水彩晕染",
+    "童真好奇又带一点安静的忧伤"
+  ],
+  "recipe": {
+    "positive": "Poetic picture-book illustration on very pale cream paper: delicate fine hand-drawn lines, soft translucent pale watercolour washes, a gentle quiet dreamy mood. Keep every action-essential figure and object fully inside the central 58% of the canvas width, with unbroken calm paper margins on both left and right and a broad continuous empty area above. In close and medium shots the human or animal silhouettes are complete and easy to read without touching the frame edges. Show only the props required to understand the action; furniture and distant setting are a few very faint thin lines, with no collection of tabletop objects. In wide shots leave a large calm paper area and make setting details small and light. Preserve the exact subject, gesture, facial identifiers and required objects from the task.",
+    "text_style": "Any text is small, light hand-lettering resting in the empty space.",
+    "text_mode": [
+      "none",
+      "overlay"
+    ]
+  },
+  "prompt_bans": [
+    "crowded",
+    "neon",
+    "photorealistic",
+    "saturated"
+  ],
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "very large calm areas of clean empty space",
+      "delicate fine hand-drawn lines with soft pale watercolour washes",
+      "a generous calm empty area around the main subject, even in close-ups",
+      "gentle, quiet, dreamy mood"
+    ],
+    "must_not_see": [
+      "dense, busy composition filling the frame",
+      "saturated or dark heavy colours",
+      "thick outlines or cartoon cel-shading",
+      "photographic or 3D-rendered look"
+    ]
+  },
+  "drifts": [
+    {
+      "symptom": "讲解题的文字偏小偏淡",
+      "fix": "字多时用 overlay 档位，事后排字"
+    }
+  ],
+  "evidence": {
+    "admission": "admitted",
+    "model": "Codex 内置生图（底层模型 ID 未暴露）",
+    "date": "2026-09-26",
+    "notes": "现行编译器、题库 v5、Codex 内置生图八题从零重跑，T2 仅以本轮 T1 作身份参考；八题均经两次无历史上下文的独立看图通过，T3/T8 也通过。T1 当前同词三图经维护者并排裁定画法稳定；T3/T6 与 C01、C32、C58 匿名乱序并排识别，C08 两题均被认出。T7 的红色计时器是整组最醒目的饱和色点，后续讲解图仍须看图把关；配方的中央 58% 是生成指引，现行 QA 以可见安静留白判定，不声称逐像素几何合规。独立方形列表图另经两次看图通过 46 px 小图识别；当前编译器下的绘本跨页消费者回归仍待做。准入证据见本地 C08-r3-v5-current-matrix/adjudication.json；仅 C08 单样式准入，阶段 1 未完成。题库 v6 只重出 T2/T5：当前编译器与 Codex 内置生图生成，两题各经 Ark Agent Plan 两次独立看图及内容数量核验通过；另六题清单与提示词正文一致，沿用 v5 证据。补充裁定见本地 v6-inventory-regression-final/adjudication.json。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-25",
+      "note": "首版合同"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-25",
+      "note": "8 题矩阵 r1：半身、两人、动物近景三题卡在「广阔空间里的小小人物」——这是构图偏好不是画法，写成判据会让样式永远画不了近景。改为主体周围有大片安静留白"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-26",
+      "note": "通用纸面留白与非必需道具弱化配方；Codex 内置生图八题维护者初审 7/8，正式准入仍待独立复核"
+    }
+  ]
+}

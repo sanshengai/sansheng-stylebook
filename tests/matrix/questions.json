@@ -1,0 +1,249 @@
+{
+  "version": 6,
+  "note": "8 道标准测试题：每种样式入库前都跑这 8 题，能力标签只能来自这里的实测。题目内容固定，改题要升 version 并重跑受影响样式。T3 / T6 / T7 沿用 2026-09-25 同题测试的三道题。题目对样式保持中立：不指定颜色与材质（颜色锁定的样式会因此被冤枉），角色辨识特征用形状（发型、眼镜、发夹）。v2（2026-09-25）：T1/T2 去掉芥末黄、T5 去掉玻璃——一种颜色锁定的黏土样式首轮实跑时发现这两处与锁色样式冲突。v3（2026-09-25）：T2 把递杯子的动作写清楚（杯子举在两人之间、对方伸手去接）——第一轮 C32、C58、C08 都只画成她自己捧着杯子，题目没写清交接姿势，不是样式的问题。v4（2026-09-27）：T1 的“左侧”明确为人物自身左侧，并把方向纳入题目验收条目；v3 在 C32 同词三次出图与独立复核中出现观者左右混用和过度放行。T1 与依赖其身份参考的 T2 必须重跑，不能沿用旧矩阵分数。v5（2026-09-27）：T7 把原验收已有的番茄计时器视觉中心要求写进实际出图题面；旧 T7 图不能沿用。v6（2026-09-27）：T2/T5 把题面已写明、验收会检查的人数与物件数量明示给生图和独立看图；主场景数量固定，同一人物或物件在技术细节小窗里的重复视图不算新增实体；这两题旧图不能沿用。",
+  "questions": [
+    {
+      "id": "T1",
+      "zh": "半身表情",
+      "subject_zh": "一位二十多岁的年轻女子，齐耳短发、戴圆框眼镜、人物自身左侧头发（正面朝向观者时位于画面右侧）别着一枚星形发夹，穿一件粗针织毛衣，腰部以上入画，低头看手机消息，忍不住又惊又喜地笑出来，一只手半捂着嘴",
+      "subject": "A young woman in her twenties with a short chin-length bob, round glasses and a small star-shaped hair clip on her own left side (viewer right when she faces the camera), wearing a chunky knitted sweater, shown from the waist up, looking at a message on her phone and breaking into a surprised, delighted laugh, one hand half covering her mouth",
+      "camera": {
+        "shot": "waist-up",
+        "angle": "eye level"
+      },
+      "aspect": "1:1",
+      "text": {
+        "mode": "none"
+      },
+      "measures": [
+        "expression",
+        "character_consistency"
+      ],
+      "checks": {
+        "must_see": [
+          "one young woman shown from the waist up whose surprised, delighted expression reads clearly",
+          "she has a short chin-length bob, round glasses and a star-shaped hair clip on her own left side"
+        ],
+        "must_not_see": [
+          "any second person in the frame",
+          "malformed hands, extra fingers or a distorted face"
+        ]
+      }
+    },
+    {
+      "id": "T2",
+      "zh": "两人互动",
+      "subject_zh": "T1 里的同一位女子（参考图保持五官、发型、圆框眼镜与星形发夹）在办公桌旁把一杯冒热气的咖啡递给一位男同事：她把杯子举在两人之间，他伸手去接，两人对视微笑",
+      "subject": "The same young woman from the reference image, keeping her face, short bob, round glasses and star-shaped hair clip, hands a steaming cup of coffee to a male colleague beside an office desk: she holds the cup out in the space between them and his hand reaches out to take it; they make eye contact and both smile",
+      "inventory": "Exactly two distinct people in the primary action scene: the woman from the identity reference and one male colleague. Exactly one steaming cup is handed over there. If the style uses supplementary technical or detail panels, they may repeat views of those same two people and the same cup, but must not introduce a third person or a second distinct cup. No background coworker, unrelated human silhouette or unrelated human reflection.",
+      "camera": {
+        "shot": "medium shot",
+        "angle": "eye level"
+      },
+      "aspect": "4:3",
+      "text": {
+        "mode": "none"
+      },
+      "refs_from": [
+        {
+          "question": "T1",
+          "role": "identity"
+        }
+      ],
+      "measures": [
+        "character_consistency",
+        "interaction"
+      ],
+      "checks": {
+        "must_see": [
+          "two people interacting: one hands a cup to the other and they look at each other",
+          "the woman has a short chin-length bob, round glasses and a star-shaped hair clip"
+        ],
+        "must_not_see": [
+          "a third person in the frame",
+          "malformed hands, extra fingers or distorted faces"
+        ]
+      }
+    },
+    {
+      "id": "T3",
+      "zh": "老人与孩子",
+      "subject_zh": "奶奶和小孙子在厨房的木桌边一起包饺子：孙子举起一个包歪了的饺子咧嘴笑，奶奶侧身看着他微笑；桌上有面粉、擀面杖和一碗馅",
+      "subject": "A grandmother and her young grandson making dumplings together at a wooden kitchen table; the boy proudly holds up a lopsided dumpling and grins, the grandmother turns to him with a warm smile; flour, a rolling pin and a bowl of filling on the table",
+      "aspect": "1:1",
+      "text": {
+        "mode": "none"
+      },
+      "measures": [
+        "kids",
+        "age_contrast"
+      ],
+      "checks": {
+        "must_see": [
+          "an elderly woman and a young boy together at a kitchen table, clearly different in age",
+          "the boy holds up a dumpling"
+        ],
+        "must_not_see": [
+          "a third person in the frame",
+          "malformed hands, extra fingers or distorted faces"
+        ]
+      }
+    },
+    {
+      "id": "T4",
+      "zh": "动物",
+      "subject_zh": "一只柯基幼犬坐在野餐垫上，歪着头好奇地看停在自己鼻尖上的一只蝴蝶",
+      "subject": "A corgi puppy sitting on a picnic blanket, head tilted, looking cross-eyed and curious at a small butterfly that has landed on the tip of its nose",
+      "camera": {
+        "shot": "close-up"
+      },
+      "aspect": "1:1",
+      "text": {
+        "mode": "none"
+      },
+      "measures": [
+        "animals"
+      ],
+      "checks": {
+        "must_see": [
+          "one corgi puppy with a tilted head",
+          "a small butterfly on or right next to the puppy's nose"
+        ],
+        "must_not_see": [
+          "any person or human hand",
+          "extra legs, merged bodies or other malformed anatomy"
+        ]
+      }
+    },
+    {
+      "id": "T5",
+      "zh": "静物",
+      "subject_zh": "木桌上的静物：一把茶壶、两只小茶杯、一块叠好的餐巾、一只小瓶里插着一小枝干花，晨光从侧面照进来",
+      "subject": "A still life on a wooden table: a teapot, two small teacups, a folded napkin and a sprig of dried flowers in a small bottle, soft morning light from the side",
+      "inventory": "In the primary still-life scene: exactly one teapot, exactly two small teacups, exactly one folded napkin, and exactly one tiny sprig of dried flowers inside one small bottle. If the style uses supplementary technical or detail panels, they may repeat views of these same props, but must not introduce a second distinct teapot, vase, napkin or flower sprig. No loose flower sprigs on the table or napkin; no people or animals.",
+      "aspect": "1:1",
+      "text": {
+        "mode": "none"
+      },
+      "measures": [
+        "adds_people",
+        "objects"
+      ],
+      "checks": {
+        "must_see": [
+          "a teapot, two teacups and a small bottle of dried flowers arranged on a table"
+        ],
+        "must_not_see": [
+          "any person, face, hand or animal",
+          "objects that melt into each other or float without support"
+        ]
+      }
+    },
+    {
+      "id": "T6",
+      "zh": "远景",
+      "subject_zh": "雨后清晨的老城小巷：石板路湿漉漉地反着光，一只橘猫从屋檐下走过，巷子深处的早点铺冒着热气",
+      "subject": "Early morning after rain in an old-town alley: wet stone pavement reflecting soft light, a ginger cat walking under the eaves, steam rising from a small breakfast stall deeper in the alley",
+      "camera": {
+        "shot": "wide shot"
+      },
+      "aspect": "16:9",
+      "text": {
+        "mode": "none"
+      },
+      "measures": [
+        "video_frame",
+        "environment"
+      ],
+      "checks": {
+        "must_see": [
+          "a wide view down a narrow old-town alley with wet, reflective stone pavement",
+          "a small ginger cat near the eaves and steam from a stall further back"
+        ],
+        "must_not_see": [
+          "a large close-up figure dominating the frame",
+          "a perspective that bends or breaks (walls or pavement that do not line up)"
+        ]
+      }
+    },
+    {
+      "id": "T7",
+      "zh": "抽象概念",
+      "subject_zh": "一张讲解「番茄工作法」的图：专注 25 分钟 → 休息 5 分钟 → 4 轮后长休息，用一个番茄计时器作为视觉中心，表达成清楚的顺序流程",
+      "subject": "An explainer graphic of the Pomodoro Technique: focus 25 minutes, then a 5-minute break, and a long break after 4 rounds; place a large tomato-shaped kitchen timer at the visual centre and arrange the three-stage sequence clearly around it as a simple flow",
+      "aspect": "1:1",
+      "structure": "flow",
+      "density": "sparse",
+      "text": {
+        "mode": "native",
+        "items": [
+          {
+            "role": "title",
+            "text": "番茄工作法"
+          },
+          {
+            "role": "label",
+            "text": "专注25分钟"
+          },
+          {
+            "role": "label",
+            "text": "休息5分钟"
+          },
+          {
+            "role": "label",
+            "text": "4轮后长休息"
+          }
+        ]
+      },
+      "measures": [
+        "chinese_text",
+        "explainer"
+      ],
+      "checks": {
+        "must_see": [
+          "a tomato-shaped kitchen timer as the visual centre",
+          "exactly three named timed stages that read in a clear order (arrows, numbering or an obvious path)"
+        ],
+        "must_not_see": [
+          "steps whose order is ambiguous or loops back confusingly",
+          "an extra fourth process stop, even when the tomato timer has no stage label"
+        ]
+      }
+    },
+    {
+      "id": "T8",
+      "zh": "3:4 中文标题卡",
+      "subject_zh": "一张竖版标题卡：上方大标题「慢慢来，比较快」，下方小字「写给总在赶路的人」；画面里一个小人坐在树下长椅上，看一只蜗牛慢慢爬过小路",
+      "subject": "A vertical title card: a small figure sitting on a bench under a tree, watching a snail slowly cross the path; the title sits in the upper area with calm space around it",
+      "aspect": "3:4",
+      "text": {
+        "mode": "native",
+        "items": [
+          {
+            "role": "title",
+            "text": "慢慢来，比较快",
+            "position": "the upper third, large"
+          },
+          {
+            "role": "subtitle",
+            "text": "写给总在赶路的人",
+            "position": "just below the title, small"
+          }
+        ]
+      },
+      "measures": [
+        "chinese_text",
+        "cover"
+      ],
+      "checks": {
+        "must_see": [
+          "a large title in the upper part that is clearly the most prominent text",
+          "a small figure on a bench and a snail on the path"
+        ],
+        "must_not_see": [
+          "the title overlapping the figure or being cut off by the edge"
+        ]
+      }
+    }
+  ]
+}

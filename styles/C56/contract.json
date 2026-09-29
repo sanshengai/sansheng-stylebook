@@ -1,0 +1,135 @@
+{
+  "code": "C56",
+  "revision": 2,
+  "name": {
+    "zh": "光影写实动画",
+    "en": "Luminous Cinematic Anime"
+  },
+  "family": "日式动画",
+  "fit": [
+    "讲故事",
+    "封面"
+  ],
+  "facets": {
+    "medium": "日式动画背景美术",
+    "mood": [
+      "怀旧",
+      "壮阔",
+      "抒情"
+    ],
+    "use": [
+      "分镜",
+      "封面",
+      "视频"
+    ],
+    "density": "细节丰富",
+    "region": "日本"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "原创配方（R11 为补日式动画而写，公开名称不用人名与工作室名）",
+    "license": "original"
+  },
+  "essence": [
+    "通透发光的动画背景美术",
+    "壮阔天空、积云、光束与镜头光晕",
+    "湿润表面上闪烁的光",
+    "深饱和的蓝与暖金色光的对比",
+    "干净的动画人物线稿，人物常在广阔空间里"
+  ],
+  "recipe": {
+    "positive": "Luminous photoreal anime background art: breathtakingly detailed, hand-painted-looking scenery with dramatic skies full of towering cumulus clouds, sunbeams and lens flare, glittering light on wet surfaces, deep saturated blues against warm golden light, crisp clean anime character line art with small figures inside vast spaces, cinematic wide framing, emotional and nostalgic atmosphere. Objects, rooms and close-ups keep the same luminous anime rendering with clean line art, never plain photography.",
+    "text_style": "Any title is clean, elegant lettering set in the sky or open space, like a film title card.",
+    "text_mode": [
+      "none",
+      "overlay",
+      "native"
+    ]
+  },
+  "prompt_bans": [
+    "flat vector",
+    "cartoonish",
+    "neon",
+    "gritty"
+  ],
+  "palette": {
+    "recolor": "lightness_only",
+    "colors": [
+      {
+        "name": "暗部深棕 deep shadow brown",
+        "hex": "#201916"
+      },
+      {
+        "name": "暖木棕 warm wood brown",
+        "hex": "#8D6A54"
+      },
+      {
+        "name": "暖光奶白 warm light cream",
+        "hex": "#F6EBD5"
+      },
+      {
+        "name": "锈红棕 rust brown",
+        "hex": "#6E3F2C"
+      },
+      {
+        "name": "灰蓝 grey blue",
+        "hex": "#76899D"
+      },
+      {
+        "name": "暖杏光 warm apricot light",
+        "hex": "#DFB38B"
+      },
+      {
+        "name": "浅天蓝 pale sky blue",
+        "hex": "#96AFC4"
+      },
+      {
+        "name": "深石板蓝 deep slate blue",
+        "hex": "#32495C"
+      }
+    ]
+  },
+  "qa": {
+    "must_see": [
+      "luminous, highly detailed anime background art with dramatic light",
+      "expressive sky or light effects such as clouds, sunbeams, glow or glittering reflections",
+      "contrast between cool blues and warm golden or apricot light",
+      "clean anime line art on any characters"
+    ],
+    "must_not_see": [
+      "flat vector or simple cartoon rendering",
+      "dull, grey or low-contrast lighting",
+      "plain photographic look without anime line art",
+      "muddy, desaturated colours"
+    ]
+  },
+  "drifts": [
+    {
+      "symptom": "室内近景与静物失去动画感、像照片",
+      "fix": "锁定层已补一句：物件、房间与近景同样保持发光动画画法与干净线稿"
+    }
+  ],
+  "evidence": {
+    "admission": "pending",
+    "model": "gpt-image-2",
+    "date": "2026-09-25",
+    "notes": "配方以 2026-09-25 同题测试提示词为起点；A1-08 一页短文试跑用它占位（一页画风由世界观线定，产物不上线）；色板由同题测试三张实图（C56-q1/q2/q3）中位切分量化提取的前 8 个主色"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-25",
+      "note": "首版合同"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "a7fa2102283a5e0c1978e338db73cb5ac206325f081067166a0f9b9982be1795",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

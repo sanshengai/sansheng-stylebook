@@ -1,0 +1,73 @@
+{
+  "code": "C13",
+  "revision": 2,
+  "name": {
+    "zh": "柔和关系线稿",
+    "en": "Soft Relationship Line Art"
+  },
+  "family": "细线与生活",
+  "fit": [
+    "讲道理",
+    "封面"
+  ],
+  "facets": {
+    "medium": "柔和关系线稿",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "handraw-style #015（描述已重写，不含人名）",
+    "license": "MIT",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "简约流畅的人物线稿",
+    "珊瑚粉鼠尾草绿沙色少量色块",
+    "清楚的人物情绪关系"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): Soft relationship editorial line art: minimal figures drawn with clean confident lines, faces and clothing reduced to essentials, a few flat soft colour blocks (muted coral, sage, sand), focus on the emotional relationship between people, modern editorial illustration, calm and intimate.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "简约流畅的人物线稿",
+      "珊瑚粉鼠尾草绿沙色少量色块",
+      "清楚的人物情绪关系"
+    ],
+    "must_not_see": [
+      "复杂五官或厚重上色",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "未在基础合同上完成模型实测",
+    "date": "2026-09-29",
+    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "f919255f73627168cb06d72c62635a490947a9de455e27c8ec704eb231fd96af",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

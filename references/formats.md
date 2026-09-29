@@ -1,0 +1,24 @@
+# 版式 · 规格
+
+> 状态：22 个预设（`formats/formats.json`，七族）。成套出图用 `sb.py batch`，导出用 `sb.py export`，PPT 组装用 `sb.py pptx`。四格漫画可整页导出；透明表情包可逐张出图或从宫格切片，四格漫画逐格切片尚未实现。
+
+七族：单张封面、多张轮播、叙事分格、信息结构、视频帧、透明底多宫格、透明底单图。每个预设给出：比例（`ratio`）、导出像素（`export_px`）、安全区（`safe_zone`，如公众号头条会被裁成居中方形）、默认文字档位与字数上限、张数范围、规格来源。
+
+读法：清单写 `"format": "<id>"`，编译器自动取比例、构图句（`compose`，如四格漫画的 2×2 等大分格、绘本页下方三分之一留字、音频封面在 46–66 像素仍能认出轮廓）与默认文字档位；生成长边按导出尺寸定。导出时按 `export_px` 裁切缩放，带「居中方形」安全区的（公众号头条、小红书封面）另存一张方形裁切；平台要求不得放大的（音乐封面 3000×3000）源图不够时不放大、给提示。
+
+各版式要点：
+
+- **公众号文章配图** `article-illustration`：16:9，手机上看，一个焦点、大块形状；信息密度最高「均衡」。
+- **公众号封面** `wechat-cover-head`：2.35:1，关键内容放中间，另存方形；作者自用封面样式见私有 profile。
+- **公众号列表识别图** `wechat-cover-square`：1:1。当横幅的居中裁图缩到 46 px 后丢失主题时，在同一份配图计划里另列一张此格式，明确它与横幅的不同职责，并保持相同风格和角色。`wechat-cover-head` 导出的 `*-square.png` 只是安全区裁图，不能替代单独生成的列表图。批量结果看 `deliverables.json`：按 `format` 取主图 `image`，只有 `ready: true` 才可交付；`extras` 是附带裁图。
+- **小红书轮播** `xhs-carousel`：3:4，每页一个意思，版式统一；批量执行时第一页是其余页的画风参考。
+- **PPT** `ppt`：两种模式——整页图（字画在图里，`text.mode = native`），或插画 + 可编辑文字（`text.mode = overlay`、`reserve = "the left 40% of the frame"`，再 `sb.py pptx --mode illustration`）。
+- **信息图** `infographic`：3:4，上标题、中内容、下结尾一句；密度可到「密集」。
+- **四格漫画** `comic-4panel`：1:1，2×2 等大分格；`content.panels` 写四格各画什么（起承转合），同一物件跨格延续时用 `content.relations` 明写身份和状态。可运行清单见 `examples/comic/plan.json`；固定角色见 consistency.md。
+- **绘本页** `picturebook-page`：4:3，下方三分之一留给文字（overlay）。
+- **分镜首帧** `storyboard-frame`：16:9，不放字，为运镜留白。
+- **播客 / 音乐封面** `podcast-cover` / `music-cover`：1:1，一个大主体、简单背景，缩到 46 像素也认得出。
+- **表情包宫格** `sticker-grid`：先生成透明底 2×2、3×3 或 4×4 宫格并用 `sb.py export --format sticker-grid` 导出，再运行 `sb.py sticker-split <宫格.png> --grid 3 -d <新目录>`。切片入口拒绝不透明背景、空格与跨越格线的主体；输出按阅读顺序命名为 `sticker-01.png` 等独立 RGBA PNG。切片只保证几何与透明通道；角色、表情和轮廓外杂点仍要逐张看图验收。
+- **单张透明表情** `sticker-single`：同一角色每个表情编译一份清单，用同一张角色身份参考分别出图；逐张以 `sb.py export --format sticker-single` 导出 512×512 RGBA PNG，再把一组九张放入同一目录，用 `sb.py sticker-check <目录> --count 9` 检查数量、尺寸、透明背景、四边至少 10% 留白和是否只有一个主体连通块。检查只覆盖导出尺寸的像素几何；原始大图中的微小杂点会单独保留，角色一致性、表情辨识、轮廓附着晕边和整组比较仍须看图。该格式目前为可选路线，表情包场景默认仍是 `sticker-grid`／C24，未完成独立整组准入。
+
+不做：Logo、图标、壁纸、电商主图；头像并入角色库。

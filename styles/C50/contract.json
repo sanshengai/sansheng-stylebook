@@ -1,0 +1,73 @@
+{
+  "code": "C50",
+  "revision": 2,
+  "name": {
+    "zh": "电影感写实数字绘画",
+    "en": "Cinematic Realistic Digital Painting"
+  },
+  "family": "漫画与分镜",
+  "fit": [
+    "讲故事",
+    "封面"
+  ],
+  "facets": {
+    "medium": "电影感写实数字绘画",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "baoyu-skills realistic",
+    "license": "MIT",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "准确的人体比例与材质",
+    "自然灯光与丰富渐变",
+    "电影感场景和细腻表情"
+  ],
+  "recipe": {
+    "positive": "Cinematic realistic digital painting with anatomically accurate proportions, detailed environments, natural lighting, nuanced material textures, rich smooth colour gradations and subtle facial expressions. Render characters with clear contours and polished atmospheric depth.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "准确的人体比例与材质",
+      "自然灯光与丰富渐变",
+      "电影感场景和细腻表情"
+    ],
+    "must_not_see": [
+      "Q版比例或单色平涂",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "未在基础合同上完成模型实测",
+    "date": "2026-09-29",
+    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "47012f992d8a27e3ed278472211e68674f8094ec4f9b4ca3ed1aa09756264ac7",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

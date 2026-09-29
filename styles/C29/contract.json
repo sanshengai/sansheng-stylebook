@@ -1,0 +1,86 @@
+{
+  "code": "C29",
+  "revision": 2,
+  "name": {
+    "zh": "粉笔黑板",
+    "en": "Colorful Chalkboard Drawing"
+  },
+  "family": "儿童与教育",
+  "fit": [
+    "讲道理"
+  ],
+  "facets": {
+    "medium": "粉笔黑板",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "baoyu-skills chalkboard",
+    "license": "MIT",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "深色黑板底",
+    "彩色粉笔颗粒与手绘擦痕",
+    "课堂讲解式层级"
+  ],
+  "recipe": {
+    "positive": "Classic classroom chalkboard illustration on a dark matte board. Draw with visibly powdery coloured chalk strokes and small erased smudges. Use white chalk for primary outlines, restrained bright chalk accents for categories and emphasis, and a clear teacher-like visual hierarchy with ample space around each concept.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "locked",
+    "colors": [
+      {
+        "name": "黑板 chalkboard",
+        "hex": "#202B2A"
+      },
+      {
+        "name": "白粉笔 white chalk",
+        "hex": "#EEECE2"
+      },
+      {
+        "name": "彩粉笔 accent chalk",
+        "hex": "#E8B561"
+      }
+    ]
+  },
+  "qa": {
+    "must_see": [
+      "深色黑板底",
+      "彩色粉笔颗粒与手绘擦痕",
+      "课堂讲解式层级"
+    ],
+    "must_not_see": [
+      "亮白纸底或光滑矢量线",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "未在基础合同上完成模型实测",
+    "date": "2026-09-29",
+    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "9336ef3a6d3f0d01815d6a0255c4d9041ed6d82a62b3cce68c18162c861b6f61",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "code": "C58",
+  "revision": 9,
+  "name": {
+    "zh": "日系清新校园动画",
+    "en": "Fresh Japanese School Anime"
+  },
+  "family": "日式动画",
+  "fit": [
+    "讲故事"
+  ],
+  "facets": {
+    "medium": "日式电视动画",
+    "mood": [
+      "清新",
+      "温暖"
+    ],
+    "use": [
+      "四格漫画",
+      "绘本",
+      "分镜"
+    ],
+    "density": "中等",
+    "region": "日本"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "原创配方（R11 为补日式动画而写）",
+    "license": "original"
+  },
+  "essence": [
+    "细而干净的线稿",
+    "柔和粉彩光与轻微光晕",
+    "大而有神的亮眼睛",
+    "明亮通透的配色",
+    "日常校园的温暖感"
+  ],
+  "recipe": {
+    "positive": "Clean contemporary Japanese TV-anime cel illustration, designed as an intentionally simplified 2D animation frame. Every person, animal, prop and landscape has a thin continuous ink contour, broad opaque matte pastel color shapes and at most one hard-edged second-tone cel shadow. All materials, including wood, ceramic, glass, fabric, fur, foliage and stone, remain flat bounded shapes with very sparse texture marks. Rain-damp stone paving is a field of individually outlined opaque matte tiles separated by visible dark seams: moisture appears as cool blue-violet base tones and only three or four tiny isolated pale-cyan cel glints, each confined to one tile. The road center remains matte with no connected bright band or reflected sky or buildings. Maintain a sparse everyday scene with few background props and readable subject hierarchy. When a prompt explicitly calls for a small person within a landscape or title card, draw the complete seated or standing figure as a minor element occupying no more than one sixth of the canvas height; keep the environmental view and open path dominant. A small figure is never enlarged into a character portrait. Visible faces have expressive anime eyes with one small painted catchlight. Airy pastel daylight, crisp foreground contours, and a gentle controlled background bloom. For diagrams, charts and stepwise explainers, use compact outlined two-dimensional cel cutouts on a calm light ground, separated by clear space; each icon and arrow has one pastel base tone and at most one second-tone shadow. Render light as small matte graphic marks, and make sequence order clear with placement and flat outlined arrows. In environmental title cards and other wide establishing shots, stage the landscape, path and open title area first. Put the bench and complete seated figure far back in the middle ground; the figure is a tiny incidental accent no taller than the bench back and visibly smaller than a nearby tree trunk. Preserve the open path as the main foreground, with no facial close-up or large character silhouette. When a knitted garment is required, indicate cable-knit only as a few large flat ink-bounded motifs on an otherwise untextured cel-color garment; never draw repeated tiny stitches or simulated yarn fibers.",
+    "text_style": "Any title is rounded, friendly lettering in a soft colour, like an anime title card.",
+    "text_mode": [
+      "none",
+      "overlay",
+      "native"
+    ],
+    "hard_constraints": [
+      "For any wet stone road, render the road as distinct mostly matte paving shapes; reflected light is only a few small separated flat cel marks. Never draw a broad connected mirror-like reflection of sky, buildings or lamps across paving stones, nor a continuous glossy puddle band.",
+      "Wood, ceramic, glass and fabric must stay bounded ink-and-cel color planes with at most one hard-edged second-tone shadow. Avoid realistic wood grain, transparent glass refraction, airbrushed material gradients and photographic specular lighting.",
+      "When a scene explicitly calls for a small figure within an environmental view or title card, preserve that small scale and do not turn the figure into a dominant portrait.",
+      "In wide environmental scenes and title cards, the person must stay a small middle-ground accent below the horizon and far smaller than the tree and the foreground path; do not enlarge the person into a portrait even when the prompt names the person.",
+      "Knitted clothes may show only a few large graphic cable motifs over flat opaque cel planes; no fine repetitive stitches, visible individual yarn or photoreal woven surface."
+    ]
+  },
+  "prompt_bans": [
+    "photorealistic",
+    "gritty",
+    "horror"
+  ],
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "delicate thin clean line art in a contemporary TV-anime look",
+      "soft pastel lighting with a gentle bloom and soft shadows",
+      "any character shown close enough to see the face has large glossy expressive anime eyes (not applicable when no face is visible)",
+      "airy, bright colour palette"
+    ],
+    "must_not_see": [
+      "photorealistic rendering",
+      "heavy dark shadows or gritty textures",
+      "western cartoon or 3D-rendered characters",
+      "muddy or desaturated colours",
+      "animal fur and other textured materials rendered as dense individual strands, plush three-dimensional volume or soft airbrushed gradients instead of broad matte 2D cel shapes",
+      "broad connected mirror-like sky or object reflections crossing multiple paving stones, or large continuous glossy puddle highlights",
+      "realistic wood grain, refractive glass, or broad airbrushed gradients replacing bounded 2D cel color planes on objects and environments",
+      "dense repeated small stitches, visible yarn fibers or realistic woven surface texture on knitted clothing instead of sparse flat outlined cable motifs"
+    ]
+  },
+  "drifts": [
+    {
+      "symptom": "讲解类内容里擅自加一个动漫女孩当主角",
+      "fix": "清单里写明画面只有哪些对象；讲道理的内容用讲道理类样式"
+    }
+  ],
+  "evidence": {
+    "admission": "admitted",
+    "model": "Codex 内置生图（底层模型 ID 未暴露）",
+    "date": "2026-09-28",
+    "notes": "r9 合同与题库 v6 锁定八题首图；完整有效双评经 T1 左右误判直接看图裁定、T6 一份不完整复核排除并另补一次有效复核后为 8/8，T3、T7/T8 中文题通过。T2 毛衣、T5 材质、T6 路面、T8 人物与蜗牛关系有局部双评；T1 同词三图稳定。T3/T6 与 C01、C08、C25、C32、C56 匿名辨认 12/12。原图、锁定提示词、报告与哈希见维护者保留的证据记录（SHA-256 d72f8cf22ffcec182229c070e9731b3f1822814e8c1e2d6555210d31a9cb5688）。T8 观看关系较弱，仍需在正式标题卡消费路径回归；其他首发样式与跨版式盲评未完成，阶段 2 不放行。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-25",
+      "note": "首版合同"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-25",
+      "note": "8 题矩阵 r1：静物与远景滑向写实、厚涂背景画。补一句物件、房间、风景同样用动画画法；「大眼睛」一条写明只在看得到脸时检查"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-26",
+      "note": "媒介边界候选，未升正式合同"
+    },
+    {
+      "revision": 4,
+      "date": "2026-09-27",
+      "note": "通用二维平涂及动物毛发约束候选，未升正式合同"
+    },
+    {
+      "revision": 5,
+      "date": "2026-09-27",
+      "note": "概念图场景的通用二维剪影、平涂物件与流程箭头候选；未升正式合同"
+    },
+    {
+      "revision": 6,
+      "date": "2026-09-28",
+      "note": "Local trial: move flat road and material rules to final hard constraints; keep small figures small when specified."
+    },
+    {
+      "revision": 7,
+      "date": "2026-09-28",
+      "note": "本地候选：把雨后路面写成分块哑光石板与少数单块内的小高光，强化二维赛璐璐画法；未准入"
+    },
+    {
+      "revision": 8,
+      "date": "2026-09-28",
+      "note": "本地候选：显式限制标题卡小人物画面高度，T8 单题试验；未准入"
+    },
+    {
+      "revision": 9,
+      "date": "2026-09-28",
+      "note": "环境远景的小人物比例、针织平涂边界；题库 v6 八题、同词稳定及匿名跨样式辨认完成后准入。"
+    }
+  ]
+}

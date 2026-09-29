@@ -1,0 +1,68 @@
+{
+  "scene": "book",
+  "style": {
+    "code": "C08",
+    "source": "factory",
+    "why": "绘本故事出厂默认"
+  },
+  "items": [
+    {
+      "id": "p1",
+      "position": "第 1 页",
+      "shape": "story",
+      "form": "scene",
+      "what": "清晨，小狐狸站在空旷雪原边，看着远处一盏灯",
+      "subject": "At dawn a small fox stands at the edge of a vast snowy field, looking toward one tiny warm light from a lone lamppost far away. The cabin is not yet visible; the fox discovers it only on page two.",
+      "text": {
+        "mode": "overlay",
+        "reserve": "the lower third",
+        "items": [
+          {
+            "text": "清晨，雪原尽头亮着一盏灯。",
+            "box": [
+              0.1,
+              0.77,
+              0.8,
+              0.13
+            ],
+            "font_family": "serif",
+            "font_px": 60,
+            "min_px": 44,
+            "align": "center",
+            "color": "#36423D"
+          }
+        ]
+      },
+      "why": "绘本第一页交代主角与远方"
+    },
+    {
+      "id": "p2",
+      "position": "第 2 页",
+      "shape": "story",
+      "form": "scene",
+      "what": "小狐狸走到灯下，发现是一间小屋，窗里有人向它招手",
+      "subject": "The small fox arrives beneath the lamp and finds a tiny cabin, where someone in the lit window waves at it",
+      "text": {
+        "mode": "overlay",
+        "reserve": "the lower third",
+        "items": [
+          {
+            "text": "灯下是一间小屋，窗里有人向小狐狸招手。",
+            "box": [
+              0.1,
+              0.77,
+              0.8,
+              0.13
+            ],
+            "font_family": "serif",
+            "font_px": 60,
+            "min_px": 44,
+            "align": "center",
+            "color": "#36423D"
+          }
+        ]
+      },
+      "why": "绘本第二页，远方的灯变成温暖的回应"
+    }
+  ]
+}

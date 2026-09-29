@@ -1,0 +1,72 @@
+{
+  "code": "C22",
+  "revision": 2,
+  "name": {
+    "zh": "老式木偶定格",
+    "en": "Vintage Wooden Puppet Stop-Motion"
+  },
+  "family": "中国风",
+  "fit": [
+    "讲故事"
+  ],
+  "facets": {
+    "medium": "老式木偶定格",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "handraw-style #277（描述已重写，不含人名）",
+    "license": "MIT",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "手刻上色木偶质感",
+    "布料服装与微缩布景",
+    "略生硬的定格动作"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): Vintage Chinese handmade puppet stop-motion: hand-carved and painted wooden puppets with slightly awkward elongated bodies, narrow faces, thin brows and phoenix eyes, cloth costumes, handmade miniature set, warm stage lighting, old Chinese animation-studio charm.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "手刻上色木偶质感",
+      "布料服装与微缩布景",
+      "略生硬的定格动作"
+    ],
+    "must_not_see": [
+      "塑料光泽或真人摄影",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "未在基础合同上完成模型实测",
+    "date": "2026-09-29",
+    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "78deaa5480ad54b3e3daf32f4ba50687835b7b6d59d65fb75a66a4aa3a831779",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

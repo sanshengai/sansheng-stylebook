@@ -1,0 +1,73 @@
+{
+  "code": "C21",
+  "revision": 2,
+  "name": {
+    "zh": "八九十年代课本插图",
+    "en": "Retro Chinese Textbook Illustration"
+  },
+  "family": "中国风",
+  "fit": [
+    "讲故事",
+    "讲道理"
+  ],
+  "facets": {
+    "medium": "八九十年代课本插图",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "handraw-style #271（描述已重写，不含人名）",
+    "license": "MIT",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "朴素墨线与略褪色水彩",
+    "真实亲切的日常人物",
+    "旧课本印刷纸感"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): 1980s–1990s Chinese primary-school textbook illustration: simple clean ink outlines with flat, slightly faded watercolour fills, honest realistic proportions, warm everyday school and family life, printed-on-paper look with gentle offset-print texture, nostalgic and plain.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "朴素墨线与略褪色水彩",
+      "真实亲切的日常人物",
+      "旧课本印刷纸感"
+    ],
+    "must_not_see": [
+      "动漫大眼或光滑三维渲染",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "未在基础合同上完成模型实测",
+    "date": "2026-09-29",
+    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "daaac1d2fca9109f6404870679fad3cb9ac3808046450349549f57ad4ddcf40a",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

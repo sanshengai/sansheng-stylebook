@@ -1,0 +1,35 @@
+{
+  "scene": "comic4",
+  "style": {
+    "code": "C58@r9",
+    "source": "project",
+    "why": "本示例锁定已准入的四格画风修订"
+  },
+  "items": [
+    {
+      "id": "first-cake",
+      "position": "四格",
+      "shape": "story",
+      "form": "scene",
+      "what": "小雨第一次烤蛋糕：看菜谱、面粉撒出、蛋糕塌陷、她吃同一只失败的蛋糕",
+      "subject": "A four-panel slice-of-life comic about the same girl baking her first cake",
+      "panels": [
+        "She reads a recipe book with great determination.",
+        "Flour bursts everywhere as she mixes too hard.",
+        "The plain brown cake comes out of the oven visibly collapsed, with no frosting or fruit decoration.",
+        "She laughs and eats a rough slice cut from the very same visibly collapsed, undecorated plain brown cake from panel 3. No repaired or replacement cake."
+      ],
+      "relations": "Panel 3 and panel 4 show the same failed cake. It stays sunken and undecorated when she eats it; do not replace it with an intact strawberry-and-cream cake.",
+      "characters": [
+        {
+          "id": "xiaoyu",
+          "desc": "A young student with a slim build, two small round hair buns, big round glasses, a crescent-moon hair clip above her left ear, and an oversized hoodie with a front pocket."
+        }
+      ],
+      "text": {
+        "mode": "none"
+      },
+      "why": "四格讲清起承转合，同时让同一角色和蛋糕在相邻格保持连续"
+    }
+  ]
+}

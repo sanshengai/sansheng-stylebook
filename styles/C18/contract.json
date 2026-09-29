@@ -1,0 +1,87 @@
+{
+  "code": "C18",
+  "revision": 2,
+  "name": {
+    "zh": "宋画淡彩现代化",
+    "en": "Modern Song-Dynasty Light Colour"
+  },
+  "family": "中国风",
+  "fit": [
+    "封面",
+    "讲故事"
+  ],
+  "facets": {
+    "medium": "宋画淡彩现代化",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "handraw-style #191（描述已重写，不含人名）",
+    "license": "MIT",
+    "notes": "基于 2026-09-25 同题三题提示词的共同风格段整理；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "米白宣纸与充足留白",
+    "细线和青绿赭石淡彩",
+    "安静克制的古典气息"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): Modernised Song-dynasty light colour painting: rice-paper off-white ground with generous empty space, fine delicate lines, mineral blue-green and ochre light washes, classical, quiet and refined atmosphere.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "locked",
+    "colors": [
+      {
+        "name": "矿物青绿 mineral blue green",
+        "hex": "#658F83"
+      },
+      {
+        "name": "赭石 ochre",
+        "hex": "#B27C4D"
+      },
+      {
+        "name": "宣纸 rice paper",
+        "hex": "#F5F0E5"
+      }
+    ]
+  },
+  "qa": {
+    "must_see": [
+      "米白宣纸与充足留白",
+      "细线和青绿赭石淡彩",
+      "安静克制的古典气息"
+    ],
+    "must_not_see": [
+      "高饱和油画或满铺背景",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "未在基础合同上完成模型实测",
+    "date": "2026-09-29",
+    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-29",
+      "note": "从同题提示词整理基础可调用合同；准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "e53475c885dc48f7f6d4a33ecbf654cc1b88ec867338f939093d680bd5cddfca",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

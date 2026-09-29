@@ -1,0 +1,11 @@
+{
+  "style": "C32",
+  "format": "article-illustration",
+  "content": {
+    "subject": "A simple desk handoff: one person passes a short report to a colleague, who examines it before sending it from a laptop.",
+    "relations": "The report moves from the author on the left to the reviewer on the right; the reviewer examines the report in a separate step before sending it.",
+    "purpose": "Explain the order of checking, approval, and sending without adding facts."
+  },
+  "palette": {"family": "orig"},
+  "text": {"mode": "none", "items": []}
+}

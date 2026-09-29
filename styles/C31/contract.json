@@ -1,0 +1,154 @@
+{
+  "code": "C31",
+  "revision": 4,
+  "name": {
+    "zh": "手绘视觉笔记",
+    "en": "Hand-drawn Sketch Notes"
+  },
+  "family": "讲道理·知识图解",
+  "fit": [
+    "讲道理"
+  ],
+  "facets": {
+    "medium": "黑色手绘线 + 马卡龙色块",
+    "mood": [
+      "友好",
+      "清楚"
+    ],
+    "use": [
+      "信息图",
+      "小红书知识卡",
+      "公众号配图"
+    ],
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "改写自 baoyu-skills@1567581 baoyu-infographic sketch-notes",
+    "license": "MIT",
+    "notes": "压缩成正面描述；色号只留在 palette.colors，不写进提示词 C31@r4 锚点改由同题 q3 图解样例生成无具体内容的画风板，以免 q1 人物画风拉偏讲解图。"
+  },
+  "essence": [
+    "暖奶油色纸底，带细纸纹",
+    "线条、箭头、小涂鸦与文字都是黑色手绘线",
+    "信息放在圆角马卡龙浅色块里",
+    "只有一两处珊瑚红强调",
+    "清爽留白，像手绘概念图幻灯片"
+  ],
+  "recipe": {
+    "positive": "Hand-drawn educational sketch-note infographic on warm cream paper with a subtle matte paper grain. Every outline, arrow and doodle is drawn in black hand-drawn ink lines with a friendly, slightly imperfect wobble. Information sits in rounded soft pastel blocks in light blue, mint green, lavender and peach, with one coral-red accent for one or two emphasis points only. Neat, airy layout like a hand-drawn concept diagram on a presentation slide: small simple doodles, clear sections, generous empty space, easy to understand at a glance. People, animals, objects and whole scenes are drawn the same way: simple flat doodles with black hand-drawn outlines and flat pastel fills on the cream paper, never painted or shaded.",
+    "text_style": "Titles and labels are bold handwritten-style black lettering drawn by the same pen as the doodles, placed directly on the paper or inside the pastel blocks.",
+    "text_mode": [
+      "native",
+      "overlay"
+    ]
+  },
+  "prompt_bans": [
+    "photorealistic",
+    "3d render",
+    "neon",
+    "dark background"
+  ],
+  "palette": {
+    "recolor": "free",
+    "colors": [
+      {
+        "name": "暖奶油 warm cream",
+        "hex": "#F5F0E8",
+        "role": "Paper background"
+      },
+      {
+        "name": "墨黑 black",
+        "hex": "#1A1A1A",
+        "role": "ALL outlines, text, arrows, doodles"
+      },
+      {
+        "name": "浅蓝 light blue",
+        "hex": "#A8D8EA",
+        "role": "Info block fill (cool / tech)"
+      },
+      {
+        "name": "薄荷绿 mint green",
+        "hex": "#B5E5CF",
+        "role": "Info block fill (growth / positive)"
+      },
+      {
+        "name": "薰衣草紫 lavender",
+        "hex": "#D5C6E0",
+        "role": "Info block fill (concept / abstract)"
+      },
+      {
+        "name": "蜜桃 peach",
+        "hex": "#FFD5C2",
+        "role": "Info block fill (warm / human)"
+      },
+      {
+        "name": "珊瑚红 coral red",
+        "hex": "#E8655A",
+        "role": "One or two emphasis points only"
+      },
+      {
+        "name": "暖灰 warm gray",
+        "hex": "#6B6B6B",
+        "role": "Small annotations"
+      }
+    ]
+  },
+  "qa": {
+    "must_see": [
+      "warm cream paper background with a subtle paper grain",
+      "outlines, arrows and doodles are black hand-drawn ink lines with a slight wobble",
+      "information grouped in rounded soft pastel blocks",
+      "flat hand-drawn look with simple fills, no painterly rendering or 3D shading"
+    ],
+    "must_not_see": [
+      "photographic, 3D-rendered or glossy surfaces",
+      "dark or saturated background",
+      "dense, cluttered layout with small unreadable elements",
+      "text in a typed or corporate font instead of handwritten lettering"
+    ],
+    "when_text": [
+      "information grouped in rounded soft pastel blocks",
+      "text in a typed or corporate font instead of handwritten lettering"
+    ]
+  },
+  "drifts": [
+    {
+      "symptom": "人物与场景题画成普通彩色插画，手绘笔记感变弱",
+      "fix": "本样式用于讲道理；讲故事的内容换故事类样式"
+    }
+  ],
+  "evidence": {
+    "admission": "pending",
+    "model": "gpt-image-2",
+    "date": "2026-09-25",
+    "notes": "配方以 2026-09-25 同题测试提示词为起点；准入见 8 题矩阵"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-25",
+      "note": "首版合同"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-25",
+      "note": "8 题矩阵 r1：人物、动物、静物、远景四题画成水彩渲染插画，手绘笔记感丢失。补一句场景也用黑线平涂小涂鸦"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 4,
+      "date": "2026-09-29",
+      "note": "用无文字、无人物的图解画风板替换 q1 故事画面锚点；异题 T7 目视更贴近简洁平涂信息图，正式准入仍 pending"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "1d223675f1b83885e4c94dc56bf8965d2baf33c6bfb7ef5cf0395d64c202b47e",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

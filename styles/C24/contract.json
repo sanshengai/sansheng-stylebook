@@ -1,0 +1,112 @@
+{
+  "code": "C24",
+  "revision": 4,
+  "name": {
+    "zh": "黏土定格",
+    "en": "Clay Stop-motion"
+  },
+  "family": "立体材质",
+  "fit": [
+    "讲故事",
+    "讲道理"
+  ],
+  "facets": {
+    "medium": "橡皮泥定格",
+    "mood": [
+      "童趣",
+      "温暖"
+    ],
+    "use": [
+      "表情包",
+      "公众号配图",
+      "绘本"
+    ],
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "yang0/handraw-style #248（描述已改写）与 baoyu-skills@1567581 claymation",
+    "license": "MIT",
+    "notes": "压缩成正面描述；文字规格改为「字独立站在场景里、周围留空」（写作技能实测否定式挡不住底板） C24@r4 锚点改为由 q1 生成的无题材黏土材质板，以减少餐具花纹、厨房人物和布景串入。"
+  },
+  "essence": [
+    "一切物体都是橡皮泥手捏",
+    "看得见的指纹和小瑕疵",
+    "圆润的雕塑造型与柔和阴影",
+    "微缩布景的定格动画感",
+    "饱和但略哑的黏土色，中性棚拍背景"
+  ],
+  "recipe": {
+    "positive": "3D clay-figure stop-motion aesthetic: every object is made of plasticine with visible fingerprint marks and small imperfections, rounded sculpted forms, soft shadows and a miniature-set feel. Saturated but slightly muted clay colours against a neutral studio backdrop with soft gradients, complementary clay accents and gentle highlights. Every surface in the scene, including wood, stone, fabric, water and fur, is plasticine with the same fingerprinted clay texture, so the whole picture looks like a handmade miniature set.",
+    "text_style": "Titles and labels are sculpted from the same plasticine as the objects, standing free in the scene with open space around them.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "prompt_bans": [
+    "flat vector",
+    "photorealistic",
+    "line art"
+  ],
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "all objects look sculpted from plasticine with visible fingerprints or small imperfections",
+      "rounded sculpted forms with soft shadows",
+      "miniature stop-motion set feel",
+      "saturated but slightly muted clay colours"
+    ],
+    "must_not_see": [
+      "flat 2D illustration or line art",
+      "photorealistic or glossy plastic surfaces",
+      "dark, harsh lighting",
+      "all or most text items enclosed by backing plates, boxes or cards"
+    ],
+    "when_text": [
+      "all or most text items enclosed by backing plates, boxes or cards"
+    ]
+  },
+  "drifts": [
+    {
+      "symptom": "文字压在黏土底板上",
+      "fix": "文字规格写成「字独立站在场景里、周围留空」的正面描述，不写「不要底板」"
+    }
+  ],
+  "evidence": {
+    "admission": "pending",
+    "model": "gpt-image-2",
+    "date": "2026-09-25",
+    "notes": "配方以 2026-09-25 同题测试提示词为起点；准入见 8 题矩阵"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-25",
+      "note": "首版合同"
+    },
+    {
+      "revision": 2,
+      "date": "2026-09-25",
+      "note": "8 题矩阵 r1：远景与静物画成写实 3D（木纹、猫毛、湿石板、茶水都很写实）。补一句所有表面都是带指纹的橡皮泥、整体像手工微缩布景"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-29",
+      "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 4,
+      "date": "2026-09-29",
+      "note": "用无题材黏土材质板替换 q1 祖孙画面锚点；T5 器皿材质改善，但木桌仍像真木，正式准入 pending"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "2fcb93f7d0e9a601f674559992a199ddc97851d71ffbc4df140f0d7d0b159d8e",
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+  }
+}

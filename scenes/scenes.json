@@ -1,0 +1,185 @@
+{
+  "version": 1,
+  "note": "公开版出厂默认；私有 profile 的 author.json 可逐场景覆盖",
+  "scenes": [
+    {
+      "id": "xhs",
+      "zh": "小红书知识卡",
+      "job": "讲道理",
+      "formats": [
+        "xhs-carousel",
+        "xhs-cover"
+      ],
+      "preview_test": "T8",
+      "uses_structure": true,
+      "default_density": "balanced",
+      "default": "C31",
+      "alternates": [
+        "C35",
+        "C42",
+        "C16"
+      ]
+    },
+    {
+      "id": "wxillus",
+      "zh": "公众号文章配图",
+      "job": "讲道理",
+      "formats": [
+        "article-illustration"
+      ],
+      "preview_test": "T7",
+      "uses_structure": true,
+      "default_density": "balanced",
+      "default": "C24",
+      "alternates": [
+        "C31",
+        "C42",
+        "C05"
+      ]
+    },
+    {
+      "id": "wxcover",
+      "zh": "公众号封面",
+      "job": "封面",
+      "formats": [
+        "wechat-cover-head",
+        "wechat-cover-square"
+      ],
+      "preview_test": "T6",
+      "uses_structure": false,
+      "default_density": "sparse",
+      "default": "C44",
+      "alternates": [
+        "C19",
+        "C45",
+        "C17"
+      ]
+    },
+    {
+      "id": "ppt",
+      "zh": "PPT",
+      "job": "讲道理",
+      "formats": [
+        "ppt"
+      ],
+      "preview_test": "T7",
+      "uses_structure": true,
+      "default_density": "balanced",
+      "default": "C32",
+      "alternates": [
+        "C42",
+        "C34",
+        "C41",
+        "C40"
+      ]
+    },
+    {
+      "id": "info",
+      "zh": "信息图",
+      "job": "讲道理",
+      "formats": [
+        "infographic"
+      ],
+      "preview_test": "T7",
+      "uses_structure": true,
+      "default_density": "dense",
+      "default": "C31",
+      "alternates": [
+        "C34",
+        "C38",
+        "C40"
+      ]
+    },
+    {
+      "id": "comic4",
+      "zh": "四格漫画",
+      "job": "讲故事",
+      "formats": [
+        "comic-4panel"
+      ],
+      "preview_test": "T2",
+      "uses_structure": false,
+      "default_density": null,
+      "default": "C58",
+      "alternates": [
+        "C36",
+        "C11",
+        "C15",
+        "C48"
+      ]
+    },
+    {
+      "id": "book",
+      "zh": "绘本故事",
+      "job": "讲故事",
+      "formats": [
+        "picturebook-page"
+      ],
+      "preview_test": "T3",
+      "uses_structure": false,
+      "default_density": null,
+      "default": "C08",
+      "alternates": [
+        "C04",
+        "C05",
+        "C30",
+        "C03"
+      ]
+    },
+    {
+      "id": "board",
+      "zh": "视频分镜首帧",
+      "job": "讲故事",
+      "formats": [
+        "storyboard-frame"
+      ],
+      "preview_test": "T6",
+      "uses_structure": false,
+      "default_density": null,
+      "default": "C01",
+      "alternates": [
+        "C56",
+        "C50",
+        "C45",
+        "C57"
+      ]
+    },
+    {
+      "id": "audio",
+      "zh": "播客 / 音乐封面",
+      "job": "封面",
+      "formats": [
+        "podcast-cover",
+        "music-cover"
+      ],
+      "preview_test": "T4",
+      "uses_structure": false,
+      "default_density": "sparse",
+      "default": "C25",
+      "alternates": [
+        "C44",
+        "C02",
+        "C20"
+      ]
+    },
+    {
+      "id": "sticker",
+      "zh": "表情包",
+      "job": "讲故事",
+      "formats": [
+        "sticker-grid",
+        "sticker-single"
+      ],
+      "preview_test": "T1",
+      "uses_structure": false,
+      "default_density": null,
+      "default": "C24",
+      "alternates": [
+        "C51",
+        "C25",
+        "C55",
+        "C28"
+      ]
+    }
+  ]
+}

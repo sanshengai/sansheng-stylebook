@@ -1,0 +1,47 @@
+{
+  "version": 2,
+  "source": {
+    "path": "article.md",
+    "sha256": "9be5b5f8b37116372253878c3e2e3f60bfb7d51586a94a5edf543ea9b120f0a6"
+  },
+  "scene": "wxillus",
+  "format": "article-illustration",
+  "series": {"id": "report-handoff", "master_id": "02"},
+  "style": {"code": "C31", "source": "explicit", "why": "示例演示整组共用画风"},
+  "items": [
+    {
+      "id": "01",
+      "position": "「两人一起核对封面上的项目名」之后",
+      "source_quote": "两人一起核对封面上的项目名",
+      "shape": "story",
+      "form": "scene",
+      "what": "同事交接报告时核对项目名",
+      "subject": "Two colleagues hand over a report in an office and check the project name on its cover together.",
+      "why": "这段描写实际交接动作，用人物场景让读者看到谁在做什么"
+    },
+    {
+      "id": "02",
+      "position": "「未经确认，只保留草稿，不发送」之后",
+      "source_quote": "仅在负责人确认后发送正式版；未经确认，只保留草稿，不发送",
+      "shape": "steps",
+      "form": "structure",
+      "structure": "flow",
+      "points": ["核对项目名和日期", "仅在负责人确认后发送正式版", "未经确认只保留草稿、不发送"],
+      "what": "核对、确认与发送的条件流程",
+      "subject": "A three-stage workflow for checking a report, obtaining the owner's approval, and sending the final version only after approval.",
+      "why": "这里有先后步骤和发送条件，流程图能保留未确认时不得发送的分支"
+    },
+    {
+      "id": "03",
+      "position": "「两种方案用同一份事实材料」之后",
+      "source_quote": "方案甲适合手机阅读，正文短、字号大；方案乙适合投影讲解，画面宽、每页只讲一个判断",
+      "shape": "options",
+      "form": "structure",
+      "structure": "compare",
+      "points": ["方案甲：手机阅读，正文短、字号大", "方案乙：投影讲解，画面宽、每页一个判断"],
+      "what": "手机与投影两种呈现方案",
+      "subject": "Compare a mobile reading version with short text and large type against a wide projection version with one key judgment per slide; both share the same facts.",
+      "why": "这段并列比较两种可选呈现方案，左右对比能保留媒介和版式差别"
+    }
+  ]
+}
