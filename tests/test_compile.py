@@ -50,6 +50,16 @@ def test_deterministic():
     assert a.prompt == b.prompt and a.manifest_hash == b.manifest_hash
 
 
+def test_direct_manifest_rejects_title_too_long_for_square_thumbnail():
+    m = copy.deepcopy(M)
+    m["format"] = "wechat-cover-square"
+    m["text"]["items"] = [{"role": "title", "text": "Jev：要决策，不要文本"}]
+    with pytest.raises(CP.CompileError, match="超过.*上限 8 字"):
+        c(m)
+    m["text"]["items"] = [{"role": "title", "text": "Jev 秒选"}]
+    assert "Jev 秒选" in c(m).prompt
+
+
 def test_fixed_order():
     p = c().prompt
     marks = ["Visual style (follow exactly):", "Subject:", "Spatial relationships:", "Camera:", "Lighting:",
@@ -236,6 +246,7 @@ def test_opaque_background_is_compiled_except_for_transparent_format():
     m = copy.deepcopy(M)
     m.pop("format")  # 矩阵题等没有显式格式时也按普通整图处理
     assert "background fully opaque across the whole canvas" in c(m).prompt
+    m["text"]["items"] = [{"role": "title", "text": "番茄法"}]
     m["format"] = "sticker-grid"
     assert "background fully opaque across the whole canvas" not in c(m).prompt
     m["format"] = "sticker-single"
