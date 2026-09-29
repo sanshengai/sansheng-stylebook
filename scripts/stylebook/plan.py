@@ -325,7 +325,7 @@ def manifests(plan: dict, model: str = "gpt-image-2") -> list[dict]:
         m: dict = {"style": it.get("style") if it.get("manual") and it.get("style") else style["code"], "model": model,
                    "format": it.get("format") or plan.get("format") or D.scenes()[plan["scene"]]["formats"][0],
                    "content": {"subject": it["subject"]}, "_id": it["id"]}
-        if plan.get("version") == 2:
+        if plan.get("version") in (2, 3):
             m["source"] = {"sha256": plan["source"]["sha256"], "quote": it["source_quote"]}
         for k in ("inventory", "relations", "camera", "background", "mood", "purpose", "characters", "panels"):
             if it.get(k):
