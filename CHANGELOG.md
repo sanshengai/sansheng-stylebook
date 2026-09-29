@@ -4,6 +4,8 @@
 
 ## [未发布]
 
+## [0.1.1] -- 2026-09-30
+
 ### Fixed
 
 - 修复公开文件校验清单在发布时与版本说明不一致；现在可用 `python3 scripts/public_export.py --check-manifest` 核验安装包。
