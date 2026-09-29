@@ -112,11 +112,77 @@ def export(destination: Path) -> dict:
     return receipt
 
 
+def check_manifest(root: Path = ROOT) -> dict:
+    """Check that the published file receipt matches the actual package."""
+    manifest = root / "PUBLIC_EXPORT_MANIFEST.json"
+    if not manifest.is_file():
+        raise ExportError("公开包缺少 PUBLIC_EXPORT_MANIFEST.json")
+    try:
+        receipt = json.loads(manifest.read_text(encoding="utf-8"))
+    except (ValueError, UnicodeError) as exc:
+        raise ExportError("公开清单不是有效 JSON") from exc
+    files = receipt.get("files")
+    if receipt.get("schema_version") != 1 or not isinstance(files, dict) or \
+            receipt.get("file_count") != len(files) or not files:
+        raise ExportError("公开清单的版本或文件数不匹配")
+    if any(Path(name).is_absolute() or ".." in Path(name).parts for name in files):
+        raise ExportError("公开清单含无效路径")
+    actual = {p.relative_to(root).as_posix() for p in root.rglob("*")
+              if p.is_file() and ".git" not in p.parts and
+              "__pycache__" not in p.parts and ".pytest_cache" not in p.parts}
+    actual.discard("PUBLIC_EXPORT_MANIFEST.json")
+    # A local installation can contain generated output; the receipt only
+    # promises that each exported file still has its published contents.
+    missing = set(files) - actual
+    changed = [name for name, digest in files.items()
+               if name in actual and hashlib.sha256((root / name).read_bytes()).hexdigest() != digest]
+    if missing or changed:
+        raise ExportError(f"公开清单与文件不符：缺失 {sorted(missing)}；变化 {sorted(changed)}")
+    return receipt
+
+
+def refresh_manifest(root: Path = ROOT) -> dict:
+    """Refresh only hashes already listed by a vetted public export."""
+    receipt = check_manifest_structure(root)
+    receipt["files"] = {name: hashlib.sha256((root / name).read_bytes()).hexdigest()
+                        for name in receipt["files"]}
+    (root / "PUBLIC_EXPORT_MANIFEST.json").write_text(
+        json.dumps(receipt, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return check_manifest(root)
+
+
+def check_manifest_structure(root: Path) -> dict:
+    manifest = root / "PUBLIC_EXPORT_MANIFEST.json"
+    if not manifest.is_file():
+        raise ExportError("公开包缺少 PUBLIC_EXPORT_MANIFEST.json")
+    receipt = json.loads(manifest.read_text(encoding="utf-8"))
+    files = receipt.get("files")
+    if receipt.get("schema_version") != 1 or not isinstance(files, dict) or \
+            receipt.get("file_count") != len(files) or not files:
+        raise ExportError("公开清单的版本或文件数不匹配")
+    for name in files:
+        if Path(name).is_absolute() or ".." in Path(name).parts or not (root / name).is_file():
+            raise ExportError(f"公开清单含无效路径：{name}")
+    return receipt
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("-o", "--output", type=Path, required=True)
+    parser.add_argument("-o", "--output", type=Path)
+    parser.add_argument("--check-manifest", action="store_true")
+    parser.add_argument("--refresh-manifest", action="store_true")
     args = parser.parse_args()
+    if sum(bool(x) for x in (args.output, args.check_manifest, args.refresh_manifest)) != 1:
+        parser.error("请选择 --output、--check-manifest 或 --refresh-manifest 其中一项")
     try:
+        if args.check_manifest:
+            receipt = check_manifest()
+            print(f"公开清单有效：{receipt['file_count']} 个文件")
+            return 0
+        if args.refresh_manifest:
+            receipt = refresh_manifest()
+            print(f"公开清单已更新：{receipt['file_count']} 个文件")
+            return 0
         receipt = export(args.output.resolve())
     except (ExportError, subprocess.CalledProcessError) as exc:
         parser.exit(1, f"公开导出失败：{exc}\n")
