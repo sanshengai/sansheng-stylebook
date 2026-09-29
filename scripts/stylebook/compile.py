@@ -170,7 +170,20 @@ def _text_section(manifest: dict, fmt: dict | None, family: str, text_style: str
         return prompt
     if mode == "overlay":
         where = t.get("reserve", reserve_default)
-        return f"Leave clean, uncluttered empty space at {where} for text that will be added later; no text, letters or captions anywhere in the image."
+        prompt = f"Leave clean, uncluttered empty space at {where} for text that will be added later; no text, letters or captions anywhere in the image."
+        if t.get("items"):
+            from .overlay import validate
+            problems = validate(t)
+            if problems:
+                raise CompileError("overlay 文字清单不合格：" + "；".join(problems))
+            boxes = [item["box"] for item in t["items"] if item.get("require_blank", False)]
+            if boxes:
+                prompt += (" Exact final text rectangles, normalized [x,y,width,height]: "
+                           + json.dumps(boxes, separators=(",", ":"))
+                           + ". Keep every rectangle free of outlines, arrows, icons, letters and dark marks;"
+                           " a uniform material-matched background is allowed. These coordinates come from the"
+                           " actual final lettering specification; place all non-text objects outside them.")
+        return prompt
     return "No text, letters or captions anywhere in the image."
 
 
