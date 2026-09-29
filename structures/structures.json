@@ -21,6 +21,16 @@
       "example_image": "xhs-images-layouts-flow"
     },
     {
+      "id": "decision-tree",
+      "zh": "条件分支图",
+      "family": "顺序",
+      "en": "a conditional decision tree with a clearly labeled question, separate yes and no branches, and the action or stop outcome of each branch; do not turn it into a linear sequence",
+      "signals": [
+        "先判断条件再分支行动",
+        "适用或不适用、是或否"
+      ]
+    },
+    {
       "id": "timeline",
       "zh": "横向时间线",
       "family": "顺序",

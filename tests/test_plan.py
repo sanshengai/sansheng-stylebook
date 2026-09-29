@@ -90,6 +90,20 @@ def test_three_real_flows_warn_without_blocking():
     assert any("连续第 3 张" in warning for warning in warnings)
 
 
+def test_conditional_decision_uses_branch_layout_instead_of_linear_steps():
+    p = plan([item(1, shape="decision", structure="decision-tree", points=3,
+                   what="先判断电视是否支持 ADB，再分别继续或停止",
+                   subject="a conditional ADB applicability decision tree",
+                   why="原文是先判断适用性，再按是与否分支行动，线性流程会误导读者")])
+    p["items"][0]["points"] = ["能打开开发者选项？", "是：继续核对连接方式", "否：停止，不能按本教程操作"]
+    assert PL.check(p)[0] == []
+    manifest = PL.manifests(p)[0]
+    assert manifest["structure"] == "decision-tree"
+    assert "yes and no branches" in CP.compile_manifest(manifest).prompt
+    p["items"][0]["structure"] = "flow"
+    assert any("条件判断" in error and "decision-tree" in error for error in PL.check(p)[0])
+
+
 def test_version_two_plan_binds_scene_steps_and_comparison_to_source(tmp_path):
     article = tmp_path / "article.md"
     article.write_text("小杨在雨中走到车站。\n仅在用户授权后上传；未授权时不上传。\n方案甲适合手机，方案乙适合大屏。", encoding="utf-8")
@@ -108,6 +122,26 @@ def test_version_two_plan_binds_scene_steps_and_comparison_to_source(tmp_path):
     p["items"][2]["source_quote"] = "方案甲适合手机，方案乙适合大屏"
     article.write_text(article.read_text() + "\n新段落", encoding="utf-8")
     assert any("sha256" in error for error in PL.check(p, base_path=tmp_path)[0])
+
+
+def test_version_three_article_requires_reviewable_core_coverage(tmp_path):
+    article = tmp_path / "article.md"
+    article.write_text("先看设备是否支持。界面截图只显示填写字段。服务器路径还差一级。", encoding="utf-8")
+    entry = item(1, source_quote="服务器路径还差一级")
+    p = plan([entry], version=3, source={"path": "article.md", "sha256": hashlib.sha256(article.read_bytes()).hexdigest()})
+    assert any("coverage" in error for error in PL.check(p, base_path=tmp_path)[0])
+    p["coverage"] = [
+        {"claim": "设备支持判断", "source_quote": "先看设备是否支持", "decision": "text_sufficient",
+         "image_ids": [], "why": "原文一句话已清楚说明检查动作，额外画图没有阅读增益"},
+        {"claim": "服务器路径层级", "source_quote": "服务器路径还差一级", "decision": "image",
+         "image_ids": ["01"], "why": "截图只显示字段值，层级关系需要新图说明"},
+    ]
+    assert PL.check(p, base_path=tmp_path)[0] == []
+    p["coverage"][1]["image_ids"] = ["99"]
+    assert any("不存在的图片 id" in error for error in PL.check(p, base_path=tmp_path)[0])
+    p["coverage"][1]["image_ids"] = ["01"]
+    p["coverage"][1]["source_quote"] = "原文里没有的结论"
+    assert any("coverage[2] source_quote 在原文中找不到" in error for error in PL.check(p, base_path=tmp_path)[0])
 
 
 def test_unknown_plan_version_and_missing_source_fail_closed(tmp_path):
@@ -204,10 +238,13 @@ def test_plan_review_summary_and_prompt(tmp_path):
     p = plan([item(1), item(2, shape="story", form="scene")])
     text = PR.prompt(p, tmp_path / "a.md")
     assert "no_literal_metaphor_or_real_face" in text and "fidelity_ok" in text and "reader_value_ok" in text
-    assert "可选的补图建议放 notes" in text
+    assert "只属可选美化的建议放 notes" in text
     assert "番茄钟三步" in text and '"subject"' in text and '"text"' in text and str(tmp_path / "a.md") in text
     assert '"source_quote"' in text and '"inventory"' in text and '"relations"' in text
     assert "画面必需的题材线索不能被换成无关物件" in text
+    assert "核心论点、关键机制、结论／行动建议和最具体操作" in text
+    assert "现有表格／截图／清单为什么仍不足" in text
+    assert "不要直接采信 text_sufficient 或 existing_visual" in text
     passed = {key: True for key in ("reasonable", "position_ok", "shape_ok", "form_ok", "basis_ok",
                                  "no_literal_metaphor_or_real_face", "fidelity_ok", "reader_value_ok")}
     r1 = {"items": [{"id": "01", **passed, "why": ""}, {"id": "02", **passed, "reasonable": False, "why": "位置是装饰"}],
@@ -217,6 +254,17 @@ def test_plan_review_summary_and_prompt(tmp_path):
     assert (s["total"], s["reasonable"], s["rate"]) == (3, 2, 0.667)
     assert (s["required_missed"], s["effective_rate"], s["qualified"]) == (1, 0.5, False)
     assert s["failed"] == [{"article": "A", "id": "02", "why": "位置是装饰"}] and s["missed"] == {"A": ["§3"], "B": []}
+
+
+def test_plan_review_counts_unillustrated_core_mechanism_as_missed():
+    from stylebook.qa import plan_review as PR
+    passed = {key: True for key in ("reasonable", "position_ok", "shape_ok", "form_ok", "basis_ok",
+                                 "no_literal_metaphor_or_real_face", "fidelity_ok", "reader_value_ok")}
+    result = {"items": [{"id": "01", **passed, "why": "协议桥接图有效"}],
+              "missed_positions": ["原文说明 QQ 邮箱的日历主页路径差一级；现有截图只显示字段值，缺少路径层级关系图"]}
+    summary = PR.summarize([("教程", result)])
+    assert summary["reasonable"] == 1 and summary["required_missed"] == 1
+    assert summary["effective_rate"] == 0.5 and not summary["qualified"]
 
 
 def test_plan_review_rejects_positive_overall_with_false_or_missing_content_gate():

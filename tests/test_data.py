@@ -8,7 +8,7 @@ from stylebook import data as D  # noqa: E402
 
 
 def test_counts():
-    assert len(D.structures()) == 23
+    assert len(D.structures()) == 24
     assert len(D.palettes()["palettes"]) == 12
     assert len(D.scenes()) == 10
     fams = {f["family"] for f in D.formats().values()}
