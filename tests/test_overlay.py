@@ -85,6 +85,23 @@ def test_overlay_rejects_missing_position_and_illegible_text():
         render(Image.new("RGB", (1242, 1656)), tiny)
 
 
+def test_opt_in_blank_area_rejects_object_under_exact_text(monkeypatch):
+    from PIL import ImageDraw
+    item = {"text": "必要信息", "box": [0.1, 0.1, 0.8, 0.3],
+            "font_px": 25, "min_px": 25, "require_blank": True}
+    config = {"mode": "overlay", "items": [item]}
+    clean = Image.new("RGB", (400, 200), "#f5ded0")
+    assert render(clean, config)
+    obstructed = clean.copy()
+    ImageDraw.Draw(obstructed).rectangle((140, 30, 260, 65), fill="#292d2e")
+    with pytest.raises(ValueError, match="预留文字区有深色物件"):
+        render(obstructed, config)
+    item["require_blank"] = False
+    assert render(obstructed, config)  # 变异：移除闸门会让物件上的排字通过
+    item["require_blank"] = "yes"
+    assert any("require_blank 必须是布尔值" in p for p in validate(config))
+
+
 def test_overlay_rejects_overlapping_boxes():
     bad = spec()
     bad["items"][1]["box"] = [0.5, 0.1, 0.4, 0.08]
@@ -222,6 +239,15 @@ def test_overlay_rejects_unknown_font_family():
     s = spec()
     s["items"][0]["font_family"] = "missing"
     assert "font_family 只能" in "；".join(validate(s))
+
+
+def test_hand_font_is_explicit_and_never_silently_replaced(monkeypatch):
+    s = {"items": [{"text": "手写账本", "box": [0.1, 0.1, 0.8, 0.3],
+                    "font_px": 64, "min_px": 60, "font_family": "hand"}]}
+    assert validate(s) == []
+    monkeypatch.setitem(OL.FONT_CANDIDATES["hand"], "regular", [])
+    with pytest.raises(ValueError, match="请安装 Hannotate SC"):
+        render(Image.new("RGB", (900, 300), "#fffaf0"), s)
 
 
 def test_overlay_serif_font_missing_fails_explicitly(monkeypatch):

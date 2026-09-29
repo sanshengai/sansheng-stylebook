@@ -10,6 +10,9 @@ from PIL import Image, ImageChops, ImageColor, ImageDraw, ImageFilter, ImageFont
 from .textspec import overlay_items, validate_hybrid
 
 
+_MAC_HAND_FONTS = sorted(Path("/System/Library/AssetsV2/com_apple_MobileAsset_Font8")
+                         .glob("*.asset/AssetData/Hannotate.ttc"))
+
 FONT_CANDIDATES = {
     "sans": {
         "regular": [
@@ -36,6 +39,12 @@ FONT_CANDIDATES = {
             (Path("/usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc"), 2),
         ],
     },
+    "hand": {
+        "regular": [(Path.home() / "Library/Fonts/Hannotate.ttc", 0),
+                    *[(path, 0) for path in _MAC_HAND_FONTS]],
+        "bold": [(Path.home() / "Library/Fonts/Hannotate.ttc", 2),
+                 *[(path, 2) for path in _MAC_HAND_FONTS]],
+    },
 }
 
 
@@ -43,7 +52,8 @@ def _font(weight: str, size: int, family: str = "sans") -> ImageFont.FreeTypeFon
     for path, index in FONT_CANDIDATES[family][weight]:
         if path.is_file():
             return ImageFont.truetype(str(path), size, index=index)
-    raise ValueError(f"找不到可用的中文 {family}/{weight} 字体；请安装对应 Noto CJK 字体")
+    hint = "请安装 Hannotate SC 手写字体" if family == "hand" else "请安装对应中文字体"
+    raise ValueError(f"找不到可用的中文 {family}/{weight} 字体；{hint}")
 
 
 def validate(spec: dict) -> list[str]:
@@ -75,7 +85,7 @@ def validate(spec: dict) -> list[str]:
         boxes.append((x, y, x + w, y + h))
         box_items.append(item)
         if item.get("font_family", "sans") not in FONT_CANDIDATES:
-            problems.append(f"{tag} font_family 只能是 sans 或 serif")
+            problems.append(f"{tag} font_family 只能是 sans、serif 或 hand")
         if item.get("weight", "regular") not in FONT_CANDIDATES["sans"]:
             problems.append(f"{tag} weight 只能是 regular 或 bold")
         if item.get("align", "left") not in ("left", "center", "right"):
@@ -100,6 +110,8 @@ def validate(spec: dict) -> list[str]:
                     problems.append(f"{tag} pill radius_px 必须是非负整数")
         if item.get("valign", "top") not in ("top", "center"):
             problems.append(f"{tag} valign 只能是 top 或 center")
+        if "require_blank" in item and type(item["require_blank"]) is not bool:
+            problems.append(f"{tag} require_blank 必须是布尔值")
         if "spans" in item:
             spans = item["spans"]
             if (not isinstance(spans, list) or not spans or not isinstance(item.get("text"), str)
@@ -235,6 +247,23 @@ def _draw_overlay_item(out: Image.Image, draw: ImageDraw.ImageDraw, item: dict, 
             draw.text(xy, line, font=font, fill=color, anchor="lt")
 
 
+def _check_reserved_blank(image: Image.Image, item: dict, n: int) -> None:
+    """只对明确要求浅色干净底板的文字盒做保守碰撞预检。"""
+    if not item.get("require_blank"):
+        return
+    x, y, w, h = item["box"]
+    box = (round(x * image.width), round(y * image.height),
+           round((x + w) * image.width), round((y + h) * image.height))
+    sample = image.crop(box).convert("RGB")
+    sample.thumbnail((160, 160), Image.Resampling.BOX)
+    pixels = list(sample.get_flattened_data())
+    if not pixels:
+        raise ValueError(f"overlay 第 {n} 条留白区域为空")
+    dark_ratio = sum(1 for r, g, b in pixels if 0.2126*r + 0.7152*g + 0.0722*b < 170) / len(pixels)
+    if dark_ratio > 0.02:
+        raise ValueError(f"overlay 第 {n} 条预留文字区有深色物件或线条（占比 {dark_ratio:.1%}）；请先修底图或改文字位置")
+
+
 def render(image: Image.Image, spec: dict, asset_root: Path | None = None) -> Image.Image:
     """排字后返回新图；ghost 位于透明物件与标题下，其他文字仍压在物件上。"""
     problems = validate(spec)
@@ -242,6 +271,8 @@ def render(image: Image.Image, spec: dict, asset_root: Path | None = None) -> Im
         raise ValueError("；".join(problems))
     out = image.copy()
     items = list(enumerate(overlay_items(spec), 1))
+    for n, item in items:
+        _check_reserved_blank(out, item, n)
     def is_ghost(item: dict) -> bool:
         return item.get("role") == "ghost" and item.get("layer") == "behind_title"
 

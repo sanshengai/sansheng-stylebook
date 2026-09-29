@@ -56,6 +56,8 @@ python3 scripts/sb.py qa-contrast 问题图.png 候选图.png --defect-file 禁�
 
 ## 返修
 
+`overlay` / `hybrid` 的底图可能要求「无字、留白」，最终成图则应有准确文字。若 `content.relations` 写了只适用于底图的指令，在清单另写 `content.final_relations` 描述成图的实际空间关系；生图仍用 `relations`，成品质检用 `final_relations`，而 `subject`、全部 `points` 和逐字文字要求照常检查。`final_relations` 不得省略必要事实或拿来豁免内容错误。
+
 按 `problems` 逐条改清单（改内容描述、加硬约束、换参考图），**只重出这一张**；同一张最多重试 2 次，仍不合格就把图与原因交给用户，不无限重抽。
 
 ## 已知局限

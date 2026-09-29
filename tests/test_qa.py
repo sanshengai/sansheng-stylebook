@@ -59,6 +59,17 @@ def test_compare_text():
     assert any("NotebookLM" in p for p in compare_text(["NotebookLM 读长资料"], ["NotebookLM 读长资料", "NotebookLM"]))
 
 
+def test_final_relations_override_raw_overlay_instructions_without_dropping_points():
+    content = {"subject": "两种账本", "relations": "底部留白，禁止文字",
+               "final_relations": "左右两栏对比，底部有总结文字",
+               "points": ["乘客不拥有车辆"]}
+    actual = content_expectations(content)
+    assert "左右两栏对比" in actual["_content_expectation"]
+    assert "底部留白" not in actual["_content_expectation"]
+    assert actual["_content_point_expectations"] == ["乘客不拥有车辆"]
+    assert "底部留白" in content["relations"]  # 生图阶段仍使用原指令
+
+
 def test_panel_content_gate_requires_each_panel_and_rejects_false_or_missing(tmp_path):
     assert content_expectations({}) == {}
     content = {"subject": "A sauce travels", "panels": ["Fujian jars", "Malacca harbour", "European cooks", "tomato ketchup"]}
