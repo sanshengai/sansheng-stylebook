@@ -64,8 +64,8 @@ def export(image: Path, fmt_id: str, out: Path, anchor: tuple[float, float] = (0
     if (crop.width < tw or crop.height < th) and no_upscale:
         k = min(crop.width / tw, crop.height / th)
         tw, th = int(tw * k), int(th * k)
-        res.warnings.append(f"源图只够 {tw}×{th}，平台要求 {fmt['export_px'][0]}×{fmt['export_px'][1]} 且不得放大；"
-                            "按源图尺寸导出，需要的话用专门的放大工具处理后再上传")
+        res.warnings.append(f"源图只够 {tw}×{th}，低于本格式配置目标 {fmt['export_px'][0]}×{fmt['export_px'][1]}；"
+                            "该格式不得放大，已保留源图尺寸。请按实际上传平台的当前要求核对；配置目标不等于平台最低尺寸")
     elif crop.width < tw or crop.height < th:
         res.warnings.append(f"源图裁切后 {crop.width}×{crop.height}，放大到 {tw}×{th}")
     final = crop.resize((tw, th), Image.LANCZOS)

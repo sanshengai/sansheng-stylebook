@@ -17,7 +17,7 @@
 - **四格漫画** `comic-4panel`：1:1，2×2 等大分格；`content.panels` 写四格各画什么（起承转合），同一物件跨格延续时用 `content.relations` 明写身份和状态。可运行清单见 `examples/comic/plan.json`；固定角色见 consistency.md。
 - **绘本页** `picturebook-page`：4:3，下方三分之一留给文字（overlay）。
 - **分镜首帧** `storyboard-frame`：16:9，不放字，为运镜留白。
-- **播客 / 音乐封面** `podcast-cover` / `music-cover`：1:1，一个大主体、简单背景，缩到 46 像素也认得出。
+- **播客 / 音乐封面** `podcast-cover` / `music-cover`：1:1，一个大主体、简单背景，缩到 46 像素也认得出。 音乐封面的 3000×3000 是本格式导出目标；源图不足时不放大。Spotify 官方音乐封面规范为 640–10000 像素、无损、sRGB/24-bit、1:1，且禁止放大，不能把目标尺寸误说成其最低要求；其他平台分别核对。[官方规范](https://support.spotify.com/us/artists/article/cover-art-requirements)（核对于 2026-09-30）。
 - **表情包宫格** `sticker-grid`：先生成透明底 2×2、3×3 或 4×4 宫格并用 `sb.py export --format sticker-grid` 导出，再运行 `sb.py sticker-split <宫格.png> --grid 3 -d <新目录>`。切片入口拒绝不透明背景、空格与跨越格线的主体；输出按阅读顺序命名为 `sticker-01.png` 等独立 RGBA PNG。切片只保证几何与透明通道；角色、表情和轮廓外杂点仍要逐张看图验收。
 - **单张透明表情** `sticker-single`：同一角色每个表情编译一份清单，用同一张角色身份参考分别出图；逐张以 `sb.py export --format sticker-single` 导出 512×512 RGBA PNG，再把一组九张放入同一目录，用 `sb.py sticker-check <目录> --count 9` 检查数量、尺寸、透明背景、四边至少 10% 留白和是否只有一个主体连通块。检查只覆盖导出尺寸的像素几何；原始大图中的微小杂点会单独保留，角色一致性、表情辨识、轮廓附着晕边和整组比较仍须看图。该格式目前为可选路线，表情包场景默认仍是 `sticker-grid`／C24，未完成独立整组准入。
 
