@@ -115,22 +115,22 @@ def _palette_compatible(style: dict, palette: dict) -> None:
 
 
 def normalize(raw: dict | str, *, scene: str | None = None, item_ids: set[str] | None = None) -> dict:
-    """归一化 v1 JSON 或旧 sb1。未知版本、修订、字段和颜色冲突均拒绝。"""
+    """归一化 v1 JSON、sb1 或 sb2。未知版本、修订、字段和颜色冲突均拒绝。"""
     if isinstance(raw, str):
         legacy = SC.parse(raw)
         problems = SC.validate(legacy)
         if problems:
             raise SelectionError("；".join(problems))
         code, _, rev = legacy.style.partition("@r")
-        raw = {"version": VERSION, "scene": scene,
+        raw = {"version": VERSION, "scene": legacy.scene or scene,
                "style": {"code": code, **({"revision": int(rev)} if rev else {}), "source": "explicit"},
-               "palette": {"family": legacy.palette, "light": legacy.light, "sat": legacy.sat, "source": "explicit"},
+               "palette": {"family": legacy.palette, "light": legacy.light, "sat": legacy.sat, **({"custom": list(legacy.custom)} if legacy.custom else {}), "source": "explicit"},
                "expression": {"form": "structure" if legacy.structure and legacy.structure != "auto" else "auto",
                               "structure": legacy.structure or "auto", "density": legacy.density or "auto", "source": "explicit"}}
-        if legacy.palette == "brand":
+        if legacy.palette == "brand" and not legacy.custom:
             raise SelectionError("旧 sb1 品牌色缺具体 HEX，请改用 selection JSON")
     if not isinstance(raw, dict):
-        raise SelectionError("selection 必须是对象或 sb1 风格码")
+        raise SelectionError("selection 必须是对象或 sb1/sb2 风格码")
     _keys(raw, {"version", "scene", "series_id", "style", "palette", "expression", "items"}, "selection")
     if raw.get("version") != VERSION:
         raise SelectionError(f"不支持的 selection 版本：{raw.get('version')!r}")

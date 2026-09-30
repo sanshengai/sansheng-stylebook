@@ -43,3 +43,28 @@ def test_find_in_sentence():
 def test_validate_against_data():
     assert SC.validate(SC.parse("sb1:C31-flow-balanced-macaron.L1S0")) == []
     assert SC.validate(SC.parse("sb1:C99-nosuch-auto-plaid")) != []
+
+
+@pytest.mark.parametrize("code", ["sb2:wxcover/C44", "sb2:xhs/C35-earth",
+    "sb2:ppt/C32@r3-morandi.L1S-1", "sb2:info/C42-hex.1F6F8B.F4F1E8"])
+def test_sb2_round_trip(code):
+    sc = SC.parse(code)
+    assert sc.format() == code
+    assert sc.scene is not None
+
+
+@pytest.mark.parametrize("code", ["sb2:wxcover/C44-orig.L0S0", "sb2:info/C42-hex.12345",
+    "sb2:info/C42-earth-hex.123456", "sb2:wxcover/C44-brand", "sb2:wxcover/C44@r0",
+    "sb2:info/C42-flow-balanced-earth", "sb2:/C42", "sb2:info/C42-morandi.L2S0"])
+def test_sb2_rejects_malformed_or_conflicting_color(code):
+    with pytest.raises(SC.StyleCodeError):
+        SC.parse(code)
+
+
+def test_sb2_hex_normalizes_and_extracts_from_sentence():
+    sc = SC.parse("sb2:info/C42-hex.abcdef.123456")
+    assert sc.custom == ("#ABCDEF", "#123456")
+    assert sc.format() == "sb2:info/C42-hex.ABCDEF.123456"
+    assert SC.find("用 sb2:info/C42-hex.abcdef.123456 做图，旧码 sb1:C01-orig") == [
+        "sb2:info/C42-hex.abcdef.123456", "sb1:C01-orig"]
+    assert SC.validate(SC.parse("sb2:missing/C42"))
