@@ -50,6 +50,25 @@ def test_deterministic():
     assert a.prompt == b.prompt and a.manifest_hash == b.manifest_hash
 
 
+@pytest.mark.parametrize("already_prefixed", [False, True])
+def test_style_lock_has_one_heading_and_keeps_constraints_first(already_prefixed):
+    contract = copy.deepcopy(FREE)
+    positive = contract["recipe"]["positive"]
+    if already_prefixed:
+        contract["recipe"]["positive"] = "Visual style (follow exactly): " + positive
+    contract["recipe"]["constraints_first"] = True
+    prompt = c(contract=contract).prompt
+    assert prompt.count("Visual style (follow exactly):") == 1
+    assert "Visual style (follow exactly): Most important:" in prompt
+    assert positive in prompt
+
+
+def test_purpose_and_mood_remain_separate_without_input_punctuation():
+    manifest = copy.deepcopy(M)
+    manifest["content"].update(purpose="Explain a decision", mood="calm and reassuring")
+    assert "Purpose: Explain a decision; Mood: calm and reassuring" in c(manifest).prompt
+
+
 def test_overlay_reservation_uses_actual_final_boxes_and_rejects_bad_geometry():
     m = copy.deepcopy(M)
     m["text"] = {"mode": "overlay", "reserve": "the card interior", "items": [
@@ -78,7 +97,7 @@ def test_direct_manifest_rejects_title_too_long_for_square_thumbnail():
 def test_fixed_order():
     p = c().prompt
     marks = ["Visual style (follow exactly):", "Subject:", "Spatial relationships:", "Camera:", "Lighting:",
-             "Colour palette", "Background:", "Layout structure:", "Information density", "Purpose and mood:",
+             "Colour palette", "Background:", "Layout structure:", "Information density", "Purpose:",
              "Text in the image", "Aspect ratio", "Keep large calm areas"]
     idx = [p.index(m) for m in marks]
     assert idx == sorted(idx), list(zip(marks, idx))

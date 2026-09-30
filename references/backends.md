@@ -33,4 +33,4 @@ Ark Agent Plan 的全文计划复核按图片数分配输出预算（最少 5,00
 | policy | 内容被拒 | 不重试，换一种描述 |
 | network | 连不上 | 重试；仍不行检查网络或 `*_BASE_URL` |
 
-每次请求（成功与失败）都记进 `logs/cost.jsonl`（可用 `STYLEBOOK_LOG_DIR` 改位置），含估算费用；日志里的密钥会被遮盖。
+每次请求（成功与失败）都记进 `logs/cost.jsonl`（可用 `STYLEBOOK_LOG_DIR` 改位置），含估算费用、当前调用累计耗时 `seconds`（含此前重试等待）和本次尝试耗时 `attempt_seconds`。内置生图不经过此日志；其实际耗时需单独记录。

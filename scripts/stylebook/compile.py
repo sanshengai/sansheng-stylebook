@@ -225,7 +225,7 @@ def compile_manifest(manifest: dict, contract: dict | None = None, *, stage: str
 
     rec = contract["recipe"]
     sec: list[tuple[str, str]] = []
-    lock = rec["positive"].strip()
+    lock = rec["positive"].strip().removeprefix("Visual style (follow exactly):").lstrip()
     if rec.get("constraints_first") and rec.get("hard_constraints"):
         lock = "Most important: " + " ".join(rec["hard_constraints"]) + "\n" + lock
     sec.append(("lock", "Visual style (follow exactly): " + lock))
@@ -283,7 +283,9 @@ def compile_manifest(manifest: dict, contract: dict | None = None, *, stage: str
     if structure_prompt:
         sec.append(("structure_style", f"Style layout for {structure} (follow exactly): {structure_prompt}"))
     if content.get("purpose") or content.get("mood"):
-        sec.append(("purpose", "Purpose and mood: " + " ".join(x for x in (content.get("purpose", ""), content.get("mood", "")) if x).strip()))
+        sec.append(("purpose", "; ".join(f"{label}: {content[key].strip()}"
+                                        for key, label in (("purpose", "Purpose"), ("mood", "Mood"))
+                                        if content.get(key))))
     text_style = (rec.get("text_style_hybrid", rec.get("text_style", "")) if text_mode == "hybrid"
                   else rec.get("text_style", ""))
     reserve_default = ("the left title zone inside the central 70% safe area"

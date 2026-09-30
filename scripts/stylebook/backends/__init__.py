@@ -92,18 +92,24 @@ def generate(prompt: str, out: Path, *, size: tuple[int, int], aspect: str = "1:
     last: BackendError | None = None
     while attempts < max_attempts:
         attempts += 1
+        attempt_t0 = now()
         try:
             kwargs = {"aspect": aspect} if name in ("gemini", "openrouter") else {}
             img = fn(prompt, size, quality, refs, current, **kwargs)
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_bytes(img)
             est = _estimate(current, quality, size)
+            finished = now()
+            seconds = round(finished - t0, 1)
             _log({"tag": tag, "provider": name, "model": current, "size": list(size), "quality": quality, "ok": True,
-                  "attempts": attempts, "est_usd": est, "refs": len(refs)})
-            return Result(img, name, current, attempts, round(now() - t0, 1), est)
+                  "attempts": attempts, "est_usd": est, "refs": len(refs),
+                  "seconds": seconds, "attempt_seconds": round(finished - attempt_t0, 1)})
+            return Result(img, name, current, attempts, seconds, est)
         except BackendError as e:
             last = e
-            _log({"tag": tag, "provider": name, "model": current, "ok": False, "attempts": attempts, "kind": e.kind, "msg": str(e)[:160]})
+            finished = now()
+            _log({"tag": tag, "provider": name, "model": current, "ok": False, "attempts": attempts, "kind": e.kind, "msg": str(e)[:160],
+                  "seconds": round(finished - t0, 1), "attempt_seconds": round(finished - attempt_t0, 1)})
             if not e.retryable:
                 break
             busy_streak = busy_streak + 1 if e.kind == "busy" else 0
