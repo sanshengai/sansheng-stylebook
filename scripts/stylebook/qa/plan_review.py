@@ -112,6 +112,18 @@ def _complete(data: dict | None, plan: dict) -> bool:
                 and all(isinstance(i.get("why"), str) and i["why"].strip() for i in data["items"]))
 
 
+def _output_budget(plan: dict) -> int:
+    default = min(32000, max(5000, 1500 + 1000 * len(plan["items"])))
+    raw = os.environ.get("STYLEBOOK_PLAN_REVIEW_MAX_OUTPUT_TOKENS", str(default))
+    try:
+        budget = int(raw)
+    except ValueError as exc:
+        raise ValueError("STYLEBOOK_PLAN_REVIEW_MAX_OUTPUT_TOKENS 必须是 2000–32000 的整数") from exc
+    if not 2000 <= budget <= 32000:
+        raise ValueError("STYLEBOOK_PLAN_REVIEW_MAX_OUTPUT_TOKENS 必须是 2000–32000 的整数")
+    return budget
+
+
 def _review_ark(plan: dict, article: Path, model: str | None, timeout: int) -> dict:
     base = os.environ.get("ARK_AGENT_PLAN_BASE_URL", "").rstrip("/")
     key = os.environ.get("ARK_AGENT_PLAN_API_KEY", "")
@@ -121,8 +133,9 @@ def _review_ark(plan: dict, article: Path, model: str | None, timeout: int) -> d
     text = prompt(plan, article).replace("先用 Read 工具完整读原文，再逐张判断。",
                                          "原文全文已附在后面，请先完整阅读，再逐张判断。")
     text += "\n\n## 原文全文（只读）\n" + article.read_text(encoding="utf-8")
+    budget = _output_budget(plan)
     body = json.dumps({"model": name, "input": [{"role": "user", "content": [
-        {"type": "input_text", "text": text}]}], "max_output_tokens": 5000,
+        {"type": "input_text", "text": text}]}], "max_output_tokens": budget,
         **({"reasoning": {"effort": "low"}}
            if name.startswith("doubao-seed-") else {})},
         ensure_ascii=False, separators=(",", ":")).encode("utf-8")
@@ -139,8 +152,15 @@ def _review_ark(plan: dict, article: Path, model: str | None, timeout: int) -> d
         raise RuntimeError(f"Ark Agent Plan 配图计划复核 HTTP {exc.code}") from exc
     except urllib.error.URLError as exc:
         raise ReviewerNetworkUnavailable(f"Ark Agent Plan 配图计划复核网络不可用：{exc.reason}") from exc
+    usage = response.get("usage") or {}
+    details = response.get("incomplete_details") or {}
+    metadata = {"status": response.get("status"), "max_output_tokens": budget,
+                "usage": {key: usage[key] for key in ("input_tokens", "output_tokens", "total_tokens")
+                          if isinstance(usage, dict) and type(usage.get(key)) is int}}
+    if isinstance(details, dict) and isinstance(details.get("reason"), str):
+        metadata["incomplete_reason"] = details["reason"][:200]
     if response.get("status") != "completed":
-        raise RuntimeError(f"Ark Agent Plan 配图计划复核未完成：{response.get('status')}")
+        raise RuntimeError("Ark Agent Plan 配图计划复核未完成：" + json.dumps(metadata, ensure_ascii=False))
     normalize = lambda s: re.sub(r"[^a-z0-9]", "", str(s).lower())
     returned = str(response.get("model") or "")
     if not normalize(returned).startswith(normalize(name)):
@@ -151,6 +171,7 @@ def _review_ark(plan: dict, article: Path, model: str | None, timeout: int) -> d
     for item in data["items"]:
         item["reasonable"] = _item_passes(item)
     data["_reviewer"] = f"ark_agent_plan:{returned}"
+    data["_response_metadata"] = metadata
     return data
 
 
