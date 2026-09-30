@@ -153,3 +153,10 @@ def test_raw_generate_cli_returns_machine_readable_result(fake, tmp_path):
     bad = subprocess.run([sys.executable, str(ROOT / "scripts" / "sb.py"), "raw-generate", "--prompt-file", str(prompt), "--size", "1024x1024",
                           "-o", str(tmp_path / "x.png"), "--provider", "codex"], capture_output=True, text=True, env={**env, "FAKE_CODEX_MODE": "quota"})
     assert bad.returncode == 2 and json.loads(bad.stdout.splitlines()[-1])["kind"] == "quota"
+
+
+def test_instruction_pins_own_session_folder_not_newest_file():
+    """并行出图曾因“取最新文件”串图（五张一模一样）；指令必须只认本会话目录。"""
+    text = P.codex_instruction("a lake", Path("/tmp/x/out.png"), "1:1", (1024, 1024), 0)
+    assert "$CODEX_THREAD_ID" in text and "recency" in text
+    assert "take the newest file" not in text
