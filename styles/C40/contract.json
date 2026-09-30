@@ -1,6 +1,6 @@
 {
   "code": "C40",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "等距插画",
     "en": "Friendly Isometric Miniature"
@@ -25,7 +25,7 @@
     "蓝珊瑚绿白色的友好配色"
   ],
   "recipe": {
-    "positive": "Visual style (follow exactly): Isometric illustration: clean 30-degree isometric projection, crisp geometric shapes with soft flat shading on three faces, tidy miniature world, limited friendly palette (soft blue, coral, mint, warm white), no perspective distortion, clear and modern.",
+    "positive": "Visual style (follow exactly): in the style of Monument Valley (ustwo games) isometric illustration. Isometric illustration: clean 30-degree isometric projection, crisp geometric shapes with soft flat shading on three faces, tidy miniature world, limited friendly palette (soft blue, coral, mint, warm white), no perspective distortion, clear and modern.",
     "text_mode": [
       "native",
       "overlay",
@@ -49,8 +49,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -62,11 +62,46 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
-  "anchor": {
-    "file": "anchor.png",
-    "sha256": "e2e8503ae556413dea9d7eb70d583d64421495f024bdf34e8111b20c9bf1ff5d",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+  "inspiration": {
+    "names": [
+      "纪念碑谷（ustwo games）"
+    ],
+    "prompt": "Monument Valley (ustwo games) isometric illustration"
+  },
+  "uses": [
+    "封面",
+    "信息图",
+    "PPT"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "d6beb8c232d3f0a87a14333d284888298bac86095ab47c4a1002910b0a65ba3b",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "06a1a258eb0eeae40dc6c9831d8d8e75ddfcd62fb68aae7cd1a8fc72a50ab6fb",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "9834987b87a623ef8e1ffc874c2741ba722e37dfe4d1eeb460ebea6823649eb6",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

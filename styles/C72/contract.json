@@ -1,0 +1,98 @@
+{
+  "code": "C72",
+  "revision": 1,
+  "name": {
+    "zh": "俯拍物品陈列 Knolling",
+    "en": "Knolling Flat Lay"
+  },
+  "family": "信息图",
+  "fit": [
+    "封面",
+    "讲道理"
+  ],
+  "facets": {
+    "medium": "俯拍物品陈列 Knolling",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "JimLiu/baoyu-skills #infographic/styles/knolling.md",
+    "license": "MIT",
+    "notes": "画风库 v2 新增；风格描述改写自原作仓库条目，名称仅作灵感来源说明。"
+  },
+  "essence": [
+    "俯拍视角",
+    "物品直角整齐陈列",
+    "干净台面"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): in the style of knolling flat-lay photography. top-down view with objects neatly arranged at right angles, even spacing, clean surface.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "俯拍视角",
+      "物品直角整齐陈列",
+      "干净台面"
+    ],
+    "must_not_see": [
+      "与所选画风不符的通用插画质感",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "Codex 内置生图（底层模型 ID 未暴露）",
+    "date": "2026-09-30",
+    "notes": "仅完成合同校验与三题同题试出图（人物 / 物件 / 信息图）；尚未通过正式准入。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-30",
+      "note": "画风库 v2 新增"
+    }
+  ],
+  "inspiration": {
+    "names": [
+      "Knolling 俯拍陈列"
+    ],
+    "prompt": "knolling flat-lay photography"
+  },
+  "uses": [
+    "封面",
+    "小红书",
+    "信息图"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "484e6cabb96dee84b382fc5966cb6cd62fc0117f40adca4cfa2f04eafd87f5ce",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "9b667796b5d22819ad0a13c68799e23c2435ef7a46152ee0425f406b6eaa661e",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "16271a68fad5e05bd8d2340220e66a6f41adcc656116a284ad49c8c0e3565737",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
+}

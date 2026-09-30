@@ -1,6 +1,6 @@
 {
   "code": "C21",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "八九十年代课本插图",
     "en": "Retro Chinese Textbook Illustration"
@@ -26,7 +26,7 @@
     "旧课本印刷纸感"
   ],
   "recipe": {
-    "positive": "Visual style (follow exactly): 1980s–1990s Chinese primary-school textbook illustration: simple clean ink outlines with flat, slightly faded watercolour fills, honest realistic proportions, warm everyday school and family life, printed-on-paper look with gentle offset-print texture, nostalgic and plain.",
+    "positive": "Visual style (follow exactly): in the style of 1980s–1990s Chinese primary-school textbook illustration. 1980s–1990s Chinese primary-school textbook illustration: simple clean ink outlines with flat, slightly faded watercolour fills, honest realistic proportions, warm everyday school and family life, printed-on-paper look with gentle offset-print texture, nostalgic and plain.",
     "text_mode": [
       "native",
       "overlay",
@@ -50,8 +50,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -63,11 +63,60 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
   "anchor": {
     "file": "anchor.png",
-    "sha256": "daaac1d2fca9109f6404870679fad3cb9ac3808046450349549f57ad4ddcf40a",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+    "sha256": "d3682d28f208a840d209281cbb3aeef4fece35fed12a2838b3d2b02780483774",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "201-400/271",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/271.webp"
+    }
+  },
+  "inspiration": {
+    "names": [
+      "人教版八九十年代教材插图"
+    ],
+    "prompt": "1980s–1990s Chinese primary-school textbook illustration"
+  },
+  "uses": [
+    "文章插图",
+    "漫画",
+    "绘本",
+    "音乐封面",
+    "教材"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "7be2c7226865d2e0bfb15597e0826b051a4b9a8d12cf30cd0eeec9a8c8eb20ce",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "be439aa3b9e5b511ff7466f3906be9f4687be555dcf2a0456320be0618edc18f",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "2cbe89c4bd52536dbb2befc51b84fcc631c64e956e78ecc4c9aa43aba216c6b8",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

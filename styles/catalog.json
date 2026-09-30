@@ -1,6 +1,31 @@
 {
-  "version": 1,
-  "note": "公开样式总目录；status: draft（仅测试配方）/ contract（已有可调用合同、准入另看 evidence）/ admitted（已通过正式准入）",
+  "version": 2,
+  "note": "公开样式总目录；status: draft（仅测试配方）/ contract（已有可调用合同、准入另看 evidence）/ admitted（已通过正式准入）；uses=适合的用途（选了用途只列出打勾的画风）；names=原作者/作品灵感来源。",
+  "aliases": {
+    "C03": "C01",
+    "C05": "C06",
+    "C09": "C19",
+    "C15": "C11",
+    "C26": "C24",
+    "C50": "C56"
+  },
+  "retired": {
+    "C10": {
+      "suggest": "C35"
+    },
+    "C13": {
+      "suggest": "C42"
+    },
+    "C38": {
+      "suggest": "C35"
+    },
+    "C44": {
+      "suggest": null
+    },
+    "C45": {
+      "suggest": "C01"
+    }
+  },
   "removed": [
     "C23",
     "C33",
@@ -17,8 +42,22 @@
         "讲故事",
         "封面"
       ],
+      "uses": [
+        "封面",
+        "文章插图",
+        "小红书",
+        "漫画",
+        "绘本",
+        "分镜",
+        "音乐封面",
+        "教材"
+      ],
+      "names": [
+        "宫崎骏",
+        "吉卜力工作室"
+      ],
       "origin": "hand-drawn-styles #3；baoyu-skills fantasy-animation",
-      "status": "admitted"
+      "status": "contract"
     },
     {
       "code": "C02",
@@ -28,21 +67,18 @@
         "讲故事",
         "封面"
       ],
+      "uses": [
+        "文章插图",
+        "小红书",
+        "漫画",
+        "绘本",
+        "教材"
+      ],
+      "names": [],
       "origin": "hand-drawn-styles #10",
       "status": "contract",
       "recolor": "locked",
       "recolor_note": "靛蓝线 + 全画一处橙"
-    },
-    {
-      "code": "C03",
-      "zh": "暖光童画·动画概念稿",
-      "family": "温暖手绘·绘本动画",
-      "fit": [
-        "讲故事",
-        "封面"
-      ],
-      "origin": "hand-drawn-styles #12；hand-drawn-styles #16",
-      "status": "contract"
     },
     {
       "code": "C04",
@@ -51,21 +87,20 @@
       "fit": [
         "讲故事"
       ],
+      "uses": [
+        "封面",
+        "文章插图",
+        "小红书",
+        "PPT",
+        "漫画",
+        "绘本",
+        "教材"
+      ],
+      "names": [],
       "origin": "hand-drawn-styles #14",
       "status": "contract",
       "recolor": "locked",
       "recolor_note": "丹宁蓝 × 芥末黄"
-    },
-    {
-      "code": "C05",
-      "zh": "墨线绘本",
-      "family": "温暖手绘·绘本动画",
-      "fit": [
-        "讲故事",
-        "封面"
-      ],
-      "origin": "hand-drawn-styles #17",
-      "status": "contract"
     },
     {
       "code": "C06",
@@ -73,6 +108,16 @@
       "family": "温暖手绘·绘本动画",
       "fit": [
         "讲故事"
+      ],
+      "uses": [
+        "文章插图",
+        "小红书",
+        "PPT",
+        "漫画",
+        "绘本"
+      ],
+      "names": [
+        "昆汀·布莱克"
       ],
       "origin": "handraw-style #036（描述已重写，不含人名）",
       "status": "contract"
@@ -83,6 +128,16 @@
       "family": "温暖手绘·绘本动画",
       "fit": [
         "讲故事"
+      ],
+      "uses": [
+        "小红书",
+        "PPT",
+        "漫画",
+        "绘本",
+        "音乐封面"
+      ],
+      "names": [
+        "岩崎知弘"
       ],
       "origin": "handraw-style #088（描述已重写，不含人名）",
       "status": "contract"
@@ -95,28 +150,19 @@
         "讲故事",
         "封面"
       ],
+      "uses": [
+        "封面",
+        "文章插图",
+        "小红书",
+        "漫画",
+        "绘本",
+        "音乐封面",
+        "教材"
+      ],
+      "names": [
+        "几米"
+      ],
       "origin": "handraw-style #254（描述已重写，不含人名）",
-      "status": "admitted"
-    },
-    {
-      "code": "C09",
-      "zh": "蜡笔水墨和风绘本",
-      "family": "温暖手绘·绘本动画",
-      "fit": [
-        "讲故事"
-      ],
-      "origin": "handraw-style #252（描述已重写，不含人名）",
-      "status": "contract"
-    },
-    {
-      "code": "C10",
-      "zh": "极简单线创意小品",
-      "family": "温暖手绘·绘本动画",
-      "fit": [
-        "讲道理",
-        "封面"
-      ],
-      "origin": "handraw-style #207（描述已重写，不含人名）",
       "status": "contract"
     },
     {
@@ -125,6 +171,14 @@
       "family": "温暖手绘·绘本动画",
       "fit": [
         "讲故事"
+      ],
+      "uses": [
+        "文章插图",
+        "漫画",
+        "绘本"
+      ],
+      "names": [
+        "埃尔热《丁丁历险记》"
       ],
       "origin": "baoyu-skills comic；baoyu-skills comic ligne-claire + warm",
       "status": "contract"
@@ -137,18 +191,15 @@
         "讲故事",
         "封面"
       ],
-      "origin": "handraw-style #003（描述已重写，不含人名）",
-      "status": "contract"
-    },
-    {
-      "code": "C13",
-      "zh": "柔和关系线稿",
-      "family": "细线与生活",
-      "fit": [
-        "讲道理",
-        "封面"
+      "uses": [
+        "文章插图",
+        "漫画",
+        "绘本"
       ],
-      "origin": "handraw-style #015（描述已重写，不含人名）",
+      "names": [
+        "桑贝《小淘气尼古拉》"
+      ],
+      "origin": "handraw-style #003（描述已重写，不含人名）",
       "status": "contract"
     },
     {
@@ -158,17 +209,16 @@
       "fit": [
         "讲故事"
       ],
-      "origin": "handraw-style #037（描述已重写，不含人名）",
-      "status": "contract"
-    },
-    {
-      "code": "C15",
-      "zh": "清秀生活漫画线",
-      "family": "细线与生活",
-      "fit": [
-        "讲故事"
+      "uses": [
+        "文章插图",
+        "小红书",
+        "漫画",
+        "绘本"
       ],
-      "origin": "handraw-style #101（描述已重写，不含人名）",
+      "names": [
+        "托芙·扬松《姆明》"
+      ],
+      "origin": "handraw-style #037（描述已重写，不含人名）",
       "status": "contract"
     },
     {
@@ -179,6 +229,12 @@
         "讲道理",
         "封面"
       ],
+      "uses": [
+        "小红书",
+        "漫画",
+        "绘本"
+      ],
+      "names": [],
       "origin": "handraw-style #181（描述已重写，不含人名）",
       "status": "contract"
     },
@@ -190,6 +246,15 @@
         "封面",
         "讲故事"
       ],
+      "uses": [
+        "封面",
+        "文章插图",
+        "小红书",
+        "漫画",
+        "绘本",
+        "音乐封面"
+      ],
+      "names": [],
       "origin": "handraw-style #189（描述已重写，不含人名）",
       "status": "contract"
     },
@@ -201,6 +266,14 @@
         "封面",
         "讲故事"
       ],
+      "uses": [
+        "封面",
+        "文章插图",
+        "小红书",
+        "漫画",
+        "绘本"
+      ],
+      "names": [],
       "origin": "handraw-style #191（描述已重写，不含人名）",
       "status": "contract",
       "recolor": "locked",
@@ -214,6 +287,16 @@
         "封面",
         "讲故事"
       ],
+      "uses": [
+        "封面",
+        "文章插图",
+        "漫画",
+        "绘本",
+        "音乐封面"
+      ],
+      "names": [
+        "老树画画（刘树勇）"
+      ],
       "origin": "handraw-style #192（描述已重写，不含人名）",
       "status": "contract"
     },
@@ -223,6 +306,17 @@
       "family": "中国风",
       "fit": [
         "封面"
+      ],
+      "uses": [
+        "封面",
+        "PPT",
+        "漫画",
+        "绘本",
+        "音乐封面"
+      ],
+      "names": [
+        "杭穉英",
+        "民国月份牌"
       ],
       "origin": "handraw-style #194（描述已重写，不含人名）",
       "status": "contract"
@@ -235,6 +329,16 @@
         "讲故事",
         "讲道理"
       ],
+      "uses": [
+        "文章插图",
+        "漫画",
+        "绘本",
+        "音乐封面",
+        "教材"
+      ],
+      "names": [
+        "人教版八九十年代教材插图"
+      ],
       "origin": "handraw-style #271（描述已重写，不含人名）",
       "status": "contract"
     },
@@ -244,6 +348,16 @@
       "family": "中国风",
       "fit": [
         "讲故事"
+      ],
+      "uses": [
+        "封面",
+        "小红书",
+        "漫画",
+        "绘本",
+        "分镜"
+      ],
+      "names": [
+        "Laika《魔女嘉》"
       ],
       "origin": "handraw-style #277（描述已重写，不含人名）",
       "status": "contract"
@@ -256,6 +370,16 @@
         "讲故事",
         "讲道理"
       ],
+      "uses": [
+        "封面",
+        "文章插图",
+        "小红书",
+        "绘本",
+        "分镜"
+      ],
+      "names": [
+        "Aardman《超级无敌掌门狗》"
+      ],
       "origin": "handraw-style #248（描述已重写，不含人名）；baoyu-skills claymation",
       "status": "contract"
     },
@@ -267,17 +391,18 @@
         "讲故事",
         "封面"
       ],
-      "origin": "handraw-style #232（描述已重写，不含人名）",
-      "status": "admitted"
-    },
-    {
-      "code": "C26",
-      "zh": "马海毛定格人偶",
-      "family": "立体材质",
-      "fit": [
-        "讲故事"
+      "uses": [
+        "封面",
+        "文章插图",
+        "小红书",
+        "漫画",
+        "绘本",
+        "音乐封面"
       ],
-      "origin": "handraw-style #234（描述已重写，不含人名）",
+      "names": [
+        "Jellycat 毛绒玩具"
+      ],
+      "origin": "handraw-style #232（描述已重写，不含人名）",
       "status": "contract"
     },
     {
@@ -288,6 +413,15 @@
         "封面",
         "讲故事"
       ],
+      "uses": [
+        "封面",
+        "文章插图",
+        "小红书",
+        "漫画",
+        "绘本",
+        "音乐封面"
+      ],
+      "names": [],
       "origin": "hand-drawn-styles #13",
       "status": "contract"
     },
@@ -298,6 +432,13 @@
       "fit": [
         "讲故事"
       ],
+      "uses": [
+        "文章插图",
+        "小红书",
+        "绘本",
+        "教材"
+      ],
+      "names": [],
       "origin": "handraw-style #197（描述已重写，不含人名）",
       "status": "contract"
     },
@@ -308,6 +449,15 @@
       "fit": [
         "讲道理"
       ],
+      "uses": [
+        "文章插图",
+        "信息图",
+        "PPT",
+        "绘本",
+        "分镜",
+        "教材"
+      ],
+      "names": [],
       "origin": "baoyu-skills chalkboard",
       "status": "contract",
       "recolor": "locked",
@@ -321,6 +471,13 @@
         "讲故事",
         "讲道理"
       ],
+      "uses": [
+        "封面",
+        "绘本",
+        "音乐封面",
+        "教材"
+      ],
+      "names": [],
       "origin": "original",
       "status": "contract"
     },
@@ -330,6 +487,14 @@
       "family": "讲道理·知识图解",
       "fit": [
         "讲道理"
+      ],
+      "uses": [
+        "小红书",
+        "信息图",
+        "PPT"
+      ],
+      "names": [
+        "Mike Rohde 手绘笔记"
       ],
       "origin": "baoyu-skills sketch-notes",
       "status": "contract"
@@ -341,8 +506,15 @@
       "fit": [
         "讲道理"
       ],
+      "uses": [
+        "信息图",
+        "PPT",
+        "漫画",
+        "绘本"
+      ],
+      "names": [],
       "origin": "baoyu-skills intuition-machine",
-      "status": "admitted"
+      "status": "contract"
     },
     {
       "code": "C34",
@@ -351,6 +523,17 @@
       "fit": [
         "讲道理",
         "封面"
+      ],
+      "uses": [
+        "小红书",
+        "信息图",
+        "PPT",
+        "漫画",
+        "绘本"
+      ],
+      "names": [
+        "Wired",
+        "The Verge 编辑风"
       ],
       "origin": "baoyu-skills editorial-infographic",
       "status": "contract"
@@ -362,6 +545,16 @@
       "fit": [
         "讲道理"
       ],
+      "uses": [
+        "小红书",
+        "信息图",
+        "PPT",
+        "漫画",
+        "绘本"
+      ],
+      "names": [
+        "Notion 插图风"
+      ],
       "origin": "baoyu-skills notion",
       "status": "contract"
     },
@@ -372,17 +565,16 @@
       "fit": [
         "讲道理"
       ],
-      "origin": "hand-drawn-styles #1",
-      "status": "contract"
-    },
-    {
-      "code": "C38",
-      "zh": "宜家说明书线稿",
-      "family": "讲道理·知识图解",
-      "fit": [
-        "讲道理"
+      "uses": [
+        "信息图",
+        "PPT",
+        "漫画",
+        "绘本"
       ],
-      "origin": "baoyu-skills ikea-manual",
+      "names": [
+        "xkcd（Randall Munroe）"
+      ],
+      "origin": "hand-drawn-styles #1",
       "status": "contract"
     },
     {
@@ -393,6 +585,12 @@
         "讲道理",
         "封面"
       ],
+      "uses": [
+        "封面",
+        "信息图",
+        "PPT"
+      ],
+      "names": [],
       "origin": "baoyu-skills blueprint",
       "status": "contract",
       "recolor": "locked",
@@ -405,6 +603,14 @@
       "fit": [
         "讲道理"
       ],
+      "uses": [
+        "封面",
+        "信息图",
+        "PPT"
+      ],
+      "names": [
+        "纪念碑谷（ustwo games）"
+      ],
       "origin": "original",
       "status": "contract"
     },
@@ -416,6 +622,15 @@
         "讲道理",
         "封面"
       ],
+      "uses": [
+        "小红书",
+        "信息图",
+        "PPT",
+        "漫画",
+        "绘本",
+        "音乐封面"
+      ],
+      "names": [],
       "origin": "baoyu-skills vector-illustration",
       "status": "contract"
     },
@@ -427,28 +642,19 @@
         "讲道理",
         "封面"
       ],
-      "origin": "handraw-style #276（描述已重写，不含人名）",
-      "status": "contract"
-    },
-    {
-      "code": "C44",
-      "zh": "双色半调编辑印刷",
-      "family": "封面与海报",
-      "fit": [
-        "封面"
-      ],
-      "origin": "original",
-      "status": "contract"
-    },
-    {
-      "code": "C45",
-      "zh": "复古动画概念稿",
-      "family": "封面与海报",
-      "fit": [
+      "uses": [
         "封面",
-        "讲故事"
+        "文章插图",
+        "小红书",
+        "信息图",
+        "PPT",
+        "漫画",
+        "绘本",
+        "音乐封面",
+        "教材"
       ],
-      "origin": "hand-drawn-styles #11",
+      "names": [],
+      "origin": "handraw-style #276（描述已重写，不含人名）",
       "status": "contract"
     },
     {
@@ -459,6 +665,11 @@
         "封面",
         "讲道理"
       ],
+      "uses": [
+        "封面",
+        "信息图"
+      ],
+      "names": [],
       "origin": "baoyu-skills vintage",
       "status": "contract"
     },
@@ -468,6 +679,13 @@
       "family": "漫画与分镜",
       "fit": [
         "讲故事"
+      ],
+      "uses": [
+        "漫画"
+      ],
+      "names": [
+        "浦泽直树",
+        "井上雄彦"
       ],
       "origin": "baoyu-skills manga",
       "status": "contract"
@@ -479,18 +697,16 @@
       "fit": [
         "讲故事"
       ],
-      "origin": "original",
-      "status": "contract"
-    },
-    {
-      "code": "C50",
-      "zh": "电影感写实数字绘画",
-      "family": "漫画与分镜",
-      "fit": [
-        "讲故事",
-        "封面"
+      "uses": [
+        "封面",
+        "小红书",
+        "漫画",
+        "分镜"
       ],
-      "origin": "baoyu-skills realistic",
+      "names": [
+        "韩国网络条漫"
+      ],
+      "origin": "original",
       "status": "contract"
     },
     {
@@ -501,6 +717,16 @@
         "讲故事",
         "封面"
       ],
+      "uses": [
+        "文章插图",
+        "小红书",
+        "漫画",
+        "绘本",
+        "教材"
+      ],
+      "names": [
+        "三丽鸥式卡哇伊"
+      ],
       "origin": "original",
       "status": "contract"
     },
@@ -510,6 +736,14 @@
       "family": "个性趣味",
       "fit": [
         "封面"
+      ],
+      "uses": [
+        "封面",
+        "漫画",
+        "绘本"
+      ],
+      "names": [
+        "乔治·康多"
       ],
       "origin": "handraw-style #074（描述已重写，不含人名）",
       "status": "contract"
@@ -522,6 +756,15 @@
         "封面",
         "讲故事"
       ],
+      "uses": [
+        "封面",
+        "小红书",
+        "漫画",
+        "绘本"
+      ],
+      "names": [
+        "居斯塔夫·多雷版画"
+      ],
       "origin": "handraw-style #244（描述已重写，不含人名）",
       "status": "contract"
     },
@@ -533,6 +776,14 @@
         "封面",
         "讲道理"
       ],
+      "uses": [
+        "封面",
+        "小红书",
+        "音乐封面"
+      ],
+      "names": [
+        "16 位机时代像素游戏"
+      ],
       "origin": "hand-drawn-styles #9",
       "status": "contract"
     },
@@ -542,6 +793,13 @@
       "family": "个性趣味",
       "fit": [
         "讲故事"
+      ],
+      "uses": [
+        "小红书",
+        "漫画"
+      ],
+      "names": [
+        "David Shrigley"
       ],
       "origin": "hand-drawn-styles #5",
       "status": "contract"
@@ -554,6 +812,16 @@
         "讲故事",
         "封面"
       ],
+      "uses": [
+        "封面",
+        "文章插图",
+        "漫画",
+        "分镜",
+        "音乐封面"
+      ],
+      "names": [
+        "新海诚《你的名字。》《天气之子》"
+      ],
       "origin": "original",
       "status": "contract"
     },
@@ -565,6 +833,18 @@
         "讲故事",
         "封面"
       ],
+      "uses": [
+        "文章插图",
+        "小红书",
+        "漫画",
+        "绘本",
+        "分镜",
+        "音乐封面"
+      ],
+      "names": [
+        "《美少女战士》",
+        "高桥留美子《乱马 1/2》"
+      ],
       "origin": "original",
       "status": "contract"
     },
@@ -575,8 +855,319 @@
       "fit": [
         "讲故事"
       ],
+      "uses": [
+        "文章插图",
+        "小红书",
+        "信息图",
+        "漫画",
+        "绘本",
+        "分镜",
+        "教材"
+      ],
+      "names": [
+        "京都动画《轻音少女》《紫罗兰永恒花园》"
+      ],
       "origin": "original",
-      "status": "admitted"
+      "status": "contract"
+    },
+    {
+      "code": "C59",
+      "zh": "中世纪摩登几何童话",
+      "family": "绘本·封面",
+      "fit": [
+        "封面",
+        "讲道理",
+        "讲故事"
+      ],
+      "uses": [
+        "封面",
+        "小红书",
+        "绘本",
+        "音乐封面"
+      ],
+      "names": [
+        "Mary Blair"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C60",
+      "zh": "自然主义水彩动物绘本",
+      "family": "绘本·教材插图",
+      "fit": [
+        "讲道理",
+        "讲故事"
+      ],
+      "uses": [
+        "文章插图",
+        "小红书",
+        "漫画",
+        "绘本"
+      ],
+      "names": [
+        "Beatrix Potter《彼得兔》"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C61",
+      "zh": "梦幻超现实绘本",
+      "family": "绘本·封面",
+      "fit": [
+        "讲道理",
+        "讲故事"
+      ],
+      "uses": [
+        "文章插图",
+        "小红书",
+        "漫画",
+        "绘本"
+      ],
+      "names": [
+        "Shaun Tan《抵岸》"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C62",
+      "zh": "低饱和冷面绘本",
+      "family": "绘本",
+      "fit": [
+        "讲道理",
+        "讲故事"
+      ],
+      "uses": [
+        "文章插图",
+        "小红书",
+        "漫画",
+        "绘本"
+      ],
+      "names": [
+        "Jon Klassen《我的帽子呢》"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C63",
+      "zh": "凯尔特手绘动画",
+      "family": "动画·分镜",
+      "fit": [
+        "封面",
+        "讲故事"
+      ],
+      "uses": [
+        "封面",
+        "绘本",
+        "分镜"
+      ],
+      "names": [
+        "Cartoon Saloon《海洋之歌》《狼行者》"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C64",
+      "zh": "空灵中国水墨幻想动画",
+      "family": "动画·分镜",
+      "fit": [
+        "封面",
+        "讲道理",
+        "讲故事"
+      ],
+      "uses": [
+        "封面",
+        "文章插图",
+        "漫画",
+        "绘本"
+      ],
+      "names": [
+        "《中国奇谭》"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C65",
+      "zh": "文人漫画毛笔写意",
+      "family": "文章插图·封面",
+      "fit": [
+        "封面",
+        "讲道理",
+        "讲故事"
+      ],
+      "uses": [
+        "封面",
+        "文章插图",
+        "小红书",
+        "漫画",
+        "绘本"
+      ],
+      "names": [
+        "丰子恺《子恺漫画》"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C66",
+      "zh": "安静日系低饱和社论",
+      "family": "封面·文章插图",
+      "fit": [
+        "封面",
+        "讲道理",
+        "讲故事"
+      ],
+      "uses": [
+        "封面",
+        "文章插图",
+        "小红书",
+        "信息图",
+        "PPT",
+        "漫画",
+        "绘本",
+        "音乐封面",
+        "教材"
+      ],
+      "names": [
+        "木内达朗"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C67",
+      "zh": "圆润古典漫画角色",
+      "family": "漫画",
+      "fit": [
+        "讲故事",
+        "讲道理"
+      ],
+      "uses": [
+        "漫画",
+        "教材"
+      ],
+      "names": [
+        "手冢治虫"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C68",
+      "zh": "中式复古连环画",
+      "family": "漫画·教材",
+      "fit": [
+        "讲道理",
+        "讲故事"
+      ],
+      "uses": [
+        "文章插图",
+        "漫画"
+      ],
+      "names": [
+        "中国连环画（小人书）"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C69",
+      "zh": "圆滚针织黏土玩偶",
+      "family": "立体材质·马卡龙",
+      "fit": [
+        "封面",
+        "讲道理",
+        "讲故事"
+      ],
+      "uses": [
+        "封面",
+        "文章插图",
+        "小红书",
+        "PPT",
+        "漫画",
+        "绘本",
+        "音乐封面"
+      ],
+      "names": [],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C70",
+      "zh": "毛毡针织定格人偶",
+      "family": "立体材质",
+      "fit": [
+        "封面",
+        "讲故事"
+      ],
+      "uses": [
+        "封面",
+        "漫画",
+        "绘本",
+        "音乐封面"
+      ],
+      "names": [],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C71",
+      "zh": "极致几何自然",
+      "family": "信息图·教材插图",
+      "fit": [
+        "封面",
+        "讲道理"
+      ],
+      "uses": [
+        "封面",
+        "信息图",
+        "PPT"
+      ],
+      "names": [
+        "Charley Harper"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C72",
+      "zh": "俯拍物品陈列 Knolling",
+      "family": "信息图",
+      "fit": [
+        "封面",
+        "讲道理"
+      ],
+      "uses": [
+        "封面",
+        "小红书",
+        "信息图"
+      ],
+      "names": [
+        "Knolling 俯拍陈列"
+      ],
+      "origin": "JimLiu/baoyu-skills #infographic/styles/knolling.md",
+      "status": "contract"
+    },
+    {
+      "code": "C73",
+      "zh": "手绘教育·马卡龙色块",
+      "family": "小红书·知识卡",
+      "fit": [
+        "讲道理"
+      ],
+      "uses": [
+        "小红书",
+        "信息图",
+        "PPT"
+      ],
+      "names": [],
+      "origin": "JimLiu/baoyu-skills #infographic/styles/hand-drawn-edu.md",
+      "status": "contract"
     }
   ]
 }

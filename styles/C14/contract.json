@@ -1,6 +1,6 @@
 {
   "code": "C14",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "北欧细线奇趣",
     "en": "Nordic Fine-Line Whimsy"
@@ -25,7 +25,7 @@
     "安静大留白与柔和色彩"
   ],
   "recipe": {
-    "positive": "Visual style (follow exactly): Nordic fine-line whimsy: fine but light ink lines, gently strange rounded creatures and figures, soft muted colour, tender loneliness, large empty areas, storybook charm with a quiet northern-European feeling.",
+    "positive": "Visual style (follow exactly): in the style of Tove Jansson's Moomin illustrations. Nordic fine-line whimsy: fine but light ink lines, gently strange rounded creatures and figures, soft muted colour, tender loneliness, large empty areas, storybook charm with a quiet northern-European feeling.",
     "text_mode": [
       "native",
       "overlay",
@@ -49,8 +49,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -62,11 +62,59 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
   "anchor": {
     "file": "anchor.png",
-    "sha256": "0f6e405d64f92f4e9239cbde8b8e946cd0acbd7cf215083d8bf424d3ecb3ff23",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+    "sha256": "1ab4b0e7ebdd49921a8b594a0d4c90054bbcf912932f2f9d35ae2f4090442108",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "001-200/037",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/037.webp"
+    }
+  },
+  "inspiration": {
+    "names": [
+      "托芙·扬松《姆明》"
+    ],
+    "prompt": "Tove Jansson's Moomin illustrations"
+  },
+  "uses": [
+    "文章插图",
+    "小红书",
+    "漫画",
+    "绘本"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "f710352ccaf9fb86488a8adfc236b9e58224d5c2e960e9bff30291be780d2e59",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "74d0f7c1b34c0115315dd1372e669ab15462dfb55ff3676f64ed3af40f078e34",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "97915ad5d0991f891addabfee3c89ff93439c06ae88db781bcc52985e6fcaff9",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

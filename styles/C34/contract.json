@@ -1,6 +1,6 @@
 {
   "code": "C34",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "杂志编辑信息图",
     "en": "Editorial Magazine Infographic"
@@ -26,7 +26,7 @@
     "有节制的分栏和重点框"
   ],
   "recipe": {
-    "positive": "Polished magazine editorial infographic. Organise one clear visual narrative with a strong headline area, structured sections, purposeful callout boxes and clean illustrations or visual metaphors. Use consistent professional typography, restrained accents and generous separation between ideas.",
+    "positive": "Visual style (follow exactly): in the style of Wired and The Verge editorial infographics. Polished magazine editorial infographic. Organise one clear visual narrative with a strong headline area, structured sections, purposeful callout boxes and clean illustrations or visual metaphors. Use consistent professional typography, restrained accents and generous separation between ideas.",
     "text_mode": [
       "native",
       "overlay",
@@ -50,8 +50,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -63,11 +63,49 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
-  "anchor": {
-    "file": "anchor.png",
-    "sha256": "89c2bfc59a64feb433b6d431358f58faf3254c6d0cade1dbf6354606763fba0e",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+  "inspiration": {
+    "names": [
+      "Wired",
+      "The Verge 编辑风"
+    ],
+    "prompt": "Wired and The Verge editorial infographics"
+  },
+  "uses": [
+    "小红书",
+    "信息图",
+    "PPT",
+    "漫画",
+    "绘本"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "f5b8356e71fcfd5e67b38a812ef4557f8384c0a7484e892e075cd184bfb3e4a8",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "14e9b54f2d38c7afe3be6652b91410854ed48740f85efa3b050e24d7a29f67d4",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "76e2fa8339a6c3f4d151aaffe5bd80b98bab684aee96257c70bdb7c39d6984aa",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

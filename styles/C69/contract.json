@@ -1,0 +1,113 @@
+{
+  "code": "C69",
+  "revision": 1,
+  "name": {
+    "zh": "圆滚针织黏土玩偶",
+    "en": "Round Knitted Clay Doll"
+  },
+  "family": "立体材质·马卡龙",
+  "fit": [
+    "封面",
+    "讲道理",
+    "讲故事"
+  ],
+  "facets": {
+    "medium": "圆滚针织黏土玩偶",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "original",
+    "license": "original",
+    "notes": "画风库 v2 新增；风格描述改写自原作仓库条目，名称仅作灵感来源说明。"
+  },
+  "essence": [
+    "棉线针织质感",
+    "糖果粉彩与马卡龙色",
+    "潮玩治愈感"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): cotton-yarn knit scarves and sweaters, candy pastel macaron colours, cute designer-toy healing feel, soft 3D.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "棉线针织质感",
+      "糖果粉彩与马卡龙色",
+      "潮玩治愈感"
+    ],
+    "must_not_see": [
+      "与所选画风不符的通用插画质感",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "Codex 内置生图（底层模型 ID 未暴露）",
+    "date": "2026-09-30",
+    "notes": "仅完成合同校验与三题同题试出图（人物 / 物件 / 信息图）；尚未通过正式准入。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-30",
+      "note": "画风库 v2 新增"
+    }
+  ],
+  "inspiration": {
+    "names": [],
+    "prompt": ""
+  },
+  "uses": [
+    "封面",
+    "文章插图",
+    "小红书",
+    "PPT",
+    "漫画",
+    "绘本",
+    "音乐封面"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "4d0046573729e207b7a1ed149e7e410f59a16b1e24669e803fb9d9d82acb1c0a",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "2f54ee3528e1e6a3a32d6b6ce3eb70df77ac32f96b4bc2ee3a11af265693f088",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "91e12fca643d055ba86c1ba12c7af09f71a58c8bdd8bb88fc5b4694c4fb31d16",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "35e1e240871933f8e88d54ce973835b4cd14c9755b057f9537d75f7ce6826886",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "201-400/237",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/237.webp"
+    }
+  }
+}

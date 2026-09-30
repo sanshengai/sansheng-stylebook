@@ -419,3 +419,20 @@ def test_disabled_anchor_rejects_forced_use_and_omits_default():
     # Mutation at the consumed switch restores the known bad reference.
     contract["anchor"]["enabled"] = True
     assert c(m, contract=contract).references[0]["path"] == "bad.png"
+
+
+def test_ppt_slide_text_limits():
+    """整页幻灯片：标题 + 副标题 + 至多 5 条要点；超出必须被拒（反例）。"""
+    base = {"style": "C42", "format": "ppt", "content": {"subject": "A team reviewing a growth chart"},
+            "text": {"mode": "native", "items": [{"role": "title", "text": "季度复盘"}, {"role": "subtitle", "text": "增长来自两个渠道"}]
+                     + [{"role": "body", "text": f"要点{i}"} for i in range(1, 6)]}}
+    out = CP.compile_manifest(base)
+    assert "季度复盘" in out.prompt and "要点5" in out.prompt
+    too_many = copy.deepcopy(base)
+    too_many["text"]["items"].append({"role": "body", "text": "要点6"})
+    with pytest.raises(CP.CompileError, match="要点最多 5 条"):
+        CP.compile_manifest(too_many)
+    long_body = copy.deepcopy(base)
+    long_body["text"]["items"][2]["text"] = "很长" * 20
+    with pytest.raises(CP.CompileError, match="超过"):
+        CP.compile_manifest(long_body)

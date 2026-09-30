@@ -1,6 +1,6 @@
 {
   "code": "C31",
-  "revision": 4,
+  "revision": 5,
   "name": {
     "zh": "手绘视觉笔记",
     "en": "Hand-drawn Sketch Notes"
@@ -36,7 +36,7 @@
     "清爽留白，像手绘概念图幻灯片"
   ],
   "recipe": {
-    "positive": "Hand-drawn educational sketch-note infographic on warm cream paper with a subtle matte paper grain. Every outline, arrow and doodle is drawn in black hand-drawn ink lines with a friendly, slightly imperfect wobble. Information sits in rounded soft pastel blocks in light blue, mint green, lavender and peach, with one coral-red accent for one or two emphasis points only. Neat, airy layout like a hand-drawn concept diagram on a presentation slide: small simple doodles, clear sections, generous empty space, easy to understand at a glance. People, animals, objects and whole scenes are drawn the same way: simple flat doodles with black hand-drawn outlines and flat pastel fills on the cream paper, never painted or shaded.",
+    "positive": "Visual style (follow exactly): in the style of Mike Rohde's sketchnote tradition. Hand-drawn educational sketch-note infographic on warm cream paper with a subtle matte paper grain. Every outline, arrow and doodle is drawn in black hand-drawn ink lines with a friendly, slightly imperfect wobble. Information sits in rounded soft pastel blocks in light blue, mint green, lavender and peach, with one coral-red accent for one or two emphasis points only. Neat, airy layout like a hand-drawn concept diagram on a presentation slide: small simple doodles, clear sections, generous empty space, easy to understand at a glance. People, animals, objects and whole scenes are drawn the same way: simple flat doodles with black hand-drawn outlines and flat pastel fills on the cream paper, never painted or shaded.",
     "text_style": "Titles and labels are bold handwritten-style black lettering drawn by the same pen as the doodles, placed directly on the paper or inside the pastel blocks.",
     "text_mode": [
       "native",
@@ -121,8 +121,8 @@
   "evidence": {
     "admission": "pending",
     "model": "gpt-image-2",
-    "date": "2026-09-25",
-    "notes": "配方以 2026-09-25 同题测试提示词为起点；准入见 8 题矩阵"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -144,11 +144,46 @@
       "revision": 4,
       "date": "2026-09-29",
       "note": "用无文字、无人物的图解画风板替换 q1 故事画面锚点；异题 T7 目视更贴近简洁平涂信息图，正式准入仍 pending"
+    },
+    {
+      "revision": 5,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
-  "anchor": {
-    "file": "anchor.png",
-    "sha256": "1d223675f1b83885e4c94dc56bf8965d2baf33c6bfb7ef5cf0395d64c202b47e",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+  "inspiration": {
+    "names": [
+      "Mike Rohde 手绘笔记"
+    ],
+    "prompt": "Mike Rohde's sketchnote tradition"
+  },
+  "uses": [
+    "小红书",
+    "信息图",
+    "PPT"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "dbe23d677253844cc0cb51f7fe54e0d951e0d00e5a9a44bb3ed60a7387d2a831",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "0e73e18c7d2961f9c22cc1ee1ec059182c477fec4f9925dccc3b707693d48050",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "be46263e7bd6c70665ad286397ae278e644f25bcb9c5d2eaf8c0c50c0768835d",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

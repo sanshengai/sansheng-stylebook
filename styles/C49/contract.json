@@ -1,6 +1,6 @@
 {
   "code": "C49",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "条漫厚涂",
     "en": "Painterly Webtoon"
@@ -25,7 +25,7 @@
     "电影感轮廓光和纵向叙事"
   ],
   "recipe": {
-    "positive": "Visual style (follow exactly): Webtoon painterly style: clean character line art with soft painterly cel shading, luminous skin, glossy expressive eyes, cinematic rim light, polished modern Korean/Chinese web-comic look, vivid but soft colours.",
+    "positive": "Visual style (follow exactly): in the style of Korean webtoon semi-painterly digital style. Webtoon painterly style: clean character line art with soft painterly cel shading, luminous skin, glossy expressive eyes, cinematic rim light, polished modern Korean/Chinese web-comic look, vivid but soft colours.",
     "text_mode": [
       "native",
       "overlay",
@@ -49,8 +49,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -62,11 +62,47 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
-  "anchor": {
-    "file": "anchor.png",
-    "sha256": "16d2485813d03c7046148e79cd9fa79136ef58676cf6aaf02ac118a4e5733965",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+  "inspiration": {
+    "names": [
+      "韩国网络条漫"
+    ],
+    "prompt": "Korean webtoon semi-painterly digital style"
+  },
+  "uses": [
+    "封面",
+    "小红书",
+    "漫画",
+    "分镜"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "559c4a93f4b10b1ef2bd9ea8b76844b28821b589bc6a9b28fc06b584b8587de6",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "1d43f1be40c7560a0407407ae2ae3e07d1ef4111d61adfd34a5d5dd34f61c056",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "7a3894353667974dc1960bfb510a260cb4e1f204f850d17f7dc1015e52a9dc7d",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

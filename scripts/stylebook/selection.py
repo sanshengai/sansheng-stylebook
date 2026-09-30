@@ -51,7 +51,9 @@ def _style(value: dict, label: str, scope: str) -> dict:
     try:
         contract = CT.load(code)
     except (KeyError, CT.ContractError) as exc:
-        raise SelectionError(f"{label} 风格不可用：{code}") from exc
+        raise SelectionError(f"{label} 风格不可用：{code}（{exc}）") from exc
+    if contract.get("_alias_from"):  # 旧码已并入新码：按新码的现行修订
+        code, value = contract["code"], {k: v for k, v in value.items() if k != "revision"}
     rev = value.get("revision", contract["revision"])
     if type(rev) is not int or rev != contract["revision"]:
         raise SelectionError(f"{code} 当前合同是 r{contract['revision']}，选择中的修订 r{rev} 不可用")
@@ -251,7 +253,10 @@ def recommend(scene: str, *, shapes: list[str] | None = None, explicit: str | No
         raise SelectionError(f"未知内容形状：{[x for x in shapes if x not in PL.SHAPES]}")
     chosen = PL.resolve_style(scene, explicit, project)
     code, alternates, _ = D.scene_choice(scene)
-    candidates = list(dict.fromkeys([chosen["code"].split("@")[0], code, *alternates]))
+    use = D.use_of_scene(scene)
+    pool = D.styles_for_use(use) if use else []
+    chosen_code = CT.canonical(chosen["code"])[0] if chosen["code"] else chosen["code"]
+    candidates = list(dict.fromkeys([chosen_code, code, *alternates]))
     output = []
     for candidate in candidates:
         try:
@@ -262,13 +267,15 @@ def recommend(scene: str, *, shapes: list[str] | None = None, explicit: str | No
         fit = set(c.get("fit", []))
         desired = {"讲故事" if shape == "story" else "讲道理" for shape in shapes}
         missing = sorted(desired - fit)
-        output.append({"code": candidate, "revision": c["revision"],
+        out_of_use = bool(use) and candidate not in pool
+        output.append({"code": candidate, "revision": c["revision"], "in_use_pool": not out_of_use,
                        "status": c.get("evidence", {}).get("admission", "pending"),
                        "fit": sorted(fit), "content_fit": "suggested" if not missing else "unverified",
-                       "reason": "目录未声明该内容用途：" + "、".join(missing) if missing else "目录列为候选；仍需按成图验收"})
+                       "reason": (f"这个画风没被标为适合「{use}」；照你的选择继续，但请逐张检查" if out_of_use else
+                                  "目录未声明该内容用途：" + "、".join(missing) if missing else "目录列为候选；仍需按成图验收")})
     expression = [{"shape": shape, "forms": PL.SHAPES[shape]["forms"],
                    "structures": PL.SHAPES[shape].get("structures", [])} for shape in shapes]
-    return {"scene": scene, "chosen": chosen, "candidates": output, "expression_by_content": expression,
+    return {"scene": scene, "use": use, "pool": pool, "chosen": chosen, "candidates": output, "expression_by_content": expression,
             "note": "内容关系先决定逐图表达；候选未验证不等于不能用。已锁定画风不会因表达建议自动更换。"}
 
 

@@ -1,6 +1,6 @@
 {
   "code": "C24",
-  "revision": 4,
+  "revision": 5,
   "name": {
     "zh": "黏土定格",
     "en": "Clay Stop-motion"
@@ -37,7 +37,7 @@
     "饱和但略哑的黏土色，中性棚拍背景"
   ],
   "recipe": {
-    "positive": "3D clay-figure stop-motion aesthetic: every object is made of plasticine with visible fingerprint marks and small imperfections, rounded sculpted forms, soft shadows and a miniature-set feel. Saturated but slightly muted clay colours against a neutral studio backdrop with soft gradients, complementary clay accents and gentle highlights. Every surface in the scene, including wood, stone, fabric, water and fur, is plasticine with the same fingerprinted clay texture, so the whole picture looks like a handmade miniature set.",
+    "positive": "Visual style (follow exactly): in the style of Aardman Animations claymation (Wallace & Gromit). 3D clay-figure stop-motion aesthetic: every object is made of plasticine with visible fingerprint marks and small imperfections, rounded sculpted forms, soft shadows and a miniature-set feel. Saturated but slightly muted clay colours against a neutral studio backdrop with soft gradients, complementary clay accents and gentle highlights. Every surface in the scene, including wood, stone, fabric, water and fur, is plasticine with the same fingerprinted clay texture, so the whole picture looks like a handmade miniature set.",
     "text_style": "Titles and labels are sculpted from the same plasticine as the objects, standing free in the scene with open space around them.",
     "text_mode": [
       "native",
@@ -79,8 +79,8 @@
   "evidence": {
     "admission": "pending",
     "model": "gpt-image-2",
-    "date": "2026-09-25",
-    "notes": "配方以 2026-09-25 同题测试提示词为起点；准入见 8 题矩阵"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -102,11 +102,60 @@
       "revision": 4,
       "date": "2026-09-29",
       "note": "用无题材黏土材质板替换 q1 祖孙画面锚点；T5 器皿材质改善，但木桌仍像真木，正式准入 pending"
+    },
+    {
+      "revision": 5,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
   "anchor": {
     "file": "anchor.png",
-    "sha256": "2fcb93f7d0e9a601f674559992a199ddc97851d71ffbc4df140f0d7d0b159d8e",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+    "sha256": "f5b948aae511cbfbec9ffc3890bf81f89e845f0d01c768fea58d5e5292566d12",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "201-400/248",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/248.webp"
+    }
+  },
+  "inspiration": {
+    "names": [
+      "Aardman《超级无敌掌门狗》"
+    ],
+    "prompt": "Aardman Animations claymation (Wallace & Gromit)"
+  },
+  "uses": [
+    "封面",
+    "文章插图",
+    "小红书",
+    "绘本",
+    "分镜"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "d24fbea1cab5fc3895bc838615959f4eded8b0ec2f4acb99d88b48931c6fa8c5",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "667f3399373d6226b873808abd886485e71ff319d9484034f1f0fdf7882b709e",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "7286a017a6ce637c1774ee233c95ad4434a99d236b55ff5d19f7d6ad064b2cab",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

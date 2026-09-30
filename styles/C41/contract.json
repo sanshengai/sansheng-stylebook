@@ -1,6 +1,6 @@
 {
   "code": "C41",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "复古矢量描边",
     "en": "Retro Outlined Vector"
@@ -26,7 +26,7 @@
     "几何简化的玩具造型"
   ],
   "recipe": {
-    "positive": "Playful retro flat vector illustration. Use uniform black outlines around closed geometric shapes, soft vintage colours, simple toy-like people and objects, and shallow depth through clean overlapping layers. Keep fills flat and contours crisp.",
+    "positive": "Visual style (follow exactly): Playful retro flat vector illustration. Use uniform black outlines around closed geometric shapes, soft vintage colours, simple toy-like people and objects, and shallow depth through clean overlapping layers. Keep fills flat and contours crisp.",
     "text_mode": [
       "native",
       "overlay",
@@ -50,8 +50,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -63,11 +63,47 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
-  "anchor": {
-    "file": "anchor.png",
-    "sha256": "47e69e5666cd2b544c28ca9372a3871342fa268baf7797b32970bbb5ea9fe33b",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+  "inspiration": {
+    "names": [],
+    "prompt": ""
+  },
+  "uses": [
+    "小红书",
+    "信息图",
+    "PPT",
+    "漫画",
+    "绘本",
+    "音乐封面"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "61891239b48c024cf66d0411e48a8a5cbcd3fa243652bb5969d6767c3eef5026",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "3bfff61dd16877584682a5e408e0795d5f8c326904616f0b82b889efa29f3146",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "41ca4d73862ab265cbe01353dc54798912744ea36b66bd99c69990c720d1e118",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

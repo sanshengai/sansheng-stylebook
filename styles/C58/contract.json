@@ -1,6 +1,6 @@
 {
   "code": "C58",
-  "revision": 9,
+  "revision": 10,
   "name": {
     "zh": "日系清新校园动画",
     "en": "Fresh Japanese School Anime"
@@ -36,7 +36,7 @@
     "日常校园的温暖感"
   ],
   "recipe": {
-    "positive": "Clean contemporary Japanese TV-anime cel illustration, designed as an intentionally simplified 2D animation frame. Every person, animal, prop and landscape has a thin continuous ink contour, broad opaque matte pastel color shapes and at most one hard-edged second-tone cel shadow. All materials, including wood, ceramic, glass, fabric, fur, foliage and stone, remain flat bounded shapes with very sparse texture marks. Rain-damp stone paving is a field of individually outlined opaque matte tiles separated by visible dark seams: moisture appears as cool blue-violet base tones and only three or four tiny isolated pale-cyan cel glints, each confined to one tile. The road center remains matte with no connected bright band or reflected sky or buildings. Maintain a sparse everyday scene with few background props and readable subject hierarchy. When a prompt explicitly calls for a small person within a landscape or title card, draw the complete seated or standing figure as a minor element occupying no more than one sixth of the canvas height; keep the environmental view and open path dominant. A small figure is never enlarged into a character portrait. Visible faces have expressive anime eyes with one small painted catchlight. Airy pastel daylight, crisp foreground contours, and a gentle controlled background bloom. For diagrams, charts and stepwise explainers, use compact outlined two-dimensional cel cutouts on a calm light ground, separated by clear space; each icon and arrow has one pastel base tone and at most one second-tone shadow. Render light as small matte graphic marks, and make sequence order clear with placement and flat outlined arrows. In environmental title cards and other wide establishing shots, stage the landscape, path and open title area first. Put the bench and complete seated figure far back in the middle ground; the figure is a tiny incidental accent no taller than the bench back and visibly smaller than a nearby tree trunk. Preserve the open path as the main foreground, with no facial close-up or large character silhouette. When a knitted garment is required, indicate cable-knit only as a few large flat ink-bounded motifs on an otherwise untextured cel-color garment; never draw repeated tiny stitches or simulated yarn fibers.",
+    "positive": "Visual style (follow exactly): in the style of Kyoto Animation school anime (K-On!, Violet Evergarden). Clean contemporary Japanese TV-anime cel illustration, designed as an intentionally simplified 2D animation frame. Every person, animal, prop and landscape has a thin continuous ink contour, broad opaque matte pastel color shapes and at most one hard-edged second-tone cel shadow. All materials, including wood, ceramic, glass, fabric, fur, foliage and stone, remain flat bounded shapes with very sparse texture marks. Rain-damp stone paving is a field of individually outlined opaque matte tiles separated by visible dark seams: moisture appears as cool blue-violet base tones and only three or four tiny isolated pale-cyan cel glints, each confined to one tile. The road center remains matte with no connected bright band or reflected sky or buildings. Maintain a sparse everyday scene with few background props and readable subject hierarchy. When a prompt explicitly calls for a small person within a landscape or title card, draw the complete seated or standing figure as a minor element occupying no more than one sixth of the canvas height; keep the environmental view and open path dominant. A small figure is never enlarged into a character portrait. Visible faces have expressive anime eyes with one small painted catchlight. Airy pastel daylight, crisp foreground contours, and a gentle controlled background bloom. For diagrams, charts and stepwise explainers, use compact outlined two-dimensional cel cutouts on a calm light ground, separated by clear space; each icon and arrow has one pastel base tone and at most one second-tone shadow. Render light as small matte graphic marks, and make sequence order clear with placement and flat outlined arrows. In environmental title cards and other wide establishing shots, stage the landscape, path and open title area first. Put the bench and complete seated figure far back in the middle ground; the figure is a tiny incidental accent no taller than the bench back and visibly smaller than a nearby tree trunk. Preserve the open path as the main foreground, with no facial close-up or large character silhouette. When a knitted garment is required, indicate cable-knit only as a few large flat ink-bounded motifs on an otherwise untextured cel-color garment; never draw repeated tiny stitches or simulated yarn fibers.",
     "text_style": "Any title is rounded, friendly lettering in a soft colour, like an anime title card.",
     "text_mode": [
       "none",
@@ -84,10 +84,16 @@
     }
   ],
   "evidence": {
-    "admission": "admitted",
-    "model": "Codex 内置生图（底层模型 ID 未暴露）",
-    "date": "2026-09-28",
-    "notes": "r9 合同与题库 v6 锁定八题首图；完整有效双评经 T1 左右误判直接看图裁定、T6 一份不完整复核排除并另补一次有效复核后为 8/8，T3、T7/T8 中文题通过。T2 毛衣、T5 材质、T6 路面、T8 人物与蜗牛关系有局部双评；T1 同词三图稳定。T3/T6 与 C01、C08、C25、C32、C56 匿名辨认 12/12。原图、锁定提示词、报告与哈希见维护者保留的证据记录（SHA-256 d72f8cf22ffcec182229c070e9731b3f1822814e8c1e2d6555210d31a9cb5688）。T8 观看关系较弱，仍需在正式标题卡消费路径回归；其他首发样式与跨版式盲评未完成，阶段 2 不放行。"
+    "admission": "pending",
+    "model": "未在本修订上完成模型实测",
+    "date": "2026-09-30",
+    "notes": "r9 曾通过正式准入；r10 在配方前加入原作名并换用原作样图（或取消锚点），需按新修订重新准入。",
+    "prior": {
+      "model": "Codex 内置生图（底层模型 ID 未暴露）",
+      "date": "2026-09-28",
+      "notes": "r9 合同与题库 v6 锁定八题首图；完整有效双评经 T1 左右误判直接看图裁定、T6 一份不完整复核排除并另补一次有效复核后为 8/8，T3、T7/T8 中文题通过。T2 毛衣、T5 材质、T6 路面、T8 人物与蜗牛关系有局部双评；T1 同词三图稳定。T3/T6 与 C01、C08、C25、C32、C56 匿名辨认 12/12。原图、锁定提示词、报告与哈希见维护者保留的证据记录（SHA-256 d72f8cf22ffcec182229c070e9731b3f1822814e8c1e2d6555210d31a9cb5688）。T8 观看关系较弱，仍需在正式标题卡消费路径回归；其他首发样式与跨版式盲评未完成，阶段 2 不放行。",
+      "revision": 9
+    }
   },
   "changelog": [
     {
@@ -134,6 +140,50 @@
       "revision": 9,
       "date": "2026-09-28",
       "note": "环境远景的小人物比例、针织平涂边界；题库 v6 八题、同词稳定及匿名跨样式辨认完成后准入。"
+    },
+    {
+      "revision": 10,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
+    }
+  ],
+  "inspiration": {
+    "names": [
+      "京都动画《轻音少女》《紫罗兰永恒花园》"
+    ],
+    "prompt": "Kyoto Animation school anime (K-On!, Violet Evergarden)"
+  },
+  "uses": [
+    "文章插图",
+    "小红书",
+    "信息图",
+    "漫画",
+    "绘本",
+    "分镜",
+    "教材"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "f485b77002260410f82f44f0a1c801515f26dd368b71e6bc0c6d7a793a4c8526",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "27dfdbff7690c84519f7d5bc3124e47ab37f536ec81a44a4dd570043e30b6d3b",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "acdb25d15f18658c0abc7f48bff3c6859533beac0e2a3bae39bae7266768a025",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
     }
   ]
 }

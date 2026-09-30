@@ -124,5 +124,6 @@ def test_gallery_builds_with_samples(profile, tmp_path):
 
 def test_disabled_anchor_is_not_gallery_sample():
     reg = BD.registry()
-    assert "C42-anchor" not in BD.collect_images(reg)
-    assert "C31-anchor" in BD.collect_images(reg)
+    images = BD.collect_images(reg)
+    assert "C30-anchor" not in images  # C30 没有原作样图，不配锚点
+    assert "C06-anchor" in images and "C06-s1" in images

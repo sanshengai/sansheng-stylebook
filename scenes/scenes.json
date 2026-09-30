@@ -10,15 +10,18 @@
         "xhs-carousel",
         "xhs-cover"
       ],
-      "preview_test": "T8",
+      "preview_test": "s3",
       "uses_structure": true,
       "default_density": "balanced",
       "default": "C31",
       "alternates": [
+        "C73",
         "C35",
         "C42",
-        "C16"
-      ]
+        "C16",
+        "C34"
+      ],
+      "use": "小红书"
     },
     {
       "id": "wxillus",
@@ -27,15 +30,17 @@
       "formats": [
         "article-illustration"
       ],
-      "preview_test": "T7",
+      "preview_test": "s1",
       "uses_structure": true,
       "default_density": "balanced",
       "default": "C24",
       "alternates": [
-        "C31",
         "C42",
-        "C05"
-      ]
+        "C04",
+        "C60",
+        "C21"
+      ],
+      "use": "文章插图"
     },
     {
       "id": "wxcover",
@@ -45,15 +50,17 @@
         "wechat-cover-head",
         "wechat-cover-square"
       ],
-      "preview_test": "T6",
+      "preview_test": "s1",
       "uses_structure": false,
       "default_density": "sparse",
-      "default": "C44",
+      "default": "C30",
       "alternates": [
+        "C01",
+        "C17",
         "C19",
-        "C45",
-        "C17"
-      ]
+        "C59"
+      ],
+      "use": "封面"
     },
     {
       "id": "ppt",
@@ -62,16 +69,17 @@
       "formats": [
         "ppt"
       ],
-      "preview_test": "T7",
+      "preview_test": "s3",
       "uses_structure": true,
       "default_density": "balanced",
-      "default": "C32",
+      "default": "C73",
       "alternates": [
-        "C42",
         "C34",
-        "C41",
-        "C40"
-      ]
+        "C31",
+        "C42",
+        "C41"
+      ],
+      "use": "PPT"
     },
     {
       "id": "info",
@@ -80,15 +88,17 @@
       "formats": [
         "infographic"
       ],
-      "preview_test": "T7",
+      "preview_test": "s3",
       "uses_structure": true,
       "default_density": "dense",
-      "default": "C31",
+      "default": "C40",
       "alternates": [
         "C34",
-        "C38",
-        "C40"
-      ]
+        "C35",
+        "C31",
+        "C32"
+      ],
+      "use": "信息图"
     },
     {
       "id": "comic4",
@@ -97,16 +107,17 @@
       "formats": [
         "comic-4panel"
       ],
-      "preview_test": "T2",
+      "preview_test": "s1",
       "uses_structure": false,
       "default_density": null,
       "default": "C58",
       "alternates": [
-        "C36",
         "C11",
-        "C15",
+        "C36",
+        "C57",
         "C48"
-      ]
+      ],
+      "use": "漫画"
     },
     {
       "id": "book",
@@ -115,16 +126,17 @@
       "formats": [
         "picturebook-page"
       ],
-      "preview_test": "T3",
+      "preview_test": "s1",
       "uses_structure": false,
       "default_density": null,
       "default": "C08",
       "alternates": [
         "C04",
-        "C05",
         "C30",
-        "C03"
-      ]
+        "C06",
+        "C60"
+      ],
+      "use": "绘本"
     },
     {
       "id": "board",
@@ -133,16 +145,17 @@
       "formats": [
         "storyboard-frame"
       ],
-      "preview_test": "T6",
+      "preview_test": "s1",
       "uses_structure": false,
       "default_density": null,
       "default": "C01",
       "alternates": [
         "C56",
-        "C50",
-        "C45",
-        "C57"
-      ]
+        "C57",
+        "C49",
+        "C63"
+      ],
+      "use": "分镜"
     },
     {
       "id": "audio",
@@ -152,15 +165,17 @@
         "podcast-cover",
         "music-cover"
       ],
-      "preview_test": "T4",
+      "preview_test": "s1",
       "uses_structure": false,
       "default_density": "sparse",
-      "default": "C25",
+      "default": "C30",
       "alternates": [
-        "C44",
-        "C02",
-        "C20"
-      ]
+        "C25",
+        "C08",
+        "C17",
+        "C01"
+      ],
+      "use": "音乐封面"
     },
     {
       "id": "sticker",
@@ -170,7 +185,7 @@
         "sticker-grid",
         "sticker-single"
       ],
-      "preview_test": "T1",
+      "preview_test": "s1",
       "uses_structure": false,
       "default_density": null,
       "default": "C24",
@@ -179,19 +194,18 @@
         "C25",
         "C55",
         "C28"
-      ]
+      ],
+      "hidden": true
     },
     {
       "job": "讲道理",
       "uses_structure": false,
       "default_density": "sparse",
-      "default": "C42",
+      "default": "C30",
       "alternates": [
-        "C21",
-        "C30",
-        "C11",
-        "C36",
-        "C38"
+        "C42",
+        "C51",
+        "C04"
       ],
       "constraints": [
         "For Chinese middle-school textbook use: any student characters must have consistent age and Chinese school uniforms when school uniforms are shown; no Japanese sailor uniforms. Preserve recurring character identity and story continuity.",
@@ -202,7 +216,8 @@
       "formats": [
         "textbook-vocab"
       ],
-      "preview_test": "T7"
+      "preview_test": "s2",
+      "use": "教材"
     },
     {
       "job": "讲道理",
@@ -211,10 +226,9 @@
       "default": "C42",
       "alternates": [
         "C21",
-        "C30",
-        "C11",
-        "C36",
-        "C38"
+        "C04",
+        "C58",
+        "C01"
       ],
       "constraints": [
         "For Chinese middle-school textbook use: any student characters must have consistent age and Chinese school uniforms when school uniforms are shown; no Japanese sailor uniforms. Preserve recurring character identity and story continuity.",
@@ -225,7 +239,8 @@
       "formats": [
         "textbook-grammar"
       ],
-      "preview_test": "T7"
+      "preview_test": "s1",
+      "use": "教材"
     }
   ]
 }

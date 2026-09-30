@@ -1,0 +1,110 @@
+{
+  "code": "C63",
+  "revision": 1,
+  "name": {
+    "zh": "凯尔特手绘动画",
+    "en": "Celtic Hand-Drawn Animation"
+  },
+  "family": "动画·分镜",
+  "fit": [
+    "封面",
+    "讲故事"
+  ],
+  "facets": {
+    "medium": "凯尔特手绘动画",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "original",
+    "license": "original",
+    "notes": "画风库 v2 新增；风格描述改写自原作仓库条目，名称仅作灵感来源说明。"
+  },
+  "essence": [
+    "装饰性凯尔特纹样",
+    "手绘动画的平面构图",
+    "童话般的色彩"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): in the style of Cartoon Saloon's Celtic hand-drawn animation (Song of the Sea, Wolfwalkers). decorative Celtic knot and spiral patterns combined with flat hand-drawn animation composition, storybook colours.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "装饰性凯尔特纹样",
+      "手绘动画的平面构图",
+      "童话般的色彩"
+    ],
+    "must_not_see": [
+      "与所选画风不符的通用插画质感",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "Codex 内置生图（底层模型 ID 未暴露）",
+    "date": "2026-09-30",
+    "notes": "仅完成合同校验与三题同题试出图（人物 / 物件 / 信息图）；尚未通过正式准入。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-30",
+      "note": "画风库 v2 新增"
+    }
+  ],
+  "inspiration": {
+    "names": [
+      "Cartoon Saloon《海洋之歌》《狼行者》"
+    ],
+    "prompt": "Cartoon Saloon's Celtic hand-drawn animation (Song of the Sea, Wolfwalkers)"
+  },
+  "uses": [
+    "封面",
+    "绘本",
+    "分镜"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "51ca47630c89c882bfc69ce2a71354a97aa4df389f9df09ea4327032936b2d04",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "7682170db962e7c1327e2de0ac37e23d0a2be7227dee78cf2e3028eb707dfd42",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "014321fbc818b3358f6479f178cdeae1ee4d0769b11592f18b5ff3f0c2880312",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "1fa1ea1bc74a180ffcff88339a9a637c4cedb79646614dd2de997215172610a8",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "201-400/265",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/265.webp"
+    }
+  }
+}

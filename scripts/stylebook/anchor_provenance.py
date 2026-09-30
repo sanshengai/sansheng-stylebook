@@ -35,6 +35,9 @@ def verify(root: Path = ROOT) -> list[str]:
         if not path.is_file() or not contract_path.is_file():
             problems.append(f"{code}: anchor or contract missing")
             continue
+        origin = entry.get("origin")
+        if not isinstance(origin, dict) or not origin.get("repo") or origin.get("license") != "MIT":
+            problems.append(f"{code}: anchor has no MIT upstream origin in the ledger")
         digest = hashlib.sha256(path.read_bytes()).hexdigest()
         contract = json.loads(contract_path.read_text(encoding="utf-8"))
         if digest != entry.get("sha256") or digest != (contract.get("anchor") or {}).get("sha256"):

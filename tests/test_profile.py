@@ -120,11 +120,10 @@ def test_style_for_reports_admission_without_implying_scene_acceptance(tmp_path)
         return json.loads(cp.stdout)
 
     pending = run("wxillus")
-    assert pending["code"] == "C24" and pending["admission"] == "pending"
+    assert pending["code"] == "C24" and pending["use"] == "文章插图" and pending["admission"] == "pending"
     assert "尚未正式准入" in pending["admission_note"]
-    admitted = run("ppt", "--explicit", "C32")
-    assert admitted["admission"] == "admitted"
-    assert "具体用途" in admitted["admission_note"]
+    demoted = run("ppt", "--explicit", "C32")  # C32 曾在 r4 通过准入，r5 换配方后待复测
+    assert demoted["admission"] == "pending" and "尚未正式准入" in demoted["admission_note"]
 
 
 def test_inferred_project_evidence_does_not_leak_to_another_project():

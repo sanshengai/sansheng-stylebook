@@ -1,0 +1,117 @@
+{
+  "code": "C66",
+  "revision": 1,
+  "name": {
+    "zh": "安静日系低饱和社论",
+    "en": "Quiet Muted Japanese Editorial"
+  },
+  "family": "封面·文章插图",
+  "fit": [
+    "封面",
+    "讲道理",
+    "讲故事"
+  ],
+  "facets": {
+    "medium": "安静日系低饱和社论",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "original",
+    "license": "original",
+    "notes": "画风库 v2 新增；风格描述改写自原作仓库条目，名称仅作灵感来源说明。"
+  },
+  "essence": [
+    "安静的平面人物",
+    "低饱和与留白",
+    "现代日系社论插图"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): in the style of Tatsuro Kiuchi's quiet muted Japanese editorial illustration. quiet flat figures, low saturation, generous white space, modern Japanese editorial illustration.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "安静的平面人物",
+      "低饱和与留白",
+      "现代日系社论插图"
+    ],
+    "must_not_see": [
+      "与所选画风不符的通用插画质感",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "Codex 内置生图（底层模型 ID 未暴露）",
+    "date": "2026-09-30",
+    "notes": "仅完成合同校验与三题同题试出图（人物 / 物件 / 信息图）；尚未通过正式准入。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-30",
+      "note": "画风库 v2 新增"
+    }
+  ],
+  "inspiration": {
+    "names": [
+      "木内达朗"
+    ],
+    "prompt": "Tatsuro Kiuchi's quiet muted Japanese editorial illustration"
+  },
+  "uses": [
+    "封面",
+    "文章插图",
+    "小红书",
+    "信息图",
+    "PPT",
+    "漫画",
+    "绘本",
+    "音乐封面",
+    "教材"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "3b5803a9dd6eafd93366a84fa6b3b1bf67a67dfab65417b84916f3aeb0423f97",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "b0a08b263361c6aada5b952a9f8bd79f4fb0900d219e68fdfb597c4fc36f363d",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "3c226e65841c16c708f3fa533a3a9d8d127467eb7bc22ae30ead584e10cb51e8",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "22b4be138b268b8f407281000e922a32806d6b1bea21a837f331400bfe4a1fcd",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "001-200/084",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/084.webp"
+    }
+  }
+}

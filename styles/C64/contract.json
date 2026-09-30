@@ -1,0 +1,112 @@
+{
+  "code": "C64",
+  "revision": 1,
+  "name": {
+    "zh": "空灵中国水墨幻想动画",
+    "en": "Ethereal Chinese Ink Fantasy Animation"
+  },
+  "family": "动画·分镜",
+  "fit": [
+    "封面",
+    "讲道理",
+    "讲故事"
+  ],
+  "facets": {
+    "medium": "空灵中国水墨幻想动画",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "original",
+    "license": "original",
+    "notes": "画风库 v2 新增；风格描述改写自原作仓库条目，名称仅作灵感来源说明。"
+  },
+  "essence": [
+    "浅墨淡彩",
+    "米白灰青的高明度色调",
+    "东方幻想手绘动画"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): in the style of Shanghai Animation Film Studio's ethereal Chinese ink fantasy animation (Tales of Chinese Folklore). pale ink wash with light colour, off-white and grey-green tones, eastern fantasy hand-drawn animation, high-key and airy.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "浅墨淡彩",
+      "米白灰青的高明度色调",
+      "东方幻想手绘动画"
+    ],
+    "must_not_see": [
+      "与所选画风不符的通用插画质感",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "Codex 内置生图（底层模型 ID 未暴露）",
+    "date": "2026-09-30",
+    "notes": "仅完成合同校验与三题同题试出图（人物 / 物件 / 信息图）；尚未通过正式准入。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-30",
+      "note": "画风库 v2 新增"
+    }
+  ],
+  "inspiration": {
+    "names": [
+      "《中国奇谭》"
+    ],
+    "prompt": "Shanghai Animation Film Studio's ethereal Chinese ink fantasy animation (Tales of Chinese Folklore)"
+  },
+  "uses": [
+    "封面",
+    "文章插图",
+    "漫画",
+    "绘本"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "b5949373d54e601bd20f37bb77ffa64e747c706a4717679c7aabb4688fd66984",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "b310cb538d04b6cf09194b483a4234e030777ca944c58503548dac9fba7c2d38",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "90a3d18cb3dc867368add55373a7a5da30858a521c3deed2922f12b4fdb19549",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "296c53ea9d60ca1321304679036d45a2bf657387a1cc1f52d35173d6ad476877",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "201-400/257",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/257.webp"
+    }
+  }
+}

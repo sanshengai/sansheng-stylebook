@@ -41,7 +41,7 @@ python3 scripts/sb.py selection normalize --code 'sb2:info/C42-hex.1F6F8B.F4F1E8
 
 `source` 允许 `explicit / project / preference / observed / author / factory`。优先级是本次指定、项目锁定、明确场景或通用偏好、观察倾向、作者档案、出厂默认；来源只用于解释，不能越过合同、原文事实或用户锁定。项目 ID、场景和单图 ID 必须按实际任务匹配。风格修订、色系、品牌 HEX、锁色规则、未知字段和未知版本都在入口校验，冲突明确拒绝。`expression.density` 可取 `auto / sparse / balanced / dense`；固定密度必须与计划中的要点数吻合，否则 `selection apply` 拒绝，不能靠删原文要点硬凑。
 
-本地选择器由 `sb.py build --gallery` 生成，公开画廊只含 53 个公开画风；私有画廊需 `--private` 和本地 profile。页面可导入 Agent 规范化 JSON 或旧 `sb1:`，编辑并导出 JSON；从网页复制的自然语言指令附带同一份 JSON。导入不支持的版本、过时修订、锁色冲突、缺少 HEX 的品牌色会给出诊断。网页只做选项和参考图，不读原文、不自行编译最终提示词。收到网页 JSON 后用上述 `selection normalize` 校验，再结合原文形成计划；不要直接把页面里的样图或色块当成最终成图证据。
+本地选择器由 `sb.py build --gallery` 生成，公开画廊只含 57 个公开画风；私有画廊需 `--private` 和本地 profile。页面可导入 Agent 规范化 JSON 或旧 `sb1:`，编辑并导出 JSON；从网页复制的自然语言指令附带同一份 JSON。导入不支持的版本、过时修订、锁色冲突、缺少 HEX 的品牌色会给出诊断。网页只做选项和参考图，不读原文、不自行编译最终提示词。收到网页 JSON 后用上述 `selection normalize` 校验，再结合原文形成计划；不要直接把页面里的样图或色块当成最终成图证据。
 
 自动推荐用 `selection recommend --scene wxillus --shapes story,parts`，返回场景候选及每张信息形状的表达范围。目录没有声明某一用途时显示 `unverified`，不臆断“不能用”；旧正式准入与用途实测仍分开。用户锁定画风后，内容需要网格时允许在该画风内换构图，不暗换画风。密集文字与不擅长原生写字的画风，可建议少字或事后排字；最终以计划、编译和成图验收为准。
 

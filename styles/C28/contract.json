@@ -1,6 +1,6 @@
 {
   "code": "C28",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "儿童蜡笔稚拙",
     "en": "Naive Childlike Crayon"
@@ -49,8 +49,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -62,11 +62,57 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
   "anchor": {
     "file": "anchor.png",
-    "sha256": "f7aaf48052f3f060af54478bc36c9f511d940fc4eeb80fda330e33cbf44079ff",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+    "sha256": "51c0390c2f53df7842fe9106697ca12df413376a9be5e8d2b831151c69732b08",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "001-200/197",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/197.webp"
+    }
+  },
+  "inspiration": {
+    "names": [],
+    "prompt": ""
+  },
+  "uses": [
+    "文章插图",
+    "小红书",
+    "绘本",
+    "教材"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "67d3f01955f85bcbde3a33c8861d21ef34a5f29381c863377da95c8e2fad0c91",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "338563c0d334e8c5f2ce4f378607987b3bdd5cc6828ce189c19643820dc2f624",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "e4d0fa786164581cab2b7cc644c06f3799d6b6c6e86d591c1c5ad9c07c42be24",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

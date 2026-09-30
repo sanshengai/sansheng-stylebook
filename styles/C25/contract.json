@@ -1,6 +1,6 @@
 {
   "code": "C25",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "毛绒玩具 3D",
     "en": "Plush Toy 3D"
@@ -36,7 +36,7 @@
     "柔和棚拍光，治愈可爱"
   ],
   "recipe": {
-    "positive": "Fuzzy plush-toy 3D characters: healing, cuddly plush and chenille yarn dolls, realistic fluffy fibres and knitted texture, rounded soft shapes, bright ice-cream macaron colours, soft studio lighting, cute and cosy. Keep the bright ice-cream macaron colours even in evening, outdoor or night scenes.",
+    "positive": "Visual style (follow exactly): in the style of plush toy 3D render like Jellycat soft toys. Fuzzy plush-toy 3D characters: healing, cuddly plush and chenille yarn dolls, realistic fluffy fibres and knitted texture, rounded soft shapes, bright ice-cream macaron colours, soft studio lighting, cute and cosy. Keep the bright ice-cream macaron colours even in evening, outdoor or night scenes.",
     "text_style": "Titles and labels look like soft felt or plush lettering in the same macaron colours.",
     "text_mode": [
       "native",
@@ -69,10 +69,16 @@
   },
   "drifts": [],
   "evidence": {
-    "admission": "admitted",
-    "model": "Codex 内置生图（底层模型 ID 未暴露）",
-    "date": "2026-09-27",
-    "notes": "r2 默认配方、题库 v5 八题从零生成并各做两次无历史上下文的独立看图：T1–T5、T7、T8 通过，T6 因硬质高光路面和多余动物失败，矩阵 7/8 且 T3/T8 必过。T4 初次双评分歧，第三次独立复核与维护者直接看图均判定柯基为坐姿，原始否决保留。T1 同词三图画法稳定，新增两图均通过单图 QA；T3/T6 与 C01、C08、C32、C58 匿名乱序并排识别，C25 两题均被认出。证据见本地 C25-r2-v5-current-matrix/adjudication.json。只准入 C25 单样式；T6 不合格，不据此标记远景或分镜能力，阶段 1 仍未完成。题库 v6 只重出 T2/T5：当前编译器与 Codex 内置生图生成，两题各经 Ark Agent Plan 两次独立看图及内容数量核验通过；另六题清单与提示词正文一致，沿用 v5 证据。补充裁定见本地 v6-inventory-regression-final/adjudication.json。"
+    "admission": "pending",
+    "model": "未在本修订上完成模型实测",
+    "date": "2026-09-30",
+    "notes": "r2 曾通过正式准入；r3 在配方前加入原作名并换用原作样图（或取消锚点），需按新修订重新准入。",
+    "prior": {
+      "model": "Codex 内置生图（底层模型 ID 未暴露）",
+      "date": "2026-09-27",
+      "notes": "r2 默认配方、题库 v5 八题从零生成并各做两次无历史上下文的独立看图：T1–T5、T7、T8 通过，T6 因硬质高光路面和多余动物失败，矩阵 7/8 且 T3/T8 必过。T4 初次双评分歧，第三次独立复核与维护者直接看图均判定柯基为坐姿，原始否决保留。T1 同词三图画法稳定，新增两图均通过单图 QA；T3/T6 与 C01、C08、C32、C58 匿名乱序并排识别，C25 两题均被认出。证据见本地 C25-r2-v5-current-matrix/adjudication.json。只准入 C25 单样式；T6 不合格，不据此标记远景或分镜能力，阶段 1 仍未完成。题库 v6 只重出 T2/T5：当前编译器与 Codex 内置生图生成，两题各经 Ark Agent Plan 两次独立看图及内容数量核验通过；另六题清单与提示词正文一致，沿用 v5 证据。补充裁定见本地 v6-inventory-regression-final/adjudication.json。",
+      "revision": 2
+    }
   },
   "changelog": [
     {
@@ -84,6 +90,61 @@
       "revision": 2,
       "date": "2026-09-25",
       "note": "8 题矩阵 r1 只过 1 题：多数卡在判据过严——户外场景不可能是「棚拍光」，毛绒玩具的珠子眼睛本就是亮面。光线改为柔和均匀，禁止项注明小颗珠子眼睛不算；远景画成黄昏暖金是真实漂移，锁定层补一句傍晚户外也保持马卡龙亮色"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
-  ]
+  ],
+  "inspiration": {
+    "names": [
+      "Jellycat 毛绒玩具"
+    ],
+    "prompt": "plush toy 3D render like Jellycat soft toys"
+  },
+  "uses": [
+    "封面",
+    "文章插图",
+    "小红书",
+    "漫画",
+    "绘本",
+    "音乐封面"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "d485a1d0f6ebf05f50655828798b33cb20f1b80f3d6f0912c194cf2834638c0e",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "111664b42d1f2dcffb1fc9f301b52a8c3ed667dbde1ff4482cdad238b6012162",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "98fcba40b57a67e38b2b83ac7349161a5f44b1483f1300eab2f9c664b734c131",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "319788095c7d40812841150a0598f51b606c408f755ab618a7f147c160be201e",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "201-400/232",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/232.webp"
+    }
+  }
 }

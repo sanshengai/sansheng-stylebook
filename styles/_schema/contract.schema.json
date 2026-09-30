@@ -255,7 +255,9 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "enabled": {"type": "boolean"},
+        "enabled": {
+          "type": "boolean"
+        },
         "file": {
           "type": "string"
         },
@@ -265,6 +267,24 @@
         },
         "isolation": {
           "type": "string"
+        },
+        "origin": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "repo": {
+              "type": "string"
+            },
+            "item": {
+              "type": "string"
+            },
+            "license": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            }
+          }
         }
       }
     },
@@ -298,12 +318,34 @@
           "properties": {
             "hybrid": {
               "type": "object",
-              "required": ["must_see", "must_not_see"],
+              "required": [
+                "must_see",
+                "must_not_see"
+              ],
               "additionalProperties": false,
               "properties": {
-                "must_see": {"type": "array", "minItems": 2, "items": {"type": "string", "minLength": 4}},
-                "must_not_see": {"type": "array", "minItems": 2, "items": {"type": "string", "minLength": 4}},
-                "when_text": {"type": "array", "items": {"type": "string"}}
+                "must_see": {
+                  "type": "array",
+                  "minItems": 2,
+                  "items": {
+                    "type": "string",
+                    "minLength": 4
+                  }
+                },
+                "must_not_see": {
+                  "type": "array",
+                  "minItems": 2,
+                  "items": {
+                    "type": "string",
+                    "minLength": 4
+                  }
+                },
+                "when_text": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
               }
             }
           }
@@ -358,10 +400,26 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "none": {"type": "number", "minimum": 0, "maximum": 0.3},
-            "native": {"type": "number", "minimum": 0, "maximum": 0.3},
-            "overlay": {"type": "number", "minimum": 0, "maximum": 0.3},
-            "hybrid": {"type": "number", "minimum": 0, "maximum": 0.3}
+            "none": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 0.3
+            },
+            "native": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 0.3
+            },
+            "overlay": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 0.3
+            },
+            "hybrid": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 0.3
+            }
           },
           "description": "按文字模式覆盖 paper_margin_min；未列出的模式沿用通用阈值"
         },
@@ -455,6 +513,10 @@
         },
         "notes": {
           "type": "string"
+        },
+        "prior": {
+          "type": "object",
+          "description": "上一修订的准入记录（改配方后旧准入不再适用，仅留档）"
         }
       }
     },
@@ -480,6 +542,85 @@
           }
         }
       }
+    },
+    "inspiration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "names"
+      ],
+      "properties": {
+        "names": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "原作者、工作室、作品（展示用，公开）"
+        },
+        "prompt": {
+          "type": "string",
+          "description": "进提示词的英文短语；无具体来源时为空字符串"
+        }
+      }
+    },
+    "uses": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "封面",
+          "文章插图",
+          "小红书",
+          "信息图",
+          "PPT",
+          "漫画",
+          "绘本",
+          "分镜",
+          "音乐封面",
+          "教材"
+        ]
+      },
+      "description": "适合的用途；选了用途只列出打勾的画风"
+    },
+    "renderer": {
+      "enum": [
+        "codex",
+        "openai",
+        "any"
+      ],
+      "description": "首选出图后端"
+    },
+    "samples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "topic",
+          "file"
+        ],
+        "properties": {
+          "topic": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "renderer": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "同题样图（人物 / 物件 / 信息图）"
     }
   },
   "$defs": {

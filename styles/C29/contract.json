@@ -1,6 +1,6 @@
 {
   "code": "C29",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "粉笔黑板",
     "en": "Colorful Chalkboard Drawing"
@@ -25,7 +25,7 @@
     "课堂讲解式层级"
   ],
   "recipe": {
-    "positive": "Classic classroom chalkboard illustration on a dark matte board. Draw with visibly powdery coloured chalk strokes and small erased smudges. Use white chalk for primary outlines, restrained bright chalk accents for categories and emphasis, and a clear teacher-like visual hierarchy with ample space around each concept.",
+    "positive": "Visual style (follow exactly): Classic classroom chalkboard illustration on a dark matte board. Draw with visibly powdery coloured chalk strokes and small erased smudges. Use white chalk for primary outlines, restrained bright chalk accents for categories and emphasis, and a clear teacher-like visual hierarchy with ample space around each concept.",
     "text_mode": [
       "native",
       "overlay",
@@ -63,8 +63,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -76,11 +76,47 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
-  "anchor": {
-    "file": "anchor.png",
-    "sha256": "9336ef3a6d3f0d01815d6a0255c4d9041ed6d82a62b3cce68c18162c861b6f61",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+  "inspiration": {
+    "names": [],
+    "prompt": ""
+  },
+  "uses": [
+    "文章插图",
+    "信息图",
+    "PPT",
+    "绘本",
+    "分镜",
+    "教材"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "aa56b67199dfa0b013837b84c5f680a76e75e41692901852c6ad2e3feff6ecce",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "534b01d967c2b9a8bac4a03c596222c85d23d7936ccd1f99cca819ea686ab7c0",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "2667c267a98c1216eefc2a8de8cc2f694b7f897400dec3f91422aa6e385c5a47",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

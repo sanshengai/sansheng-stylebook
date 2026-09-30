@@ -27,7 +27,8 @@ BUILD_DIR = CT.ROOT / "gallery" / "build"
 # 旧同题测试的三题与标准测试题的对应：人物 → T3，场景 → T6，讲解 → T7
 LEGACY_Q = {"q1": "T3", "q2": "T6", "q3": "T7"}
 TEST_NAMES = {"T1": "半身表情", "T2": "两人互动", "T3": "老人与孩子", "T4": "动物", "T5": "静物", "T6": "远景",
-              "T7": "抽象概念", "T8": "中文标题卡"}
+              "T7": "抽象概念", "T8": "中文标题卡",
+              "s1": "人物", "s2": "物件", "s3": "信息图"}  # s1–s3：画风库 v2 的同题样图（种树三题）
 
 
 def _public_catalog() -> list[dict]:
@@ -163,6 +164,10 @@ def collect_images(reg: dict, samples: list[Path] | None = None) -> dict[str, Pa
                 anchor = contract.get("anchor") or {}
                 if anchor and anchor.get("enabled", True):
                     found[f"{code}-anchor"] = contract_path.parent / anchor["file"]
+                for sample in contract.get("samples", []):  # 同题样图（人物 / 物件 / 信息图），键 s1/s2/s3
+                    sp = contract_path.parent / sample["file"]
+                    if sp.is_file():
+                        found[f"{code}-{sp.stem}"] = sp
         if mroot.is_dir():
             runs = sorted(mroot.glob(f"{code}@r*"), key=lambda p: int(p.name.split("@r")[1]) if p.name.split("@r")[1].isdigit() else 0)
             if runs:
@@ -199,8 +204,8 @@ def gallery(out: Path | None = None, private: bool = False, samples: list[Path] 
     scenes = [{"id": sc["id"], "name": sc["zh"], "tag": sc["job"], "t": sc.get("preview_test", "T3"),
                "info": bool(sc.get("uses_structure")), "format": "、".join(D.formats()[f]["zh"] for f in sc["formats"] if f in D.formats()),
                "ar": D.formats()[sc["formats"][0]]["ratio"] if sc["formats"] and sc["formats"][0] in D.formats() else "1:1",
-               "densAuto": sc.get("default_density", "balanced")} for sc in reg["scenes"]]
-    recs = {sc["id"]: [sc["default"], *sc["alternates"]] for sc in reg["scenes"]}
+               "densAuto": sc.get("default_density", "balanced")} for sc in reg["scenes"] if not sc.get("hidden")]
+    recs = {sc["id"]: [sc["default"], *sc["alternates"]] for sc in reg["scenes"] if not sc.get("hidden")}
     structs = [{"id": s["id"], "name": s["zh"], "fam": s["family"], "en": s["en"]} for s in reg["structures"]]
     meta = {"cands": cands, "recs": recs, "structs": structs, "pals": reg["palettes"]["palettes"], "scenes": scenes,
             "tests": TEST_NAMES,

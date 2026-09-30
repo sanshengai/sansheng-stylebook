@@ -93,6 +93,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
+## Reference images and style credits (library v2, 2026-09-30)
+
+Thirty-eight `styles/C*/anchor.png` files are downsized samples from `yang0/handraw-style` and `threerocks/hand-drawn-styles` (both MIT; notices reproduced above). `styles/anchor-provenance.json` lists the upstream repository and item number of each. They are given to the image model only as technique references.
+
+Artist, studio and work names in the contracts (`inspiration.names`) and in the prompts (for example Hayao Miyazaki and Studio Ghibli, Quentin Blake, Jimmy Liao, Hergé, Makoto Shinkai, Aardman, Mary Blair, Osamu Tezuka) are credits for where a look comes from. They are descriptive references to publicly known styles; this project is not affiliated with, endorsed by, or sponsored by any of them, and no artwork by them is included.
+
 ## Ideas without copied text
 
 Design ideas (no text or code copied) were also learned from: yanliudesign/mono-color-skill

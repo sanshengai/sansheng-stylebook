@@ -1,0 +1,109 @@
+{
+  "code": "C68",
+  "revision": 1,
+  "name": {
+    "zh": "中式复古连环画",
+    "en": "Chinese Retro Lianhuanhua"
+  },
+  "family": "漫画·教材",
+  "fit": [
+    "讲道理",
+    "讲故事"
+  ],
+  "facets": {
+    "medium": "中式复古连环画",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "original",
+    "license": "original",
+    "notes": "画风库 v2 新增；风格描述改写自原作仓库条目，名称仅作灵感来源说明。"
+  },
+  "essence": [
+    "黑色细线",
+    "旧纸与有限用色",
+    "传统连环画叙事构图"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): in the style of traditional Chinese lianhuanhua picture-story books. fine black line drawing on aged paper, limited colours, traditional narrative picture-story composition.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "黑色细线",
+      "旧纸与有限用色",
+      "传统连环画叙事构图"
+    ],
+    "must_not_see": [
+      "与所选画风不符的通用插画质感",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "Codex 内置生图（底层模型 ID 未暴露）",
+    "date": "2026-09-30",
+    "notes": "仅完成合同校验与三题同题试出图（人物 / 物件 / 信息图）；尚未通过正式准入。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-30",
+      "note": "画风库 v2 新增"
+    }
+  ],
+  "inspiration": {
+    "names": [
+      "中国连环画（小人书）"
+    ],
+    "prompt": "traditional Chinese lianhuanhua picture-story books"
+  },
+  "uses": [
+    "文章插图",
+    "漫画"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "96fb165e111aeb7206230dcc63983f3c8af82cb953958958a16766ce89bf1c6e",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "eaeb0d94426da297be9bade5dffe8314920ceb917ab8c9ee7e434961720fc287",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "e8f53691759261b7d38f82502e17b3f29c0f1e8861a75cb79d8cc170d3b60e23",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "1bda6ab9333ef007656f969a63d84f50bae45ab8cbc5a70ba92268ace4079c69",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "001-200/188",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/188.webp"
+    }
+  }
+}

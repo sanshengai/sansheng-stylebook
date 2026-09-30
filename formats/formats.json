@@ -263,20 +263,23 @@
         "note": "四边留 5%"
       },
       "text": {
-        "default": "overlay",
-        "title_max_chars": 24
+        "default": "native",
+        "title_max_chars": 24,
+        "subtitle_max_chars": 32,
+        "body_max_items": 5,
+        "body_item_max_chars": 24
       },
       "count": [
         5,
         30
       ],
       "modes": [
-        "整页图",
+        "整页图（默认）",
         "插画 + 可编辑文字"
       ],
       "source": "软件默认",
       "density_max": "dense",
-      "compose": "A 16:9 presentation slide with 5% margins on every side and a clear visual hierarchy."
+      "compose": "A complete 16:9 presentation slide designed as one image: a large main title, a smaller subtitle, and at most five short key-point lines with a clear visual hierarchy and 5% margins; the text is part of the slide design and must be exactly the given text."
     },
     {
       "id": "courseware",
