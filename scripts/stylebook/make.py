@@ -1,0 +1,201 @@
+"""Lightweight brief → compiled tasks → generation/export/pixel preflight.
+
+Pixel checks never certify visual content. The host must inspect the overview.
+Every invocation uses a new output directory; previous candidates are retained.
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import re
+import time
+from threading import Event
+from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
+
+from . import compile as CP, data as D, export as EX, plan as PL
+from . import selection as SEL
+from .qa.sheet import matrix_sheet
+
+
+class BriefError(ValueError):
+    pass
+
+
+def _sha(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _write(path: Path, value: dict) -> None:
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def prepare(brief: dict, *, base_path: Path, model: str = "gpt-image-2") -> dict:
+    if not isinstance(brief, dict) or brief.get("version") != 1:
+        raise BriefError("brief.version 必须是 1")
+    allowed = {"version", "scene", "style", "palette", "reason", "code", "source", "items", "format", "references"}
+    if set(brief) - allowed:
+        raise BriefError(f"brief 未知字段：{sorted(set(brief) - allowed)}")
+    scene = brief.get("scene")
+    if scene not in D.scenes():
+        raise BriefError(f"未知用途：{scene}")
+    reason = brief.get("reason")
+    if not isinstance(reason, str) or not reason.strip():
+        raise BriefError("brief.reason 必须说明这组图的选择理由")
+    items = brief.get("items")
+    if not isinstance(items, list) or not items:
+        raise BriefError("brief.items 不得为空")
+    chosen = PL.resolve_style(scene, explicit=brief.get("style"), include_inferred=False)
+    palette = brief.get("palette") or chosen.get("palette") or {"family": "orig"}
+    expression = {}
+    if brief.get("code"):
+        selected = SEL.normalize(brief["code"], scene=scene)
+        chosen = {"code": selected["style"]["code"] + f"@r{selected['style']['revision']}", "source": "code"}
+        palette = {k: v for k, v in selected["palette"].items() if k in {"family", "light", "sat", "custom"}}
+        expression = selected["expression"]
+    if not isinstance(palette, dict):
+        raise BriefError("palette 必须是色系配置对象")
+    source = None
+    source_text = None
+    if brief.get("source"):
+        if not isinstance(brief["source"], str):
+            raise BriefError("source 必须是原文路径")
+        path = (base_path / brief["source"]).resolve()
+        source_bytes = path.read_bytes()
+        source_text = source_bytes.decode("utf-8")
+        if not source_text.strip():
+            raise BriefError("原文不得为空")
+        source = {"path": str(path), "sha256": hashlib.sha256(source_bytes).hexdigest()}
+    tasks, seen = [], set()
+    references = brief.get("references", [])
+    if not isinstance(references, list) or any(not isinstance(r, dict) or set(r) != {"role", "path"}
+                                              or not isinstance(r["path"], str) for r in references):
+        raise BriefError("references 必须是 role/path 对象列表")
+    references = [{"role": r["role"], "path": str((base_path / r["path"]).resolve())} for r in references]
+    default_format = brief.get("format") or D.scenes()[scene]["formats"][0]
+    for index, item in enumerate(items, 1):
+        if not isinstance(item, dict) or set(item) - {"id", "position", "message", "visual", "text", "format"}:
+            raise BriefError(f"第 {index} 张字段不合格")
+        for field in ("position", "message", "visual"):
+            if not isinstance(item.get(field), str) or not item[field].strip():
+                raise BriefError(f"第 {index} 张缺少 {field}")
+        position = item["position"]
+        if source_text is not None and position != "cover" and position not in source_text:
+            raise BriefError(f"第 {index} 张 position 必须是原文中的准确引用，或 cover")
+        ident = item.get("id", f"{index:02d}")
+        if not isinstance(ident, str) or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,63}", ident) or ident in seen:
+            raise BriefError(f"图片 id 非法或重复：{ident}")
+        seen.add(ident)
+        fmt = item.get("format") or ("wechat-cover-head" if scene == "wxillus" and position == "cover" else default_format)
+        if fmt not in D.formats():
+            raise BriefError(f"未知格式：{fmt}")
+        text = item.get("text", [])
+        if isinstance(text, str):
+            text = [text] if text else []
+        if not isinstance(text, list) or any(not isinstance(t, str) or not t.strip() for t in text):
+            raise BriefError(f"第 {index} 张 text 必须是文字或非空文字列表")
+        manifest = {"style": chosen["code"], "format": fmt, "model": model, "palette": palette,
+                    "references": references, "use_anchor": not any(r["role"] == "style" for r in references),
+                    "content": {"subject": item["visual"], "purpose": item["message"]},
+                    "text": {"mode": "native" if text else "none", "items": [
+                        {"role": "title" if n == 0 else "label", "text": t} for n, t in enumerate(text)]}}
+        for field in ("structure", "density"):
+            if expression.get(field, "auto") != "auto":
+                manifest[field] = expression[field]
+        compiled = CP.compile_manifest(manifest)
+        refs = [{**r, "sha256": _sha(Path(r["path"]))} for r in compiled.references]
+        tasks.append({"id": ident, "position": position, "message": item["message"],
+                      "prompt_sha256": hashlib.sha256(compiled.prompt.encode()).hexdigest(),
+                      "manifest": manifest, "compiled": compiled.to_dict(), "references": refs})
+    return {"version": 1, "scene": scene, "selection": chosen, "palette": palette,
+            "reason": reason, "source": source, "tasks": tasks}
+
+
+def run(brief: dict, out: Path, *, base_path: Path, provider: str | None = None,
+        model: str | None = None, quality: str | None = None, jobs: int = 4,
+        prepare_only: bool = False, gen_fn=None) -> dict:
+    from . import backends as B
+    from PIL import Image
+    from .sticker import check_single
+
+    if type(jobs) is not int or not 1 <= jobs <= 8:
+        raise BriefError("jobs 必须是 1–8")
+    started = time.monotonic()
+    if not prepare_only and gen_fn is None:
+        provider, model = B.choose(provider, model, need_refs=True)
+        gen_fn = B.generate
+    prepared = prepare(brief, base_path=base_path, model=model or "gpt-image-2")
+    out = Path(out)
+    out.mkdir(parents=True, exist_ok=False)
+    _write(out / "brief.json", brief)
+    _write(out / "prepared.json", prepared)
+    for task in prepared["tasks"]:
+        _write(out / f"{task['id']}-manifest.json", task["manifest"])
+        _write(out / f"{task['id']}-compiled.json", task["compiled"])
+    if prepare_only:
+        report = {"status": "pending_host", "selection": prepared["selection"],
+                  "prepared": str(out / "prepared.json"), "visual_review": "not_run", "accepted": False}
+        _write(out / "report.json", report)
+        return report
+
+    stopped = Event()
+
+    def generate_one(task):
+        ident, compiled = task["id"], task["compiled"]
+        raw, final = out / f"{ident}-raw.png", out / f"{ident}.png"
+        rec = {"id": ident, "status": "failed", "visual_review": "not_run", "accepted": False}
+        try:
+            if stopped.is_set():
+                raise BriefError("服务鉴权或配置失败，未启动剩余任务")
+            for ref in task["references"]:
+                if _sha(Path(ref["path"])) != ref["sha256"]:
+                    raise BriefError("参考图在编译后发生变化")
+            result = gen_fn(compiled["prompt"], raw, size=tuple(compiled["size"]), aspect=compiled["aspect"],
+                            refs=[Path(r["path"]) for r in task["references"]], provider=provider,
+                            model=model or compiled["model"], quality=quality, tag=f"make:{ident}")
+            rec["generation"] = {"provider": result.provider, "model": result.model,
+                                 "attempts": result.attempts, "seconds": result.seconds,
+                                 "est_usd": result.est_usd, "raw_sha256": _sha(raw)}
+            for ref in task["references"]:
+                if _sha(Path(ref["path"])) != ref["sha256"]:
+                    raise BriefError("出图期间参考图发生变化，候选不可接受")
+            fmt = task["manifest"]["format"]
+            exported = EX.export(raw, fmt, final)
+            with Image.open(final) as image:
+                actual_size = list(image.size)
+                alpha = image.convert("RGBA").getchannel("A").getextrema()
+            problems = []
+            target = D.formats()[fmt]["export_px"]
+            if actual_size != target:
+                problems.append(f"实际尺寸 {actual_size} 未达到配置目标 {target}，需核对平台要求")
+            if not D.formats()[fmt].get("transparent") and alpha[0] != 255:
+                problems.append("非透明格式含透明像素")
+            if fmt == "sticker-single":
+                sticker = check_single(final)
+                rec["sticker_check"] = sticker
+                problems.extend(sticker["problems"])
+            rec.update(status="pending_visual_review" if not problems else "pixel_failed",
+                       final=str(final), final_sha256=_sha(final), extras=[str(p) for p in exported.extras],
+                       warnings=exported.warnings, pixel_check={"passed": not problems, "problems": problems,
+                                                               "size": actual_size})
+        except Exception as exc:
+            if getattr(exc, "kind", None) in {"auth", "verify", "unconfigured"}:
+                stopped.set()
+            rec["error"] = {"type": type(exc).__name__, "message": str(exc)}
+        _write(out / f"{ident}-receipt.json", rec)
+        return rec
+
+    with ThreadPoolExecutor(max_workers=jobs) as pool:
+        results = list(pool.map(generate_one, prepared["tasks"]))
+    overview = out / "overview.png"
+    matrix_sheet([{"image": r.get("final"), "label": r["id"],
+                   "status": "pending" if r["status"] == "pending_visual_review" else "failed"}
+                  for r in results], overview, cols=min(jobs, len(results)), title="Visual review required")
+    source_unchanged = prepared["source"] is None or _sha(Path(prepared["source"]["path"])) == prepared["source"]["sha256"]
+    failed = sum(r["status"] != "pending_visual_review" for r in results)
+    report = {"status": "failed" if failed or not source_unchanged else "pending_visual_review",
+              "selection": prepared["selection"], "items": results, "failed": failed,
+              "source_unchanged": source_unchanged, "overview": str(overview),
+              "seconds": round(time.monotonic() - started, 3), "visual_review": "not_run", "accepted": False}
+    _write(out / "report.json", report)
+    return report
