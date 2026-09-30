@@ -47,6 +47,20 @@ Agent 看总览并按需打开原图：字是否准确、主体与关系有无�
 python3 scripts/sb.py make brief.json -o 新目录 --prepare
 ```
 
-这一步不调用外部服务，输出状态 `pending_host`。按 `prepared.json` 的每个任务，将完整 `compiled.prompt` 和全部 `compiled.references[].path` 交给内置工具，不再改写锁定层。当前首版尚未自动导回内置成图；保存工具原图，按已有 `export` 命令导出、看图并记录实际来源。未知底层模型和费用保持未知。
+这一步不调用外部服务，输出状态 `pending_host`。按 `prepared.json` 的每个任务，将完整 `compiled.prompt` 和全部 `compiled.references[].path` 交给内置工具，不再改写锁定层。保存内置工具原图及实际调用参数，以 `--prepared prepared.json --import-results host-results.json -o 新目录` 导回。记录格式见下例。未知底层模型和费用保持 `null`；`seconds` 是工具调用实测耗时，可为 `null`。导回报告的总耗时只涵盖导回和导出，完整流程应另行计时。
+
+```json
+{
+  "version": 1, "prepared_sha256": "prepared.json 文件的 SHA256",
+  "images": {"01": {
+    "provider": "codex_builtin", "model": null, "est_usd": null, "seconds": 31.0,
+    "path": "/实际工具原图.png", "sha256": "原图 SHA256",
+    "prompt_sha256": "完整 compiled.prompt UTF-8 SHA256", "reference_sha256s": [],
+    "tool_arguments": {"prompt": "完整 compiled.prompt", "referenced_image_paths": [], "transparent_background": false}
+  }}
+}
+```
+
+每个任务必须都有对应记录；摘要和参数必须来自实际调用。输入或合同变化会拒绝导回，不能把旧成图绑定到新提示词。C42 旧参考图已因真实试跑不符合画风要求而停用；保留历史文件，但默认只使用合同提示词，直到有确认过的新参考图。
 
 带大量文字、教程数据或准备正式发布时，现阶段继续使用 [planning.md](planning.md)、[text.md](text.md)、[qa.md](qa.md) 中已有的计划与独立复核；发布档尚未整合进 make，不能仅凭本入口完成正式封存。

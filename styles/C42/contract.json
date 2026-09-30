@@ -1,6 +1,6 @@
 {
   "code": "C42",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "清透扁平",
     "en": "Airy Flat Vector"
@@ -49,9 +49,9 @@
   },
   "evidence": {
     "admission": "pending",
-    "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "model": "Codex 内置生图；实际底层模型未知",
+    "date": "2026-09-30",
+    "notes": "两张真实文章候选暴露旧锚点画风与内容串入；三张无参考替代样板仍有渐变，均未采用。修订 3 停用默认锚点，未完成正式八题、稳定性和版式盲评。"
   },
   "changelog": [
     {
@@ -63,11 +63,17 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "真实文章试跑发现旧锚点不符合清透扁平且带入人物与背景，保留历史图片但停用默认引用；替代候选未通过，正式准入仍待验证"
     }
   ],
   "anchor": {
     "file": "anchor.png",
     "sha256": "2801162d9d78e15f1b7c0ffb630ca3c3bcd0e1080dd2c6e14a740817d98143ec",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects.",
+    "enabled": false
   }
 }
