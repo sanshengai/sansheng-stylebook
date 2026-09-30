@@ -179,8 +179,9 @@ def codex_instruction(prompt: str, out: Path, aspect: str, size: tuple[int, int]
             f"Ask the tool for aspect ratio {aspect} (about {size[0]}x{size[1]} px) rather than a square.\n{ref}"
             f"Use the following prompt verbatim; do not rewrite, shorten or add to it:\n"
             f"<<<PROMPT\n{prompt}\nPROMPT>>>\n"
-            f"After generating, copy the generated image file (the tool saves it under ~/.codex/generated_images/; take the newest file) "
-            f"to {out} using the shell. Reply only with the saved path.")
+            f"After generating, copy the generated image file to {out} using the shell. The tool saves it in your own session folder "
+            f"~/.codex/generated_images/$CODEX_THREAD_ID/ (run `ls ~/.codex/generated_images/$CODEX_THREAD_ID/` and use the file there; "
+            f"never pick a file from a different folder or by recency, other jobs may be generating images at the same time). Reply only with the saved path.")
 
 
 def codex_generate(prompt: str, size: tuple[int, int], quality: str, refs: list[Path], model: str, aspect: str = "1:1") -> bytes:
