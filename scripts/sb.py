@@ -496,8 +496,41 @@ def cmd_make(a) -> int:
     except (MK.BriefError, BackendError, FileExistsError) as exc:
         print(f"轻量出图停止：{exc}", file=sys.stderr)
         return 2
+    if report.get("status") != "pending_host":
+        from stylebook import flywheel as FW
+        report["flywheel"] = FW.after_make(_manifest(a.brief), report, Path(a.out))
+        (Path(a.out) / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        for q in report["flywheel"]["pending"]:
+            print(f"【待问】{q['question']}", file=sys.stderr)
+        for note in report["flywheel"]["notes"]:
+            print(f"【飞轮】{note}", file=sys.stderr)
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 1 if report["status"] == "failed" else 0
+
+
+def cmd_accept(a) -> int:
+    from stylebook import flywheel as FW
+    recs = FW.accept(Path(a.out_dir), a.ids.split(",") if a.ids else None)
+    print(json.dumps({"accepted": [r["detail"] for r in recs], "style": recs[0]["style"] if recs else None}, ensure_ascii=False))
+    return 0 if recs else 1
+
+
+def cmd_flywheel(a) -> int:
+    from stylebook import flywheel as FW
+    if a.action == "status":
+        print(json.dumps(FW.status(a.scene), ensure_ascii=False, indent=2))
+    elif a.action == "questions":
+        print(json.dumps(FW.pending(a.scene), ensure_ascii=False, indent=2))
+    elif a.action == "answer":
+        if not (a.field and a.value and a.choice):
+            print("answer 需要 --field --value --choice(default/project/no)", file=sys.stderr)
+            return 2
+        value = json.loads(a.value) if a.value.startswith("{") else a.value
+        print(json.dumps(FW.answer({k: v for k, v in (("scene", a.scene), ("project", a.project)) if v}, a.field, value, a.choice), ensure_ascii=False))
+    else:
+        print("未知动作", file=sys.stderr)
+        return 2
+    return 0
 
 
 def cmd_pptx(a) -> int:
@@ -530,6 +563,9 @@ def main(argv=None) -> int:
     p.add_argument("--provider"); p.add_argument("--model"); p.add_argument("--quality")
     p.add_argument("--force", action="store_true", help="允许覆盖已存在的输出文件"); p.set_defaults(fn=cmd_generate)
     p = sub.add_parser("doctor"); p.add_argument("--deep", action="store_true"); p.add_argument("--only"); p.set_defaults(fn=cmd_doctor)
+    p = sub.add_parser("accept"); p.add_argument("out_dir"); p.add_argument("--ids"); p.set_defaults(fn=cmd_accept)
+    p = sub.add_parser("flywheel"); p.add_argument("action", choices=["status", "questions", "answer"]); p.add_argument("--scene"); p.add_argument("--project")
+    p.add_argument("--field"); p.add_argument("--value"); p.add_argument("--choice", choices=["default", "project", "no"]); p.set_defaults(fn=cmd_flywheel)
     p = sub.add_parser("setup"); p.add_argument("--provider"); p.add_argument("--model"); p.add_argument("--quality")
     p.add_argument("--no-test", action="store_true"); p.add_argument("--env-template", action="store_true"); p.set_defaults(fn=cmd_setup)
     p = sub.add_parser("inbox"); p.add_argument("manifests", nargs="+"); p.add_argument("-d", "--dir", required=True); p.set_defaults(fn=cmd_inbox)

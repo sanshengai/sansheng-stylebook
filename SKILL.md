@@ -1,6 +1,6 @@
 ---
 name: sansheng-stylebook
-description: 为文章配图、生成封面、知识卡、信息图、教材插图、漫画、绘本、PPT 静态页面、音乐或播客封面、表情包；用户说“换个画风”、给出 sb2/sb1 或 C31 等画风码，或配置、检查叁笙画风手册时使用。读内容后挑视觉要点，同一系列保持选定画风；默认轻量出图。只做静态图。
+description: 用户说“给这篇文章配几张图”“做个封面”“出一张图”“换个画风”，或要做小红书知识卡、信息图、教材插图、漫画、绘本、整页 PPT、音乐或播客封面时使用；给出 sb2/sb1 或 C31 等画风码，或配置、检查叁笙画风手册时也用。读内容后挑视觉要点，同一系列保持选定画风，默认轻量出图，出图走 Codex 订阅额度。只做静态图。
 ---
 
 # 叁笙画风手册
@@ -21,7 +21,7 @@ description: 为文章配图、生成封面、知识卡、信息图、教材插�
 python3 scripts/sb.py make brief.json -o 新目录
 ```
 
-Codex 有内置生图时：先 `make … --prepare`，逐张把完整编译提示词与参考路径交给内置工具，再用 `make … --prepared prepared.json --import-results host-results.json -o 新目录` 导回。格式见 quick.md。其他宿主使用已经配置的服务；首次配置读 [setup.md](references/setup.md)，接口与实际模型行为读 [backends.md](references/backends.md)。不得把 pending_host 当作已出图。
+出图默认走 Codex 内置生图（订阅额度，`make` 自动调用，需已 `codex login`）；没有 Codex 时用已配置的其他服务，首次配置读 [setup.md](references/setup.md)，后端行为与限制读 [backends.md](references/backends.md)。只有宿主自己带内置生图工具、又没有 `codex` 命令时，才用 `make … --prepare` 手动接力（见 quick.md）。不得把 pending_host 当作已出图。
 
 ## 发布档与专项
 
@@ -29,7 +29,7 @@ Codex 有内置生图时：先 `make … --prepare`，逐张把完整编译提�
 - 发布档尚未整合成 make 的一键步骤。现阶段按 [planning.md](references/planning.md)、[text.md](references/text.md)、[qa.md](references/qa.md) 的实际命令保留证据；不能只凭轻量总览宣布正式发布验收完成。
 - 固定人物或连续故事：读 [consistency.md](references/consistency.md)，复用已确认身份参考；服装和姿势来自本张剧情。
 - 用户用语言换色、修改构图或某张：读 [selection.md](references/selection.md)，改本次选择和内容；结构与事实仍来自原文。
-- 用户要求“以后都这样”、查看或忘记偏好：读 [preferences.md](references/preferences.md)。一次性改选不自动变成长期设置；自动捕获成长事件尚在接入。
+- 用户要求“以后都这样”、查看或忘记偏好：读 [preferences.md](references/preferences.md)。一次性改选不自动变成长期设置。成长飞轮由脚本自动记录，连续 3 个任务同向才问一次、确认才改默认，见 [flywheel.md](references/flywheel.md)；用户采用某组图后执行 `sb.py accept`。
 - 维护合同、准入、矩阵或画廊才读 [matrix.md](references/matrix.md)。平台尺寸读 [formats.md](references/formats.md)。PPT 静态图可以生成；整套 PPT 文件另走现有组装工具及其运行环境验收。
 
 ## 五条硬规则
@@ -42,6 +42,6 @@ Codex 有内置生图时：先 `make … --prepare`，逐张把完整编译提�
 
 ## 选择码与数据
 
-`sb2:wxcover/C44`、`sb2:xhs/C35-earth`、`sb2:info/C42-hex.1F6F8B.F4F1E8` 可传用途、画风和色彩；`@rN` 锁当前修订。旧 sb1 继续可读。网站 sb2 复制端尚未升级，语法与语言修改见 selection.md。
+`sb2:wxcover/C30`、`sb2:xhs/C35-earth`、`sb2:info/C42-hex.1F6F8B.F4F1E8` 可传用途、画风和色彩；`@rN` 锁当前修订。旧 sb1 继续可读。网站复制端升级前，语法与语言修改见 selection.md。
 
 源数据是 `styles/`、`scenes/scenes.json`、`formats/formats.json`、`structures/structures.json`、`palettes/palettes.json`；`registry.json` 用 `python3 scripts/sb.py build` 重建，不手改。作者设置和私有样式放 `STYLEBOOK_PROFILE` 或 `~/.config/sansheng-stylebook/profile/`，不进入公开包。
