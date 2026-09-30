@@ -106,3 +106,18 @@ def test_recommend_keeps_content_expression_separate_from_scene_style():
     assert result["expression_by_content"][1]["structures"][0] == "grid"
     assert result["candidates"][0]["code"] == "C31"
     assert result["candidates"][0]["content_fit"] in {"suggested", "unverified"}
+
+
+def test_sb2_binds_scene_revision_and_custom_palette():
+    revision = S.CT.load("C42")["revision"]
+    result = S.normalize(f"sb2:info/C42@r{revision}-hex.1f6f8b.F4F1E8")
+    assert result["scene"] == "info"
+    assert result["style"]["revision"] == revision
+    assert result["palette"]["custom"] == ["#1F6F8B", "#F4F1E8"]
+    with pytest.raises(S.SelectionError, match="不一致"):
+        S.normalize("sb2:info/C42", scene="wxillus")
+    with pytest.raises(S.SelectionError, match="不可用"):
+        S.normalize("sb2:info/C42@r999")
+    locked = next(c for c in S.CT.contract_paths() if S.CT.load(c.parent.name)["palette"]["recolor"] == "locked")
+    with pytest.raises(S.SelectionError, match="锁色"):
+        S.normalize(f"sb2:info/{locked.parent.name}-hex.1F6F8B")

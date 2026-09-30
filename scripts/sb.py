@@ -313,7 +313,7 @@ def cmd_selection(a) -> int:
     elif a.action == "normalize":
         raw = Path(a.input).read_text(encoding="utf-8").strip() if a.input else a.code
         if raw is None:
-            raise S.SelectionError("normalize 需要 --input JSON 文件或 --code sb1:…")
+            raise S.SelectionError("normalize 需要 --input JSON 文件或 --code sb2:… / sb1:…")
         result = S.normalize(json.loads(raw) if raw.startswith("{") else raw, scene=a.scene)
     elif a.action == "apply":
         if not a.plan or not a.input:

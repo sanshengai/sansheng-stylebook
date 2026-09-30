@@ -243,3 +243,17 @@ def test_host_import_rejects_brief_changed_after_generation(tmp_path):
     brief["items"][0]["visual"] = "A different subject"
     with pytest.raises(MK.BriefError, match="变化"):
         MK.import_host(brief, prepared, results, tmp_path / "out", base_path=tmp_path)
+
+
+def test_sb2_supplies_scene_and_compiles_brand_colors(tmp_path):
+    brief = copy.deepcopy(BRIEF)
+    del brief["scene"]
+    brief["code"] = "sb2:wxcover/C42-hex.1F6F8B.F4F1E8"
+    result = MK.prepare(brief, base_path=tmp_path)
+    assert result["scene"] == "wxcover"
+    assert result["tasks"][0]["manifest"]["format"] == "wechat-cover-head"
+    assert result["palette"]["custom"] == ["#1F6F8B", "#F4F1E8"]
+    assert "sb2:" not in result["tasks"][0]["compiled"]["prompt"]
+    brief["scene"] = "wxillus"
+    with pytest.raises(MK.SEL.SelectionError, match="不一致"):
+        MK.prepare(brief, base_path=tmp_path)

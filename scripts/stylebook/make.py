@@ -38,7 +38,8 @@ def prepare(brief: dict, *, base_path: Path, model: str = "gpt-image-2") -> dict
     allowed = {"version", "scene", "style", "palette", "reason", "code", "source", "items", "format", "references"}
     if set(brief) - allowed:
         raise BriefError(f"brief 未知字段：{sorted(set(brief) - allowed)}")
-    scene = brief.get("scene")
+    selected = SEL.normalize(brief["code"], scene=brief.get("scene")) if brief.get("code") else None
+    scene = selected["scene"] if selected else brief.get("scene")
     if scene not in D.scenes():
         raise BriefError(f"未知用途：{scene}")
     reason = brief.get("reason")
@@ -51,7 +52,6 @@ def prepare(brief: dict, *, base_path: Path, model: str = "gpt-image-2") -> dict
     palette = brief.get("palette") or chosen.get("palette") or {"family": "orig"}
     expression = {}
     if brief.get("code"):
-        selected = SEL.normalize(brief["code"], scene=scene)
         chosen = {"code": selected["style"]["code"] + f"@r{selected['style']['revision']}", "source": "code"}
         palette = {k: v for k, v in selected["palette"].items() if k in {"family", "light", "sat", "custom"}}
         expression = selected["expression"]
