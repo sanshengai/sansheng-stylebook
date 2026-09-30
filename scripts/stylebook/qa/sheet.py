@@ -19,6 +19,15 @@ def _font(size: int = 15):
     return ImageFont.load_default(), False
 
 
+def _preview_rgb(path: Path):
+    """Composite source transparency onto the white sheet, without changing source bytes."""
+    from PIL import Image
+    with Image.open(path) as source:
+        rgba = source.convert("RGBA")
+        background = Image.new("RGBA", rgba.size, "white")
+        return Image.alpha_composite(background, rgba).convert("RGB")
+
+
 def consistency_sheet(reference: Path, others: list[Path], out: Path, cell: int = 320, labels: list[str] | None = None) -> Path:
     from PIL import Image, ImageDraw
     items = [reference] + list(others)
@@ -28,7 +37,7 @@ def consistency_sheet(reference: Path, others: list[Path], out: Path, cell: int 
     d = ImageDraw.Draw(sheet)
     font, cjk = _font()
     for i, p in enumerate(items):
-        im = Image.open(p).convert("RGB")
+        im = _preview_rgb(p)
         im.thumbnail((cell, cell))
         x, y = (i % cols) * cell, (i // cols) * (cell + 24)
         sheet.paste(im, (x + (cell - im.width) // 2, y + (cell - im.height) // 2))
@@ -42,7 +51,7 @@ def consistency_sheet(reference: Path, others: list[Path], out: Path, cell: int 
 
 def thumb_sheet(image: Path, out: Path, sizes=(46, 66, 128)) -> Path:
     from PIL import Image
-    im = Image.open(image).convert("RGB")
+    im = _preview_rgb(image)
     thumbs = []
     for s in sizes:
         t = im.copy()
@@ -78,7 +87,7 @@ def matrix_sheet(cells: list[dict], out: Path, cols: int = 4, cell: int = 360, t
     for i, c in enumerate(cells):
         x, y = (i % cols) * cell, head + (i // cols) * (cell + strip)
         if c.get("image"):
-            im = Image.open(c["image"]).convert("RGB")
+            im = _preview_rgb(c["image"])
             im.thumbnail((cell - 8, cell - 8))
             sheet.paste(im, (x + (cell - im.width) // 2, y + (cell - im.height) // 2))
         else:
