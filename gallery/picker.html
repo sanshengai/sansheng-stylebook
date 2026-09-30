@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>叁笙画风手册 · 选画风</title>
+<meta name="description" content="选用途、选画风、选色彩，复制一行 sb2 码交给 Agent 出图。">
+<style>
+:root{--bg:#F7F6F2;--surface:#FFFFFF;--sunk:#EEEDE7;--ink:#1B1E23;--muted:#62666E;--line:#DAD9D2;--accent:#2447A8;--accent-ink:#fff;--accent-soft:#E3E9F8;--warn:#B4452B;
+--sans:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131416;--surface:#1C1E21;--sunk:#25282C;--ink:#ECECE7;--muted:#9A9EA6;--line:#33363B;--accent:#8AA6F4;--accent-ink:#0F1420;--accent-soft:#1F2A45;--warn:#E98B72}}
+:root[data-theme="dark"]{--bg:#131416;--surface:#1C1E21;--sunk:#25282C;--ink:#ECECE7;--muted:#9A9EA6;--line:#33363B;--accent:#8AA6F4;--accent-ink:#0F1420;--accent-soft:#1F2A45;--warn:#E98B72}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 var(--sans);padding:0 16px 96px}
+main{max-width:1080px;margin:0 auto}
+h1{font-size:20px;margin:20px 0 4px}h2{font-size:15px;margin:0 0 8px}
+.lead{color:var(--muted);margin:0 0 16px}
+.block{margin:0 0 20px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:14px;padding:6px 14px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip:disabled{opacity:.35;cursor:not-allowed}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.card{border:2px solid transparent;background:var(--surface);border-radius:10px;overflow:hidden;padding:0;text-align:left;font:inherit;color:var(--ink);cursor:pointer;box-shadow:0 0 0 1px var(--line)}
+.card[aria-pressed="true"]{border-color:var(--accent);box-shadow:none}
+.card img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:var(--sunk)}
+.card .t{padding:6px 8px 8px}.card .n{font-weight:700;font-size:14px}.card .c{font-family:var(--mono);font-size:12px;color:var(--accent);margin-right:6px}
+.card .o{font-size:12px;color:var(--muted);line-height:1.4}
+.tag{display:inline-block;font-size:11px;background:var(--accent);color:var(--accent-ink);border-radius:4px;padding:0 5px;margin-left:4px}
+.more{margin-top:12px}
+.sw{display:flex;gap:2px;margin-top:4px}.sw i{width:14px;height:14px;border-radius:3px;border:1px solid var(--line);display:block}
+.chip.pal{display:flex;flex-direction:column;align-items:flex-start;gap:4px;border-radius:14px}
+.row{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px;align-items:center}
+.seg{display:flex;gap:4px;align-items:center}.seg span{color:var(--muted);font-size:13px;margin-right:2px}
+.note{color:var(--muted);font-size:13px;margin-top:8px}
+input.hex{font:inherit;font-family:var(--mono);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 10px;width:min(100%,360px)}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+.bar-in{max-width:1080px;margin:0 auto;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.code{flex:1;min-width:0;font-family:var(--mono);font-size:15px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:8px;padding:8px 12px;overflow-wrap:anywhere}
+.btn{border:0;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:700;padding:9px 20px;border-radius:8px;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}.three.four{grid-template-columns:repeat(4,1fr)}@media(max-width:560px){.three.four{grid-template-columns:repeat(2,1fr)}}
+.three figure{margin:0}.three img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;background:var(--sunk);display:block}
+.three figcaption{font-size:12px;color:var(--muted);text-align:center}
+.toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:13px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body>
+<main>
+<h1>叁笙画风手册</h1>
+<p class="lead">三步选好，复制一行码交给 Agent。所有样图都是同一批题目，方便横向比较；目前全部画风处于「试用中」，还没有一种通过正式准入。</p>
+<section class="block"><h2>① 你要做什么</h2><div class="chips" id="uses"></div></section>
+<section class="block"><h2>② 选画风 <span class="note" id="poolNote"></span></h2><div class="grid" id="grid"></div><div class="more"><button class="chip" id="more" hidden></button></div><div id="detail"></div></section>
+<section class="block"><h2>③ 色彩</h2><div class="chips" id="pals"></div>
+<div class="row" id="tune" hidden>
+<div class="seg" id="lightSeg"><span>深浅</span></div><div class="seg" id="satSeg"><span>鲜灰</span></div></div>
+<div id="brand" hidden style="margin-top:12px"><input class="hex" id="hex" placeholder="品牌色 HEX，1–5 个，如 1F6F8B F4F1E8" aria-label="品牌色 HEX"></div>
+<p class="note" id="palNote"></p><p class="note" id="tintNote" hidden>样图上的色彩是「色调示意」，按色系粗略映射，正式出图以生成结果为准。</p></section>
+</main>
+<div class="bar"><div class="bar-in"><div class="code" id="code" aria-live="polite"></div><button class="btn" id="copy">复制</button></div></div>
+<script id="meta" type="application/json">__META__</script>
+<script>
+const M=JSON.parse(document.getElementById('meta').textContent);
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const cand=id=>M.cands.find(c=>c.id===id);
+const S={scene:null,style:null,pal:'orig',light:0,sat:0,hex:[],all:false};
+function readHash(){const p=new URLSearchParams(location.hash.slice(1));const sc=M.scenes.find(s=>s.id===p.get('u'));S.scene=(sc||M.scenes.find(s=>s.id===M.first)||M.scenes[0]).id;const st=p.get('s');S.style=cand(st)?st:null;S.pal=M.pals.some(x=>x.id===p.get('p'))?p.get('p'):'orig';S.light=[-1,0,1].includes(+p.get('l'))?+p.get('l'):0;S.sat=[-1,0,1].includes(+p.get('t'))?+p.get('t'):0;S.hex=(p.get('h')||'').split('.').filter(x=>/^[0-9A-Fa-f]{6}$/.test(x)).map(x=>x.toUpperCase()).slice(0,5);if(S.hex.length)S.pal='brand';}
+function writeHash(){const p=new URLSearchParams();p.set('u',S.scene);if(S.style)p.set('s',S.style);if(S.pal!=='orig'&&S.pal!=='brand')p.set('p',S.pal);if(S.light)p.set('l',S.light);if(S.sat)p.set('t',S.sat);if(S.hex.length)p.set('h',S.hex.join('.'));try{history.replaceState(null,'','#'+p.toString());}catch(e){}}
+const scene=()=>M.scenes.find(s=>s.id===S.scene);
+function pool(){const sc=scene();const rec=[sc.default,...sc.alternates];const rest=sc.pool.filter(x=>!rec.includes(x));return {rec:rec.filter(cand),rest};}
+function ensureStyle(){const {rec,rest}=pool();const all=[...rec,...rest];if(!S.style||!all.includes(S.style))S.style=rec[0]||all[0];}
+function renderUses(){$('uses').innerHTML=M.scenes.map(s=>'<button class="chip" data-u="'+s.id+'" aria-pressed="'+(s.id===S.scene)+'">'+esc(s.name)+'</button>').join('');}
+function renderGrid(){const sc=scene();const {rec,rest}=pool();const show=S.all?[...rec,...rest]:rec;
+ $('grid').innerHTML=show.map(id=>{const c=cand(id);const tag=id===sc.default?'<span class="tag">默认</span>':'';
+  return '<button class="card" data-s="'+id+'" aria-pressed="'+(id===S.style)+'"><img loading="lazy" decoding="async" width="320" height="320" alt="'+esc(c.name)+' 样图" src="img/'+id+'-'+sc.t+'.webp"><div class="t"><div><span class="c">'+id+'</span><span class="n">'+esc(c.name)+'</span>'+tag+'</div><div class="o">'+esc(c.origin||'')+'</div></div></button>';}).join('');
+ $('poolNote').textContent='· '+sc.topicName+'同题样图，共 '+(rec.length+rest.length)+' 种适合';
+ const b=$('more');b.hidden=!rest.length;b.textContent=S.all?'收起':'再看其余 '+rest.length+' 种';}
+function renderDetail(){const c=cand(S.style);if(!c){$('detail').innerHTML='';return;}
+ const ks=['s1','s2','s3'].concat(c.anchor?['anchor']:[]);const cap=k=>k==='anchor'?'原作参考':M.topics[k];
+ $('detail').innerHTML='<div class="three'+(ks.length===4?' four':'')+'">'+ks.map(k=>'<figure><img loading="lazy" decoding="async" width="320" height="320" alt="" src="img/'+c.id+'-'+k+'.webp"><figcaption>'+cap(k)+'</figcaption></figure>').join('')+'</div><p class="note">'+esc(c.id+' '+c.name)+(c.origin?' · 灵感：'+esc(c.origin):'')+(c.essence?' · '+esc(c.essence):'')+'</p>';}
+function renderPals(){const c=cand(S.style)||{recolor:'free'};const locked=c.recolor==='locked';
+ $('pals').innerHTML=M.pals.map(p=>{const dis=locked&&p.id!=='orig';const sw=(p.colors||[]).map(x=>'<i style="background:'+x.hex+'"></i>').join('');return '<button class="chip pal" data-p="'+p.id+'" aria-pressed="'+(p.id===S.pal)+'" '+(dis?'disabled':'')+'><span>'+esc(p.name)+'</span>'+(sw?'<span class="sw">'+sw+'</span>':'')+'</button>';}).join('');
+ const tune=S.pal!=='orig'&&S.pal!=='brand'&&!locked;$('tune').hidden=!tune;$('brand').hidden=S.pal!=='brand';
+ const seg=(el,cur,key,labels)=>{el.innerHTML=el.firstElementChild.outerHTML+labels.map(([v,t])=>'<button class="chip" data-k="'+key+'" data-v="'+v+'" aria-pressed="'+(cur===v)+'">'+t+'</button>').join('');};
+ seg($('lightSeg'),S.light,'light',[[1,'浅'],[0,'标准'],[-1,'深']]);seg($('satSeg'),S.sat,'sat',[[-1,'柔和'],[0,'标准'],[1,'鲜艳']]);
+ $('hex').value=S.hex.join(' ');
+ $('palNote').textContent=locked?'这个画风的色彩是设计的一部分（'+(c.recolorNote||'锁定')+'），不能换色系。':c.recolor==='lightness_only'?'这个画风只适合调整深浅，不建议换色系。':'';}
+function code(){let s='sb2:'+S.scene+'/'+S.style;const c=cand(S.style);
+ if(S.pal==='brand'){if(S.hex.length)s+='-hex.'+S.hex.join('.');}
+ else if(S.pal!=='orig'&&!(c&&c.recolor==='locked')){s+='-'+S.pal;if(S.light||S.sat)s+='.L'+S.light+'S'+S.sat;}
+ return s;}
+function renderCode(){const ok=!(S.pal==='brand'&&!S.hex.length);$('code').textContent=ok?code():'先填品牌色 HEX';$('copy').disabled=!ok;}
+
+/* 色调示意：按亮度把样图映射到色系渐变，再与原图混合；只是预览，正式出图以生成为准。跨域受限（file://）时静默跳过。 */
+const lum=h=>{const n=parseInt(h.slice(1),16);return .2126*(n>>16&255)+.7152*(n>>8&255)+.0722*(n&255);};
+function ramp(colors){const c=colors.slice().sort((a,b)=>lum(a.hex)-lum(b.hex)).map(x=>{const n=parseInt(x.hex.slice(1),16);return [n>>16&255,n>>8&255,n&255];});return c;}
+function tintImg(img,rp,light,sat){try{const w=img.naturalWidth,h=img.naturalHeight;if(!w||!rp.length)return;const cv=document.createElement('canvas');cv.width=w;cv.height=h;const x=cv.getContext('2d');x.drawImage(img,0,0);const d=x.getImageData(0,0,w,h),a=d.data,k=.62+.12*sat;
+ for(let i=0;i<a.length;i+=4){let l=(.2126*a[i]+.7152*a[i+1]+.0722*a[i+2])/255+.09*light;l=Math.min(1,Math.max(0,l));const f=l*(rp.length-1),j=Math.min(rp.length-2,Math.floor(f)),t=f-j;const c0=rp[j],c1=rp[Math.min(rp.length-1,j+1)];
+  for(let c=0;c<3;c++){const m=c0[c]+(c1[c]-c0[c])*t;a[i+c]=Math.round(a[i+c]*(1-k)+m*k);}}
+ x.putImageData(d,0,0);img.src=cv.toDataURL('image/webp',.8);img.dataset.tinted='1';}catch(e){}}
+function applyTint(){const c=cand(S.style);const pal=M.pals.find(p=>p.id===S.pal);const locked=c&&c.recolor==='locked';
+ const cols=S.pal==='brand'?S.hex.map(h=>({hex:'#'+h})):(pal&&pal.colors)||[];const on=!locked&&S.pal!=='orig'&&cols.length>=2;
+ $('tintNote').hidden=!on;if(!on)return;const rp=ramp(cols);
+ document.querySelectorAll('#detail img,#grid img').forEach(img=>{if(img.dataset.tinted)return;const go=()=>tintImg(img,rp,S.light,S.sat);img.complete?go():img.addEventListener('load',go,{once:true});});}
+function renderAll(){ensureStyle();renderUses();renderGrid();renderDetail();renderPals();renderCode();writeHash();applyTint();}
+function toast(t){const d=document.createElement('div');d.className='toast';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),1600);}
+document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+ if(t.dataset.u){S.scene=t.dataset.u;S.style=null;S.all=false;renderAll();}
+ else if(t.dataset.s){S.style=t.dataset.s;if(cand(S.style).recolor==='locked'&&S.pal!=='orig'){S.pal='orig';S.light=0;S.sat=0;}renderAll();}
+ else if(t.dataset.p){S.pal=t.dataset.p;if(S.pal==='orig'||S.pal==='brand'){S.light=0;S.sat=0;}if(S.pal!=='brand')S.hex=[];renderAll();}
+ else if(t.dataset.k){S[t.dataset.k]=+t.dataset.v;renderAll();}
+ else if(t.id==='more'){S.all=!S.all;renderAll();}
+ else if(t.id==='copy'){const v=code();(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(()=>toast('已复制：'+v),()=>{prompt('复制下面这行',v);});}});
+$('hex').addEventListener('input',e=>{S.hex=e.target.value.replace(/#/g,'').split(/[\s,]+/).filter(x=>/^[0-9A-Fa-f]{6}$/.test(x)).map(x=>x.toUpperCase()).slice(0,5);renderCode();writeHash();});
+readHash();renderAll();
+</script>
+</body>
+</html>

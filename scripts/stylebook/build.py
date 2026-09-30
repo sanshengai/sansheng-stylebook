@@ -23,6 +23,7 @@ from . import data as D
 
 REGISTRY_PATH = CT.ROOT / "registry.json"
 TEMPLATE = CT.ROOT / "gallery" / "template.html"
+PICKER = CT.ROOT / "gallery" / "picker.html"
 BUILD_DIR = CT.ROOT / "gallery" / "build"
 # 旧同题测试的三题与标准测试题的对应：人物 → T3，场景 → T6，讲解 → T7
 LEGACY_Q = {"q1": "T3", "q2": "T6", "q3": "T7"}
@@ -215,4 +216,71 @@ def gallery(out: Path | None = None, private: bool = False, samples: list[Path] 
     out = Path(out) if out else BUILD_DIR / ("index.private.html" if private else "index.html")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(h, encoding="utf-8")
+    return out
+
+
+# ---------------- 选择器（首屏三步 + 一行 sb2 码） ----------------
+THUMB = 320  # 边长；外部文件，页面本体只放文字与数据
+
+
+def _thumb_bytes(p: Path, m: int = THUMB, q: int = 62) -> bytes:
+    from PIL import Image
+    im = Image.open(p).convert("RGB")
+    im.thumbnail((m, m))
+    b = io.BytesIO()
+    im.save(b, "WEBP", quality=q, method=6)
+    return b.getvalue()
+
+
+def picker(out_dir: Path | None = None, private: bool = False) -> Path:
+    """写出 index.html 与 img/<码>-s1..s3.webp。样图缩成外部小文件懒加载，页面本体控制在 1MB 内；输出确定（无时间戳）。"""
+    reg = registry(private)
+    problems = check(reg)
+    if problems:
+        raise ValueError("注册表自检不通过：" + "；".join(problems))
+    out_dir = Path(out_dir) if out_dir else BUILD_DIR
+    img_dir = out_dir / "img"
+    img_dir.mkdir(parents=True, exist_ok=True)
+    for old in img_dir.glob("*.webp"):
+        old.unlink()
+    contract_paths = {p.parent.name: p for p in CT.contract_paths()}
+    have: set[str] = set()
+    for s in reg["styles"]:
+        cp = contract_paths.get(s["code"])
+        if not (s["has_contract"] and cp):
+            continue
+        for sample in CT.load(s["code"]).get("samples", []):
+            sp = cp.parent / sample["file"]
+            if sp.is_file() and sp.stem in ("s1", "s2", "s3"):
+                (img_dir / f"{s['code']}-{sp.stem}.webp").write_bytes(_thumb_bytes(sp))
+                have.add(f"{s['code']}-{sp.stem}")
+    for s in reg["styles"]:  # 第四张：原作参考图（合同锚点，MIT 来源，可用时才有）
+        cp = contract_paths.get(s["code"])
+        anchor = (CT.load(s["code"]).get("anchor") or {}) if cp else {}
+        if cp and anchor and anchor.get("enabled", True) and (cp.parent / anchor["file"]).is_file():
+            (img_dir / f"{s['code']}-anchor.webp").write_bytes(_thumb_bytes(cp.parent / anchor["file"]))
+            have.add(f"{s['code']}-anchor")
+    topics = {"s1": "人物", "s2": "物件", "s3": "信息图"}
+    inspiration = {}
+    for s in reg["styles"]:
+        cp = contract_paths.get(s["code"])
+        names = ((CT.load(s["code"]).get("inspiration") or {}).get("names") or []) if cp else []
+        inspiration[s["code"]] = "、".join(names)
+    cands = [{"id": s["code"], "name": s["zh"], "origin": inspiration.get(s["code"], ""), "recolor": s["recolor"],
+              "recolorNote": s.get("recolor_note", ""), "essence": "；".join(s.get("essence", [])[:2]), "anchor": f"{s['code']}-anchor" in have}
+             for s in reg["styles"] if s["has_contract"] and f"{s['code']}-s1" in have]
+    ids = {c["id"] for c in cands}
+    scenes = []
+    for sc in reg["scenes"]:
+        if sc.get("hidden") or not sc.get("use"):
+            continue
+        t = sc.get("preview_test", "s1")
+        pool_ids = [c for c in D.styles_for_use(sc["use"]) if c in ids]
+        scenes.append({"id": sc["id"], "name": sc["zh"], "t": t, "topicName": topics.get(t, ""), "default": sc["default"],
+                       "alternates": [a for a in sc["alternates"] if a in ids], "pool": pool_ids})
+    pals = [{"id": p["id"], "name": p["name"], "colors": p.get("colors", [])} for p in reg["palettes"]["palettes"]]
+    meta = {"cands": cands, "scenes": scenes, "pals": pals, "topics": topics, "first": "wxcover"}
+    html = PICKER.read_text(encoding="utf-8").replace("__META__", json.dumps(meta, ensure_ascii=False, sort_keys=True).replace("</", "<\\/"))
+    out = out_dir / ("index.private.html" if private else "index.html")
+    out.write_text(html, encoding="utf-8")
     return out
