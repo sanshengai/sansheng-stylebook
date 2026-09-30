@@ -10,9 +10,9 @@ from stylebook import data as D  # noqa: E402
 def test_counts():
     assert len(D.structures()) == 24
     assert len(D.palettes()["palettes"]) == 12
-    assert len(D.scenes()) == 10
+    assert len(D.scenes()) == 12
     fams = {f["family"] for f in D.formats().values()}
-    assert fams == {"单张封面", "多张轮播", "叙事分格", "信息结构", "视频帧", "透明底多宫格", "透明底单图"}
+    assert fams == {"单张封面", "多张轮播", "叙事分格", "信息结构", "视频帧", "透明底多宫格", "透明底单图", "教材插图"}
     single = D.formats()["sticker-single"]
     assert single["transparent"] and single["export_px"] == [512, 512] and single["text"]["default"] == "none"
     assert D.scenes()["sticker"]["formats"] == ["sticker-grid", "sticker-single"]

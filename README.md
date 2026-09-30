@@ -37,6 +37,12 @@ python3 scripts/sb.py doctor
 
 参与修改时运行 `git config core.hooksPath .githooks` 启用提交前脱敏检查。PPTX 组装另需 `python3 -m pip install -r requirements-ppt.txt`。
 
+## 日常轻量入口（仓库未发布改进）
+
+现在可用四项逐图计划交给 `python3 scripts/sb.py make brief.json -o 新目录`；内置工具先 `--prepare`，实际成图用 `--prepared` 与 `--import-results` 导回。计划格式和来源绑定见 [轻量出图](references/quick.md)。Skill 接收端支持 `sb2`，网站复制界面尚未升级。
+
+教材新增 `tb-vocab`（单词参考图）和 `tb-grammar`（语法情景图）。单词图默认无字；传一个单词时预留底部标签带，生成后程序排字。其他精确标签可给 overlay 位置配置。单词数量、人物文化、动作和画风仍须看实际图，教材用途尚未正式验收。轻量默认入口已减重，发布档的一键整合和自动成长事件仍在接入。
+
 ## 十分钟试用
 
 先编译仓内的虚构示例，检查画风、尺寸和完整提示词：

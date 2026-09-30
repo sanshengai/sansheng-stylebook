@@ -257,3 +257,67 @@ def test_sb2_supplies_scene_and_compiles_brand_colors(tmp_path):
     brief["scene"] = "wxillus"
     with pytest.raises(MK.SEL.SelectionError, match="不一致"):
         MK.prepare(brief, base_path=tmp_path)
+
+
+def test_vocabulary_scene_uses_exact_overlay_and_preserves_raw(tmp_path):
+    brief = copy.deepcopy(BRIEF)
+    brief["scene"] = "tb-vocab"
+    brief["items"][0].update(visual="Exactly one apple, on a plain light background", text=["apple"])
+    prepared = MK.prepare(brief, base_path=tmp_path)
+    task = prepared["tasks"][0]
+    assert task["manifest"]["format"] == "textbook-vocab"
+    assert task["manifest"]["text"]["mode"] == "overlay"
+    assert "no text, letters or captions" in task["compiled"]["prompt"]
+    assert "Chinese school uniforms" in task["compiled"]["prompt"]
+    assert task["manifest"]["text"]["items"][0]["text"] == "apple"
+    report = MK.run(brief, tmp_path / "out", base_path=tmp_path, gen_fn=fake_generate)
+    assert report["status"] == "pending_visual_review"
+    with Image.open(tmp_path / "out" / "01.png") as final:
+        assert final.size == (1200, 1200)
+        from PIL import ImageChops
+        assert ImageChops.difference(final, Image.new("RGB", final.size, "ivory")).getbbox()
+    assert not report["accepted"]
+
+
+def test_grammar_scene_has_actions_time_and_cultural_constraints(tmp_path):
+    brief = copy.deepcopy(BRIEF)
+    brief["scene"] = "tb-grammar"
+    task = MK.prepare(brief, base_path=tmp_path)["tasks"][0]
+    assert task["compiled"]["aspect"] == "4:3"
+    assert task["manifest"]["text"]["mode"] == "none"
+    assert "visual time cues" in task["compiled"]["prompt"]
+    assert "no Japanese sailor uniforms" in task["compiled"]["prompt"]
+
+
+def test_overlay_bad_box_and_nonblank_generation_are_rejected(tmp_path):
+    brief = copy.deepcopy(BRIEF)
+    brief["scene"] = "tb-vocab"
+    brief["items"][0]["text"] = {"mode": "overlay", "items": [{"text": "apple", "box": [0.9, 0, 0.3, 0.2]}]}
+    with pytest.raises(MK.BriefError, match="超出画布"):
+        MK.prepare(brief, base_path=tmp_path)
+    brief["items"][0]["text"] = ["apple"]
+    def nonblank(prompt, raw, **kwargs):
+        Image.new("RGB", kwargs["size"], "black").save(raw)
+        return Result(b"", "test", "fixture", 1, 0, 0)
+    report = MK.run(brief, tmp_path / "out", base_path=tmp_path, gen_fn=nonblank)
+    assert report["failed"] == 1 and not report["accepted"]
+    assert (tmp_path / "out" / "01-raw.png").is_file()
+    assert "深色物件" in report["items"][0]["error"]["message"]
+
+
+def test_overlay_asset_change_is_bound_and_rejected(tmp_path):
+    layer = tmp_path / "layer.png"
+    Image.new("RGBA", (20, 20), "red").save(layer)
+    brief = copy.deepcopy(BRIEF)
+    brief["items"][0]["text"] = {"mode": "overlay", "items": [
+        {"text": "label", "box": [0.1, 0.8, 0.8, 0.1]}],
+        "image_layers": [{"path": "layer.png", "box": [0.1, 0.1, 0.2, 0.2]}]}
+    task = MK.prepare(brief, base_path=tmp_path)["tasks"][0]
+    assert task["overlay_assets"][0]["sha256"] == hashlib.sha256(layer.read_bytes()).hexdigest()
+    def mutate(prompt, raw, **kwargs):
+        result = fake_generate(prompt, raw, **kwargs)
+        Image.new("RGBA", (20, 20), "blue").save(layer)
+        return result
+    report = MK.run(brief, tmp_path / "out", base_path=tmp_path, gen_fn=mutate)
+    assert report["failed"] == 1
+    assert "发生变化" in report["items"][0]["error"]["message"]

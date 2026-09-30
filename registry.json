@@ -2337,6 +2337,52 @@
         "C55",
         "C28"
       ]
+    },
+    {
+      "job": "讲道理",
+      "uses_structure": false,
+      "default_density": "sparse",
+      "default": "C42",
+      "alternates": [
+        "C21",
+        "C30",
+        "C11",
+        "C36",
+        "C38"
+      ],
+      "constraints": [
+        "For Chinese middle-school textbook use: any student characters must have consistent age and Chinese school uniforms when school uniforms are shown; no Japanese sailor uniforms. Preserve recurring character identity and story continuity.",
+        "Show one clearly recognizable vocabulary subject on a plain solid background, occupying at least 40 percent of the canvas. Spell out the exact object count in the content brief; do not invent extra objects."
+      ],
+      "id": "tb-vocab",
+      "zh": "教材单词参考图",
+      "formats": [
+        "textbook-vocab"
+      ],
+      "preview_test": "T7"
+    },
+    {
+      "job": "讲道理",
+      "uses_structure": false,
+      "default_density": "balanced",
+      "default": "C42",
+      "alternates": [
+        "C21",
+        "C30",
+        "C11",
+        "C36",
+        "C38"
+      ],
+      "constraints": [
+        "For Chinese middle-school textbook use: any student characters must have consistent age and Chinese school uniforms when school uniforms are shown; no Japanese sailor uniforms. Preserve recurring character identity and story continuity.",
+        "Make all actions required by the grammar scenario visible together. Use visual time cues from the brief to explain tense; do not invent a different action or time."
+      ],
+      "id": "tb-grammar",
+      "zh": "教材语法情景图",
+      "formats": [
+        "textbook-grammar"
+      ],
+      "preview_test": "T7"
     }
   ],
   "structures": [
@@ -3420,6 +3466,44 @@
       "transparent": true,
       "density_max": "sparse",
       "compose": "A grid of separate stickers of the same character, one expression per cell, on a fully transparent canvas. Leave transparent gutters at every cell boundary and clear transparent space around every figure so each cell can be cut out as its own PNG."
+    },
+    {
+      "id": "textbook-vocab",
+      "zh": "教材单词参考图",
+      "family": "教材插图",
+      "ratio": "1:1",
+      "export_px": [
+        1200,
+        1200
+      ],
+      "text": {
+        "default": "none"
+      },
+      "count": [
+        1,
+        1
+      ],
+      "density_max": "sparse",
+      "compose": "One clearly recognizable main vocabulary subject on a plain solid background. Keep the bottom label rectangle empty if exact lettering is requested."
+    },
+    {
+      "id": "textbook-grammar",
+      "zh": "教材语法情景图",
+      "family": "教材插图",
+      "ratio": "4:3",
+      "export_px": [
+        1200,
+        900
+      ],
+      "text": {
+        "default": "none"
+      },
+      "count": [
+        1,
+        1
+      ],
+      "density_max": "balanced",
+      "compose": "A clear grammar situation: show each required action and its time cues in the same readable scene."
     }
   ],
   "tests": {
