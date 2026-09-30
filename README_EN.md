@@ -51,7 +51,7 @@ The QA command requires a working independent vision reviewer, or a separately s
 ## Choose and adjust
 
 - `python3 scripts/sb.py style-for wxillus` shows the article illustration default and why it was selected.
-- `python3 scripts/sb.py build --gallery` creates the offline selector at `gallery/build/index.html`. It exports versioned selection JSON that the Agent can parse. The website selector is not live yet.
+- `python3 scripts/sb.py build --gallery` creates the offline selector at `gallery/build/index.html`. It exports versioned selection JSON that the Agent can parse. The public selector is live at https://sanshengai.top/tools/stylebook/ (pick a use, a style and a palette, then copy one `sb2:` line for the Agent). Serve `gallery/build/` over a local static server to use the same page offline (`img/` holds lazily loaded samples); `--advanced` builds the old all-in-one gallery.
 - `python3 scripts/sb.py preferences set --scene wxillus --field style --value C01` saves a style preference. See [preference controls](./references/preferences.md).
 - For an article, create a source-grounded plan and run `sb.py plan` before generating. See [planning rules](./references/planning.md) and the [synthetic plan](./examples/content-plan-v2/plan.json); its C31 style remains pending admission.
 
