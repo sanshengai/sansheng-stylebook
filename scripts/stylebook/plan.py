@@ -64,12 +64,12 @@ def density_for(points: int) -> str:
     return "sparse" if points <= 2 else "balanced" if points <= 4 else "dense"
 
 
-def resolve_style(scene_id: str, explicit: str | None = None, project: Path | None = None) -> dict:
+def resolve_style(scene_id: str, explicit: str | None = None, project: Path | None = None, *, include_inferred: bool = True) -> dict:
     """样式来源优先级：本次指定 > 项目锁定 > 长期偏好 > 作者档案 > 出厂默认。"""
     from . import profile as P
     warning = None
     try:
-        palette = P.lookup("palette", scene=scene_id)
+        palette = P.lookup("palette", scene=scene_id, include_inferred=include_inferred)
     except P.ProfileError as exc:
         warning, palette = f"偏好文件不可用，已退回作者档案/出厂默认：{exc}", None
     pal_value = palette["value"] if palette else None
@@ -82,7 +82,7 @@ def resolve_style(scene_id: str, explicit: str | None = None, project: Path | No
             return {"code": lock["style"], "source": "project", "palette": lock.get("palette") or pal_value,
                     **({"warning": warning} if warning else {})}
     try:
-        preferred = P.lookup("style", scene=scene_id) if warning is None else None
+        preferred = P.lookup("style", scene=scene_id, include_inferred=include_inferred) if warning is None else None
     except P.ProfileError as exc:
         warning, preferred = f"偏好文件不可用，已退回作者档案/出厂默认：{exc}", None
     if preferred:

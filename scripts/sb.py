@@ -476,6 +476,20 @@ def cmd_batch(a) -> int:
     return 0 if not st["summary"]["failed"] else 1
 
 
+def cmd_make(a) -> int:
+    from stylebook import make as MK
+    from stylebook.backends.base import BackendError
+    try:
+        report = MK.run(_manifest(a.brief), Path(a.out), base_path=Path(a.brief).resolve().parent,
+                        provider=a.provider, model=a.model, quality=a.quality, jobs=a.jobs,
+                        prepare_only=a.prepare)
+    except (MK.BriefError, BackendError, FileExistsError) as exc:
+        print(f"轻量出图停止：{exc}", file=sys.stderr)
+        return 2
+    print(json.dumps(report, ensure_ascii=False, indent=2))
+    return 1 if report["status"] == "failed" else 0
+
+
 def cmd_pptx(a) -> int:
     import shutil
     import subprocess
@@ -566,6 +580,10 @@ def main(argv=None) -> int:
     p = sub.add_parser("character"); p.add_argument("action", choices=["sheet", "check"]); p.add_argument("character")
     p.add_argument("images", nargs="*"); p.add_argument("--style", required=True); p.add_argument("-o", "--out")
     p.add_argument("--force", action="store_true"); p.set_defaults(fn=cmd_character)
+    p = sub.add_parser("make"); p.add_argument("brief"); p.add_argument("-o", "--out", required=True)
+    p.add_argument("--provider"); p.add_argument("--model"); p.add_argument("--quality")
+    p.add_argument("--jobs", type=int, default=4); p.add_argument("--prepare", action="store_true")
+    p.set_defaults(fn=cmd_make)
     p = sub.add_parser("batch"); p.add_argument("plan"); p.add_argument("-o", "--out", required=True)
     p.add_argument("--provider"); p.add_argument("--model"); p.add_argument("--quality"); p.add_argument("--retries", type=int, default=2)
     p.add_argument("--jobs", type=int, default=3); p.add_argument("--no-review", action="store_true"); p.set_defaults(fn=cmd_batch)
