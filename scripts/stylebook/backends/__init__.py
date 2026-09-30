@@ -13,6 +13,7 @@ from pathlib import Path
 
 from ..contract import ROOT
 from .base import CONFIG_DIR, BackendError, Result, load_dotenv, now
+from . import providers as _providers
 from .providers import PROVIDERS
 
 LOG_DIR = Path(os.environ.get("STYLEBOOK_LOG_DIR", ROOT / "logs"))
@@ -39,6 +40,8 @@ def save_config(cfg: dict) -> Path:
 
 
 def configured(name: str) -> bool:
+    if name == "codex":
+        return _providers.codex_ready()
     env = PROVIDERS[name]["env"][0]
     return bool(os.environ.get(env) or (name == "gemini" and os.environ.get("GOOGLE_API_KEY")))
 
@@ -48,7 +51,7 @@ def choose(provider: str | None = None, model: str | None = None, need_refs: boo
     cfg = config()
     name = provider or cfg.get("provider")
     if not name:
-        for cand in ("openai", "seedream", "dashscope", "gemini", "openrouter"):
+        for cand in ("codex", "openai", "seedream", "dashscope", "gemini", "openrouter"):
             if configured(cand) and (PROVIDERS[cand]["refs"] or not need_refs):
                 name = cand
                 break
@@ -76,12 +79,60 @@ def _log(rec: dict) -> None:
         fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
 
+PAID = ("openai", "seedream", "dashscope", "gemini", "openrouter")
+
+
+def _spent_today() -> float:
+    f = LOG_DIR / "cost.jsonl"
+    if not f.is_file():
+        return 0.0
+    day = datetime.now(timezone.utc).date().isoformat()
+    total = 0.0
+    for line in f.read_text(encoding="utf-8").splitlines():
+        try:
+            rec = json.loads(line)
+        except ValueError:
+            continue
+        if rec.get("ok") and rec.get("at", "").startswith(day) and rec.get("est_usd"):
+            total += rec["est_usd"]
+    return total
+
+
+def paid_fallback(need_refs: bool) -> str | None:
+    """Codex 不可用时是否退到按张付费的服务：默认不退；配置 allow_paid_fallback 后才退，且当天估算花费不超过上限。"""
+    cfg = config()
+    if not (cfg.get("allow_paid_fallback") or os.environ.get("STYLEBOOK_ALLOW_PAID_FALLBACK") == "1"):
+        return None
+    cap = float(cfg.get("paid_fallback_cap_usd", os.environ.get("STYLEBOOK_PAID_FALLBACK_CAP_USD", 5)))
+    if _spent_today() >= cap:
+        return None
+    for cand in PAID:
+        if configured(cand) and (PROVIDERS[cand]["refs"] or not need_refs):
+            return cand
+    return None
+
+
 def generate(prompt: str, out: Path, *, size: tuple[int, int], aspect: str = "1:1", refs: list[Path] | None = None,
              provider: str | None = None, model: str | None = None, quality: str | None = None,
              max_attempts: int = 4, sleep=time.sleep, tag: str = "") -> Result:
-    """繁忙类错误：指数退避重试；连续两次繁忙且配置了备用模型 / 线路，就切过去。密钥、组织验证、内容被拒：不重试。"""
+    """自动选服务时首选 Codex；Codex 失败且允许付费备用时，退到已配置的付费服务并在日志里写明原因。"""
     refs = refs or []
     name, mdl = choose(provider, model, need_refs=bool(refs))
+    try:
+        return _generate_with(name, mdl, prompt, out, size=size, aspect=aspect, refs=refs, quality=quality,
+                              max_attempts=max_attempts, sleep=sleep, tag=tag)
+    except BackendError as e:
+        alt = paid_fallback(bool(refs)) if (name == "codex" and provider is None and e.kind != "policy") else None
+        if not alt:
+            raise
+        _log({"tag": tag, "provider": "codex", "ok": False, "fallback_to": alt, "kind": e.kind, "msg": str(e)[:160]})
+        return _generate_with(alt, PROVIDERS[alt]["default_model"], prompt, out, size=size, aspect=aspect, refs=refs,
+                              quality=quality, max_attempts=max_attempts, sleep=sleep, tag=tag)
+
+
+def _generate_with(name: str, mdl: str, prompt: str, out: Path, *, size: tuple[int, int], aspect: str, refs: list[Path],
+                   quality: str | None, max_attempts: int, sleep, tag: str) -> Result:
+    """繁忙类错误：指数退避重试；连续两次繁忙且配置了备用模型 / 线路，就切过去。密钥、组织验证、内容被拒、额度用完：不重试。"""
     cfg = config()
     quality = quality or cfg.get("quality", "normal")
     fallbacks = list(cfg.get("fallback_models", [])) if name == cfg.get("provider", name) else []
@@ -94,7 +145,8 @@ def generate(prompt: str, out: Path, *, size: tuple[int, int], aspect: str = "1:
         attempts += 1
         attempt_t0 = now()
         try:
-            kwargs = {"aspect": aspect} if name in ("gemini", "openrouter") else {}
+            kwargs = {"aspect": aspect} if name in ("gemini", "openrouter", "codex") else {}
+            _providers.META.tokens = None
             img = fn(prompt, size, quality, refs, current, **kwargs)
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_bytes(img)
@@ -103,7 +155,8 @@ def generate(prompt: str, out: Path, *, size: tuple[int, int], aspect: str = "1:
             seconds = round(finished - t0, 1)
             _log({"tag": tag, "provider": name, "model": current, "size": list(size), "quality": quality, "ok": True,
                   "attempts": attempts, "est_usd": est, "refs": len(refs),
-                  "seconds": seconds, "attempt_seconds": round(finished - attempt_t0, 1)})
+                  "seconds": seconds, "attempt_seconds": round(finished - attempt_t0, 1),
+                  **({"tokens": _providers.META.tokens} if getattr(_providers.META, "tokens", None) else {})})
             return Result(img, name, current, attempts, seconds, est)
         except BackendError as e:
             last = e

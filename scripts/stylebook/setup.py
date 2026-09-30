@@ -11,8 +11,9 @@ from .backends.base import CONFIG_DIR, BackendError, load_dotenv, redact
 from .backends.providers import PROVIDERS
 
 # 国内用户排序：已有中转 → 大陆直连 → 境外 → 暂时没有 Key
-ORDER = ["openai", "seedream", "dashscope", "gemini", "openrouter"]
+ORDER = ["codex", "openai", "seedream", "dashscope", "gemini", "openrouter"]
 ENV_HELP = {
+    "codex": ["不需要密钥：安装 Codex CLI 后运行 codex login，用 ChatGPT 账号登录即可"],
     "openai": ["OPENAI_API_KEY=你的密钥", "OPENAI_BASE_URL=https://api.openai.com/v1   # 用中转就换成中转地址"],
     "seedream": ["ARK_API_KEY=你的密钥"],
     "dashscope": ["DASHSCOPE_API_KEY=你的密钥"],
@@ -22,12 +23,13 @@ ENV_HELP = {
 
 
 def menu() -> str:
-    lines = ["选一家生图服务（没有 Key 也能用：选 6，Skill 会给出逐张提示词，你在即梦、豆包等网页里免费出图后导回验收）：", ""]
+    inbox = len(ORDER) + 1
+    lines = [f"选一家生图服务（有 ChatGPT / Codex 订阅就选 1，不按张付费；没有 Key 也能用：选 {inbox}，Skill 会给出逐张提示词，你在即梦、豆包等网页里免费出图后导回验收）：", ""]
     for i, name in enumerate(ORDER, 1):
         p = PROVIDERS[name]
         state = "已配置" if B.configured(name) else "未配置"
         lines.append(f"{i}. {p['zh']}（{state}）— {p['blurb']}。申请：{p['apply']}")
-    lines += ["6. 暂时没有 Key：走收件箱", "",
+    lines += [f"{inbox}. 暂时没有 Key：走收件箱", "",
               f"设置密钥：打开 {CONFIG_DIR / '.env'}（可先运行 `setup --env-template` 生成模板），按注释填入，"
               "**不要把密钥发到对话里**。填好后运行 `setup --provider <名字>`，会先出一张最便宜的测试图再保存设置。"]
     return "\n".join(lines)
