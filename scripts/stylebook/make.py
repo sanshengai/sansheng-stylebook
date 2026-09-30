@@ -36,7 +36,8 @@ def _write(path: Path, value: dict) -> None:
 def prepare(brief: dict, *, base_path: Path, model: str = "gpt-image-2") -> dict:
     if not isinstance(brief, dict) or brief.get("version") != 1:
         raise BriefError("brief.version 必须是 1")
-    allowed = {"version", "scene", "style", "palette", "reason", "code", "source", "items", "format", "references"}
+    allowed = {"version", "scene", "style", "palette", "reason", "code", "source", "items", "format", "references",
+               "chosen_by", "task_id"}
     if set(brief) - allowed:
         raise BriefError(f"brief 未知字段：{sorted(set(brief) - allowed)}")
     selected = SEL.normalize(brief["code"], scene=brief.get("scene")) if brief.get("code") else None
@@ -49,6 +50,8 @@ def prepare(brief: dict, *, base_path: Path, model: str = "gpt-image-2") -> dict
     items = brief.get("items")
     if not isinstance(items, list) or not items:
         raise BriefError("brief.items 不得为空")
+    if brief.get("chosen_by", "agent") not in {"agent", "user"}:
+        raise BriefError("chosen_by 只能是 agent 或 user（用户亲自挑的画风 / 色系才记为偏好证据）")
     chosen = PL.resolve_style(scene, explicit=brief.get("style"), include_inferred=False)
     palette = brief.get("palette") or chosen.get("palette") or {"family": "orig"}
     expression = {}

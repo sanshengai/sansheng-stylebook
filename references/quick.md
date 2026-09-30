@@ -85,3 +85,8 @@ python3 scripts/sb.py make brief.json -o 新目录 --prepare
 ```
 
 `box` 是最终画布的 [x,y,宽,高] 比例，不能越界或重叠。`require_blank` 适用于浅色文字底板：生成结果占用了文字区时拒绝导出，保留原图。深色底板按实际构图另外指定并看图核对。支持的本地 `image_layers` 绑定文件摘要，变化后拒绝复用。排字所需中文字体须已安装；字体不足或文字塞不下会明确失败。
+
+
+## 飞轮（自动记录，确认才改默认）
+
+`make` 结束会自动记录用户的改选与预检失败，并在有待问时打印“【待问】…”。用户说“就用这张”时执行 `python3 scripts/sb.py accept <输出目录> --ids 01`。细则见 [flywheel.md](flywheel.md)。用户亲自挑的画风或色系，brief 写 `"chosen_by": "user"`。

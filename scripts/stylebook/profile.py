@@ -49,14 +49,14 @@ def _load(path: Path) -> dict:
             or len(ids) != len(set(ids))):
         raise ProfileError("偏好事件 id 缺失或重复")
     for event in data["events"]:
-        if event.get("kind") not in {"explicit_set", "explicit_clear", "active_change", "revoke"} or not isinstance(event.get("scope"), dict):
+        if event.get("kind") not in {"explicit_set", "explicit_clear", "active_change", "revoke", "declined"} or not isinstance(event.get("scope"), dict):
             raise ProfileError(f"偏好事件格式错误：{event['id']}")
         if event["kind"] == "revoke":
             if not isinstance(event.get("target"), str):
                 raise ProfileError(f"撤销事件缺 target：{event['id']}")
         elif event.get("field") not in FIELDS:
             raise ProfileError(f"偏好事件字段错误：{event['id']}")
-        elif event["kind"] in {"explicit_set", "active_change"}:
+        elif event["kind"] in {"explicit_set", "active_change", "declined"}:
             if "value" not in event:
                 raise ProfileError(f"偏好事件缺 value：{event['id']}")
             if event["kind"] == "active_change" and (not isinstance(event.get("task_id"), str) or not event["task_id"]
