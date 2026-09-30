@@ -138,3 +138,18 @@ def test_paid_fallback_is_off_by_default_and_capped(fake, tmp_path, monkeypatch)
     monkeypatch.setattr(B, "_spent_today", lambda: 0.0)
     with pytest.raises(Exception):  # 其他测试可能重载后端模块，按属性判断而不是按类
         B.generate("hello", out, size=(1024, 1024), provider="codex", tag="t")
+
+
+def test_raw_generate_cli_returns_machine_readable_result(fake, tmp_path):
+    import subprocess
+    prompt = tmp_path / "p.txt"
+    prompt.write_text("a lake", encoding="utf-8")
+    out = tmp_path / "raw.png"
+    env = {**os.environ, "STYLEBOOK_LOG_DIR": str(tmp_path / "logs")}
+    r = subprocess.run([sys.executable, str(ROOT / "scripts" / "sb.py"), "raw-generate", "--prompt-file", str(prompt), "--aspect", "16:9",
+                        "--size", "1536x864", "-o", str(out), "--provider", "codex"], capture_output=True, text=True, env=env)
+    info = json.loads(r.stdout.splitlines()[-1])
+    assert r.returncode == 0 and info["ok"] and info["provider"] == "codex" and info["tokens"] == 12345 and out.read_bytes().startswith(b"\x89PNG")
+    bad = subprocess.run([sys.executable, str(ROOT / "scripts" / "sb.py"), "raw-generate", "--prompt-file", str(prompt), "--size", "1024x1024",
+                          "-o", str(tmp_path / "x.png"), "--provider", "codex"], capture_output=True, text=True, env={**env, "FAKE_CODEX_MODE": "quota"})
+    assert bad.returncode == 2 and json.loads(bad.stdout.splitlines()[-1])["kind"] == "quota"

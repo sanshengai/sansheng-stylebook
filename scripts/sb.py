@@ -508,6 +508,24 @@ def cmd_make(a) -> int:
     return 1 if report["status"] == "failed" else 0
 
 
+def cmd_raw_generate(a) -> int:
+    """按已编译好的提示词直接出一张原图（供写作 Skill 等上游调用；不编译、不验收、不导出）。"""
+    from stylebook import backends as B
+    from stylebook.backends import providers as PV
+    from stylebook.backends.base import BackendError
+    prompt = Path(a.prompt_file).read_text(encoding="utf-8")
+    w, h = (int(x) for x in a.size.lower().split("x"))
+    try:
+        r = B.generate(prompt, Path(a.out), size=(w, h), aspect=a.aspect, refs=[Path(p) for p in a.ref or []],
+                       provider=a.provider, quality=a.quality, tag=a.tag or "raw-generate")
+    except BackendError as exc:
+        print(json.dumps({"ok": False, "kind": exc.kind, "error": str(exc)}, ensure_ascii=False))
+        return 2
+    print(json.dumps({"ok": True, "out": a.out, "provider": r.provider, "model": r.model, "seconds": r.seconds,
+                      "attempts": r.attempts, "est_usd": r.est_usd, "tokens": getattr(PV.META, "tokens", None)}, ensure_ascii=False))
+    return 0
+
+
 def cmd_accept(a) -> int:
     from stylebook import flywheel as FW
     recs = FW.accept(Path(a.out_dir), a.ids.split(",") if a.ids else None)
@@ -563,6 +581,9 @@ def main(argv=None) -> int:
     p.add_argument("--provider"); p.add_argument("--model"); p.add_argument("--quality")
     p.add_argument("--force", action="store_true", help="允许覆盖已存在的输出文件"); p.set_defaults(fn=cmd_generate)
     p = sub.add_parser("doctor"); p.add_argument("--deep", action="store_true"); p.add_argument("--only"); p.set_defaults(fn=cmd_doctor)
+    p = sub.add_parser("raw-generate"); p.add_argument("--prompt-file", required=True); p.add_argument("--ref", action="append")
+    p.add_argument("--aspect", default="1:1"); p.add_argument("--size", default="1024x1024"); p.add_argument("-o", "--out", required=True)
+    p.add_argument("--provider"); p.add_argument("--quality"); p.add_argument("--tag"); p.set_defaults(fn=cmd_raw_generate)
     p = sub.add_parser("accept"); p.add_argument("out_dir"); p.add_argument("--ids"); p.set_defaults(fn=cmd_accept)
     p = sub.add_parser("flywheel"); p.add_argument("action", choices=["status", "questions", "answer"]); p.add_argument("--scene"); p.add_argument("--project")
     p.add_argument("--field"); p.add_argument("--value"); p.add_argument("--choice", choices=["default", "project", "no"]); p.set_defaults(fn=cmd_flywheel)
