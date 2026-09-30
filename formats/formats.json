@@ -7,7 +7,8 @@
     "信息结构",
     "视频帧",
     "透明底多宫格",
-    "透明底单图"
+    "透明底单图",
+    "教材插图"
   ],
   "generation": {
     "gpt-image": "宽高须为 16 的倍数、最长边不超过 3840、宽高比不超过 3:1；先按比例生成再裁切缩放到导出像素"
@@ -534,6 +535,44 @@
       "transparent": true,
       "density_max": "sparse",
       "compose": "A grid of separate stickers of the same character, one expression per cell, on a fully transparent canvas. Leave transparent gutters at every cell boundary and clear transparent space around every figure so each cell can be cut out as its own PNG."
+    },
+    {
+      "id": "textbook-vocab",
+      "zh": "教材单词参考图",
+      "family": "教材插图",
+      "ratio": "1:1",
+      "export_px": [
+        1200,
+        1200
+      ],
+      "text": {
+        "default": "none"
+      },
+      "count": [
+        1,
+        1
+      ],
+      "density_max": "sparse",
+      "compose": "One clearly recognizable main vocabulary subject on a plain solid background. Keep the bottom label rectangle empty if exact lettering is requested."
+    },
+    {
+      "id": "textbook-grammar",
+      "zh": "教材语法情景图",
+      "family": "教材插图",
+      "ratio": "4:3",
+      "export_px": [
+        1200,
+        900
+      ],
+      "text": {
+        "default": "none"
+      },
+      "count": [
+        1,
+        1
+      ],
+      "density_max": "balanced",
+      "compose": "A clear grammar situation: show each required action and its time cues in the same readable scene."
     }
   ],
   "note": "density_max：该格式一张图允许的最高信息密度（sparse 1–2 点 / balanced 3–4 点 / dense 5–8 点），手机上小图放不下更多要点。"

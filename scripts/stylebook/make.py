@@ -5,6 +5,7 @@ Every invocation uses a new output directory; previous candidates are retained.
 """
 from __future__ import annotations
 
+import copy
 import hashlib
 import json
 import math
@@ -92,23 +93,49 @@ def prepare(brief: dict, *, base_path: Path, model: str = "gpt-image-2") -> dict
         if fmt not in D.formats():
             raise BriefError(f"未知格式：{fmt}")
         text = item.get("text", [])
-        if isinstance(text, str):
-            text = [text] if text else []
-        if not isinstance(text, list) or any(not isinstance(t, str) or not t.strip() for t in text):
-            raise BriefError(f"第 {index} 张 text 必须是文字或非空文字列表")
+        if isinstance(text, dict):
+            if text.get("mode") != "overlay":
+                raise BriefError(f"第 {index} 张 text 对象仅支持 overlay 精确排字")
+            text_spec = copy.deepcopy(text)
+            from .overlay import validate as validate_overlay
+            problems = validate_overlay(text_spec)
+            if problems:
+                raise BriefError("精确文字配置不合格：" + "；".join(problems))
+        else:
+            if isinstance(text, str):
+                text = [text] if text else []
+            if not isinstance(text, list) or any(not isinstance(t, str) or not t.strip() for t in text):
+                raise BriefError(f"第 {index} 张 text 必须是文字、非空文字列表或 overlay 对象")
+            if scene == "tb-vocab" and text:
+                if len(text) != 1:
+                    raise BriefError("教材单词图多个标签须提供 overlay 对象，明确每条文字的位置")
+                text_spec = {"mode": "overlay", "reserve": "the bottom label band", "items": [
+                    {"role": "label", "text": text[0], "box": [0.08, 0.80, 0.84, 0.14],
+                     "font_px": 72, "min_px": 40, "align": "center", "valign": "center", "require_blank": True}]}
+            else:
+                text_spec = {"mode": "native" if text else "none", "items": [
+                    {"role": "title" if n == 0 else "label", "text": t} for n, t in enumerate(text)]}
+        purpose = item["message"]
+        constraints = D.scenes()[scene].get("constraints", [])
+        if constraints:
+            purpose += "\nTextbook constraints: " + " ".join(constraints)
         manifest = {"style": chosen["code"], "format": fmt, "model": model, "palette": palette,
                     "references": references, **({"use_anchor": False} if any(r["role"] == "style" for r in references) else {}),
-                    "content": {"subject": item["visual"], "purpose": item["message"]},
-                    "text": {"mode": "native" if text else "none", "items": [
-                        {"role": "title" if n == 0 else "label", "text": t} for n, t in enumerate(text)]}}
+                    "content": {"subject": item["visual"], "purpose": purpose}, "text": text_spec}
         for field in ("structure", "density"):
             if expression.get(field, "auto") != "auto":
                 manifest[field] = expression[field]
         compiled = CP.compile_manifest(manifest)
         refs = [{**r, "sha256": _sha(Path(r["path"]))} for r in compiled.references]
+        overlay_assets = []
+        for layer in text_spec.get("image_layers", []):
+            path = (base_path / layer["path"]).resolve()
+            if not path.is_relative_to(base_path.resolve()):
+                raise BriefError("overlay 图片图层越出 brief 目录")
+            overlay_assets.append({"path": str(path), "sha256": _sha(path)})
         tasks.append({"id": ident, "position": position, "message": item["message"],
                       "prompt_sha256": hashlib.sha256(compiled.prompt.encode()).hexdigest(),
-                      "manifest": manifest, "compiled": compiled.to_dict(), "references": refs})
+                      "manifest": manifest, "compiled": compiled.to_dict(), "references": refs, "overlay_assets": overlay_assets})
     return {"version": 1, "scene": scene, "selection": chosen, "palette": palette,
             "reason": reason, "source": source, "tasks": tasks}
 
@@ -149,7 +176,7 @@ def run(brief: dict, out: Path, *, base_path: Path, provider: str | None = None,
         try:
             if stopped.is_set():
                 raise BriefError("服务鉴权或配置失败，未启动剩余任务")
-            for ref in task["references"]:
+            for ref in task["references"] + task.get("overlay_assets", []):
                 if _sha(Path(ref["path"])) != ref["sha256"]:
                     raise BriefError("参考图在编译后发生变化")
             result = gen_fn(compiled["prompt"], raw, size=tuple(compiled["size"]), aspect=compiled["aspect"],
@@ -158,11 +185,13 @@ def run(brief: dict, out: Path, *, base_path: Path, provider: str | None = None,
             rec["generation"] = {"provider": result.provider, "model": result.model,
                                  "attempts": result.attempts, "seconds": result.seconds,
                                  "est_usd": result.est_usd, "raw_sha256": _sha(raw)}
-            for ref in task["references"]:
+            for ref in task["references"] + task.get("overlay_assets", []):
                 if _sha(Path(ref["path"])) != ref["sha256"]:
                     raise BriefError("出图期间参考图发生变化，候选不可接受")
             fmt = task["manifest"]["format"]
-            exported = EX.export(raw, fmt, final)
+            text_spec = task["manifest"]["text"]
+            exported = EX.export(raw, fmt, final, overlay=text_spec if text_spec["mode"] == "overlay" else None,
+                                 overlay_root=base_path)
             with Image.open(final) as image:
                 actual_size = list(image.size)
                 alpha = image.convert("RGBA").getchannel("A").getextrema()
