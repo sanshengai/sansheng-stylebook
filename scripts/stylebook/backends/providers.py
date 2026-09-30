@@ -6,9 +6,16 @@ from __future__ import annotations
 
 import base64
 import os
+import re
+import shutil
+import subprocess
+import tempfile
+import threading
 from pathlib import Path
 
-from .base import BackendError, fetch_bytes, get, post_json, post_multipart
+from .base import BackendError, classify, fetch_bytes, get, post_json, post_multipart
+
+META = threading.local()  # 后端在本线程留下的附加信息（如 Codex 用量），由调度层写入成本日志
 
 
 def _need(env: str, label: str) -> str:
@@ -133,7 +140,87 @@ def dashscope_generate(prompt: str, size: tuple[int, int], quality: str, refs: l
     raise BackendError("unknown", f"百炼没有返回图片：{str(data)[:200]}")
 
 
+# ---------------- Codex 内置生图（走 ChatGPT / Codex 订阅额度，不按张计费） ----------------
+def codex_bin() -> str | None:
+    env = os.environ.get("STYLEBOOK_CODEX")
+    if env:
+        return env if Path(env).is_file() else None
+    local = Path.home() / ".local" / "bin" / "codex"
+    return str(local) if local.is_file() else shutil.which("codex")
+
+
+_CODEX_LOGIN: dict[str, bool] = {}
+
+
+def codex_ready() -> bool:
+    """已安装且已用 ChatGPT 账号登录。结果缓存，避免每张图都问一次。"""
+    exe = codex_bin()
+    if not exe:
+        return False
+    if exe not in _CODEX_LOGIN:
+        try:
+            r = subprocess.run([exe, "login", "status"], stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=30)
+            _CODEX_LOGIN[exe] = r.returncode == 0 and "logged in" in (r.stdout + r.stderr).lower()
+        except (OSError, subprocess.TimeoutExpired):
+            _CODEX_LOGIN[exe] = False
+    return _CODEX_LOGIN[exe]
+
+
+def codex_ping() -> tuple[bool, str]:
+    if not codex_bin():
+        return False, "没有找到 codex 命令（安装 Codex CLI）"
+    return (True, "已登录，出图走订阅额度") if codex_ready() else (False, "未登录（运行 codex login）")
+
+
+def codex_instruction(prompt: str, out: Path, aspect: str, size: tuple[int, int], n_refs: int) -> str:
+    ref = ("The attached image(s) are references in the order the prompt names them (Image 1, Image 2, …); "
+           "use them exactly as the prompt says.\n") if n_refs else ""
+    return (f"Use your built-in image generation tool to create exactly ONE image. Do not generate more than one image.\n"
+            f"Ask the tool for aspect ratio {aspect} (about {size[0]}x{size[1]} px) rather than a square.\n{ref}"
+            f"Use the following prompt verbatim; do not rewrite, shorten or add to it:\n"
+            f"<<<PROMPT\n{prompt}\nPROMPT>>>\n"
+            f"After generating, copy the generated image file (the tool saves it under ~/.codex/generated_images/; take the newest file) "
+            f"to {out} using the shell. Reply only with the saved path.")
+
+
+def codex_generate(prompt: str, size: tuple[int, int], quality: str, refs: list[Path], model: str, aspect: str = "1:1") -> bytes:
+    exe = codex_bin()
+    if not exe:
+        raise BackendError("unconfigured", "没有找到 codex 命令。安装 Codex CLI 并运行 codex login，或改用其他生图服务。")
+    timeout = int(os.environ.get("STYLEBOOK_CODEX_TIMEOUT", "900"))
+    with tempfile.TemporaryDirectory(prefix="stylebook-codex-") as tmp:
+        out = Path(tmp) / "out.png"
+        effort = os.environ.get("STYLEBOOK_CODEX_EFFORT", "low")  # 只是转发提示词，不需要深度推理；实测省约四成额度，耗时不变
+        cmd = [exe, "exec", "--skip-git-repo-check", "--ephemeral", "-s", "workspace-write", "-C", tmp,
+               "-c", f"model_reasoning_effort={effort}", codex_instruction(prompt, out, aspect, size, len(refs))]
+        if refs:  # -i 会吞掉后面的参数，必须放在提示词之后
+            cmd += ["-i", *[str(p) for p in refs]]
+        try:
+            r = subprocess.run(cmd, stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=timeout)
+        except subprocess.TimeoutExpired:
+            raise BackendError("busy", f"Codex 出图超过 {timeout} 秒", retryable=True) from None
+        except OSError as exc:
+            raise BackendError("unconfigured", f"无法启动 codex：{exc}") from None
+        log = (r.stdout or "") + (r.stderr or "")
+        m = re.search(r"tokens used\s*\n?\s*([\d,]+)", log)
+        META.tokens = int(m.group(1).replace(",", "")) if m else None
+        if out.is_file() and out.stat().st_size > 10_000:
+            return out.read_bytes()
+        low = log.lower()
+        if any(h in low for h in ("not logged in", "please log in", "codex login", "unauthorized")):
+            raise BackendError("auth", "Codex 未登录：运行 codex login，用 ChatGPT 账号登录。")
+        if any(h in low for h in ("usage limit", "limit reached", "quota", "credits")):
+            raise BackendError("quota", "Codex 额度用完了；等额度重置，或改用其他生图服务。")
+        if any(h in low for h in ("content polic", "safety", "moderation", "cannot create", "can't create")):
+            raise BackendError("policy", "Codex 拒绝了这次出图（内容政策）。换一种描述再试。")
+        raise BackendError("unknown", f"Codex 没有产出图片（退出码 {r.returncode}）：{log[-200:].strip()}", retryable=True)
+
+
 PROVIDERS: dict[str, dict] = {
+    "codex": {"zh": "Codex 内置生图（ChatGPT 订阅，不按张付费）", "fn": codex_generate, "ping": codex_ping, "env": ["STYLEBOOK_CODEX"],
+              "default_model": "codex-builtin", "refs": True, "verified": True,
+              "blurb": "用 ChatGPT / Codex 订阅额度出图，中文字准、能带参考图；模型版本由 Codex 决定，不能指定，也不支持透明底",
+              "apply": "https://developers.openai.com/codex"},
     "openai": {"zh": "OpenAI / OpenAI 兼容中转", "fn": openai_generate, "ping": openai_ping, "env": ["OPENAI_API_KEY", "OPENAI_BASE_URL"],
                "default_model": "gpt-image-2", "refs": True, "verified": True,
                "blurb": "质量高、中文字准；官方直连需境外网络且要先做组织验证；国内可用兼容中转（改 OPENAI_BASE_URL）",
