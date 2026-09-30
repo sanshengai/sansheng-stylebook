@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import json
+import copy
 import os
 import re
 import subprocess
@@ -41,7 +42,7 @@ def prompt(plan: dict, article: Path) -> str:
     shapes = "\n".join(f"- {k}（{v['zh']}）：{v['def']}；表达为{ '、'.join(PL.FORM_ZH[f] for f in v['forms']) }"
                        + (f"，可用结构 {', '.join(v['structures'])}" if v.get("structures") else "") for k, v in PL.SHAPES.items())
     rules = "\n".join(f"{i}. {r}" for i, r in enumerate(PL.PLANNING_RULES, 1))
-    return "\n".join([
+    text = "\n".join([
         "你是一名严格的编辑，复核一份文章配图计划。先用 Read 工具完整读原文，再逐张判断。",
         "只按下面这套定义和判别要点来判——计划员用的是同一套，不要换成你自己的分类口径。",
         f"原文：{article}",
@@ -70,6 +71,34 @@ def prompt(plan: dict, article: Path) -> str:
         "",
         "只输出 JSON：{\"items\":[{\"id\",\"reasonable\",\"position_ok\",\"shape_ok\",\"form_ok\",\"basis_ok\",\"no_literal_metaphor_or_real_face\",\"fidelity_ok\",\"reader_value_ok\",\"why\"}],\"missed_positions\":[str],\"notes\":str}",
     ])
+    if "cover_brief" in plan:
+        text += ("\n\n## 独立封面主题复核\n"
+                 "这是独立封面，不是正文配图，不使用正文插图的位置或信息形状规则。"
+                 "对照全文检查封面主题能否代表文章，文字与图形暗示是否忠实，是否新增无原文依据的承诺、身份或效果。"
+                 "在上述 JSON 追加 cover_review={fidelity_ok:bool,theme_ok:bool,no_unrequested_claims:bool,why:str}。"
+                 "每项只按全文与封面简报判断，why 写具体依据。\n"
+                 + json.dumps(plan["cover_brief"], ensure_ascii=False, indent=1))
+    return text
+
+
+def schema(plan: dict) -> dict:
+    result = copy.deepcopy(SCHEMA)
+    if "cover_brief" in plan:
+        result["required"].append("cover_review")
+        result["properties"]["cover_review"] = {
+            "type": "object", "required": ["fidelity_ok", "theme_ok", "no_unrequested_claims", "why"],
+            "properties": {"fidelity_ok": {"type": "boolean"}, "theme_ok": {"type": "boolean"},
+                           "no_unrequested_claims": {"type": "boolean"}, "why": {"type": "string"}}}
+    return result
+
+
+def cover_complete(data: dict | None, plan: dict) -> bool:
+    if "cover_brief" not in plan:
+        return True
+    review = data.get("cover_review") if isinstance(data, dict) else None
+    return (isinstance(review, dict) and all(type(review.get(key)) is bool for key in
+            ("fidelity_ok", "theme_ok", "no_unrequested_claims"))
+            and isinstance(review.get("why"), str) and bool(review["why"].strip()))
 
 
 def _complete(data: dict | None, plan: dict) -> bool:
@@ -77,7 +106,7 @@ def _complete(data: dict | None, plan: dict) -> bool:
     actual = ([i.get("id") for i in data["items"]]
               if isinstance(data, dict) and isinstance(data.get("items"), list)
               and all(isinstance(i, dict) for i in data["items"]) else [])
-    return bool(data and len(actual) == len(expected) and set(actual) == expected
+    return bool(data and cover_complete(data, plan) and len(actual) == len(expected) and set(actual) == expected
                 and isinstance(data.get("missed_positions"), list)
                 and all(isinstance(pos, str) and pos.strip() for pos in data["missed_positions"])
                 and all(isinstance(i.get("why"), str) and i["why"].strip() for i in data["items"]))
@@ -137,7 +166,7 @@ def review(plan: dict, article: Path, model: str | None = None, timeout: int = 6
         raise RuntimeError("找不到 claude 命令行")
     work = Path(tempfile.mkdtemp(prefix="stylebook-plan-"))
     cmd = [claude, "-p", "--model", model or DEFAULT_MODEL, "--output-format", "json",
-           "--json-schema", json.dumps(SCHEMA, ensure_ascii=False), "--tools", "Read", "--add-dir", str(article.parent),
+           "--json-schema", json.dumps(schema(plan), ensure_ascii=False), "--tools", "Read", "--add-dir", str(article.parent),
            "--permission-mode", "dontAsk", "--no-session-persistence", "--strict-mcp-config"]
     last = ""
     for _ in range(2):
