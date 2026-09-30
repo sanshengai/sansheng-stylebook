@@ -405,3 +405,17 @@ def test_format_compose_panels_and_fixes():
 
 
 PL_FORMATS = ["wechat-cover-head", "xhs-cover", "podcast-cover", "picturebook-page", "storyboard-frame", "vertical-cover"]
+
+
+def test_disabled_anchor_rejects_forced_use_and_omits_default():
+    contract = copy.deepcopy(FREE)
+    contract["anchor"] = {"file": "bad.png", "enabled": False, "isolation": "BAD_REFERENCE"}
+    assert c(contract=contract).references == []
+    assert "BAD_REFERENCE" not in c(contract=contract).prompt
+    m = copy.deepcopy(M)
+    m["use_anchor"] = True
+    with pytest.raises(CP.CompileError, match="已停用"):
+        c(m, contract=contract)
+    # Mutation at the consumed switch restores the known bad reference.
+    contract["anchor"]["enabled"] = True
+    assert c(m, contract=contract).references[0]["path"] == "bad.png"

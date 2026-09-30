@@ -480,9 +480,17 @@ def cmd_make(a) -> int:
     from stylebook import make as MK
     from stylebook.backends.base import BackendError
     try:
-        report = MK.run(_manifest(a.brief), Path(a.out), base_path=Path(a.brief).resolve().parent,
-                        provider=a.provider, model=a.model, quality=a.quality, jobs=a.jobs,
-                        prepare_only=a.prepare)
+        if a.import_results:
+            if not a.prepared or a.prepare:
+                raise MK.BriefError("导回须同时提供 --prepared，不能与 --prepare 同用")
+            report = MK.import_host(_manifest(a.brief), Path(a.prepared), Path(a.import_results), Path(a.out),
+                                    base_path=Path(a.brief).resolve().parent)
+        else:
+            if a.prepared:
+                raise MK.BriefError("--prepared 只用于 --import-results")
+            report = MK.run(_manifest(a.brief), Path(a.out), base_path=Path(a.brief).resolve().parent,
+                            provider=a.provider, model=a.model, quality=a.quality, jobs=a.jobs,
+                            prepare_only=a.prepare)
     except (MK.BriefError, BackendError, FileExistsError) as exc:
         print(f"轻量出图停止：{exc}", file=sys.stderr)
         return 2
@@ -583,6 +591,7 @@ def main(argv=None) -> int:
     p = sub.add_parser("make"); p.add_argument("brief"); p.add_argument("-o", "--out", required=True)
     p.add_argument("--provider"); p.add_argument("--model"); p.add_argument("--quality")
     p.add_argument("--jobs", type=int, default=4); p.add_argument("--prepare", action="store_true")
+    p.add_argument("--import-results"); p.add_argument("--prepared")
     p.set_defaults(fn=cmd_make)
     p = sub.add_parser("batch"); p.add_argument("plan"); p.add_argument("-o", "--out", required=True)
     p.add_argument("--provider"); p.add_argument("--model"); p.add_argument("--quality"); p.add_argument("--retries", type=int, default=2)

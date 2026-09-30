@@ -123,3 +123,11 @@ def test_loaded_contract_compiles(tmp_path, monkeypatch):
     loaded = C.load("C99")
     assert loaded["_path"].endswith("C99/contract.json")
     CP.compile_manifest({"style": "C99", "content": {"subject": "a cat"}}, loaded)
+
+
+def test_anchor_enabled_requires_boolean():
+    k = copy.deepcopy(GOOD)
+    k["anchor"] = {"file": "anchor.png", "enabled": False}
+    assert C.validate(k) == []
+    k["anchor"]["enabled"] = "false"
+    assert C.validate(k)

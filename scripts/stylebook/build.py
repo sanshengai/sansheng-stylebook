@@ -161,7 +161,7 @@ def collect_images(reg: dict, samples: list[Path] | None = None) -> dict[str, Pa
             if contract_path:
                 contract = CT.load(code)
                 anchor = contract.get("anchor") or {}
-                if anchor:
+                if anchor and anchor.get("enabled", True):
                     found[f"{code}-anchor"] = contract_path.parent / anchor["file"]
         if mroot.is_dir():
             runs = sorted(mroot.glob(f"{code}@r*"), key=lambda p: int(p.name.split("@r")[1]) if p.name.split("@r")[1].isdigit() else 0)

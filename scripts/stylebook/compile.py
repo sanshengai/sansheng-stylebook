@@ -314,7 +314,9 @@ def compile_manifest(manifest: dict, contract: dict | None = None, *, stage: str
             raise CompileError(f"参考图职责必须是 {list(ROLE_TEXT)} 之一：{r}")
     anchor = contract.get("anchor") or {}
     ref_list = list(refs)
-    anchor_enabled = bool(anchor.get("file") and manifest.get("use_anchor", True))
+    if anchor.get("enabled", True) is False and manifest.get("use_anchor") is True:
+        raise CompileError("合同默认锚点已停用；请提供确认过的画风参考图")
+    anchor_enabled = bool(anchor.get("file") and anchor.get("enabled", True) and manifest.get("use_anchor", True))
     if anchor_enabled:
         anchor_path = Path(anchor["file"])
         if not anchor_path.is_absolute() and contract.get("_path"):

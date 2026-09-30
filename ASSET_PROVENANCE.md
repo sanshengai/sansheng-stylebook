@@ -9,3 +9,7 @@ The old batch requested `gpt-image-2` through its OpenAI route. The response rec
 The README previews are unedited copies of project same-topic outputs: `assets/C01-story-sample.png` is C01-q1 (SHA-256 `acc2a9767da459bd743a59bb49833f043755b7eecf810e540a6792bf7b11aee9`), and `assets/C32-infographic-sample.png` is C32-q3 (SHA-256 `f41571c36d6a6a222c63464ea2ea6c3cff0b86e42f8635a7c7db4c43c1b1277b`). They show particular successful test images, not a guarantee for a different topic or a full series.
 
 The MIT license in `LICENSE` covers the repository's original code, text, and bundled project images to the extent the contributor has rights to license them. Third-party code and text retain the notices in `THIRD_PARTY_NOTICES.md`.
+
+## 2026-09-30 C42 默认参考停用
+
+C42 历史 anchor.png 保留原始字节和来源摘要。真实文章试跑发现其绘本画法与清透扁平合同不符，并带入未请求人物和背景；合同修订 3 将 `anchor.enabled` 设为 false，编译器和默认看板不再引用。三张替代样板均未通过，未纳入公开资产。参考文件存在不代表正式准入。

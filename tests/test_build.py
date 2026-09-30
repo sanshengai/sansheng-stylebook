@@ -120,3 +120,9 @@ def test_gallery_builds_with_samples(profile, tmp_path):
     assert "S77" not in pmeta and not any(re.match(r"S\d", k) for k in pimgs)  # 图片 base64 里可能碰巧出现这串字符，不看它
     assert "C24-anchor" in pimgs and "C01-example" in pimgs and "C32-example" in pimgs
     assert "画风材质参考（非成图验收）" in pub and "单张测试图（非整组验收）" in pub
+
+
+def test_disabled_anchor_is_not_gallery_sample():
+    reg = BD.registry()
+    assert "C42-anchor" not in BD.collect_images(reg)
+    assert "C31-anchor" in BD.collect_images(reg)

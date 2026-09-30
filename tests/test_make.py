@@ -184,3 +184,62 @@ def test_cli_prepare_has_no_generation_and_binds_reference_files(tmp_path):
     prepared = json.loads((out / "prepared.json").read_text())
     for ref in prepared["tasks"][0]["references"]:
         assert ref["sha256"] == hashlib.sha256(Path(ref["path"]).read_bytes()).hexdigest()
+
+
+def host_fixture(tmp_path):
+    prepared_dir = tmp_path / "prepared"
+    MK.run(BRIEF, prepared_dir, base_path=tmp_path, prepare_only=True)
+    prepared_path = prepared_dir / "prepared.json"
+    task = json.loads(prepared_path.read_text())["tasks"][0]
+    actual = tmp_path / "tool.png"
+    Image.new("RGB", (1536, 864), "ivory").save(actual)
+    result = {"version": 1, "prepared_sha256": hashlib.sha256(prepared_path.read_bytes()).hexdigest(),
+              "images": {"01": {"path": str(actual), "sha256": hashlib.sha256(actual.read_bytes()).hexdigest(),
+                                 "provider": "codex_builtin", "model": None, "est_usd": None, "seconds": 1.25,
+                                 "prompt_sha256": task["prompt_sha256"],
+                                 "reference_sha256s": [r["sha256"] for r in task["references"]],
+                                 "tool_arguments": {"prompt": task["compiled"]["prompt"],
+                                                    "referenced_image_paths": [r["path"] for r in task["compiled"]["references"]],
+                                                    "transparent_background": False}}}}
+    return prepared_path, actual, result
+
+
+def test_host_import_keeps_original_and_does_not_invent_actual_model(tmp_path):
+    prepared, actual, result = host_fixture(tmp_path)
+    results = tmp_path / "results.json"
+    results.write_text(json.dumps(result))
+    out = tmp_path / "imported"
+    report = MK.import_host(BRIEF, prepared, results, out, base_path=tmp_path)
+    assert report["status"] == "pending_visual_review" and not report["accepted"]
+    assert (out / "01-raw.png").read_bytes() == actual.read_bytes()
+    assert report["items"][0]["generation"]["model"] is None
+    assert report["items"][0]["generation"]["est_usd"] is None
+    assert report["host_import"]["generation_seconds"] == 1.25
+
+
+@pytest.mark.parametrize("mutate", [lambda r: r.update(images={}),
+                                   lambda r: r.update(prepared_sha256="wrong"),
+                                   lambda r: r["images"]["01"].update(prompt_sha256="wrong"),
+                                   lambda r: r["images"]["01"].update(sha256="wrong"),
+                                   lambda r: r["images"]["01"].update(reference_sha256s=["wrong"]),
+                                   lambda r: r["images"]["01"]["tool_arguments"].update(prompt="different"),
+                                   lambda r: r["images"]["01"].update(model="made-up-model"),
+                                   lambda r: r["images"]["01"].update(seconds=float('nan'))])
+def test_host_import_rejects_unbound_or_changed_inputs_before_export(tmp_path, mutate):
+    prepared, actual, result = host_fixture(tmp_path)
+    mutate(result)
+    results = tmp_path / "bad.json"
+    results.write_text(json.dumps(result))
+    with pytest.raises(MK.BriefError):
+        MK.import_host(BRIEF, prepared, results, tmp_path / "out", base_path=tmp_path)
+    assert not (tmp_path / "out").exists()
+
+
+def test_host_import_rejects_brief_changed_after_generation(tmp_path):
+    prepared, actual, result = host_fixture(tmp_path)
+    results = tmp_path / "results.json"
+    results.write_text(json.dumps(result))
+    brief = copy.deepcopy(BRIEF)
+    brief["items"][0]["visual"] = "A different subject"
+    with pytest.raises(MK.BriefError, match="变化"):
+        MK.import_host(brief, prepared, results, tmp_path / "out", base_path=tmp_path)

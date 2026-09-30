@@ -7,7 +7,9 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import re
+import shutil
 import time
 from threading import Event
 from concurrent.futures import ThreadPoolExecutor
@@ -95,7 +97,7 @@ def prepare(brief: dict, *, base_path: Path, model: str = "gpt-image-2") -> dict
         if not isinstance(text, list) or any(not isinstance(t, str) or not t.strip() for t in text):
             raise BriefError(f"第 {index} 张 text 必须是文字或非空文字列表")
         manifest = {"style": chosen["code"], "format": fmt, "model": model, "palette": palette,
-                    "references": references, "use_anchor": not any(r["role"] == "style" for r in references),
+                    "references": references, **({"use_anchor": False} if any(r["role"] == "style" for r in references) else {}),
                     "content": {"subject": item["visual"], "purpose": item["message"]},
                     "text": {"mode": "native" if text else "none", "items": [
                         {"role": "title" if n == 0 else "label", "text": t} for n, t in enumerate(text)]}}
@@ -197,5 +199,69 @@ def run(brief: dict, out: Path, *, base_path: Path, provider: str | None = None,
               "selection": prepared["selection"], "items": results, "failed": failed,
               "source_unchanged": source_unchanged, "overview": str(overview),
               "seconds": round(time.monotonic() - started, 3), "visual_review": "not_run", "accepted": False}
+    _write(out / "report.json", report)
+    return report
+
+
+def import_host(brief: dict, prepared_path: Path, results_path: Path, out: Path, *, base_path: Path) -> dict:
+    """Import actual built-in outputs without inventing a provider model or cost."""
+    from .backends.base import Result
+    prepared_bytes, results_bytes = prepared_path.read_bytes(), results_path.read_bytes()
+    prepared_digest, results_digest = hashlib.sha256(prepared_bytes).hexdigest(), hashlib.sha256(results_bytes).hexdigest()
+    prepared, results = json.loads(prepared_bytes), json.loads(results_bytes)
+    if not isinstance(results, dict) or results.get("version") != 1 or results.get("prepared_sha256") != prepared_digest:
+        raise BriefError("内置成图记录未绑定当前 prepared 文件")
+    tasks = prepared.get("tasks", [])
+    if not tasks:
+        raise BriefError("prepared 没有任务")
+    model = tasks[0]["compiled"]["model"]
+    current = prepare(brief, base_path=base_path, model=model)
+    if current != prepared:
+        raise BriefError("原文、brief、合同或参考图已变化；旧内置成图记录不可复用")
+    images = results.get("images")
+    if not isinstance(images, dict) or set(images) != {t["id"] for t in tasks}:
+        raise BriefError("内置成图必须逐一对应全部任务，不能缺图或多图")
+    for task in tasks:
+        image = images[task["id"]]
+        if not isinstance(image, dict):
+            raise BriefError("内置成图记录必须是对象")
+        arguments = image.get("tool_arguments", {})
+        if not isinstance(arguments, dict) or not isinstance(image.get("path"), str):
+            raise BriefError("内置成图缺少工具参数对象或原图路径")
+        transparent = bool(D.formats()[task["manifest"]["format"]].get("transparent"))
+        expected_paths = [r["path"] for r in task["compiled"]["references"]]
+        if (image.get("prompt_sha256") != task["prompt_sha256"]
+                or arguments.get("prompt") != task["compiled"]["prompt"]
+                or arguments.get("referenced_image_paths", []) != expected_paths
+                or arguments.get("transparent_background") is not transparent
+                or image.get("reference_sha256s") != [r["sha256"] for r in task["references"]]):
+            raise BriefError(f"{task['id']} 的实际工具参数或参考图摘要与编译任务不一致")
+        if image.get("provider") != "codex_builtin" or image.get("model") is not None or image.get("est_usd") is not None:
+            raise BriefError("内置工具未提供模型和费用，记录必须保持未知")
+        seconds = image.get("seconds")
+        if seconds is not None and (type(seconds) not in (int, float) or not math.isfinite(seconds) or seconds < 0):
+            raise BriefError("实际耗时须是非负秒数或未知")
+        path = Path(image["path"])
+        if not path.is_absolute():
+            path = results_path.parent / path
+        if _sha(path) != image.get("sha256"):
+            raise BriefError(f"{task['id']} 的工具原图摘要不一致")
+        image["resolved_path"] = str(path)
+
+    def copy_actual(prompt, raw, *, tag, **kwargs):
+        ident = tag.split(":", 1)[1]
+        image = images[ident]
+        shutil.copyfile(image["resolved_path"], raw)
+        if _sha(raw) != image["sha256"]:
+            raise BriefError("复制期间原图发生变化")
+        return Result(raw.read_bytes(), "codex_builtin", None, 1, image.get("seconds"), None)
+
+    report = run(brief, out, base_path=base_path, model=model, gen_fn=copy_actual)
+    (out / "host-results.json").write_bytes(results_bytes)
+    (out / "host-prepared.json").write_bytes(prepared_bytes)
+    report["host_import"] = {"prepared_sha256": prepared_digest, "results_sha256": results_digest,
+                             "generation_seconds": sum(i["seconds"] for i in images.values())
+                             if all(i.get("seconds") is not None for i in images.values()) else None,
+                             "seconds_scope": "report.seconds measures import/export, not full generation workflow"}
     _write(out / "report.json", report)
     return report
