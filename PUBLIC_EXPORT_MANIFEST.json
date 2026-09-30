@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "file_count": 209,
+  "file_count": 210,
   "files": {
     ".claude-plugin/marketplace.json": "b285a676020a44856cf9ac9dde10f186b5921a483a612c01f9921c9d037b6461",
     ".claude-plugin/plugin.json": "2bedc6ae1c25fb4ed5bcf464b1e1190a74dbf415be89b9b64740a9e0fad3f5aa",
@@ -201,6 +201,7 @@
     "tests/test_overlay.py": "a90583421e75759b66ad9ff9d10cb4055e6e27c9fe608676284b8e9dbac5047d",
     "tests/test_plan.py": "5a1a4fec2f872e557f03afd14b5496aabadb47c17c1935299cde96215ccd417e",
     "tests/test_plan_cover_review.py": "8b25a9c6793b1307c5b2132199649e27b7cdf28787f93c4b8138b23fe03c131b",
+    "tests/test_plan_review_budget.py": "58b65508bfa8e781d4c796eadc7a730b62fdd7b05dca44f41e90fee347e73947",
     "tests/test_profile.py": "90c8769ab653cacdc80c958d0c45dcb89cdf57bb67dc1c0e5fbe58c20b5147e5",
     "tests/test_public_export.py": "21eafcc9c72a002bb4cde66f3f9580970fc61edbcd3bcd3eb26263e9af8e8894",
     "tests/test_qa.py": "846d20ccca6249923ed866ad3ba68124e6c0cd46a83d82469a2840ccb6740308",
