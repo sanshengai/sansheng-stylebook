@@ -83,6 +83,12 @@ def test_overlay_square_flow_rejects_missing_text_box_and_gate_bypass_would_pass
     with pytest.raises(CP.CompileError, match="box"):
         compile_flow(manifest)
     monkeypatch.setattr(CF, "validate_overlay", lambda _: [])
+    # The compiler independently validates overlay boxes; bypassing only the
+    # entry gate must still fail. The mutation must disable both actual gates.
+    with pytest.raises(CP.CompileError, match="box"):
+        compile_flow(manifest)
+    import stylebook.overlay as overlay
+    monkeypatch.setattr(overlay, "validate", lambda _: [])
     assert compile_flow(manifest)["workflow"] == "s02-center-square-overlay-v1"
 
 

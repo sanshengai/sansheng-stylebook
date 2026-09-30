@@ -1,4 +1,5 @@
 import importlib
+import json
 import sys
 from pathlib import Path
 
@@ -53,6 +54,40 @@ def test_auth_error_not_retried(B, tmp_path, monkeypatch):
     with pytest.raises(B.BackendError) as e:
         B.generate("p", tmp_path / "o.png", size=(1024, 1024), sleep=lambda s: None)
     assert e.value.kind == "auth" and len(n) == 1
+
+
+def test_request_log_records_attempt_and_total_elapsed_including_backoff(B, tmp_path, monkeypatch):
+    clock = iter([100.0, 100.0, 102.0, 107.0, 110.0])
+    monkeypatch.setattr(B, "now", lambda: next(clock))
+    calls = []
+
+    def fake(*args, **kwargs):
+        calls.append(1)
+        if len(calls) == 1:
+            raise B.BackendError("busy", "busy", retryable=True)
+        return b"PNG"
+
+    monkeypatch.setitem(B.PROVIDERS["openai"], "fn", fake)
+    result = B.generate("p", tmp_path / "timed.png", size=(1024, 1024), sleep=lambda _: None)
+    records = [json.loads(line) for line in (tmp_path / "logs" / "cost.jsonl").read_text().splitlines()]
+    assert [(r["ok"], r["attempt_seconds"], r["seconds"]) for r in records] == [
+        (False, 2.0, 2.0), (True, 3.0, 10.0)]
+    assert result.seconds == records[-1]["seconds"] == 10.0
+
+
+def test_terminal_failure_logs_elapsed(B, tmp_path, monkeypatch):
+    clock = iter([20.0, 20.0, 23.5])
+    monkeypatch.setattr(B, "now", lambda: next(clock))
+
+    def fail(*args, **kwargs):
+        raise B.BackendError("auth", "invalid", retryable=False)
+
+    monkeypatch.setitem(B.PROVIDERS["openai"], "fn", fail)
+    with pytest.raises(B.BackendError):
+        B.generate("p", tmp_path / "failed.png", size=(1024, 1024))
+    record = json.loads((tmp_path / "logs" / "cost.jsonl").read_text())
+    assert record["seconds"] == record["attempt_seconds"] == 3.5
+    assert not (tmp_path / "failed.png").exists()
 
 
 def test_config_refuses_secrets(B):
