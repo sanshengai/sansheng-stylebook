@@ -1,6 +1,6 @@
 {
   "code": "C07",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "透明水彩人物",
     "en": "Airy Transparent Watercolour Figures"
@@ -25,7 +25,7 @@
     "大面积未上色纸面"
   ],
   "recipe": {
-    "positive": "Visual style (follow exactly): Airy transparent watercolour figures: extremely light, translucent watercolour with soft wet-edge blooms and bleeding, gentle rounded figures with soft pink cheeks, almost no hard outlines, large areas of untouched white paper, pale tender colours, quiet and tender mood.",
+    "positive": "Visual style (follow exactly): in the style of Chihiro Iwasaki's soft transparent watercolour children's illustrations. Airy transparent watercolour figures: extremely light, translucent watercolour with soft wet-edge blooms and bleeding, gentle rounded figures with soft pink cheeks, almost no hard outlines, large areas of untouched white paper, pale tender colours, quiet and tender mood.",
     "text_mode": [
       "native",
       "overlay",
@@ -49,8 +49,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -62,11 +62,60 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
   "anchor": {
     "file": "anchor.png",
-    "sha256": "9aee0fa5aca5fd398f56abccc8c00a861c05f60c04937bc605e31b2bc9576147",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+    "sha256": "e42b9b14653fafeedbbf8999d0ba4551eb6ccb50bf6fe83e5c125da2d6df7bd3",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "001-200/088",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/088.webp"
+    }
+  },
+  "inspiration": {
+    "names": [
+      "岩崎知弘"
+    ],
+    "prompt": "Chihiro Iwasaki's soft transparent watercolour children's illustrations"
+  },
+  "uses": [
+    "小红书",
+    "PPT",
+    "漫画",
+    "绘本",
+    "音乐封面"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "016bedd639c65363d0c1fe8b3785de41dce5a394a2d2531efe1d83f650490ef3",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "c2c3787db374363220f97f07995ede63d905b6c0c6db8af27a14b4b87cc73d07",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "8ad9dc5ee6a7780c3ba9e7743ace34938869a40f73b7e2fdc61e8a6d1b4aabbc",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

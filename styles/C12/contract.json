@@ -1,6 +1,6 @@
 {
   "code": "C12",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "细线都市小人",
     "en": "Fine-Line Urban Miniature"
@@ -26,7 +26,7 @@
     "稀疏水彩与宽裕留白"
   ],
   "recipe": {
-    "positive": "Visual style (follow exactly): Fine-line urban miniature: extremely thin, delicate pen lines; tiny people inside large detailed spaces; generous white space; soft, sparse watercolour touches; gentle, witty everyday humour; elegant and airy.",
+    "positive": "Visual style (follow exactly): in the style of Jean-Jacques Sempé's fine pen-and-watercolour cartoons (Le Petit Nicolas). Fine-line urban miniature: extremely thin, delicate pen lines; tiny people inside large detailed spaces; generous white space; soft, sparse watercolour touches; gentle, witty everyday humour; elegant and airy.",
     "text_mode": [
       "native",
       "overlay",
@@ -50,8 +50,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -63,11 +63,58 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
   "anchor": {
     "file": "anchor.png",
-    "sha256": "4449e8d91d054d57e6bfa253fb0b0b0164a2eec8f808b7da1e8ca796b39ea18b",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+    "sha256": "dd838b8f2dd601d4025775eaa2a1678dfb762a7420066dd08d7dd18fb1c5e3c0",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "001-200/003",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/003.webp"
+    }
+  },
+  "inspiration": {
+    "names": [
+      "桑贝《小淘气尼古拉》"
+    ],
+    "prompt": "Jean-Jacques Sempé's fine pen-and-watercolour cartoons (Le Petit Nicolas)"
+  },
+  "uses": [
+    "文章插图",
+    "漫画",
+    "绘本"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "d71a3d5f94effdd7a966c803c7874fbac71a0297ac869cbe449b9f8360d263b8",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "c06e20debc329fec811fccb2a20114538572838026cb66ebde8ba2089dad5a11",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "0abbb43c69a1f0380230f778dc2dc914fd99de609aeca50f78fd544ef1821575",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

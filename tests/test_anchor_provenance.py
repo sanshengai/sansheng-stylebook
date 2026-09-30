@@ -16,8 +16,12 @@ def test_anchor_ledger_rejects_pixel_change_and_empty_input(tmp_path):
     (styles / "anchor.png").write_bytes(original)
     (styles / "contract.json").write_text(json.dumps({"anchor": {"sha256": digest}}))
     ledger = tmp_path / "styles" / "anchor-provenance.json"
-    ledger.write_text(json.dumps({"expected_count": 1, "anchors": [{"style": "C01", "sha256": digest}]}))
+    ledger.write_text(json.dumps({"expected_count": 1, "anchors": [{"style": "C01", "sha256": digest, "origin": {"repo": "x/y", "license": "MIT"}}]}))
     assert verify(tmp_path) == []
+
+    ledger.write_text(json.dumps({"expected_count": 1, "anchors": [{"style": "C01", "sha256": digest}]}))
+    assert any("no MIT upstream origin" in error for error in verify(tmp_path))
+    ledger.write_text(json.dumps({"expected_count": 1, "anchors": [{"style": "C01", "sha256": digest, "origin": {"repo": "x/y", "license": "MIT"}}]}))
 
     (styles / "anchor.png").write_bytes(b"image-b")
     assert any("hash differs" in error for error in verify(tmp_path))

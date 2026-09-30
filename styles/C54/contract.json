@@ -1,6 +1,6 @@
 {
   "code": "C54",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "复古像素",
     "en": "Retro Pixel Art"
@@ -26,7 +26,7 @@
     "点阵抖动明暗与游戏精灵感"
   ],
   "recipe": {
-    "positive": "复古像素风(pixel art)插画,像 8-bit / 16-bit 老游戏里的精灵图(sprite),由一颗颗清晰的方形像素手工摆出来,不是高清插画加像素滤镜。 像素:低分辨率观感,所有边缘都是硬朗的方块像素阶梯,像素大小一致、对齐同一网格;绝对没有抗锯齿、没有模糊、没有平滑渐变。 配色:有限调色板(retro 风,约 8–16 色,以暖橙与青蓝为主),色块平涂;需要明暗过渡时用\"抖动(dithering)\"棋盘点阵,而不是渐变。 轮廓:用清晰的深色像素描边或高对比色块区分主体;造型简洁、辨识度高,像素图标 / 游戏角色感。 背景:单一平涂纯色或极简像素背景,不喧宾夺主。",
+    "positive": "Visual style (follow exactly): in the style of 16-bit SNES-era pixel art. 复古像素风(pixel art)插画,像 8-bit / 16-bit 老游戏里的精灵图(sprite),由一颗颗清晰的方形像素手工摆出来,不是高清插画加像素滤镜。 像素:低分辨率观感,所有边缘都是硬朗的方块像素阶梯,像素大小一致、对齐同一网格;绝对没有抗锯齿、没有模糊、没有平滑渐变。 配色:有限调色板(retro 风,约 8–16 色,以暖橙与青蓝为主),色块平涂;需要明暗过渡时用\"抖动(dithering)\"棋盘点阵,而不是渐变。 轮廓:用清晰的深色像素描边或高对比色块区分主体;造型简洁、辨识度高,像素图标 / 游戏角色感。 背景:单一平涂纯色或极简像素背景,不喧宾夺主。",
     "text_mode": [
       "native",
       "overlay",
@@ -50,8 +50,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -63,11 +63,58 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
   "anchor": {
     "file": "anchor.png",
-    "sha256": "f4e3190cd1f2b6066c7e0dc1910f26eee9357585180a7e6e0e584c4cad3f5079",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+    "sha256": "7a97014c00d2336b93205b21a0df5e0ed783ebffb57a2cb591f6dc220646fa88",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "threerocks/hand-drawn-styles",
+      "item": "09-pixel-art.png",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/threerocks/hand-drawn-styles/master/examples/09-pixel-art.png"
+    }
+  },
+  "inspiration": {
+    "names": [
+      "16 位机时代像素游戏"
+    ],
+    "prompt": "16-bit SNES-era pixel art"
+  },
+  "uses": [
+    "封面",
+    "小红书",
+    "音乐封面"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "489a09f49069008b4c2b9743dd125baafb2a9e7b258a3a9975a4071f4d93d008",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "2154de646561fc3ef9f938534d8577f3022148efcb53f9bd770a46956d459984",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "29d6afb4d67f39a6944e1dd23c4dcf3f79ee6a6a728a1f7f276e4020f1ffb7ce",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

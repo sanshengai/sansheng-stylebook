@@ -1,0 +1,113 @@
+{
+  "code": "C65",
+  "revision": 1,
+  "name": {
+    "zh": "文人漫画毛笔写意",
+    "en": "Literati Brush Cartoon"
+  },
+  "family": "文章插图·封面",
+  "fit": [
+    "封面",
+    "讲道理",
+    "讲故事"
+  ],
+  "facets": {
+    "medium": "文人漫画毛笔写意",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "original",
+    "license": "original",
+    "notes": "画风库 v2 新增；风格描述改写自原作仓库条目，名称仅作灵感来源说明。"
+  },
+  "essence": [
+    "大面积宣纸留白",
+    "毛笔简练勾勒",
+    "朴实幽默与淡设色"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): in the style of Feng Zikai's brush-line literati cartoons. large areas of blank rice-paper, economical brush-line drawing, plain humour, light colour washes.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "大面积宣纸留白",
+      "毛笔简练勾勒",
+      "朴实幽默与淡设色"
+    ],
+    "must_not_see": [
+      "与所选画风不符的通用插画质感",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "Codex 内置生图（底层模型 ID 未暴露）",
+    "date": "2026-09-30",
+    "notes": "仅完成合同校验与三题同题试出图（人物 / 物件 / 信息图）；尚未通过正式准入。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-30",
+      "note": "画风库 v2 新增"
+    }
+  ],
+  "inspiration": {
+    "names": [
+      "丰子恺《子恺漫画》"
+    ],
+    "prompt": "Feng Zikai's brush-line literati cartoons"
+  },
+  "uses": [
+    "封面",
+    "文章插图",
+    "小红书",
+    "漫画",
+    "绘本"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "1761bca8e4c8914be9ea9699827015d22b7690142d5d5d2e65ebc9c4b5a2297d",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "902f19d3ac4c7c3974aa3e52ef303f04b7bc631f94966cf6edac630493e750f2",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "156ce9661953d134dbac51a596de548da28f17371c9c784615b7eebd8d74c753",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "448e2d8496d5c96110a8a495d34bb386bc7b8bf8ee2d8792b5a3185f5d35e722",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "201-400/256",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/256.webp"
+    }
+  }
+}

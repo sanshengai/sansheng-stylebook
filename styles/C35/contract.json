@@ -1,6 +1,6 @@
 {
   "code": "C35",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "Notion 知识线稿",
     "en": "Minimal Knowledge Doodle"
@@ -25,7 +25,7 @@
     "少量柔和强调色"
   ],
   "recipe": {
-    "positive": "Minimal hand-drawn knowledge doodle on clean white or off-white paper. Focus on one concept using simple single-weight black lines with slight hand wobble, small conceptual icons, maximum whitespace and only sparse pastel accents. Keep the composition thoughtful and orderly.",
+    "positive": "Visual style (follow exactly): in the style of Notion-style hand-drawn line illustration. Minimal hand-drawn knowledge doodle on clean white or off-white paper. Focus on one concept using simple single-weight black lines with slight hand wobble, small conceptual icons, maximum whitespace and only sparse pastel accents. Keep the composition thoughtful and orderly.",
     "text_mode": [
       "native",
       "overlay",
@@ -49,8 +49,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -62,11 +62,48 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
-  "anchor": {
-    "file": "anchor.png",
-    "sha256": "a4680492179ce1697c2701d62822702780e76b19d62637cb771864d925cda4c9",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+  "inspiration": {
+    "names": [
+      "Notion 插图风"
+    ],
+    "prompt": "Notion-style hand-drawn line illustration"
+  },
+  "uses": [
+    "小红书",
+    "信息图",
+    "PPT",
+    "漫画",
+    "绘本"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "ecf50b9d3ef80cd7911ca996681622dc4bbc4991184bd344b27b59c3bafdabab",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "e261eb98417a34c5bb81f841a77fd5d24b233c061323f2b9ee14289ceee47c80",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "9658bbc391b672ae7e35911cf239b65df36e2a619ae036d6dc1dddaecefbc8a5",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

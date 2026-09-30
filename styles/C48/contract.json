@@ -1,6 +1,6 @@
 {
   "code": "C48",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "日式黑白漫画",
     "en": "Black-and-White Manga"
@@ -25,7 +25,7 @@
     "网点与速度线的黑白叙事"
   ],
   "recipe": {
-    "positive": "Expressive black-and-white manga drawing. Use clean ink contours with varied weight, dynamic poses, dramatic panel rhythm, controlled screen tones, speed lines and expressive facial symbols. Keep figures legible and the sequence easy to follow.",
+    "positive": "Visual style (follow exactly): in the style of black-and-white manga by Naoki Urasawa and Takehiko Inoue, ink and screentone, no colour. Expressive black-and-white manga drawing. Use clean ink contours with varied weight, dynamic poses, dramatic panel rhythm, controlled screen tones, speed lines and expressive facial symbols. Keep figures legible and the sequence easy to follow.",
     "text_mode": [
       "native",
       "overlay",
@@ -49,8 +49,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -62,11 +62,45 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
-  "anchor": {
-    "file": "anchor.png",
-    "sha256": "94b5778f47f891b0c5965caafb6b19b538e302500a3b300940734e326f15b291",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+  "inspiration": {
+    "names": [
+      "浦泽直树",
+      "井上雄彦"
+    ],
+    "prompt": "black-and-white manga by Naoki Urasawa and Takehiko Inoue, ink and screentone, no colour"
+  },
+  "uses": [
+    "漫画"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "ef30a96d3a878a3ca41d9eb3b553a4328b7b2455cb717a9214090ba4156c42ad",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "023cae3fbf81a177b642e2c66a6e8999dba21574659e18d77fd52c6d85e54e27",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "cd03e3557894ab195063683c01ca195a8732ab3342af504229f69c8a373e7aad",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

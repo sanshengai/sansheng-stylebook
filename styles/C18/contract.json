@@ -1,6 +1,6 @@
 {
   "code": "C18",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "宋画淡彩现代化",
     "en": "Modern Song-Dynasty Light Colour"
@@ -64,8 +64,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -77,11 +77,58 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
   "anchor": {
     "file": "anchor.png",
-    "sha256": "e53475c885dc48f7f6d4a33ecbf654cc1b88ec867338f939093d680bd5cddfca",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+    "sha256": "77d2990e3be6a3bcd30c48427f4b6ac79a14e7d72745514868fb07d139dd8080",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "001-200/191",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/191.webp"
+    }
+  },
+  "inspiration": {
+    "names": [],
+    "prompt": ""
+  },
+  "uses": [
+    "封面",
+    "文章插图",
+    "小红书",
+    "漫画",
+    "绘本"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "9274454c8e04482fe47e2d0f6e29f3167a49a77690d2c3edbfed1e094197a420",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "74bb4944b045582eb90275ae08b45ede9c5295b6a3fd80bc09c448badc11ebcc",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "8819ba48d5fcbf66725011e9cb43265390b46c10ef8c050a4f3db1611af6117b",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

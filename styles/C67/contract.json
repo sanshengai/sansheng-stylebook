@@ -1,0 +1,109 @@
+{
+  "code": "C67",
+  "revision": 1,
+  "name": {
+    "zh": "圆润古典漫画角色",
+    "en": "Rounded Classic Manga Character"
+  },
+  "family": "漫画",
+  "fit": [
+    "讲故事",
+    "讲道理"
+  ],
+  "facets": {
+    "medium": "圆润古典漫画角色",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "original",
+    "license": "original",
+    "notes": "画风库 v2 新增；风格描述改写自原作仓库条目，名称仅作灵感来源说明。"
+  },
+  "essence": [
+    "圆润轮廓",
+    "大眼睛与强表演",
+    "干净的经典漫画线条"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): in the style of Osamu Tezuka's rounded classic manga characters. rounded outlines, big expressive eyes, strong acting poses, clean classic manga line.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "圆润轮廓",
+      "大眼睛与强表演",
+      "干净的经典漫画线条"
+    ],
+    "must_not_see": [
+      "与所选画风不符的通用插画质感",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "Codex 内置生图（底层模型 ID 未暴露）",
+    "date": "2026-09-30",
+    "notes": "仅完成合同校验与三题同题试出图（人物 / 物件 / 信息图）；尚未通过正式准入。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-30",
+      "note": "画风库 v2 新增"
+    }
+  ],
+  "inspiration": {
+    "names": [
+      "手冢治虫"
+    ],
+    "prompt": "Osamu Tezuka's rounded classic manga characters"
+  },
+  "uses": [
+    "漫画",
+    "教材"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "bb8ddad94a30ba3a87eb7665f7e38fd09e8bced684cbbcf8345185bdc94ed52f",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "09a361abf07d893ade5dcb931f5abd05bd8274e95f2819e9d35bfabe9bf688d4",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "1d3d591d29b5610604a6018c8158c0bbf70d0e6b146ec9ccb69c19dffaaaa9c8",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "4660bf9e92c8344a9c37b5de03447ce87d940988e9a01a58f3e60da6bb69c207",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "001-200/091",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/091.webp"
+    }
+  }
+}

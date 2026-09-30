@@ -291,16 +291,18 @@ def cmd_plan(a) -> int:
 
 
 def cmd_style_for(a) -> int:
+    from stylebook import contract as CT
     from stylebook import plan as PL
     from stylebook import selection as S
     r = PL.resolve_style(a.scene, a.explicit, Path(a.project) if a.project else None)
     recommendation = S.recommend(a.scene, explicit=a.explicit, project=Path(a.project) if a.project else None)
-    chosen_code = r["code"].split("@")[0]
+    chosen_code = CT.canonical(r["code"])[0]
     chosen = next(item for item in recommendation["candidates"] if item["code"] == chosen_code)
     r["admission"] = chosen["status"]
     r["admission_note"] = ("已通过画风矩阵；具体用途与整组图片仍需逐次验收" if chosen["status"] == "admitted"
                            else "该画风尚未正式准入；可试用，但须逐张检查并保留失败证据")
     r["candidates"] = recommendation["candidates"]
+    r["use"], r["pool"] = recommendation["use"], recommendation["pool"]
     print(json.dumps(r, ensure_ascii=False))
     return 0
 

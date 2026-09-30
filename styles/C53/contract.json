@@ -1,6 +1,6 @@
 {
   "code": "C53",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "中世纪暗黑墨线",
     "en": "Medieval Dark Ink"
@@ -26,7 +26,7 @@
     "中世纪暗黑手稿气氛"
   ],
   "recipe": {
-    "positive": "Visual style (follow exactly): Medieval dark-fantasy ink and ochre illustration: meticulous pen cross-hatching, dark warm ochre parchment tones, heavy dramatic atmosphere, detailed engraving-like rendering, old manuscript feeling.",
+    "positive": "Visual style (follow exactly): in the style of Gustave Doré's engravings. Medieval dark-fantasy ink and ochre illustration: meticulous pen cross-hatching, dark warm ochre parchment tones, heavy dramatic atmosphere, detailed engraving-like rendering, old manuscript feeling.",
     "text_mode": [
       "native",
       "overlay",
@@ -50,8 +50,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -63,11 +63,59 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
   "anchor": {
     "file": "anchor.png",
-    "sha256": "b94286101f2bb2d8bf69654cd42dc8df30dd398499379c41f8d8de3bbc4202f3",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+    "sha256": "05d3ceec2b04e2db2079b869d27d722d3ad2a0f2ee33c4bea5814e394ff3026c",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "201-400/244",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/244.webp"
+    }
+  },
+  "inspiration": {
+    "names": [
+      "居斯塔夫·多雷版画"
+    ],
+    "prompt": "Gustave Doré's engravings"
+  },
+  "uses": [
+    "封面",
+    "小红书",
+    "漫画",
+    "绘本"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "00ba06bc961f65948809bd01b6eb37f375edd0de7787fe8fc333749c54348281",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "d9fc1af3573b4979e1fa41db9b6e79a1dd35dea245ff942cafe6ef8d183a5ee8",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "ef97ff8415283fb9784e50b5412e8c83a057c2b75068a8700d3d839cfafea837",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

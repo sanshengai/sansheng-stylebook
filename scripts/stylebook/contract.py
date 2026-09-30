@@ -171,8 +171,35 @@ def contract_paths() -> list[Path]:
     return [p for p in paths if not p.parent.name.startswith("_")]
 
 
+def _catalog_meta() -> dict:
+    try:
+        return json.loads((STYLES_DIR / "catalog.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+
+def canonical(code: str) -> tuple[str, str | None]:
+    """旧码 → 现行码。返回（现行码, 说明）；合并进别的画风的码自动转换，已删除的码抛错并给替代建议。"""
+    base = code.split("@")[0]
+    meta = _catalog_meta()
+    aliases = meta.get("aliases", {})
+    if base in aliases:
+        return aliases[base], f"{base} 已并入 {aliases[base]}"
+    retired = meta.get("retired", {})
+    if base in retired:
+        suggest = retired[base].get("suggest")
+        raise KeyError(f"{base} 已从画风库删除" + (f"，建议改用 {suggest}" if suggest else "，没有直接替代，请重新选择用途下的画风"))
+    return base, None
+
+
 def load(code: str) -> dict:
-    code = code.split("@")[0]
+    raw = code
+    code, note = canonical(code)
+    if note:
+        c = load(code)
+        c["_alias_from"] = raw.split("@")[0]
+        c["_alias_note"] = note
+        return c
     for p in contract_paths():
         if p.parent.name == code:
             c = json.loads(p.read_text(encoding="utf-8"))

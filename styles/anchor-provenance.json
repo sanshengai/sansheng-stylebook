@@ -1,397 +1,463 @@
 {
-  "schema_version": 1,
-  "scope": "48 public style anchors, not style admission or use-case approval",
+  "schema_version": 2,
+  "scope": "38 public style reference images taken from MIT-licensed upstream repositories; not style admission or use-case approval",
+  "expected_count": 38,
   "anchors": [
     {
-      "style": "C02",
-      "sha256": "eb0f7c46fb2679d311dfec2ff4f4490abd66093fe0c6a33c54bc120e56514aa3",
-      "source_asset": "C02-q1",
-      "source_sha256": "8adbdec67ae122ec770b969bbdcff8909c52b1aa54cfebaa9e37c68696c51a42",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "style": "C01",
+      "sha256": "a17f141be837a6092218ffce8ea9b97fff82d77e6b2892167e618202fc8b8a17",
+      "origin": {
+        "repo": "threerocks/hand-drawn-styles",
+        "item": "03-ghibli.png",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/threerocks/hand-drawn-styles/master/examples/03-ghibli.png"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
-      "style": "C03",
-      "sha256": "08885540b7db4481be8c606b3ebd2acec01f95356e456f1f1a7a744d1e161cd1",
-      "source_asset": "C03-q1",
-      "source_sha256": "3acf22db83df6028b6397d4e77c3e65e5d00341bbd65a31c0b3ee5aafed36c44",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "style": "C02",
+      "sha256": "e98f1a37a61ecead8845185f4fd3f110d2cf2e881d046ee9bcd7d05284c53e9b",
+      "origin": {
+        "repo": "threerocks/hand-drawn-styles",
+        "item": "10-emo-sketch.png",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/threerocks/hand-drawn-styles/master/examples/10-emo-sketch.png"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C04",
-      "sha256": "92471d01b2c010364c15b4d8f54ded826ced947345cb7d424561b20da2fde3d8",
-      "source_asset": "C04-q1",
-      "source_sha256": "103ce401c2c5a4bf59f0cc1211c47ce599197d81df72d398eb18c7ceed3fe7f1",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C05",
-      "sha256": "c4a4bee1dee53041cdb6e6b152a6c12bd1021c47f3d66478b05a601b2d35bb4d",
-      "source_asset": "C05-q1",
-      "source_sha256": "6d67f50f8cfaa936433d69f5d2529f4ea46c6d9909ea2f9926e140a7b2367a3d",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "a6dbb28e59cae29922e3c3cddd6b3da6ecdc990d0479519dd17c2adaf6aa56b9",
+      "origin": {
+        "repo": "threerocks/hand-drawn-styles",
+        "item": "14-nordic-storybook.png",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/threerocks/hand-drawn-styles/master/examples/14-nordic-storybook.png"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C06",
-      "sha256": "c639e641fd3ea26687c9ae3bb5450186256faedcf4f26cd9ebc3f03270bd0f8d",
-      "source_asset": "C06-q1",
-      "source_sha256": "fc8135532d0b0fbdabee8793bdec78faf0db431c76ca71e2633331242ecfd13c",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "ce7c549e478d526458a488bce88b140df38ec21211a57472097006909c7f62ff",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/036",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/036.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C07",
-      "sha256": "9aee0fa5aca5fd398f56abccc8c00a861c05f60c04937bc605e31b2bc9576147",
-      "source_asset": "C07-q1",
-      "source_sha256": "6913992b9ea8c82a431e56db2ceb065fd42a58b5b81f4ba9f025b0e86afd33a2",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "e42b9b14653fafeedbbf8999d0ba4551eb6ccb50bf6fe83e5c125da2d6df7bd3",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/088",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/088.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
-      "style": "C09",
-      "sha256": "27711d7cb97c97af7225592d51a762e519849aafffbb1c054afc3a98a7560344",
-      "source_asset": "C09-q1",
-      "source_sha256": "1ca5f031baa71338734b0f74b765f729fb519ca9a6efb42af802c986b4ea931e",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C10",
-      "sha256": "965104143c0056c503da9425dda3dece21df811ed9fdf99701a5390010682298",
-      "source_asset": "C10-neutral-styleboard",
-      "source_sha256": "a5d1a4593ec5e207f3b8781cbdac7422ce631477951d8eac49f4a3ba56d385d8",
-      "derivation": "resized from newly generated subject-neutral line-work styleboard",
-      "generation_route": "Codex built-in image generation; underlying model ID unavailable",
-      "reference_source_asset": "C10-q1",
-      "reference_source_sha256": "77a7f00e2c3c21a270217fa5c3c8ba92e3e328b14690ae0e55700c2bd4623c23"
-    },
-    {
-      "style": "C11",
-      "sha256": "72e24f83990ef339a29b6b5200fd02ee7d7666815ed08754e30890a58f6bde58",
-      "source_asset": "C11-q1",
-      "source_sha256": "8819babf18d6cf63c7f5484ee8576c28cf8f8d1b93a8e5a62e4e2981402893ff",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "style": "C08",
+      "sha256": "2dbf1403e65b749f4390b688ed51748479660701dbd52fc79e93945be8705c10",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "201-400/254",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/254.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C12",
-      "sha256": "4449e8d91d054d57e6bfa253fb0b0b0164a2eec8f808b7da1e8ca796b39ea18b",
-      "source_asset": "C12-q1",
-      "source_sha256": "fda127d306f3984271f67051bfc3bde903856e1b090ab7eb7e2551b19f43f4a9",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C13",
-      "sha256": "f919255f73627168cb06d72c62635a490947a9de455e27c8ec704eb231fd96af",
-      "source_asset": "C13-q1",
-      "source_sha256": "7a2c43239ad9834432acd58ace7f26be586d7f973e3b99891bad57a448d7bdba",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "dd838b8f2dd601d4025775eaa2a1678dfb762a7420066dd08d7dd18fb1c5e3c0",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/003",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/003.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C14",
-      "sha256": "0f6e405d64f92f4e9239cbde8b8e946cd0acbd7cf215083d8bf424d3ecb3ff23",
-      "source_asset": "C14-q1",
-      "source_sha256": "73d6cdde3c2b1e602b465b2d17248be3207a0afb69bddd74fcc1a6a9e6795dea",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C15",
-      "sha256": "b41ebec736fc6495b0a7f55970a090a9fb3d16f122bc7602950a2653716f8c24",
-      "source_asset": "C15-q1",
-      "source_sha256": "6fa1756438f1ac7ddab6fa1fb97918c53d93e7b001fe56d99e8b2118cc4c957c",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "1ab4b0e7ebdd49921a8b594a0d4c90054bbcf912932f2f9d35ae2f4090442108",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/037",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/037.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C16",
-      "sha256": "cd21a04938d8a2f0dd2996d29d0438cc817a3232a215e8181c09106ab40027ba",
-      "source_asset": "C16-q1",
-      "source_sha256": "dfc8f4e2de269fe46ad433abb63bef0efa3ca239dc76817d14a118c91b7db680",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "53a83b466c5201ca3d1777b2d36ac8c1abf3c471d285055b616ac75f0168793f",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/181",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/181.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C17",
-      "sha256": "54ab917aa9d2c0e2c28786416c317d1332ef3d930b513f702d9b6be6e2820311",
-      "source_asset": "C17-q1",
-      "source_sha256": "0610314ccf96b5ac2613a5058e3440a5954494e930225f84e01ad08359adeec0",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "b36c5042cf3898e2a8a188edffc1885acf566aedb440f945857cf7072ea2bb5a",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/189",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/189.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C18",
-      "sha256": "e53475c885dc48f7f6d4a33ecbf654cc1b88ec867338f939093d680bd5cddfca",
-      "source_asset": "C18-q1",
-      "source_sha256": "00e4325c27ec95a0b992b9fe52a56a044b80bdbd6c4f183c5f3fab1446f811e7",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "77d2990e3be6a3bcd30c48427f4b6ac79a14e7d72745514868fb07d139dd8080",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/191",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/191.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C19",
-      "sha256": "f79819621c756e898d37a66ae34da7277c55b20b91c4b3528e32d566f7592128",
-      "source_asset": "C19-q1",
-      "source_sha256": "5d4c0b08f104d2e93d685c5c37f77d7627fcff51f7c5d7d533e9dcf7b590e589",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "5a675914684a24fb18ace5aa8ff25766f609e225064157c5e26c1ac67b91edf6",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/192",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/192.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C20",
-      "sha256": "9f3d31b182c257679f4623a16a7471338a164ca7ca335579d23f452ff472d05c",
-      "source_asset": "C20-q1",
-      "source_sha256": "efa680efd0bc7c515516b734bb03e80ef326ed97fe71c9dddfea01cf432abde1",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "8a808e405d1008220d1cb8ed651eab37cdf7110ab2343601e8d745dcf77320c9",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/194",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/194.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C21",
-      "sha256": "daaac1d2fca9109f6404870679fad3cb9ac3808046450349549f57ad4ddcf40a",
-      "source_asset": "C21-q1",
-      "source_sha256": "48ff5eb98b40114cbfdf446787f13901d4c1be5f2879e1a7e8ae34db1b0e15ac",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "d3682d28f208a840d209281cbb3aeef4fece35fed12a2838b3d2b02780483774",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "201-400/271",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/271.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C22",
-      "sha256": "78deaa5480ad54b3e3daf32f4ba50687835b7b6d59d65fb75a66a4aa3a831779",
-      "source_asset": "C22-q1",
-      "source_sha256": "5520c1d7b2513cdcd2da8e008b0407fb3227ab8c3ea3f6dc5b85f10d51534049",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "fc680b469edc25fe434e4efd26676bc6313a4e65cc311b62457296fe1151c1b9",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "201-400/277",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/277.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C24",
-      "sha256": "2fcb93f7d0e9a601f674559992a199ddc97851d71ffbc4df140f0d7d0b159d8e",
-      "source_asset": "C24-neutral-styleboard",
-      "source_sha256": "299dd698022df140056054d286a4bcd8517a7f55666d6540ffdd4936b644e89e",
-      "derivation": "resized from newly generated subject-neutral styleboard",
-      "generation_route": "Codex built-in image generation; underlying model ID unavailable",
-      "reference_source_asset": "C24-q1",
-      "reference_source_sha256": "5e2761e9b096682428c1442d15b315315bc8b43353d3bee6e191fdb4d4fe3f35"
+      "sha256": "f5b948aae511cbfbec9ffc3890bf81f89e845f0d01c768fea58d5e5292566d12",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "201-400/248",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/248.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
-      "style": "C26",
-      "sha256": "7f82bc8a3c94eeaf76f9d0b57adcd61e727f5ce0c386a8e061c31f625e6f4fef",
-      "source_asset": "C26-q1",
-      "source_sha256": "a8b1b2e3e24de3d3212d08cff62c3227512c83dc82c4c1c9048cce6cf47d092b",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "style": "C25",
+      "sha256": "319788095c7d40812841150a0598f51b606c408f755ab618a7f147c160be201e",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "201-400/232",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/232.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C27",
-      "sha256": "1bb030e20186c45882eff469d64779b6d3102eabb3d5d59307c236636951c5ee",
-      "source_asset": "C27-q1",
-      "source_sha256": "5754f1833f1fa3fa61675e8bf0f240525a2ce4795ea17fe0c644d53f6919ce9a",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "0dacbe7d67a97c414da09fa599dd6d16826c983d551469bb5ece85a010a5c946",
+      "origin": {
+        "repo": "threerocks/hand-drawn-styles",
+        "item": "13-paper-folk.png",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/threerocks/hand-drawn-styles/master/examples/13-paper-folk.png"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C28",
-      "sha256": "f7aaf48052f3f060af54478bc36c9f511d940fc4eeb80fda330e33cbf44079ff",
-      "source_asset": "C28-q1",
-      "source_sha256": "a5b5abe002ed48e1bed85af5fa07fd92dd651dfe2f0d9fb93552d9dc51aa5642",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C29",
-      "sha256": "9336ef3a6d3f0d01815d6a0255c4d9041ed6d82a62b3cce68c18162c861b6f61",
-      "source_asset": "C29-q1",
-      "source_sha256": "2daf1cf0d6bfbf63e020922b7b75e328306e778092fd4052c2977e5d09f01599",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C30",
-      "sha256": "5eb445934c8fb3022c89dbc2195ebff21b23766e3c867b63ad2f494f3c971c39",
-      "source_asset": "C30-q1",
-      "source_sha256": "e677e207d93d930ad2075dc5ffb6bb1a2ecbb22c6ab96d29c069a96ab1382914",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C31",
-      "sha256": "1d223675f1b83885e4c94dc56bf8965d2baf33c6bfb7ef5cf0395d64c202b47e",
-      "source_asset": "C31-neutral-styleboard",
-      "source_sha256": "2ae4d656bb73472a9538040b4611b22b052a57f00e271574f18ee01d19a42fd5",
-      "derivation": "resized from newly generated subject-neutral styleboard",
-      "generation_route": "Codex built-in image generation; underlying model ID unavailable",
-      "reference_source_asset": "C31-q3",
-      "reference_source_sha256": "5462eb46353b13896ca4d83a16faf4bd5b4747bc52911746c8b8f5f5993ad69a"
-    },
-    {
-      "style": "C34",
-      "sha256": "89c2bfc59a64feb433b6d431358f58faf3254c6d0cade1dbf6354606763fba0e",
-      "source_asset": "C34-q1",
-      "source_sha256": "f4d5a1d83aef677656174b9d9cd85d94675fdceb265000950f2561163a63b6cd",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C35",
-      "sha256": "a4680492179ce1697c2701d62822702780e76b19d62637cb771864d925cda4c9",
-      "source_asset": "C35-q1",
-      "source_sha256": "def918569ba87a9d7226adb2903f5a8903ed4f14240354d5fc4dc4fadc05d2f4",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "51c0390c2f53df7842fe9106697ca12df413376a9be5e8d2b831151c69732b08",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/197",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/197.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C36",
-      "sha256": "e1a434a2668653f1d75d6d2100d5a05d19724cca23aabf0402c8e949175bfa6a",
-      "source_asset": "C36-q1",
-      "source_sha256": "4b4e216ed3537e2f1e67cbd1b04d10741a44d18c2525558556baf77c2fa61a72",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C38",
-      "sha256": "11e5416853daee65a5b31041e77707d381d912e7931b156a57d837407764a5de",
-      "source_asset": "C38-q1",
-      "source_sha256": "f8f16108aed17dedab5c6601b89cfb7adef17539d9317626b6ff2e3fedc391fd",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C39",
-      "sha256": "57d6d950ddd9d241c7cb3f215957e3ae1cc39965c07cc04634c98da4f6b9261c",
-      "source_asset": "C39-q1",
-      "source_sha256": "cbfa2e3c0d9003bc7401ce5577352bfe5268e37a7f4ce7d308df85a3beb04fd2",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C40",
-      "sha256": "e2e8503ae556413dea9d7eb70d583d64421495f024bdf34e8111b20c9bf1ff5d",
-      "source_asset": "C40-q1",
-      "source_sha256": "59b7de071449b8eb4a8aa4e133d649c01aad9454d34fa010d090f021814e9f65",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C41",
-      "sha256": "47e69e5666cd2b544c28ca9372a3871342fa268baf7797b32970bbb5ea9fe33b",
-      "source_asset": "C41-q1",
-      "source_sha256": "7316e959d760d37fe1737ea535c8be42ec982db6fcf9875c2ff12b3b7cae3648",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "db9963bdf567b7e7b72065d11ac6813ddbba84bc97224cfb709ef884eeda37db",
+      "origin": {
+        "repo": "threerocks/hand-drawn-styles",
+        "item": "01-minimal-line.png",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/threerocks/hand-drawn-styles/master/examples/01-minimal-line.png"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C42",
-      "sha256": "2801162d9d78e15f1b7c0ffb630ca3c3bcd0e1080dd2c6e14a740817d98143ec",
-      "source_asset": "C42-q1",
-      "source_sha256": "4bffb0ee197ce3ecaccdac89002e073c3cbd5459fd74ec54ef8184c73b3f2c7c",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C44",
-      "sha256": "00a9e6ed5b977f9cd7a0afb76885c1d1ed59cf04df8766d8fbc76b8ef36bb4fc",
-      "source_asset": "C44-q1",
-      "source_sha256": "f720695dd85ce71d0bb9586fe16cb5ff70feaca8b38506839868886edae2e05b",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C45",
-      "sha256": "9f046af92af92a46c552a3bf01a02f0768741e24ee756a889e2c23ee937a96c5",
-      "source_asset": "C45-q1",
-      "source_sha256": "383b51a2c19a8900b6515b2696fe1442ce1fb621693e2dc7609e24d596d10d18",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C46",
-      "sha256": "e352d27dfb666d4d5dad64d81102269e0d0265279320727433fd23b6fb633267",
-      "source_asset": "C46-q1",
-      "source_sha256": "fbeb1bdf53e49b5414e4855fa91b620fec62e21d0d106f5a5437b895f454e53b",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C48",
-      "sha256": "94b5778f47f891b0c5965caafb6b19b538e302500a3b300940734e326f15b291",
-      "source_asset": "C48-q1",
-      "source_sha256": "15da83cbb779f0bdab5269b4539b47784b2c2526b7c14acdec548cf24ce55061",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C49",
-      "sha256": "16d2485813d03c7046148e79cd9fa79136ef58676cf6aaf02ac118a4e5733965",
-      "source_asset": "C49-q1",
-      "source_sha256": "4a16200ed726a812c77c96cef13958b9de17a577646333d704e227b693523766",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C50",
-      "sha256": "47012f992d8a27e3ed278472211e68674f8094ec4f9b4ca3ed1aa09756264ac7",
-      "source_asset": "C50-q1",
-      "source_sha256": "c26e728b4a6d51c5a300421b7543c19a5fbf8ff40fc86333c0d9b94137929975",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
-    },
-    {
-      "style": "C51",
-      "sha256": "4a1219ec86227b8e5c4842260f3c856ad12ac3e00373f4426693b2b28e337ad2",
-      "source_asset": "C51-q1",
-      "source_sha256": "8cdb6446f5ad9ab822d23f42ad3a7dad3ce288230da7ea1b4f68fc4f3f57aec5",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "e9304195ddba05cb18185207dc8b0d4f71e773f5b96938474cfae459dbbcf279",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "201-400/276",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/276.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C52",
-      "sha256": "56fd403e283204b573d880852213fd953e1581f775b82183802dc5128a5accc6",
-      "source_asset": "C52-q1",
-      "source_sha256": "6e9d03ac9914be01cb31ea9170e40784580a404de18bf2636324909cc0ba1867",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "d409594f06699ab5d42c2dd7688fea84561ebdad1fdae0b565afb998bf3a6340",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/074",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/074.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C53",
-      "sha256": "b94286101f2bb2d8bf69654cd42dc8df30dd398499379c41f8d8de3bbc4202f3",
-      "source_asset": "C53-q1",
-      "source_sha256": "a97280ab4e6cd9acb2633a8a3690dbf357840530d8149c6017cf1f596f82c174",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "05d3ceec2b04e2db2079b869d27d722d3ad2a0f2ee33c4bea5814e394ff3026c",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "201-400/244",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/244.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C54",
-      "sha256": "f4e3190cd1f2b6066c7e0dc1910f26eee9357585180a7e6e0e584c4cad3f5079",
-      "source_asset": "C54-q1",
-      "source_sha256": "d8268d6e0b480cd39882123a781fb7f6947a35547e4d26a7f3927e6345f4ff48",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "7a97014c00d2336b93205b21a0df5e0ed783ebffb57a2cb591f6dc220646fa88",
+      "origin": {
+        "repo": "threerocks/hand-drawn-styles",
+        "item": "09-pixel-art.png",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/threerocks/hand-drawn-styles/master/examples/09-pixel-art.png"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
       "style": "C55",
-      "sha256": "cff8508d0a17c911754f5701c3dc37bb32c2d94d4766289834ee2fd393c409e2",
-      "source_asset": "C55-q1",
-      "source_sha256": "f34512a172d8ef108c94aac89193bbfb660b46c72ae4a3ef82abe99791b0f567",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "sha256": "c8011cb00669200f17417cd42b1df784dd07e1729580d2aa417efd27eb3a9d3e",
+      "origin": {
+        "repo": "threerocks/hand-drawn-styles",
+        "item": "05-ms-paint.png",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/threerocks/hand-drawn-styles/master/examples/05-ms-paint.png"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
-      "style": "C56",
-      "sha256": "a7fa2102283a5e0c1978e338db73cb5ac206325f081067166a0f9b9982be1795",
-      "source_asset": "C56-q1",
-      "source_sha256": "d103ae72d3ced804f5c725eaf73d235dd2bcc1fecdcee39978d21b8d0f153fdc",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "style": "C59",
+      "sha256": "cb2881ae7737b70495a2598db8890dfbf4356cb074240984ff168851606a24c5",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/061",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/061.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     },
     {
-      "style": "C57",
-      "sha256": "9c185329f6aa4aca201b335088e80f334dae330f5deda4dd09febd77ec83a666",
-      "source_asset": "C57-q1",
-      "source_sha256": "5cfe2a4be7de97ac6f7479658ee640fa02c73b8117bdcedebaa1f5cece5a74e7",
-      "derivation": "resized from generated same-topic test image",
-      "generation_route": "OpenAI route; requested gpt-image-2; response model not recorded"
+      "style": "C60",
+      "sha256": "ce3cfcd39c8f23c5f079ff2383e459c5e6bdaaacaa68b10e7b8633d97165c7c8",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/042",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/042.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
+    },
+    {
+      "style": "C61",
+      "sha256": "bc92bc9c4562de21672933d7356b755e67d80d6ae0dfd063c932a08a7ca8c8e0",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/049",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/049.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
+    },
+    {
+      "style": "C62",
+      "sha256": "9f74472444122535bc190f28163a557fb09cc9774884a49fcd89cf8babc475bb",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/047",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/047.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
+    },
+    {
+      "style": "C63",
+      "sha256": "1fa1ea1bc74a180ffcff88339a9a637c4cedb79646614dd2de997215172610a8",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "201-400/265",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/265.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
+    },
+    {
+      "style": "C64",
+      "sha256": "296c53ea9d60ca1321304679036d45a2bf657387a1cc1f52d35173d6ad476877",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "201-400/257",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/257.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
+    },
+    {
+      "style": "C65",
+      "sha256": "448e2d8496d5c96110a8a495d34bb386bc7b8bf8ee2d8792b5a3185f5d35e722",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "201-400/256",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/256.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
+    },
+    {
+      "style": "C66",
+      "sha256": "22b4be138b268b8f407281000e922a32806d6b1bea21a837f331400bfe4a1fcd",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/084",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/084.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
+    },
+    {
+      "style": "C67",
+      "sha256": "4660bf9e92c8344a9c37b5de03447ce87d940988e9a01a58f3e60da6bb69c207",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/091",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/091.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
+    },
+    {
+      "style": "C68",
+      "sha256": "1bda6ab9333ef007656f969a63d84f50bae45ab8cbc5a70ba92268ace4079c69",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/188",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/188.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
+    },
+    {
+      "style": "C69",
+      "sha256": "35e1e240871933f8e88d54ce973835b4cd14c9755b057f9537d75f7ce6826886",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "201-400/237",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/237.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
+    },
+    {
+      "style": "C70",
+      "sha256": "ff93ac4c5b4488a8e22b44b1c06bfe5c043272877f8767b06492ce0bce50572f",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "201-400/221",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/221.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
+    },
+    {
+      "style": "C71",
+      "sha256": "90f26734c1ad68910e86d8ce457eed03538683169eaea4b0870727177754e257",
+      "origin": {
+        "repo": "yang0/handraw-style",
+        "item": "001-200/062",
+        "license": "MIT",
+        "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/062.webp"
+      },
+      "derivation": "resized (max edge 768 px) from the upstream repository sample; upstream repositories are MIT-licensed",
+      "note": "reference for technique only; names in the contract credit the inspiration, not an affiliation"
     }
-  ],
-  "expected_count": 48
+  ]
 }

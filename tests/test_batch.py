@@ -32,6 +32,10 @@ class Gen:
         return B.Result(b"", "fake", model, 1, 0.1, 0.04)
 
 
+from stylebook import contract as _CT  # noqa: E402
+BAD = _CT.load("C42")["qa"]["must_see"][0]  # 批量重试用例借用当前样式的第一条必须看到
+
+
 def ok_review(img, c, e, m, bad=()):
     rv = {"must_see": [{"item": i, "ok": not any(i.startswith(b) for b in bad), "why": "看到"} for i in c["qa"]["must_see"]],
             "must_not_see": [{"item": i, "present": False, "why": "未见"} for i in c["qa"]["must_not_see"]],
@@ -60,7 +64,7 @@ def item(i, **kw):
 
 def xhs_plan(n=3):
     items = [item(1)] + [item(i, shape="parts", structure="list") if i % 2 == 0 else item(i) for i in range(2, n + 1)]
-    return {"scene": "xhs", "style": {"code": "C31", "source": "factory", "why": "小红书出厂默认"}, "items": items}
+    return {"scene": "xhs", "style": {"code": "C42", "source": "factory", "why": "小红书出厂默认"}, "items": items}
 
 
 def run(tmp_path, plan, **kw):
@@ -81,7 +85,7 @@ def test_default_batch_reviewer_records_agent_plan_source(tmp_path, monkeypatch)
 def test_series_uses_first_page_as_style_reference_and_exports(tmp_path):
     from PIL import Image
     st, g = run(tmp_path, xhs_plan(3))
-    anchor = str(ROOT / "styles" / "C31" / "anchor.png")
+    anchor = str(ROOT / "styles" / "C42" / "anchor.png")
     assert g.calls[0]["tag"] == "batch:01" and g.calls[0]["refs"] == [anchor]
     first = str(tmp_path / "b" / "01.raw.png")
     assert all(c["refs"] == [first] for c in g.calls[1:])
@@ -188,15 +192,15 @@ def test_failed_review_retries_with_fixes_then_passes(tmp_path):
 
     def flaky(img, c, e, m):
         seen["n"] += 1
-        return ok_review(img, c, e, m, bad=("warm cream paper",) if seen["n"] == 1 else ())
+        return ok_review(img, c, e, m, bad=(BAD,) if seen["n"] == 1 else ())
     st, g = run(tmp_path, xhs_plan(1), review_fn=flaky)
     rec = st["items"]["01"]
     assert rec["status"] == "passed" and rec["attempts"] == 2 and len(g.calls) == 2
-    assert "Correct these points from the previous attempt: make sure the image clearly shows: warm cream paper" in g.calls[1]["prompt"]
+    assert f"Correct these points from the previous attempt: make sure the image clearly shows: {BAD}" in g.calls[1]["prompt"]
 
 
 def test_retry_limit_marks_failed(tmp_path):
-    st, g = run(tmp_path, xhs_plan(1), review_fn=lambda i, c, e, m: ok_review(i, c, e, m, bad=("warm cream paper",)), retries=2)
+    st, g = run(tmp_path, xhs_plan(1), review_fn=lambda i, c, e, m: ok_review(i, c, e, m, bad=(BAD,)), retries=2)
     assert st["items"]["01"]["status"] == "failed" and len(g.calls) == 3
     assert st["summary"]["failed"] == ["01"]
 

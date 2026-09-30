@@ -1,6 +1,6 @@
 {
   "code": "C57",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "九十年代赛璐璐动画",
     "en": "1990s Cel Animation"
@@ -26,7 +26,7 @@
     "清楚的动画线与锐利表情"
   ],
   "recipe": {
-    "positive": "Visual style (follow exactly): 1990s Japanese TV anime cel style: hard-edged two-tone cel shading, clean ink outlines, slightly muted film colours with gentle grain, hand-painted watercolour backgrounds, characters with sharp expressive eyes and glossy hair highlights, retro broadcast-anime feeling.",
+    "positive": "Visual style (follow exactly): in the style of 1990s TV anime cel animation like Sailor Moon and Rumiko Takahashi's Ranma 1/2. 1990s Japanese TV anime cel style: hard-edged two-tone cel shading, clean ink outlines, slightly muted film colours with gentle grain, hand-painted watercolour backgrounds, characters with sharp expressive eyes and glossy hair highlights, retro broadcast-anime feeling.",
     "text_mode": [
       "native",
       "overlay",
@@ -50,8 +50,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -63,11 +63,50 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
-  "anchor": {
-    "file": "anchor.png",
-    "sha256": "9c185329f6aa4aca201b335088e80f334dae330f5deda4dd09febd77ec83a666",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+  "inspiration": {
+    "names": [
+      "《美少女战士》",
+      "高桥留美子《乱马 1/2》"
+    ],
+    "prompt": "1990s TV anime cel animation like Sailor Moon and Rumiko Takahashi's Ranma 1/2"
+  },
+  "uses": [
+    "文章插图",
+    "小红书",
+    "漫画",
+    "绘本",
+    "分镜",
+    "音乐封面"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "317b6c9d6821b8a0a833d013019f814d93d76acf84a580d7dbc616cf87a65aae",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "e3b61e28476b386e142fc560a3a19edbc98ba29386f73fc950f21495be14283e",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "df3bcf75652bef4d006fb12c7a1aa52939da8e735314f2d9142d4d410b1ce365",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

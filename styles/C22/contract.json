@@ -1,6 +1,6 @@
 {
   "code": "C22",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "老式木偶定格",
     "en": "Vintage Wooden Puppet Stop-Motion"
@@ -25,7 +25,7 @@
     "略生硬的定格动作"
   ],
   "recipe": {
-    "positive": "Visual style (follow exactly): Vintage Chinese handmade puppet stop-motion: hand-carved and painted wooden puppets with slightly awkward elongated bodies, narrow faces, thin brows and phoenix eyes, cloth costumes, handmade miniature set, warm stage lighting, old Chinese animation-studio charm.",
+    "positive": "Visual style (follow exactly): in the style of Laika stop-motion puppets (Coraline). Vintage Chinese handmade puppet stop-motion: hand-carved and painted wooden puppets with slightly awkward elongated bodies, narrow faces, thin brows and phoenix eyes, cloth costumes, handmade miniature set, warm stage lighting, old Chinese animation-studio charm.",
     "text_mode": [
       "native",
       "overlay",
@@ -49,8 +49,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -62,11 +62,60 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
   "anchor": {
     "file": "anchor.png",
-    "sha256": "78deaa5480ad54b3e3daf32f4ba50687835b7b6d59d65fb75a66a4aa3a831779",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+    "sha256": "fc680b469edc25fe434e4efd26676bc6313a4e65cc311b62457296fe1151c1b9",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "201-400/277",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/201-400/277.webp"
+    }
+  },
+  "inspiration": {
+    "names": [
+      "Laika《魔女嘉》"
+    ],
+    "prompt": "Laika stop-motion puppets (Coraline)"
+  },
+  "uses": [
+    "封面",
+    "小红书",
+    "漫画",
+    "绘本",
+    "分镜"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "c58a1a315ce37ccdd13650f755bf426a7dd8e36c4de26e0aa97ddb08a88008a7",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "61c309ef33b4f2b4d68c8bb067c5d9a22ffa53d5bb8a13c7f3d7e322129b004d",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "8c12aa15f404df84f841c4e74998c81238a6e40c584ab6c9d0e593a724942c83",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

@@ -57,3 +57,13 @@ def scene_choice(scene_id: str) -> tuple[str, list[str], str]:
         d = a["scene_defaults"][scene_id]
         return d["default"], d["alternates"], "作者档案"
     return sc["default"], sc["alternates"], "出厂默认"
+
+
+def use_of_scene(scene_id: str) -> str | None:
+    """场景对应的用途标签（画风合同的 uses 用同一套词）。"""
+    return scenes()[scene_id].get("use")
+
+
+def styles_for_use(use: str) -> list[str]:
+    """打了这个用途勾的画风码（公开目录 + 私有目录），按码排序。"""
+    return sorted((c for c, s in catalog().items() if use in s.get("uses", [])), key=lambda c: (c[0], int(c[1:])))

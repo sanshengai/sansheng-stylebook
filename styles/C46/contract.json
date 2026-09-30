@@ -1,6 +1,6 @@
 {
   "code": "C46",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "复古旧纸",
     "en": "Nostalgic Aged Paper"
@@ -26,7 +26,7 @@
     "克制的棕褐色层次"
   ],
   "recipe": {
-    "positive": "Nostalgic historical-document illustration on warm aged paper. Use subtle paper wear, archival map and journal details, fine ink drawing, sepia and muted earth colours, careful caption areas and a calm heritage atmosphere.",
+    "positive": "Visual style (follow exactly): Nostalgic historical-document illustration on warm aged paper. Use subtle paper wear, archival map and journal details, fine ink drawing, sepia and muted earth colours, careful caption areas and a calm heritage atmosphere.",
     "text_mode": [
       "native",
       "overlay",
@@ -50,8 +50,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -63,11 +63,43 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
-  "anchor": {
-    "file": "anchor.png",
-    "sha256": "e352d27dfb666d4d5dad64d81102269e0d0265279320727433fd23b6fb633267",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+  "inspiration": {
+    "names": [],
+    "prompt": ""
+  },
+  "uses": [
+    "封面",
+    "信息图"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "c05c18d53e7ba467e35ae98fb22b4acfa1bcc3062cfcdee2738c78f88f1c109e",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "b822584db322b5641ff3317b34bb677f84c93de33520401871dfab1b9af26512",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "d8432634e11e409c6fbabcfe4a9744bdecf95992a7c5c0d45932de3ac88e0313",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

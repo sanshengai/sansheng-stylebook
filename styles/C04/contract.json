@@ -1,6 +1,6 @@
 {
   "code": "C04",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "北欧绘本水粉",
     "en": "Nordic Gouache Picture Book"
@@ -25,7 +25,7 @@
     "细长童话人物与哑光水粉"
   ],
   "recipe": {
-    "positive": "Soft gouache children's picture-book illustration in a modern Scandinavian storybook style, character-design sheet energy. PAPER (identity trait): the paper is VERY light and airy, close to near-white — never dark, never heavily tinted; subtle fine paper grain tooth texture visible across the ENTIRE image including the empty background. PALETTE (strict): cozy limited palette — denim cornflower blue and mustard butter yellow both clearly saturated enough to read cheerful, plus warm cream white and soft coral blush; hair only in auburn, dark umber, dark navy or silver grey; no other colors anywhere. CHARACTER RECIPE: stylized quirky storybook proportions — long thin neck, slender elongated limbs, small hands; expressive minimalist face: two small navy oval eyes (for a glasses character: big round navy eyes behind round mustard wire glasses; for an angular adult: tiny navy dot eyes), an expressive prominent nose with a slightly darker coral tip, thin expressive slightly-worried eyebrows, faint subtle mouth, round rosy coral blush cheeks; hair painted as a few soft masses with a few thin flyaway hair-line strokes escaping the silhouette (an angular adult may instead get one GEOMETRIC sculpted hair mass with a pointed swoop, a squared jaw and exaggerated elongated legs); gentle, slightly awkward endearing posture, NOT cute mainstream cartoon. TEXTURE: flat matte gouache color masses with granular dry-brush stippled texture inside the clothing and hair, NO hard outlines, no volumetric 3D rendering, no glossy digital shading. LIGHT & SHADOW: One single soft pale-blue oval shadow under the feet, no other shading or shadows anywhere. Timeless heartwarming Scandinavian picture-book aesthetic.",
+    "positive": "Visual style (follow exactly): Soft gouache children's picture-book illustration in a modern Scandinavian storybook style, character-design sheet energy. PAPER (identity trait): the paper is VERY light and airy, close to near-white — never dark, never heavily tinted; subtle fine paper grain tooth texture visible across the ENTIRE image including the empty background. PALETTE (strict): cozy limited palette — denim cornflower blue and mustard butter yellow both clearly saturated enough to read cheerful, plus warm cream white and soft coral blush; hair only in auburn, dark umber, dark navy or silver grey; no other colors anywhere. CHARACTER RECIPE: stylized quirky storybook proportions — long thin neck, slender elongated limbs, small hands; expressive minimalist face: two small navy oval eyes (for a glasses character: big round navy eyes behind round mustard wire glasses; for an angular adult: tiny navy dot eyes), an expressive prominent nose with a slightly darker coral tip, thin expressive slightly-worried eyebrows, faint subtle mouth, round rosy coral blush cheeks; hair painted as a few soft masses with a few thin flyaway hair-line strokes escaping the silhouette (an angular adult may instead get one GEOMETRIC sculpted hair mass with a pointed swoop, a squared jaw and exaggerated elongated legs); gentle, slightly awkward endearing posture, NOT cute mainstream cartoon. TEXTURE: flat matte gouache color masses with granular dry-brush stippled texture inside the clothing and hair, NO hard outlines, no volumetric 3D rendering, no glossy digital shading. LIGHT & SHADOW: One single soft pale-blue oval shadow under the feet, no other shading or shadows anywhere. Timeless heartwarming Scandinavian picture-book aesthetic.",
     "text_mode": [
       "native",
       "overlay",
@@ -63,8 +63,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -76,11 +76,60 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
   "anchor": {
     "file": "anchor.png",
-    "sha256": "92471d01b2c010364c15b4d8f54ded826ced947345cb7d424561b20da2fde3d8",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+    "sha256": "a6dbb28e59cae29922e3c3cddd6b3da6ecdc990d0479519dd17c2adaf6aa56b9",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "threerocks/hand-drawn-styles",
+      "item": "14-nordic-storybook.png",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/threerocks/hand-drawn-styles/master/examples/14-nordic-storybook.png"
+    }
+  },
+  "inspiration": {
+    "names": [],
+    "prompt": ""
+  },
+  "uses": [
+    "封面",
+    "文章插图",
+    "小红书",
+    "PPT",
+    "漫画",
+    "绘本",
+    "教材"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "324fa61b2de5b61102fd4b12cc6ffbea86aa7a401411deef9982f8c965240723",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "46f3f0ad96b28eecb9dfd9dc104e23c331921d5e10cb881cd6fe1c3ac86bae5b",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "76061c589e148f1de444e25f9d4509f5682834f10c3d351f7a05e6e7014a5f75",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

@@ -1,0 +1,111 @@
+{
+  "code": "C60",
+  "revision": 1,
+  "name": {
+    "zh": "自然主义水彩动物绘本",
+    "en": "Naturalistic Watercolour Animal Storybook"
+  },
+  "family": "绘本·教材插图",
+  "fit": [
+    "讲道理",
+    "讲故事"
+  ],
+  "facets": {
+    "medium": "自然主义水彩动物绘本",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "original",
+    "license": "original",
+    "notes": "画风库 v2 新增；风格描述改写自原作仓库条目，名称仅作灵感来源说明。"
+  },
+  "essence": [
+    "精细透明水彩",
+    "自然主义的拟人动物",
+    "古典绘本纸感"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): in the style of Beatrix Potter's naturalistic watercolour animal illustrations (Peter Rabbit). fine transparent watercolour, naturalistic animals in period costume, classic picture-book paper feel.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "精细透明水彩",
+      "自然主义的拟人动物",
+      "古典绘本纸感"
+    ],
+    "must_not_see": [
+      "与所选画风不符的通用插画质感",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "Codex 内置生图（底层模型 ID 未暴露）",
+    "date": "2026-09-30",
+    "notes": "仅完成合同校验与三题同题试出图（人物 / 物件 / 信息图）；尚未通过正式准入。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-30",
+      "note": "画风库 v2 新增"
+    }
+  ],
+  "inspiration": {
+    "names": [
+      "Beatrix Potter《彼得兔》"
+    ],
+    "prompt": "Beatrix Potter's naturalistic watercolour animal illustrations (Peter Rabbit)"
+  },
+  "uses": [
+    "文章插图",
+    "小红书",
+    "漫画",
+    "绘本"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "5e602c9f5caf9354193e532daf92efa8ed27f77108b8a3b9578854a3c1a75692",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "b2c76f337332a37e56d95c3ec10c4b48babae9ec07630348dbaed513b390d099",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "e9860bfe3318bc4b22173dbb07791ba972a073460a5680673a1b3206329bafe2",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "ce3cfcd39c8f23c5f079ff2383e459c5e6bdaaacaa68b10e7b8633d97165c7c8",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "001-200/042",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/042.webp"
+    }
+  }
+}

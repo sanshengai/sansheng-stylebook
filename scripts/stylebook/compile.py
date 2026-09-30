@@ -196,13 +196,21 @@ def compile_manifest(manifest: dict, contract: dict | None = None, *, stage: str
         if problems:
             raise CompileError("合同不合格：" + "；".join(problems))
     want_rev = manifest["style"].split("@r")[1] if "@r" in manifest["style"] else None
-    if want_rev and int(want_rev) != contract["revision"]:
+    if want_rev and not contract.get("_alias_from") and int(want_rev) != contract["revision"]:
         raise CompileError(f"项目锁定在 {manifest['style']}，当前合同是 r{contract['revision']}；先确认是否升级")
     model = manifest.get("model", "gpt-image-2")
     family = MODEL_FAMILY.get(model, "gpt-image")
     fmt = D.formats().get(manifest.get("format", "")) if manifest.get("format") else None
     text = manifest.get("text") or {}
     if fmt and text.get("mode", fmt.get("text", {}).get("default")) in ("native", "hybrid"):
+        for role, key in (("subtitle", "subtitle_max_chars"), ("body", "body_item_max_chars")):
+            cap = fmt.get("text", {}).get(key)
+            for item in native_items(text):
+                if cap and item.get("role") == role and len(item["text"]) > cap:
+                    raise CompileError(f"{role} 「{item['text']}」{len(item['text'])} 字，超过「{fmt['zh']}」上限 {cap} 字")
+        body_cap = fmt.get("text", {}).get("body_max_items")
+        if body_cap and sum(1 for i in native_items(text) if i.get("role") == "body") > body_cap:
+            raise CompileError(f"「{fmt['zh']}」要点最多 {body_cap} 条；多出来的拆到下一页")
         title_limit = fmt.get("text", {}).get("title_max_chars")
         if title_limit:
             for item in native_items(text):

@@ -1,6 +1,6 @@
 {
   "code": "C51",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "Q 版可爱",
     "en": "Cute Chibi"
@@ -26,7 +26,7 @@
     "柔和粉彩和贴纸感"
   ],
   "recipe": {
-    "positive": "Visual style (follow exactly): Chibi cute style: characters with big heads and small bodies (about 2.5 heads tall), large sparkling eyes, simple rounded shapes, thick clean outlines, soft pastel flat colours, playful expressions, sticker-friendly clean silhouettes.",
+    "positive": "Visual style (follow exactly): in the style of Sanrio-style kawaii chibi characters. Chibi cute style: characters with big heads and small bodies (about 2.5 heads tall), large sparkling eyes, simple rounded shapes, thick clean outlines, soft pastel flat colours, playful expressions, sticker-friendly clean silhouettes.",
     "text_mode": [
       "native",
       "overlay",
@@ -50,8 +50,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -63,11 +63,48 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
-  "anchor": {
-    "file": "anchor.png",
-    "sha256": "4a1219ec86227b8e5c4842260f3c856ad12ac3e00373f4426693b2b28e337ad2",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+  "inspiration": {
+    "names": [
+      "三丽鸥式卡哇伊"
+    ],
+    "prompt": "Sanrio-style kawaii chibi characters"
+  },
+  "uses": [
+    "文章插图",
+    "小红书",
+    "漫画",
+    "绘本",
+    "教材"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "e58e90957966059a725c6e01fb8066ae22f246fb31e39e4432589f48e846e79d",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "0bf174331a0c896a0537d7d0e7aca881407dae74d3588ae8164d7becfe42f0bc",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "a16c417aecf1ecd63573fc2a021654f542db84def6c20d6f018469d8c6a33421",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

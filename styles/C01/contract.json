@@ -1,6 +1,6 @@
 {
   "code": "C01",
-  "revision": 4,
+  "revision": 5,
   "name": {
     "zh": "暖光手绘动画",
     "en": "Warm Hand-painted Animation"
@@ -38,7 +38,7 @@
     "画面干净，一个焦点，留白从容"
   ],
   "recipe": {
-    "positive": "Warm hand-painted animated-feature watercolor on a matte paper surface. Forms are built from soft translucent watercolor washes and gentle layered pigment; contours are hand-drawn with slightly varied line strength and soft brush edges, never uniform mechanical cel outlines. Characters have rounded natural proportions and small expressive eyes. Broad skies, walls, fields, water and roads remain calm, smooth color washes with restrained pigment variation rather than all-over grain. In rain-wet scenes stone stays damp and matte, with only short broken blurred watercolor reflection marks. Warm daylight diffuses softly from above with a tender glow. Bright but lightly saturated harmonious colors, a dreamy nostalgic heartwarming mood. Keep one clear focal subject, a simplified setting and restful negative space. When a scene contains several required elements, give the central character or action one clearly dominant foreground focal group. Preserve non-interacting context cues, but paint them visibly smaller, softer and lower-contrast farther back so they support rather than compete. If required characters interact, their shared action is one focal group. Keep spacious calm visual hierarchy without omitting required facts.",
+    "positive": "Visual style (follow exactly): in the style of Hayao Miyazaki and Studio Ghibli films (Spirited Away, My Neighbor Totoro). Warm hand-painted animated-feature watercolor on a matte paper surface. Forms are built from soft translucent watercolor washes and gentle layered pigment; contours are hand-drawn with slightly varied line strength and soft brush edges, never uniform mechanical cel outlines. Characters have rounded natural proportions and small expressive eyes. Broad skies, walls, fields, water and roads remain calm, smooth color washes with restrained pigment variation rather than all-over grain. In rain-wet scenes stone stays damp and matte, with only short broken blurred watercolor reflection marks. Warm daylight diffuses softly from above with a tender glow. Bright but lightly saturated harmonious colors, a dreamy nostalgic heartwarming mood. Keep one clear focal subject, a simplified setting and restful negative space. When a scene contains several required elements, give the central character or action one clearly dominant foreground focal group. Preserve non-interacting context cues, but paint them visibly smaller, softer and lower-contrast farther back so they support rather than compete. If required characters interact, their shared action is one focal group. Keep spacious calm visual hierarchy without omitting required facts.",
     "text_style": "Titles are soft, rounded hand-lettering in warm colours, painted into the scene.",
     "text_mode": [
       "none",
@@ -74,10 +74,16 @@
   },
   "drifts": [],
   "evidence": {
-    "admission": "admitted",
-    "model": "Codex 内置生图（底层模型 ID 未暴露）",
-    "date": "2026-09-28",
-    "notes": "r4 配方与题库 v6 在当前编译器下锁定八题，从零生成；T1–T5、T7、T8 各经两次无历史上下文的 Ark Agent Plan 看图通过，T3/T8 必过。T6 整图看图两次假阳性，维护者直接看图发现大片镜面湿路，同一区域裁图两次独立复核均拒绝，最终判失败，矩阵 7/8。T1 同词三图已并排裁定画法稳定，本轮新 T1 的提示词哈希相同且画法一致。T3/T6 与 C08、C25、C32、C56、C58 匿名并排辨认共 12/12，C01/C58 两题均正确分离；对照样式图片来自既往修订，不能代替其自身准入。逐题原图、锁定输入、双评、路面局部复核、预测先落盘的盲测键与哈希见维护者保留的证据记录（SHA-256 ce3ad882117f335ac4c66808ac33dd9b17e5fa1fa82947e37c2a6e26f2215162）。只准入 C01 单样式；T6 失败，不能据此声称湿路远景或分镜远景能力；首轮跨版式复评与阶段 2 仍待完成。"
+    "admission": "pending",
+    "model": "未在本修订上完成模型实测",
+    "date": "2026-09-30",
+    "notes": "r4 曾通过正式准入；r5 在配方前加入原作名并换用原作样图（或取消锚点），需按新修订重新准入。",
+    "prior": {
+      "model": "Codex 内置生图（底层模型 ID 未暴露）",
+      "date": "2026-09-28",
+      "notes": "r4 配方与题库 v6 在当前编译器下锁定八题，从零生成；T1–T5、T7、T8 各经两次无历史上下文的 Ark Agent Plan 看图通过，T3/T8 必过。T6 整图看图两次假阳性，维护者直接看图发现大片镜面湿路，同一区域裁图两次独立复核均拒绝，最终判失败，矩阵 7/8。T1 同词三图已并排裁定画法稳定，本轮新 T1 的提示词哈希相同且画法一致。T3/T6 与 C08、C25、C32、C56、C58 匿名并排辨认共 12/12，C01/C58 两题均正确分离；对照样式图片来自既往修订，不能代替其自身准入。逐题原图、锁定输入、双评、路面局部复核、预测先落盘的盲测键与哈希见维护者保留的证据记录（SHA-256 ce3ad882117f335ac4c66808ac33dd9b17e5fa1fa82947e37c2a6e26f2215162）。只准入 C01 单样式；T6 失败，不能据此声称湿路远景或分镜远景能力；首轮跨版式复评与阶段 2 仍待完成。",
+      "revision": 4
+    }
   },
   "changelog": [
     {
@@ -99,6 +105,64 @@
       "revision": 4,
       "date": "2026-09-27",
       "note": "QA 明确互动人物可组成一个焦点及湿路镜面边界；配方沿用 r3。锁定题库 v6 八题、同词稳定与匿名跨样式辨认后准入；T6 湿路失败。"
+    },
+    {
+      "revision": 5,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
-  ]
+  ],
+  "inspiration": {
+    "names": [
+      "宫崎骏",
+      "吉卜力工作室"
+    ],
+    "prompt": "Hayao Miyazaki and Studio Ghibli films (Spirited Away, My Neighbor Totoro)"
+  },
+  "uses": [
+    "封面",
+    "文章插图",
+    "小红书",
+    "漫画",
+    "绘本",
+    "分镜",
+    "音乐封面",
+    "教材"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "fd5745022b067c9eb3d749d541425dd6cd1c133c625f4b01354596202324eb5a",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "71acccad9df80a9ea46db31c306413d9a9b916fa9d51242419e6d3abb851a436",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "23f20bc9340d50f81640e65cf479df027bcc422bfa37294ff15a3b5e0b9da0dd",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "a17f141be837a6092218ffce8ea9b97fff82d77e6b2892167e618202fc8b8a17",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "threerocks/hand-drawn-styles",
+      "item": "03-ghibli.png",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/threerocks/hand-drawn-styles/master/examples/03-ghibli.png"
+    }
+  }
 }

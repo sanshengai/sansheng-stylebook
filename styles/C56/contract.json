@@ -1,6 +1,6 @@
 {
   "code": "C56",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "光影写实动画",
     "en": "Luminous Cinematic Anime"
@@ -38,7 +38,7 @@
     "干净的动画人物线稿，人物常在广阔空间里"
   ],
   "recipe": {
-    "positive": "Luminous photoreal anime background art: breathtakingly detailed, hand-painted-looking scenery with dramatic skies full of towering cumulus clouds, sunbeams and lens flare, glittering light on wet surfaces, deep saturated blues against warm golden light, crisp clean anime character line art with small figures inside vast spaces, cinematic wide framing, emotional and nostalgic atmosphere. Objects, rooms and close-ups keep the same luminous anime rendering with clean line art, never plain photography.",
+    "positive": "Visual style (follow exactly): in the style of Makoto Shinkai (Your Name, Weathering with You). Luminous photoreal anime background art: breathtakingly detailed, hand-painted-looking scenery with dramatic skies full of towering cumulus clouds, sunbeams and lens flare, glittering light on wet surfaces, deep saturated blues against warm golden light, crisp clean anime character line art with small figures inside vast spaces, cinematic wide framing, emotional and nostalgic atmosphere. Objects, rooms and close-ups keep the same luminous anime rendering with clean line art, never plain photography.",
     "text_style": "Any title is clean, elegant lettering set in the sky or open space, like a film title card.",
     "text_mode": [
       "none",
@@ -112,8 +112,8 @@
   "evidence": {
     "admission": "pending",
     "model": "gpt-image-2",
-    "date": "2026-09-25",
-    "notes": "配方以 2026-09-25 同题测试提示词为起点；A1-08 一页短文试跑用它占位（一页画风由世界观线定，产物不上线）；色板由同题测试三张实图（C56-q1/q2/q3）中位切分量化提取的前 8 个主色"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -125,11 +125,48 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
-  "anchor": {
-    "file": "anchor.png",
-    "sha256": "a7fa2102283a5e0c1978e338db73cb5ac206325f081067166a0f9b9982be1795",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+  "inspiration": {
+    "names": [
+      "新海诚《你的名字。》《天气之子》"
+    ],
+    "prompt": "Makoto Shinkai (Your Name, Weathering with You)"
+  },
+  "uses": [
+    "封面",
+    "文章插图",
+    "漫画",
+    "分镜",
+    "音乐封面"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "2dc15c2b9048aecf9e9d020850c61bf50bfa2e61cf0e0d45376da4bfacc02780",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "836a8c8d5c6412046114a2419709a5f9c68164e6f208275ce19012d46a2a9d4d",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "c8a3e76661256fed53e8fc9e42195be5058b01eb8bd862fc5e7fc6f4b5f861f0",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

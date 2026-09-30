@@ -1,6 +1,6 @@
 {
   "code": "C11",
-  "revision": 2,
+  "revision": 3,
   "name": {
     "zh": "温暖清线漫画",
     "en": "Warm Clear-Line Comic"
@@ -25,7 +25,7 @@
     "温暖易读的漫画场景"
   ],
   "recipe": {
-    "positive": "Warm European clear-line comic illustration. Use clean contours of uniform weight, simple readable forms and flat colour fills. Characters look approachable and expressive; interiors and everyday props feel cosy. Keep panel and scene hierarchy easy to follow, with gentle warm light and restrained nostalgic colours.",
+    "positive": "Visual style (follow exactly): in the style of Hergé's ligne claire style (The Adventures of Tintin). Warm European clear-line comic illustration. Use clean contours of uniform weight, simple readable forms and flat colour fills. Characters look approachable and expressive; interiors and everyday props feel cosy. Keep panel and scene hierarchy easy to follow, with gentle warm light and restrained nostalgic colours.",
     "text_mode": [
       "native",
       "overlay",
@@ -49,8 +49,8 @@
   "evidence": {
     "admission": "pending",
     "model": "未在基础合同上完成模型实测",
-    "date": "2026-09-29",
-    "notes": "仅完成合同校验与提示词编译；同题提示词与参考图存在，但此修订尚未完成正式八题、稳定性和版式盲评。"
+    "date": "2026-09-30",
+    "notes": "配方加入原作名并换用原作样图（或取消自产锚点）；仅完成合同校验与同题试出图，尚未通过正式准入。"
   },
   "changelog": [
     {
@@ -62,11 +62,46 @@
       "revision": 2,
       "date": "2026-09-29",
       "note": "加入同题原图的画风锚点；只引用画法并隔离参考图内容，正式准入仍待验证"
+    },
+    {
+      "revision": 3,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
     }
   ],
-  "anchor": {
-    "file": "anchor.png",
-    "sha256": "72e24f83990ef339a29b6b5200fd02ee7d7666815ed08754e30890a58f6bde58",
-    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and color tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects."
-  }
+  "inspiration": {
+    "names": [
+      "埃尔热《丁丁历险记》"
+    ],
+    "prompt": "Hergé's ligne claire style (The Adventures of Tintin)"
+  },
+  "uses": [
+    "文章插图",
+    "漫画",
+    "绘本"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "3e48ebdf0d848e2d89b6e747da3ecfe2cb3eba274011c2aff4459664b0a8ab65",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "4b6b6ad7520e51d05482778721d9502cec3fac3d1a1657827d8536d880912173",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "6d24f675b7e366225b2f4d264649aad7b7d7c62493de427ac02c19761fe74550",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
 }

@@ -54,8 +54,8 @@ def select(entries: list[tuple[str, str]]) -> list[str]:
     if missing:
         raise ExportError(f"公开包缺少必需文件：{sorted(missing)}")
     contracts = [p for p in selected if re.fullmatch(r"styles/C\d{2,3}/contract\.json", p)]
-    if len(contracts) != 53:
-        raise ExportError(f"公开画风合同数量应为 53，实际 {len(contracts)}")
+    if len(contracts) != 57:
+        raise ExportError(f"公开画风合同数量应为 57，实际 {len(contracts)}")
     if any(re.search(r"(?:^|/)S0[12](?:/|$)", p) for p in selected):
         raise ExportError("私有画风进入公开文件列表")
     return selected

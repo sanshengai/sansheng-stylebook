@@ -11,6 +11,9 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from stylebook import build as BD  # noqa: E402
+from stylebook import contract as CT  # noqa: E402
+
+REV31 = CT.load("C31")["revision"]
 
 
 def _cli_normalize(tmp_path: Path, exported: str) -> dict:
@@ -81,14 +84,14 @@ def test_browser_exports_brand_and_local_edit_to_cli(page):
 def test_browser_import_roundtrip_and_conflicts(page):
     tab, temp, _ = page
     record = {"version": 1, "scene": "wxillus", "series_id": "trial-2",
-              "style": {"code": "C31", "revision": 4, "source": "project", "scope": "series", "locked": True},
+              "style": {"code": "C31", "revision": REV31, "source": "project", "scope": "series", "locked": True},
               "palette": {"family": "orig", "light": 0, "sat": 0, "source": "factory", "scope": "series", "locked": False},
               "expression": {"form": "auto", "structure": "auto", "source": "factory", "scope": "series", "locked": False},
               "items": {"03": {"expression": {"form": "structure", "structure": "compare", "source": "explicit", "scope": "item", "locked": True},
                                "text_direction": "短标签"}}}
     _import(tab, record)
     assert _cli_normalize(temp, tab.locator("#selectionOut").input_value()) == _cli_normalize(temp, json.dumps(record, ensure_ascii=False))
-    _import(tab, "sb1:C31@r4-compare-balanced-orig")
+    _import(tab, f"sb1:C31@r{REV31}-compare-balanced-orig")
     assert _export(tab)["expression"]["structure"] == "compare"
     assert _export(tab)["expression"]["density"] == "balanced"
     for broken, error in [({**record, "version": 2}, "版本"),

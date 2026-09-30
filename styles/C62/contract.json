@@ -1,0 +1,111 @@
+{
+  "code": "C62",
+  "revision": 1,
+  "name": {
+    "zh": "低饱和冷面绘本",
+    "en": "Deadpan Muted Picture Book"
+  },
+  "family": "绘本",
+  "fit": [
+    "讲道理",
+    "讲故事"
+  ],
+  "facets": {
+    "medium": "低饱和冷面绘本",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "original",
+    "license": "original",
+    "notes": "画风库 v2 新增；风格描述改写自原作仓库条目，名称仅作灵感来源说明。"
+  },
+  "essence": [
+    "极简动物与半闭的眼睛",
+    "低饱和配色",
+    "冷面幽默与大量留白"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): in the style of Jon Klassen's deadpan muted picture books (I Want My Hat Back). minimal animal characters with half-closed eyes, muted low-saturation colours, deadpan humour, generous empty space.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "极简动物与半闭的眼睛",
+      "低饱和配色",
+      "冷面幽默与大量留白"
+    ],
+    "must_not_see": [
+      "与所选画风不符的通用插画质感",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "Codex 内置生图（底层模型 ID 未暴露）",
+    "date": "2026-09-30",
+    "notes": "仅完成合同校验与三题同题试出图（人物 / 物件 / 信息图）；尚未通过正式准入。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-30",
+      "note": "画风库 v2 新增"
+    }
+  ],
+  "inspiration": {
+    "names": [
+      "Jon Klassen《我的帽子呢》"
+    ],
+    "prompt": "Jon Klassen's deadpan muted picture books (I Want My Hat Back)"
+  },
+  "uses": [
+    "文章插图",
+    "小红书",
+    "漫画",
+    "绘本"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "cf5a8202a5be98d09e5e222054c2970de3f7e93cbb3864c2104472efca4da8f9",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "d2591c99c5bdd9878077f11f4e1027c18765f0eb11954482737726a290ad2bba",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "47cbdc0178b1b7079c168d11104a98845caeddac98f3b96a1719f59bc0975df8",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "9f74472444122535bc190f28163a557fb09cc9774884a49fcd89cf8babc475bb",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "001-200/047",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/047.webp"
+    }
+  }
+}

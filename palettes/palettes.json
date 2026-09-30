@@ -286,6 +286,110 @@
       ]
     },
     {
+      "id": "sunset",
+      "name": "日落暖橙",
+      "colors": [
+        {
+          "name": "落日橙 sunset orange",
+          "hex": "#F28C50"
+        },
+        {
+          "name": "蜜桃 peach",
+          "hex": "#F7B58A"
+        },
+        {
+          "name": "杏黄 apricot",
+          "hex": "#F6D08E"
+        },
+        {
+          "name": "豆沙玫瑰 dusty rose",
+          "hex": "#C9757A"
+        },
+        {
+          "name": "暖白 warm white",
+          "hex": "#FBF1E6"
+        }
+      ]
+    },
+    {
+      "id": "creamcoffee",
+      "name": "奶油咖啡",
+      "colors": [
+        {
+          "name": "拿铁 latte",
+          "hex": "#C9A27E"
+        },
+        {
+          "name": "奶泡 milk foam",
+          "hex": "#EBDCC6"
+        },
+        {
+          "name": "摩卡 mocha",
+          "hex": "#8A5F45"
+        },
+        {
+          "name": "焦糖 caramel",
+          "hex": "#B97A4A"
+        },
+        {
+          "name": "燕麦白 oat white",
+          "hex": "#F6EEE2"
+        }
+      ]
+    },
+    {
+      "id": "mintsoda",
+      "name": "薄荷苏打",
+      "colors": [
+        {
+          "name": "薄荷 mint",
+          "hex": "#9FE0C8"
+        },
+        {
+          "name": "冰蓝 ice blue",
+          "hex": "#A9DCEB"
+        },
+        {
+          "name": "青柠 lime",
+          "hex": "#D6EE9C"
+        },
+        {
+          "name": "浅柠檬 lemon",
+          "hex": "#FBF3A5"
+        },
+        {
+          "name": "气泡白 fizz white",
+          "hex": "#F4FBF8"
+        }
+      ]
+    },
+    {
+      "id": "mistblue",
+      "name": "晨雾蓝",
+      "colors": [
+        {
+          "name": "雾蓝 mist blue",
+          "hex": "#A7BCD0"
+        },
+        {
+          "name": "灰紫蓝 grey periwinkle",
+          "hex": "#B9B6D6"
+        },
+        {
+          "name": "淡青 pale teal",
+          "hex": "#C6DDD9"
+        },
+        {
+          "name": "云灰 cloud grey",
+          "hex": "#D7DBE0"
+        },
+        {
+          "name": "晨白 dawn white",
+          "hex": "#F3F6F8"
+        }
+      ]
+    },
+    {
       "id": "brand",
       "name": "品牌自定义",
       "colors": []

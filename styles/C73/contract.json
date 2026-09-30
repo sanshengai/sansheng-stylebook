@@ -1,0 +1,95 @@
+{
+  "code": "C73",
+  "revision": 1,
+  "name": {
+    "zh": "手绘教育·马卡龙色块",
+    "en": "Hand-Drawn Educational Macaron Blocks"
+  },
+  "family": "小红书·知识卡",
+  "fit": [
+    "讲道理"
+  ],
+  "facets": {
+    "medium": "手绘教育·马卡龙色块",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "JimLiu/baoyu-skills #infographic/styles/hand-drawn-edu.md",
+    "license": "MIT",
+    "notes": "画风库 v2 新增；风格描述改写自原作仓库条目，名称仅作灵感来源说明。"
+  },
+  "essence": [
+    "暖奶油纸纹底",
+    "马卡龙粉彩色块",
+    "手绘教学讲解感"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): warm cream paper texture, macaron pastel colour blocks, hand-drawn teaching-diagram feel, clear labels.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "暖奶油纸纹底",
+      "马卡龙粉彩色块",
+      "手绘教学讲解感"
+    ],
+    "must_not_see": [
+      "与所选画风不符的通用插画质感",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "Codex 内置生图（底层模型 ID 未暴露）",
+    "date": "2026-09-30",
+    "notes": "仅完成合同校验与三题同题试出图（人物 / 物件 / 信息图）；尚未通过正式准入。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-30",
+      "note": "画风库 v2 新增"
+    }
+  ],
+  "inspiration": {
+    "names": [],
+    "prompt": ""
+  },
+  "uses": [
+    "小红书",
+    "信息图",
+    "PPT"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "0cec09c11cb83fd77da873a4fba8cb5f51de2c946486e47bda20dd5352e69dae",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "933cdbbf11d72a294a9aadc3a7608895c052c05988b92ad932f373c12c187075",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "8b008e15850a68602a0823a8f5870434a7a6582ca1d53eb53f2205e8200a2142",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ]
+}

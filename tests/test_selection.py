@@ -7,6 +7,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
+from stylebook import contract as CT  # noqa: E402
 from stylebook import plan as PL  # noqa: E402
 from stylebook import selection as S  # noqa: E402
 
@@ -81,8 +82,8 @@ def test_conflicts_and_unknown_versions_fail_closed():
 
 
 def test_legacy_code_and_brand_hex_roundtrip():
-    legacy = S.normalize("sb1:C31@r4-compare-balanced-orig", scene="wxillus")
-    assert legacy["style"]["revision"] == 4
+    legacy = S.normalize(f"sb1:C31@r{CT.load('C31')['revision']}-compare-balanced-orig", scene="wxillus")
+    assert legacy["style"]["revision"] == CT.load("C31")["revision"]
     assert legacy["expression"]["structure"] == "compare"
     assert legacy["expression"]["density"] == "balanced"
     brand = record(palette={"family": "brand", "custom": ["#aabbcc"], "source": "explicit"})

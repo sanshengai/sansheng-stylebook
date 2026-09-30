@@ -1,6 +1,6 @@
 {
   "code": "C32",
-  "revision": 4,
+  "revision": 5,
   "name": {
     "zh": "技术简报（旧纸双语）",
     "en": "Technical Briefing on Aged Paper"
@@ -35,7 +35,7 @@
     "复古蓝图感加现代的清楚"
   ],
   "recipe": {
-    "positive": "Technical briefing infographic on aged cream paper with a subtle texture and light creases, like a vintage technical print. Clean 2D or isometric technical illustrations with crisp dark-charcoal outlines; a muted palette of teal for the main illustrations, warm brown for secondary elements and deep maroon for headlines and emphasis. Organized, information-rich layout with a clear visual hierarchy: bounded primary illustration panels or split/triptych sections, restrained secondary orthographic or detail panels, visible aged-paper gutters and fine construction lines. For title cards and other single-scene compositions, keep the scene within a bordered primary technical panel, add one or two smaller orthographic or detail panels of that same scene, and separate all panels with visible aged-paper gutters. Put titles and subtitles in distinct bordered callout boxes. When text is requested, add neat explanatory and key-insight boxes. Vintage blueprint feeling with modern clarity. Objects and scenes are drawn as matte, flat technical illustrations with clean outlines and simple fills, never glossy or photographic.",
+    "positive": "Visual style (follow exactly): Technical briefing infographic on aged cream paper with a subtle texture and light creases, like a vintage technical print. Clean 2D or isometric technical illustrations with crisp dark-charcoal outlines; a muted palette of teal for the main illustrations, warm brown for secondary elements and deep maroon for headlines and emphasis. Organized, information-rich layout with a clear visual hierarchy: bounded primary illustration panels or split/triptych sections, restrained secondary orthographic or detail panels, visible aged-paper gutters and fine construction lines. For title cards and other single-scene compositions, keep the scene within a bordered primary technical panel, add one or two smaller orthographic or detail panels of that same scene, and separate all panels with visible aged-paper gutters. Put titles and subtitles in distinct bordered callout boxes. When text is requested, add neat explanatory and key-insight boxes. Vintage blueprint feeling with modern clarity. Objects and scenes are drawn as matte, flat technical illustrations with clean outlines and simple fills, never glossy or photographic.",
     "text_style": "Headlines are dark maroon and body text near-black, set in neat labeled boxes; when both Chinese and English wording is given, pair them as bilingual callouts.",
     "text_mode": [
       "native",
@@ -121,10 +121,16 @@
     }
   ],
   "evidence": {
-    "admission": "admitted",
-    "model": "Codex 内置生图（底层模型 ID 未暴露）",
-    "date": "2026-09-27",
-    "notes": "r4 默认配方、题库 v5：八题各双评，T1–T5、T7、T8 通过，T6 的早点铺不够深入巷子，矩阵 7/8 且 T3/T8 必过。T1 同词三图经维护者裁定画法稳定；第二图全图发夹侧向评审仍有分歧，脸部裁剪独立双评确认位置，原始分歧保留，不称三图全图双评通过。与 C01、C08、C58 的 T3/T6 匿名并排识别中，C32 两题均被正确认出；C01/C58 在 T6 互相混淆，不据此准入。证据见本地 C32-r4-v5-current-matrix/adjudication.json。仅 C32 准入，阶段 1 未完成。题库 v6 只重出 T2/T5：当前编译器与 Codex 内置生图生成，两题各经 Ark Agent Plan 两次独立看图及内容数量核验通过；另六题清单与提示词正文一致，沿用 v5 证据。补充裁定见本地 v6-inventory-regression-final/adjudication.json。"
+    "admission": "pending",
+    "model": "未在本修订上完成模型实测",
+    "date": "2026-09-30",
+    "notes": "r4 曾通过正式准入；r5 在配方前加入原作名并换用原作样图（或取消锚点），需按新修订重新准入。",
+    "prior": {
+      "model": "Codex 内置生图（底层模型 ID 未暴露）",
+      "date": "2026-09-27",
+      "notes": "r4 默认配方、题库 v5：八题各双评，T1–T5、T7、T8 通过，T6 的早点铺不够深入巷子，矩阵 7/8 且 T3/T8 必过。T1 同词三图经维护者裁定画法稳定；第二图全图发夹侧向评审仍有分歧，脸部裁剪独立双评确认位置，原始分歧保留，不称三图全图双评通过。与 C01、C08、C58 的 T3/T6 匿名并排识别中，C32 两题均被正确认出；C01/C58 在 T6 互相混淆，不据此准入。证据见本地 C32-r4-v5-current-matrix/adjudication.json。仅 C32 准入，阶段 1 未完成。题库 v6 只重出 T2/T5：当前编译器与 Codex 内置生图生成，两题各经 Ark Agent Plan 两次独立看图及内容数量核验通过；另六题清单与提示词正文一致，沿用 v5 证据。补充裁定见本地 v6-inventory-regression-final/adjudication.json。",
+      "revision": 4
+    }
   },
   "changelog": [
     {
@@ -146,6 +152,45 @@
       "revision": 4,
       "date": "2026-09-27",
       "note": "T8 标题卡默认配方漏掉技术分栏和文字框；将任务级双评通过的布局补入通用风格配方"
+    },
+    {
+      "revision": 5,
+      "date": "2026-09-30",
+      "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
+    }
+  ],
+  "inspiration": {
+    "names": [],
+    "prompt": ""
+  },
+  "uses": [
+    "信息图",
+    "PPT",
+    "漫画",
+    "绘本"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "7943bce6e03191ce48338617fa5949814527e281d32c5f4804abc921a6723791",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "3a31b24053d8fe1e638fac1fb168d02c3364967f64c7bcc872cd31cd3bac015f",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "0001acec312ccd46be00ace3198aa5761d2beb32961d4bd4b0d9e2ba24a1d317",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
     }
   ]
 }

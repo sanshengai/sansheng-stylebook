@@ -1,0 +1,110 @@
+{
+  "code": "C71",
+  "revision": 1,
+  "name": {
+    "zh": "极致几何自然",
+    "en": "Ultra-Geometric Nature"
+  },
+  "family": "信息图·教材插图",
+  "fit": [
+    "封面",
+    "讲道理"
+  ],
+  "facets": {
+    "medium": "极致几何自然",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "original",
+    "license": "original",
+    "notes": "画风库 v2 新增；风格描述改写自原作仓库条目，名称仅作灵感来源说明。"
+  },
+  "essence": [
+    "压缩成极简几何形",
+    "装饰性强",
+    "有限配色"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): in the style of Charley Harper's ultra-geometric nature illustration. animals and people reduced to minimal geometric flat shapes, strongly decorative, limited palette.",
+    "text_mode": [
+      "native",
+      "overlay",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "压缩成极简几何形",
+      "装饰性强",
+      "有限配色"
+    ],
+    "must_not_see": [
+      "与所选画风不符的通用插画质感",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "Codex 内置生图（底层模型 ID 未暴露）",
+    "date": "2026-09-30",
+    "notes": "仅完成合同校验与三题同题试出图（人物 / 物件 / 信息图）；尚未通过正式准入。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-09-30",
+      "note": "画风库 v2 新增"
+    }
+  ],
+  "inspiration": {
+    "names": [
+      "Charley Harper"
+    ],
+    "prompt": "Charley Harper's ultra-geometric nature illustration"
+  },
+  "uses": [
+    "封面",
+    "信息图",
+    "PPT"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "人物",
+      "file": "samples/s1.jpg",
+      "source_sha256": "a37e3d092afff723a322b731e6ddfa395553298e6c16f7400e81aca86219fd9d",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "物件",
+      "file": "samples/s2.jpg",
+      "source_sha256": "309275a7e6de072022cdfe325f85c9ddaf1442ddd10b9123867f999218dc954c",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/s3.jpg",
+      "source_sha256": "218a239f2883ef203eb94464a99fbc83b8f08c33819c3cc50cf721acb81354b2",
+      "renderer": "codex-builtin",
+      "date": "2026-09-30"
+    }
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "90f26734c1ad68910e86d8ce457eed03538683169eaea4b0870727177754e257",
+    "enabled": true,
+    "isolation": "This image is only a visual-style sample. Transfer its rendering technique, line or brush character, material, texture, and colour tendency. All people, objects, pose, setting, composition, layout, and words must come exclusively from the current content brief; never reuse the reference image's story or subjects; hair colour, hairstyle, faces and clothing come only from the brief.",
+    "origin": {
+      "repo": "yang0/handraw-style",
+      "item": "001-200/062",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/yang0/handraw-style/main/images/individual/001-200/062.webp"
+    }
+  }
+}
