@@ -14,7 +14,7 @@
   qa-focus <局部裁图> --criterion ...       两次独立判断局部是否仍有已知缺陷
   sheet  <定妆图> <图>... -o 输出.png    一致性对照网格（--thumbs 看缩略图可辨认）
   matrix <风格码> [--only T1,T2]        8 道标准题测试矩阵（断点续跑、成本记账）
-  build  [--private] [--gallery]        由风格合同生成 registry.json；--gallery 生成本地画廊
+  build  [--private] [--gallery]        由风格合同生成 registry.json；--gallery 生成选择器（index.html + img/）；--advanced 生成旧完整画廊
   plan   <计划.json> [--manifests 目录]  检查配图计划、打印确认表、生成每张图的编译清单
   batch  <计划.json> -o 目录             一口气做完：出图 → 导出 → 验收 → 单张返修 → 报告（可续跑）
   pptx   <计划.json> --images 目录 -o 文件.pptx [--mode illustration|full]   组装 PPT（插画 + 可编辑文字 / 整页图）
@@ -265,7 +265,9 @@ def cmd_build(a) -> int:
         print("\n".join(problems) or "注册表一致")
         return 1 if problems else 0
     print(f"注册表：{BD.write_registry(private=a.private)}")
-    if a.gallery:
+    if a.gallery and not a.advanced:
+        print(f"选择器：{BD.picker(private=a.private)}")
+    elif a.gallery:
         print(f"画廊：{BD.gallery(private=a.private, samples=[Path(x) for x in a.samples or []], legacy_prompts=Path(a.legacy_prompts) if a.legacy_prompts else None)}")
     return 0
 
@@ -620,7 +622,7 @@ def main(argv=None) -> int:
     p.add_argument("--reviews", type=int, default=1, help="每题独立看图几次（准入用 2；不一致记为分歧交人复核）")
     p.set_defaults(fn=cmd_matrix)
     p = sub.add_parser("build"); p.add_argument("--private", action="store_true", help="叠加私有 profile（只写到 gallery/build/）")
-    p.add_argument("--gallery", action="store_true"); p.add_argument("--samples", nargs="*", help="样图目录（<码>-T3.png 或 <码>-q1.png）")
+    p.add_argument("--gallery", action="store_true"); p.add_argument("--advanced", action="store_true", help="生成旧的完整画廊（内嵌全部样图、含偏好页）"); p.add_argument("--samples", nargs="*", help="样图目录（<码>-T3.png 或 <码>-q1.png）")
     p.add_argument("--legacy-prompts", help="兼容旧命令；选择器已停用独立提示词模板，此参数不再生效")
     p.add_argument("--check", action="store_true", help="只检查 registry.json 是否与合同一致，不写文件"); p.set_defaults(fn=cmd_build)
     p = sub.add_parser("plan"); p.add_argument("plan"); p.add_argument("--manifests"); p.add_argument("--model"); p.set_defaults(fn=cmd_plan)
