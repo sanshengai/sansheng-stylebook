@@ -2457,41 +2457,6 @@
       "recipe_sha": "d2ce6c16c4b3"
     },
     {
-      "code": "C78",
-      "zh": "瑞士网格单锚点色",
-      "family": "封面与海报",
-      "fit": [
-        "讲道理",
-        "封面"
-      ],
-      "visibility": "public",
-      "origin": "original",
-      "status": "contract",
-      "has_contract": true,
-      "recolor": "free",
-      "recolor_note": "",
-      "en": "Swiss Grid Single Accent",
-      "revision": 1,
-      "essence": [
-        "冷白底与发丝线网格",
-        "全画只有一个强调色",
-        "极端字号对比的无衬线字"
-      ],
-      "colors": [],
-      "text_mode": [
-        "native",
-        "none"
-      ],
-      "abilities": {},
-      "facets": {
-        "medium": "瑞士网格单锚点色",
-        "density": "极简留白"
-      },
-      "admission": "pending",
-      "tests": {},
-      "recipe_sha": "66d242f9a066"
-    },
-    {
       "code": "C79",
       "zh": "弥散渐变颗粒",
       "family": "封面与海报",
@@ -2900,8 +2865,7 @@
         "C73",
         "C35",
         "C42",
-        "C16",
-        "C79"
+        "C16"
       ],
       "use": "小红书",
       "site_sample": "xhs",
@@ -3444,181 +3408,181 @@
       },
       {
         "id": "macaron",
-        "name": "马卡龙",
+        "name": "桃粉奶霜",
         "colors": [
           {
-            "name": "粉蓝 powder blue",
-            "hex": "#A8D8EA"
-          },
-          {
-            "name": "薰衣草紫 lavender",
-            "hex": "#D5C6E0"
-          },
-          {
-            "name": "薄荷绿 mint",
-            "hex": "#B5E5CF"
-          },
-          {
             "name": "蜜桃粉 peach",
-            "hex": "#F8D5C4"
+            "hex": "#F6C9B8"
           },
           {
-            "name": "奶油白 cream",
-            "hex": "#F5F0E8"
+            "name": "杏桃 apricot blush",
+            "hex": "#EFAE98"
+          },
+          {
+            "name": "玫瑰灰 rose taupe",
+            "hex": "#C98F86"
+          },
+          {
+            "name": "奶霜 cream",
+            "hex": "#FBEDE4"
+          },
+          {
+            "name": "米白 linen",
+            "hex": "#F7F1EA"
           }
         ],
-        "en": "Macaron",
+        "en": "Peach Cream",
         "group": "甜美",
-        "story": "下午茶橱窗里的粉蓝与蜜桃，轻、甜、不抢戏。"
+        "story": "刚出炉的蜜桃挞摆在窗边，奶霜上落着一层薄薄的粉色晨光。"
       },
       {
         "id": "earth",
-        "name": "大地",
+        "name": "焦糖亚麻",
         "colors": [
           {
-            "name": "咖啡棕 coffee brown",
-            "hex": "#8B5E3C"
+            "name": "可可 cocoa",
+            "hex": "#7A4E33"
           },
           {
             "name": "焦糖 caramel",
-            "hex": "#C08552"
+            "hex": "#B9783F"
           },
           {
-            "name": "沙色 sand",
-            "hex": "#DDB892"
+            "name": "小麦 wheat",
+            "hex": "#D9B88C"
           },
           {
-            "name": "橄榄绿 olive",
-            "hex": "#7F8C5A"
+            "name": "赭石 ochre",
+            "hex": "#A0683A"
           },
           {
-            "name": "亚麻白 linen",
-            "hex": "#F3E9DC"
+            "name": "亚麻 linen",
+            "hex": "#F2E8DA"
           }
         ],
-        "en": "Earth",
+        "en": "Caramel Linen",
         "group": "自然",
-        "story": "咖啡豆、焦糖与亚麻，像一间被阳光晒暖的手作工坊。"
+        "story": "午后的手作工坊，焦糖在铜锅里慢慢化开，阳光晒暖了一卷亚麻布。"
       },
       {
         "id": "morandi",
-        "name": "莫兰迪",
+        "name": "雾灰燕麦",
         "colors": [
           {
-            "name": "灰蓝 grey blue",
-            "hex": "#8E9AA6"
-          },
-          {
-            "name": "豆沙粉 dusty rose",
-            "hex": "#B99A96"
-          },
-          {
-            "name": "灰绿 sage grey",
-            "hex": "#9DA9A0"
+            "name": "雾灰 mist grey",
+            "hex": "#9C9893"
           },
           {
             "name": "燕麦 oat",
-            "hex": "#C4B7A6"
+            "hex": "#C9BBA8"
           },
           {
-            "name": "雾白 mist white",
-            "hex": "#E8E4DE"
+            "name": "豆沙 bean paste",
+            "hex": "#B39A93"
+          },
+          {
+            "name": "石墨 slate",
+            "hex": "#6F6D6A"
+          },
+          {
+            "name": "米灰 greige",
+            "hex": "#ECE7E0"
           }
         ],
-        "en": "Morandi",
+        "en": "Mist Oat",
         "group": "都市",
-        "story": "灰调里的克制：雾、燕麦与豆沙，安静得有分量。"
+        "story": "阴天的窗边，一碗燕麦粥冒着热气，雾把屋里所有的颜色都调成了低声。"
       },
       {
         "id": "forest",
-        "name": "森林",
+        "name": "松林晨雾",
         "colors": [
           {
-            "name": "松绿 pine green",
+            "name": "松针 pine",
             "hex": "#2F5D50"
           },
           {
-            "name": "苔绿 moss",
+            "name": "苔藓 moss",
             "hex": "#6B8F71"
           },
           {
-            "name": "嫩叶绿 leaf green",
+            "name": "嫩芽 sprout",
             "hex": "#A7C4A0"
           },
           {
-            "name": "麦秆黄 straw",
+            "name": "麦秆 straw",
             "hex": "#D9C9A3"
           },
           {
-            "name": "米白 off-white",
+            "name": "晨雾 morning haze",
             "hex": "#F4F1E8"
           }
         ],
-        "en": "Forest",
+        "en": "Pine Mist",
         "group": "自然",
-        "story": "松针、苔藓与麦秆，雨后的林间小径。"
+        "story": "雨后的松林小径，苔藓吸饱了水，晨雾还没有散开。"
       },
       {
         "id": "ocean",
-        "name": "海洋清透",
+        "name": "海盐浅湾",
         "colors": [
           {
-            "name": "深海蓝 deep sea blue",
+            "name": "深海 deep sea",
             "hex": "#1F6F8B"
           },
           {
-            "name": "海水蓝 sea blue",
+            "name": "潟湖 lagoon",
             "hex": "#4FA3C7"
           },
           {
-            "name": "浅水蓝 shallow blue",
+            "name": "浅滩 shallows",
             "hex": "#9ED3E6"
           },
           {
-            "name": "沙滩金 beach gold",
-            "hex": "#F2C57C"
+            "name": "细沙 sand",
+            "hex": "#E9CF9F"
           },
           {
-            "name": "浪花白 foam white",
+            "name": "浪花 foam",
             "hex": "#F7FBFC"
           }
         ],
-        "en": "Ocean",
+        "en": "Sea Salt Cove",
         "group": "自然",
-        "story": "从浅水到深海的一段渐变，再添一抹沙滩的金。"
+        "story": "退潮后的浅湾，海水一层层蓝下去，脚下是被太阳晒暖的细沙。"
       },
       {
         "id": "film",
-        "name": "复古胶片",
+        "name": "旧照暖阳",
         "colors": [
           {
-            "name": "砖红 brick red",
+            "name": "砖红 brick",
             "hex": "#C8553D"
           },
           {
-            "name": "橘黄 amber orange",
+            "name": "暖橘 tangerine",
             "hex": "#F2A65A"
           },
           {
-            "name": "奶黄 butter",
+            "name": "奶黄 cream yellow",
             "hex": "#F5D6A1"
           },
           {
-            "name": "灰青 muted teal",
-            "hex": "#588B8B"
+            "name": "栗棕 chestnut",
+            "hex": "#8C5A3C"
           },
           {
-            "name": "相纸白 print white",
+            "name": "相纸 photo paper",
             "hex": "#EFE7DA"
           }
         ],
-        "en": "Film",
+        "en": "Faded Photo",
         "group": "怀旧",
-        "story": "砖红与奶黄，旧相纸慢慢泛出的暖意。"
+        "story": "抽屉深处翻出一张旧照片，砖红褪成了暖橘，边角泛着奶黄的光。"
       },
       {
         "id": "qinglv",
-        "name": "国风青绿",
+        "name": "千里青绿",
         "colors": [
           {
             "name": "石青 azurite teal",
@@ -3641,13 +3605,13 @@
             "hex": "#F3EDE0"
           }
         ],
-        "en": "Azurite & Malachite",
+        "en": "Azure Mountains",
         "group": "东方",
-        "story": "石青与石绿落在宣纸上，像《千里江山图》的呼吸。"
+        "story": "石青与石绿一层层敷在绢上，远山像《千里江山图》那样缓缓起伏。"
       },
       {
         "id": "zhusha",
-        "name": "国风朱砂金",
+        "name": "朱砂泥金",
         "colors": [
           {
             "name": "朱砂红 cinnabar red",
@@ -3672,7 +3636,7 @@
         ],
         "en": "Cinnabar & Gold",
         "group": "东方",
-        "story": "朱砂、泥金与墨黑，庙堂和年节的庄重喜庆。"
+        "story": "红墙下刚贴好的春联，朱砂还没干透，泥金在灯笼下微微发亮。"
       },
       {
         "id": "mono",
@@ -3699,13 +3663,13 @@
             "hex": "#F7F5F0"
           }
         ],
-        "en": "Ink",
+        "en": "Single Ink",
         "group": "都市",
-        "story": "只用墨与纸，把力气都留给线条。"
+        "story": "一张宣纸、一方砚台，浓淡干湿之间，把力气都留给线条。"
       },
       {
         "id": "neon",
-        "name": "夜色霓虹",
+        "name": "午夜霓虹",
         "colors": [
           {
             "name": "夜空蓝 night navy",
@@ -3728,13 +3692,13 @@
             "hex": "#F9F871"
           }
         ],
-        "en": "Neon Night",
+        "en": "Midnight Neon",
         "group": "都市",
-        "story": "午夜街角的电光紫与霓虹粉，赛博都市的心跳。"
+        "story": "凌晨的雨街，霓虹招牌倒映在积水里，碎成一地电光紫与玫瑰粉。"
       },
       {
         "id": "sunset",
-        "name": "日落暖橙",
+        "name": "日落暖城",
         "colors": [
           {
             "name": "落日橙 sunset orange",
@@ -3757,9 +3721,9 @@
             "hex": "#FBF1E6"
           }
         ],
-        "en": "Sunset",
+        "en": "Sunset Town",
         "group": "怀旧",
-        "story": "天边最后十分钟：落日橙、蜜桃、杏黄，和一点豆沙玫瑰。"
+        "story": "傍晚最后十分钟，整座小城被晒成橘色，窗台上还留着一抹豆沙玫瑰。"
       },
       {
         "id": "creamcoffee",
@@ -3788,7 +3752,7 @@
         ],
         "en": "Cream & Coffee",
         "group": "甜美",
-        "story": "拿铁拉花的一层层：奶泡、焦糖与摩卡。"
+        "story": "拿铁杯里一圈圈拉花：奶泡、焦糖与摩卡，慢慢在勺子底下化开。"
       },
       {
         "id": "mintsoda",
@@ -3817,11 +3781,11 @@
         ],
         "en": "Mint Soda",
         "group": "甜美",
-        "story": "气泡往上冒的夏天：薄荷、冰蓝与青柠。"
+        "story": "夏天午后的玻璃杯，气泡一串串往上冒，薄荷叶和青柠在冰块间打转。"
       },
       {
         "id": "mistblue",
-        "name": "晨雾蓝",
+        "name": "湖面晨雾",
         "colors": [
           {
             "name": "雾蓝 mist blue",
@@ -3844,16 +3808,16 @@
             "hex": "#F3F6F8"
           }
         ],
-        "en": "Mist Blue",
+        "en": "Lake Mist",
         "group": "都市",
-        "story": "清晨六点的湖面，蓝里带一点紫的雾。"
+        "story": "清晨六点的湖面，水汽还浮着，蓝里透出一点淡淡的紫。"
       },
       {
         "id": "sakura",
         "name": "樱花和纸",
         "en": "Sakura Washi",
         "group": "甜美",
-        "story": "樱粉落在和纸上，淡得像一声轻叹。",
+        "story": "一片樱花落在和纸信笺上，粉得很淡，像一声轻轻的叹息。",
         "colors": [
           {
             "name": "樱粉 sakura",
@@ -3882,7 +3846,7 @@
         "name": "靛蓝夜航",
         "en": "Indigo Voyage",
         "group": "都市",
-        "story": "深靛的夜里只亮一盏灯，适合讲克制的技术与长途。",
+        "story": "深靛色的夜里，航船上只亮着一盏暖灯，安静地驶向远方。",
         "colors": [
           {
             "name": "夜靛 night indigo",
@@ -3911,7 +3875,7 @@
         "name": "琥珀秋叶",
         "en": "Amber Autumn",
         "group": "怀旧",
-        "story": "银杏落满台阶：琥珀、赭红，和旧书页的米黄。",
+        "story": "银杏落满石阶，琥珀与赭红叠在一起，像夹在旧书里的那片秋天。",
         "colors": [
           {
             "name": "琥珀 amber",
@@ -3940,7 +3904,7 @@
         "name": "紫藤薄暮",
         "en": "Wisteria Dusk",
         "group": "甜美",
-        "story": "黄昏后的紫藤架：淡紫、藕荷，和一线暖灰。",
+        "story": "黄昏后的紫藤架下，淡紫与藕荷垂成一道帘，风里还有一线暖灰。",
         "colors": [
           {
             "name": "紫藤 wisteria",

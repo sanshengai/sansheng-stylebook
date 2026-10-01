@@ -38,7 +38,7 @@ SOFTWARE.
 
 https://github.com/JimLiu/baoyu-skills — style descriptions (e.g. C11, C24, C29, C31, C32, C34,
 C35, C38, C39, C41, C46, C48, C50), format knowledge (content analysis, outline strategies,
-infographic layouts, slide outlines, comic storyboards, cover and Xiaohongshu style systems) and image-backend design ideas. Styles C78–C89 and the scene playbook were also informed by public design practice; only structure and ideas were taken, no prompt text or sample images were copied.
+infographic layouts, slide outlines, comic storyboards, cover and Xiaohongshu style systems) and image-backend design ideas. Styles C79–C89 and the scene playbook were also informed by public design practice; only structure and ideas were taken, no prompt text or sample images were copied.
 
 ```
 MIT License
