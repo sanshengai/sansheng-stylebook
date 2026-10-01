@@ -1,0 +1,74 @@
+{
+  "code": "C83",
+  "revision": 1,
+  "name": {
+    "zh": "大字报排印",
+    "en": "Oversized Type Poster"
+  },
+  "family": "封面与海报",
+  "fit": [
+    "讲道理",
+    "封面"
+  ],
+  "facets": {
+    "medium": "大字报排印",
+    "density": "极简留白"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "original",
+    "license": "original",
+    "notes": "2026-10-01 按封面与风格调研新增：吸收成熟做法（含 baoyu-skills，MIT，仅取思路），自行撰写配方；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "一个巨大汉字或短语占满画面",
+    "纯色背景加一个对比色块",
+    "字即图，无插画"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): A poster built almost entirely from one oversized bold Chinese character or short phrase, cropped by the frame, set on a flat saturated background with a single contrasting accent shape, tight tracking, typographic impact; the lettering is the image, no illustration.",
+    "text_mode": [
+      "native",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "一个巨大汉字或短语占满画面",
+      "纯色背景加一个对比色块",
+      "字即图，无插画"
+    ],
+    "must_not_see": [
+      "多个小图标",
+      "渐变与阴影",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "尚未实测",
+    "date": "2026-10-01",
+    "notes": "新增风格，仅完成合同校验；样图见按用途样图。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-10-01",
+      "note": "新增：风格调研后吸收，准入待验证"
+    }
+  ],
+  "inspiration": {
+    "names": [],
+    "prompt": ""
+  },
+  "uses": [
+    "封面",
+    "小红书",
+    "PPT"
+  ],
+  "renderer": "codex",
+  "samples": []
+}

@@ -2455,6 +2455,425 @@
       "admission": "pending",
       "tests": {},
       "recipe_sha": "d2ce6c16c4b3"
+    },
+    {
+      "code": "C78",
+      "zh": "瑞士网格单锚点色",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Swiss Grid Single Accent",
+      "revision": 1,
+      "essence": [
+        "冷白底与发丝线网格",
+        "全画只有一个强调色",
+        "极端字号对比的无衬线字"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "瑞士网格单锚点色",
+        "density": "极简留白"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "66d242f9a066"
+    },
+    {
+      "code": "C79",
+      "zh": "弥散渐变颗粒",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Aura Gradient with Grain",
+      "revision": 1,
+      "essence": [
+        "失焦的柔和色雾",
+        "整体细密胶片颗粒",
+        "中央大块留白"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "弥散渐变颗粒",
+        "density": "极简留白"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "f40c2ca1c3d4"
+    },
+    {
+      "code": "C80",
+      "zh": "单物件静物棚拍",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Studio Still Life",
+      "revision": 1,
+      "essence": [
+        "纯色背景上单个实物",
+        "柔和棚拍光与轻投影",
+        "两侧大量留白"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "单物件静物棚拍",
+        "density": "极简留白"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "b1b8fa8224e8"
+    },
+    {
+      "code": "C81",
+      "zh": "撕纸拼贴",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Torn-Paper Collage",
+      "revision": 1,
+      "essence": [
+        "撕边纸片与半色调剪影",
+        "手写批注与胶带",
+        "黑、奶油加一个热色点缀"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "撕纸拼贴",
+        "density": "极简留白"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "1c8e04f46596"
+    },
+    {
+      "code": "C82",
+      "zh": "软质 3D 轻拟物",
+      "family": "立体材质",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Soft 3D Clay Icons",
+      "revision": 1,
+      "essence": [
+        "磨砂塑料或黏土质感的圆润图标",
+        "柔和棚光与浅色背景",
+        "简洁的玩具感场景"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "软质 3D 轻拟物",
+        "density": "极简留白"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "24fc7f4cc989"
+    },
+    {
+      "code": "C83",
+      "zh": "大字报排印",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Oversized Type Poster",
+      "revision": 1,
+      "essence": [
+        "一个巨大汉字或短语占满画面",
+        "纯色背景加一个对比色块",
+        "字即图，无插画"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "大字报排印",
+        "density": "极简留白"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "4ef85cdd7039"
+    },
+    {
+      "code": "C84",
+      "zh": "电影海报几何剪影",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Mid-Century Film Poster Silhouette",
+      "revision": 1,
+      "essence": [
+        "手刻剪影与负形",
+        "两三个平涂色",
+        "一个象征性主体"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "电影海报几何剪影",
+        "density": "极简留白"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "16196679b7a0"
+    },
+    {
+      "code": "C85",
+      "zh": "赛博霓虹",
+      "family": "个性趣味",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "lightness_only",
+      "recolor_note": "",
+      "en": "Cyberpunk Neon",
+      "revision": 1,
+      "essence": [
+        "近黑底上的粉青霓虹描边",
+        "雨夜反光与全息金属",
+        "克制的故障与电路纹"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "赛博霓虹",
+        "density": "极简留白"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "57c3c7bc5588"
+    },
+    {
+      "code": "C86",
+      "zh": "孟菲斯企业插画",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Corporate Memphis",
+      "revision": 1,
+      "essence": [
+        "超大肢体的抽象人物",
+        "无描边平涂",
+        "漂浮的几何与植物"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "孟菲斯企业插画",
+        "density": "极简留白"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "f3a800dba963"
+    },
+    {
+      "code": "C87",
+      "zh": "折纸",
+      "family": "立体材质",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Origami",
+      "revision": 1,
+      "essence": [
+        "折痕清晰的几何纸形",
+        "平涂的红蓝绿金",
+        "清晰的投影"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "折纸",
+        "density": "极简留白"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "1ddb3cee8322"
+    },
+    {
+      "code": "C88",
+      "zh": "乐高式积木",
+      "family": "立体材质",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Toy-Brick Construction",
+      "revision": 1,
+      "essence": [
+        "可见凸点的塑料积木",
+        "红蓝黄绿经典配色",
+        "说明书式分步构图"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "乐高式积木",
+        "density": "极简留白"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "52f8dafe9845"
+    },
+    {
+      "code": "C89",
+      "zh": "地铁线路图",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Transit Map Diagram",
+      "revision": 1,
+      "essence": [
+        "只用 45 和 90 度的彩色线路",
+        "站点圆点与换乘标记",
+        "浅色背景与清晰标签"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "地铁线路图",
+        "density": "极简留白"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "1e9b1cbe2f65"
     }
   ],
   "removed": [
@@ -2482,7 +2901,7 @@
         "C35",
         "C42",
         "C16",
-        "C34"
+        "C79"
       ],
       "use": "小红书",
       "site_sample": "xhs",
@@ -2578,7 +2997,10 @@
       "zh": "四格漫画",
       "job": "讲故事",
       "formats": [
-        "comic-4panel"
+        "comic-4panel",
+        "comic-manga-page",
+        "comic-splash-page",
+        "comic-webtoon"
       ],
       "preview_test": "s1",
       "uses_structure": false,
@@ -4112,6 +4534,75 @@
       ],
       "density_max": "balanced",
       "compose": "A clear grammar situation: show each required action and its time cues in the same readable scene."
+    },
+    {
+      "id": "comic-manga-page",
+      "zh": "日漫标准页（5 格）",
+      "family": "叙事分格",
+      "ratio": "3:4",
+      "export_px": [
+        1536,
+        2048
+      ],
+      "safe_zone": {
+        "note": "5 格不规则页，层内顺序、层间自上而下"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 10
+      },
+      "count": [
+        1,
+        1
+      ],
+      "density_max": "sparse",
+      "compose": "One portrait manga page with five panels in three tiers. Tier 1: one wide panel across the full width. Tier 2: two panels, the left narrow and the right wide. Tier 3: two panels, the left wide and the right narrow. Read left to right, top to bottom. Thin black panel borders and white gutters of about 10px. Oval speech bubbles with tails in panels 1 to 4, a jagged shout bubble in panel 5. The main action sits in the largest panels, reactions in the small ones."
+    },
+    {
+      "id": "comic-splash-page",
+      "zh": "日漫大格页（大格加小格）",
+      "family": "叙事分格",
+      "ratio": "3:4",
+      "export_px": [
+        1536,
+        2048
+      ],
+      "safe_zone": {
+        "note": "大格先读，再读下方三个小格"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 10
+      },
+      "count": [
+        1,
+        1
+      ],
+      "density_max": "sparse",
+      "compose": "One portrait manga page. A dominant splash panel fills the top 60 percent of the page; below it three small equal panels in a row. Read the splash first, then the three small panels left to right. The splash carries the emotional peak with a large burst bubble or big lettering; the small panels carry setup and aftermath with small oval bubbles. Thin black borders, white gutters of about 10px."
+    },
+    {
+      "id": "comic-webtoon",
+      "zh": "竖向长条漫",
+      "family": "叙事分格",
+      "ratio": "9:16",
+      "export_px": [
+        1152,
+        2048
+      ],
+      "safe_zone": {
+        "note": "单列自上而下，格间留白 20 到 40px"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 10
+      },
+      "count": [
+        1,
+        1
+      ],
+      "density_max": "sparse",
+      "compose": "A vertical webtoon strip in a single column: four full-width panels stacked top to bottom with generous white space between them, panels of varying height (tall, medium, wide, tall), allowed to bleed off the side edges. Read top to bottom. Floating rounded speech bubbles may overlap the panel edges; a narrator box in the first panel."
     }
   ],
   "tests": {

@@ -19,7 +19,7 @@
         "C35",
         "C42",
         "C16",
-        "C34"
+        "C79"
       ],
       "use": "小红书",
       "site_sample": "xhs",
@@ -115,7 +115,10 @@
       "zh": "四格漫画",
       "job": "讲故事",
       "formats": [
-        "comic-4panel"
+        "comic-4panel",
+        "comic-manga-page",
+        "comic-splash-page",
+        "comic-webtoon"
       ],
       "preview_test": "s1",
       "uses_structure": false,

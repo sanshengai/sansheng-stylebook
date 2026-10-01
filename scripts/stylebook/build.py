@@ -225,7 +225,10 @@ THUMB = 640  # 长边像素；外部文件，页面本体只放文字与数据
 SITE_KINDS = {
     "s1": "人物", "s2": "物件", "s3": "信息图（简）",
     "cv": "封面（标题写在图上）", "wxi": "文章插图（概括图）", "xhs": "小红书知识卡", "ppt": "PPT 一页", "inf": "信息图", "cm": "四格漫画",
+    "cp": "日漫标准页", "cs": "日漫大格页", "cw": "竖向长条漫",
 }
+# 一组图：<种类> 是第一张，<种类>-2、-3…… 是同组后面的图
+SET_RE = re.compile(r"^(" + "|".join(["cv", "wxi", "xhs", "ppt", "inf", "cm", "cp", "cs", "cw"]) + r")(?:-(\d+))?$")
 # 用途说明与网格里默认展示的样图：不同用途要的东西不一样，看图的角度也不一样。
 
 
@@ -235,7 +238,7 @@ def _sample_files(code: str, cp: Path | None) -> dict[str, Path]:
         return out
     for sample in CT.load(code).get("samples", []):
         sp = cp.parent / sample["file"]
-        if sp.is_file() and sp.stem in SITE_KINDS:
+        if sp.is_file() and (sp.stem in SITE_KINDS or SET_RE.match(sp.stem)):
             out[sp.stem] = sp
     return out
 
@@ -277,9 +280,10 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
         for kind, src in files.items():
             (img_dir / f"{code}-{kind}.webp").write_bytes(_thumb_bytes(src))
             have.setdefault(code, []).append(kind)
-            if kind not in ratios:
+            base_kind = kind.split("-")[0]
+            if base_kind not in ratios:
                 with Image.open(src) as im:
-                    ratios[kind] = round(im.width / im.height, 3)
+                    ratios[base_kind] = round(im.width / im.height, 3)
     inspiration = {}
     for s in reg["styles"]:
         cp = contract_paths.get(s["code"])

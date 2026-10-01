@@ -1,0 +1,76 @@
+{
+  "code": "C81",
+  "revision": 1,
+  "name": {
+    "zh": "撕纸拼贴",
+    "en": "Torn-Paper Collage"
+  },
+  "family": "封面与海报",
+  "fit": [
+    "讲道理",
+    "封面"
+  ],
+  "facets": {
+    "medium": "撕纸拼贴",
+    "density": "极简留白"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "original",
+    "license": "original",
+    "notes": "2026-10-01 按封面与风格调研新增：吸收成熟做法（含 baoyu-skills，MIT，仅取思路），自行撰写配方；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "撕边纸片与半色调剪影",
+    "手写批注与胶带",
+    "黑、奶油加一个热色点缀"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): Torn-paper collage: ripped paper edges, halftone cut-out silhouettes, hand-written marginal notes, strips of tape, mismatched paper textures, a limited palette of black, cream and one hot accent colour, layered and slightly edgy composition with a clear focal piece.",
+    "text_mode": [
+      "native",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "撕边纸片与半色调剪影",
+      "手写批注与胶带",
+      "黑、奶油加一个热色点缀"
+    ],
+    "must_not_see": [
+      "光滑数码渐变",
+      "整齐对称的版式",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "尚未实测",
+    "date": "2026-10-01",
+    "notes": "新增风格，仅完成合同校验；样图见按用途样图。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-10-01",
+      "note": "新增：风格调研后吸收，准入待验证"
+    }
+  ],
+  "inspiration": {
+    "names": [
+      "杂志撕纸拼贴"
+    ],
+    "prompt": "杂志撕纸拼贴"
+  },
+  "uses": [
+    "封面",
+    "小红书",
+    "文章插图"
+  ],
+  "renderer": "codex",
+  "samples": []
+}
