@@ -1168,6 +1168,81 @@
       "names": [],
       "origin": "JimLiu/baoyu-skills #infographic/styles/hand-drawn-edu.md",
       "status": "contract"
+    },
+    {
+      "code": "C74",
+      "zh": "丝网印海报",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "uses": [
+        "封面",
+        "小红书",
+        "PPT",
+        "文章插图",
+        "音乐封面"
+      ],
+      "names": [
+        "Mondo 丝网印电影海报"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C75",
+      "zh": "暖纸克制双色",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "uses": [
+        "封面",
+        "文章插图",
+        "音乐封面"
+      ],
+      "names": [
+        "《纽约客》封面插画"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C76",
+      "zh": "杂志编辑封面",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "uses": [
+        "封面",
+        "小红书",
+        "PPT"
+      ],
+      "names": [
+        "Monocle、Kinfolk 杂志封面"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C77",
+      "zh": "叁笙深空",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "uses": [
+        "封面",
+        "音乐封面"
+      ],
+      "names": [],
+      "origin": "original",
+      "status": "contract"
     }
   ]
 }

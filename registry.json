@@ -2302,6 +2302,159 @@
       "admission": "pending",
       "tests": {},
       "recipe_sha": "d75afe64e17b"
+    },
+    {
+      "code": "C74",
+      "zh": "丝网印海报",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Screen-print Poster",
+      "revision": 1,
+      "essence": [
+        "平涂色块无描边、2 到 5 个专色",
+        "半色调网点与轻微套印错位",
+        "一个轮廓强烈的象征性主体"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "丝网印海报",
+        "density": "极简留白"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "3ba5fba62f8f"
+    },
+    {
+      "code": "C75",
+      "zh": "暖纸克制双色",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Warm Paper Two-Colour Editorial",
+      "revision": 1,
+      "essence": [
+        "暖奶油纸底与细纸纹",
+        "深墨色加一个暖金或红的点缀色",
+        "一个简洁有力的主体与大量留白"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "暖纸克制双色",
+        "density": "极简留白"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "1b3b2af54d2e"
+    },
+    {
+      "code": "C76",
+      "zh": "杂志编辑封面",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "en": "Editorial Magazine Cover",
+      "revision": 1,
+      "essence": [
+        "衬线大标题是画面主角",
+        "细线框、编号式小标签、清晰网格",
+        "克制的低饱和色加一个点缀色"
+      ],
+      "colors": [],
+      "text_mode": [
+        "native",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "杂志编辑封面",
+        "density": "极简留白"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "1ae245febc5f"
+    },
+    {
+      "code": "C77",
+      "zh": "叁笙深空",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "locked",
+      "recolor_note": "",
+      "en": "Sansheng Deep Space",
+      "revision": 1,
+      "essence": [
+        "深炭底、左侧大标题加半隐英文影字",
+        "品牌绿作唯一点缀",
+        "右侧一个认得出的主体物件加 2 到 3 个小徽章"
+      ],
+      "colors": [
+        {
+          "name": "深炭底 deep charcoal",
+          "hex": "#0E0E10"
+        },
+        {
+          "name": "品牌绿 brand green",
+          "hex": "#0E9F6E"
+        },
+        {
+          "name": "纯白 white",
+          "hex": "#FFFFFF"
+        }
+      ],
+      "text_mode": [
+        "native",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "叁笙深空",
+        "density": "极简留白"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "d2ce6c16c4b3"
     }
   ],
   "removed": [
