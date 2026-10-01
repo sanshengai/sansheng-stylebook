@@ -1,0 +1,76 @@
+{
+  "code": "C78",
+  "revision": 1,
+  "name": {
+    "zh": "瑞士网格单锚点色",
+    "en": "Swiss Grid Single Accent"
+  },
+  "family": "封面与海报",
+  "fit": [
+    "讲道理",
+    "封面"
+  ],
+  "facets": {
+    "medium": "瑞士网格单锚点色",
+    "density": "极简留白"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "original",
+    "license": "original",
+    "notes": "2026-10-01 按封面与风格调研新增：吸收成熟做法（含 baoyu-skills，MIT，仅取思路），自行撰写配方；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "冷白底与发丝线网格",
+    "全画只有一个强调色",
+    "极端字号对比的无衬线字"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): Swiss International Style: a cold off-white page with a hairline-rule grid and right-angle layout, one single anchor accent colour (international klein blue, lemon or safety orange) used sparingly, huge sans-serif numerals or words set against tiny captions, extreme scale contrast, no gradients, no decoration, no illustration clutter.",
+    "text_mode": [
+      "native",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "冷白底与发丝线网格",
+      "全画只有一个强调色",
+      "极端字号对比的无衬线字"
+    ],
+    "must_not_see": [
+      "渐变、阴影、装饰性插图",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "尚未实测",
+    "date": "2026-10-01",
+    "notes": "新增风格，仅完成合同校验；样图见按用途样图。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-10-01",
+      "note": "新增：风格调研后吸收，准入待验证"
+    }
+  ],
+  "inspiration": {
+    "names": [
+      "国际主义平面风格（Swiss Style）"
+    ],
+    "prompt": "国际主义平面风格（Swiss Style）"
+  },
+  "uses": [
+    "封面",
+    "PPT",
+    "信息图",
+    "文章插图"
+  ],
+  "renderer": "codex",
+  "samples": []
+}

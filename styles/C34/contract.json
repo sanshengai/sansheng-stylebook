@@ -78,11 +78,8 @@
     "prompt": "Wired and The Verge editorial infographics"
   },
   "uses": [
-    "小红书",
     "信息图",
-    "PPT",
-    "漫画",
-    "绘本"
+    "PPT"
   ],
   "renderer": "codex",
   "samples": [

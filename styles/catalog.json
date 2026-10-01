@@ -525,11 +525,8 @@
         "封面"
       ],
       "uses": [
-        "小红书",
         "信息图",
-        "PPT",
-        "漫画",
-        "绘本"
+        "PPT"
       ],
       "names": [
         "Wired",
@@ -1241,6 +1238,237 @@
         "音乐封面"
       ],
       "names": [],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C78",
+      "zh": "瑞士网格单锚点色",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "uses": [
+        "封面",
+        "PPT",
+        "信息图",
+        "文章插图"
+      ],
+      "names": [
+        "国际主义平面风格（Swiss Style）"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C79",
+      "zh": "弥散渐变颗粒",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "uses": [
+        "封面",
+        "小红书",
+        "PPT",
+        "音乐封面"
+      ],
+      "names": [
+        "弥散渐变（Aura）海报"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C80",
+      "zh": "单物件静物棚拍",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "uses": [
+        "封面",
+        "文章插图",
+        "音乐封面",
+        "小红书"
+      ],
+      "names": [],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C81",
+      "zh": "撕纸拼贴",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "uses": [
+        "封面",
+        "小红书",
+        "文章插图"
+      ],
+      "names": [
+        "杂志撕纸拼贴"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C82",
+      "zh": "软质 3D 轻拟物",
+      "family": "立体材质",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "uses": [
+        "封面",
+        "小红书",
+        "PPT",
+        "文章插图",
+        "信息图"
+      ],
+      "names": [],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C83",
+      "zh": "大字报排印",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "uses": [
+        "封面",
+        "小红书",
+        "PPT"
+      ],
+      "names": [],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C84",
+      "zh": "电影海报几何剪影",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "uses": [
+        "封面",
+        "文章插图",
+        "PPT",
+        "音乐封面"
+      ],
+      "names": [
+        "Saul Bass 电影海报"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C85",
+      "zh": "赛博霓虹",
+      "family": "个性趣味",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "uses": [
+        "封面",
+        "PPT",
+        "信息图",
+        "小红书",
+        "音乐封面"
+      ],
+      "names": [
+        "赛博朋克（《银翼杀手》美学）"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C86",
+      "zh": "孟菲斯企业插画",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "uses": [
+        "文章插图",
+        "PPT",
+        "封面",
+        "小红书",
+        "信息图"
+      ],
+      "names": [
+        "Corporate Memphis、孟菲斯设计"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C87",
+      "zh": "折纸",
+      "family": "立体材质",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "uses": [
+        "封面",
+        "信息图",
+        "文章插图",
+        "小红书"
+      ],
+      "names": [],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C88",
+      "zh": "乐高式积木",
+      "family": "立体材质",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "uses": [
+        "信息图",
+        "小红书",
+        "文章插图",
+        "封面"
+      ],
+      "names": [
+        "乐高式积木（原创角色）"
+      ],
+      "origin": "original",
+      "status": "contract"
+    },
+    {
+      "code": "C89",
+      "zh": "地铁线路图",
+      "family": "讲道理·知识图解",
+      "fit": [
+        "讲道理"
+      ],
+      "uses": [
+        "信息图",
+        "PPT",
+        "文章插图"
+      ],
+      "names": [
+        "地铁线路图（Harry Beck）"
+      ],
       "origin": "original",
       "status": "contract"
     }

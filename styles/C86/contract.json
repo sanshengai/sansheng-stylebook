@@ -1,0 +1,78 @@
+{
+  "code": "C86",
+  "revision": 1,
+  "name": {
+    "zh": "孟菲斯企业插画",
+    "en": "Corporate Memphis"
+  },
+  "family": "讲道理·知识图解",
+  "fit": [
+    "讲道理",
+    "封面"
+  ],
+  "facets": {
+    "medium": "孟菲斯企业插画",
+    "density": "极简留白"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "original",
+    "license": "original",
+    "notes": "2026-10-01 按封面与风格调研新增：吸收成熟做法（含 baoyu-skills，MIT，仅取思路），自行撰写配方；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "超大肢体的抽象人物",
+    "无描边平涂",
+    "漂浮的几何与植物"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): Corporate Memphis flat vector illustration: oversized abstract human figures with tiny heads and elongated limbs, solid fills without outlines, floating geometric shapes, leaves and plants, vibrant purple, orange, teal and yellow on a clean white ground, friendly and modern.",
+    "text_mode": [
+      "native",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free"
+  },
+  "qa": {
+    "must_see": [
+      "超大肢体的抽象人物",
+      "无描边平涂",
+      "漂浮的几何与植物"
+    ],
+    "must_not_see": [
+      "写实比例人物",
+      "厚重描边",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "尚未实测",
+    "date": "2026-10-01",
+    "notes": "新增风格，仅完成合同校验；样图见按用途样图。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-10-01",
+      "note": "新增：风格调研后吸收，准入待验证"
+    }
+  ],
+  "inspiration": {
+    "names": [
+      "Corporate Memphis、孟菲斯设计"
+    ],
+    "prompt": "Corporate Memphis、孟菲斯设计"
+  },
+  "uses": [
+    "文章插图",
+    "PPT",
+    "封面",
+    "小红书",
+    "信息图"
+  ],
+  "renderer": "codex",
+  "samples": []
+}

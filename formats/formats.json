@@ -576,6 +576,75 @@
       ],
       "density_max": "balanced",
       "compose": "A clear grammar situation: show each required action and its time cues in the same readable scene."
+    },
+    {
+      "id": "comic-manga-page",
+      "zh": "日漫标准页（5 格）",
+      "family": "叙事分格",
+      "ratio": "3:4",
+      "export_px": [
+        1536,
+        2048
+      ],
+      "safe_zone": {
+        "note": "5 格不规则页，层内顺序、层间自上而下"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 10
+      },
+      "count": [
+        1,
+        1
+      ],
+      "density_max": "sparse",
+      "compose": "One portrait manga page with five panels in three tiers. Tier 1: one wide panel across the full width. Tier 2: two panels, the left narrow and the right wide. Tier 3: two panels, the left wide and the right narrow. Read left to right, top to bottom. Thin black panel borders and white gutters of about 10px. Oval speech bubbles with tails in panels 1 to 4, a jagged shout bubble in panel 5. The main action sits in the largest panels, reactions in the small ones."
+    },
+    {
+      "id": "comic-splash-page",
+      "zh": "日漫大格页（大格加小格）",
+      "family": "叙事分格",
+      "ratio": "3:4",
+      "export_px": [
+        1536,
+        2048
+      ],
+      "safe_zone": {
+        "note": "大格先读，再读下方三个小格"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 10
+      },
+      "count": [
+        1,
+        1
+      ],
+      "density_max": "sparse",
+      "compose": "One portrait manga page. A dominant splash panel fills the top 60 percent of the page; below it three small equal panels in a row. Read the splash first, then the three small panels left to right. The splash carries the emotional peak with a large burst bubble or big lettering; the small panels carry setup and aftermath with small oval bubbles. Thin black borders, white gutters of about 10px."
+    },
+    {
+      "id": "comic-webtoon",
+      "zh": "竖向长条漫",
+      "family": "叙事分格",
+      "ratio": "9:16",
+      "export_px": [
+        1152,
+        2048
+      ],
+      "safe_zone": {
+        "note": "单列自上而下，格间留白 20 到 40px"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 10
+      },
+      "count": [
+        1,
+        1
+      ],
+      "density_max": "sparse",
+      "compose": "A vertical webtoon strip in a single column: four full-width panels stacked top to bottom with generous white space between them, panels of varying height (tall, medium, wide, tall), allowed to bleed off the side edges. Read top to bottom. Floating rounded speech bubbles may overlap the panel edges; a narrator box in the first panel."
     }
   ],
   "note": "density_max：该格式一张图允许的最高信息密度（sparse 1–2 点 / balanced 3–4 点 / dense 5–8 点），手机上小图放不下更多要点。"

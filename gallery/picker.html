@@ -84,7 +84,7 @@ dialog::backdrop{background:rgba(2,4,8,.72);backdrop-filter:blur(6px)}
 .thumbs{display:flex;gap:8px;flex-wrap:wrap}
 .thumb{border:2px solid transparent;background:var(--ctl);border-radius:10px;padding:0;cursor:pointer;width:84px;overflow:hidden;color:var(--ink);font:inherit}
 .thumb[aria-pressed="true"]{border-color:var(--green2)}
-.thumb img{width:100%;height:62px;object-fit:cover;display:block}.thumb span{display:block;font-size:11px;color:var(--soft);padding:2px 4px;text-align:center}
+.thumb img{width:100%;height:62px;object-fit:cover;display:block}.thumbs{max-height:132px;overflow:auto}.thumb span{display:block;font-size:11px;color:var(--soft);padding:2px 4px;text-align:center}
 .vhint{font-size:12.5px;color:var(--soft);min-height:1.2em}
 .info{padding:26px 28px 22px;overflow:auto;display:flex;flex-direction:column;gap:6px}
 .ttl{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding-right:40px}.ttl h2{margin:0;font-size:26px}.ttl .code{font-family:var(--mono);color:var(--green2);font-weight:800}
@@ -153,7 +153,7 @@ p.small{font-size:12.5px;color:var(--soft);margin:8px 0 0}.btn.sm{font-size:13px
 <dialog id="dlg" aria-label="画风详情"><div class="dlg">
   <button class="dlg-x" id="dlgX" aria-label="关闭">×</button>
   <div class="dlg-grid">
-    <div class="viewer"><img class="main-img" id="mainImg" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><div class="thumbs" id="thumbs"></div><div class="vhint" id="vhint"></div></div>
+    <div class="viewer"><div class="row" id="grpTabs"></div><img class="main-img" id="mainImg" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><div class="thumbs" id="thumbs"></div><div class="vhint" id="vhint"></div></div>
     <div class="info">
       <div class="ttl"><span class="code" id="dCodeTag"></span><h2 id="dName"></h2><span class="pill">试用中</span></div>
       <p class="origin" id="dOrigin"></p><p class="ess" id="dEss"></p>
@@ -188,11 +188,17 @@ const IMG=(id,k)=>BASE+'img/'+id+'-'+k+'.webp';
 const cand=id=>M.cands.find(c=>c.id===id);
 const scene=id=>M.scenes.find(s=>s.id===id);
 const pal=id=>M.pals.find(p=>p.id===id);
-const S={tab:'styles',scene:null,angle:'use',q:'',sel:null,useFor:null,pal:'orig',light:0,sat:0,hex:[],img:null};
+const S={grp:null,tab:'styles',scene:null,angle:'use',q:'',sel:null,useFor:null,pal:'orig',light:0,sat:0,hex:[],img:null};
 let mine={};
 try{mine=JSON.parse(localStorage.getItem('sb-mine')||'{}')||{};}catch(e){mine={};}
 const saveMine=()=>{try{localStorage.setItem('sb-mine',JSON.stringify(mine));}catch(e){}};
 const GROUPS=['甜美','自然','东方','都市','怀旧'];
+const IMG_GROUPS=[['cv','封面'],['xhs','小红书'],['wxi','横版插图'],['inf','竖版信息图'],['ppt','PPT'],['comic','漫画'],['same','同题对比'],['anchor','原作参考']];
+const GROUP_KINDS={cv:['cv'],xhs:['xhs'],wxi:['wxi'],inf:['inf'],ppt:['ppt'],comic:['cm','cp','cs','cw'],same:['s1','s2','s3'],anchor:['anchor']};
+const baseKind=k=>k.replace(/-\d+$/,'');
+const groupOf=k=>{const b=baseKind(k);return Object.keys(GROUP_KINDS).find(g=>GROUP_KINDS[g].includes(b));};
+function stems(c,g){const out=[];GROUP_KINDS[g].forEach(b=>{if(c.imgs.includes(b))out.push(b);for(let i=2;i<=9;i++)if(c.imgs.includes(b+'-'+i))out.push(b+'-'+i);});return out;}
+function stemLabel(k){const b=baseKind(k),n=(k.match(/-(\d+)$/)||[])[1];const t=b==='anchor'?'原作参考':(M.kinds[b]||b);return n?t+' '+n:t+(n===undefined&&(M.kinds[b]&&['xhs','wxi','inf','ppt'].includes(b))?' 1':'');}
 /* ---------- 状态 ↔ 网址 ---------- */
 function readHash(){const p=new URLSearchParams(location.hash.slice(1));
  S.tab=p.get('tab')==='palettes'?'palettes':'styles';
@@ -269,17 +275,20 @@ function openDetail(id){
  const ok=usable(c).map(s=>s.id);
  if(!S.useFor||!M.scenes.some(s=>s.id===S.useFor)||(S.scene&&S.useFor!==S.scene))S.useFor=S.scene||ok[0]||M.first;
  if(c.recolor==='locked'&&S.pal!=='orig'){S.pal='orig';S.light=0;S.sat=0;S.hex=[];}
- S.img=sampleKind(c);renderDetail();if(!$('dlg').open)$('dlg').showModal();writeHash();}
+ S.grp=null;S.img=sampleKind(c);renderDetail();if(!$('dlg').open)$('dlg').showModal();writeHash();}
 function closeDetail(){if($('dlg').open)$('dlg').close();S.sel=null;writeHash();}
 function renderDetail(){
  const c=cand(S.sel);if(!c)return;
  $('dCodeTag').textContent=c.id;$('dName').textContent=c.name;
  $('dOrigin').innerHTML=c.origin?'原作灵感：<b>'+esc(c.origin)+'</b>':'';$('dEss').textContent=c.essence;
  const sc=S.useFor?scene(S.useFor):null;
- // 图：本用途样图优先，其次同题三张、封面 / 概括图等，最后原作参考
- const order=[];if(sc&&c.imgs.includes(sc.sample))order.push(sc.sample);['s1','s2','s3','cv','wxi','xhs','ppt','inf','cm','anchor'].forEach(k=>{if(c.imgs.includes(k)&&!order.includes(k))order.push(k);});
+ // 图：按「封面 / 小红书 / 横版插图 / 竖版信息图 / PPT / 漫画 / 同题 / 原作」分组；默认打开本用途那一组
+ const avail=IMG_GROUPS.filter(([g])=>stems(c,g).length);
+ if(!S.grp||!avail.some(([g])=>g===S.grp)){const want=sc&&c.imgs.includes(sc.sample)?groupOf(sc.sample):null;S.grp=(want&&avail.some(([g])=>g===want))?want:(avail[0]||['same'])[0];}
+ const order=stems(c,S.grp);
  if(!order.includes(S.img))S.img=order[0];
- $('thumbs').innerHTML=order.map(k=>'<button class="thumb" data-img="'+k+'" aria-pressed="'+(k===S.img)+'"><img alt="" src="'+IMG(c.id,k)+'"><span>'+esc(k==='anchor'?'原作参考':M.kinds[k]||k)+'</span></button>').join('');
+ $('grpTabs').innerHTML=avail.map(([g,t])=>'<button class="chip small" data-grp="'+g+'" aria-pressed="'+(g===S.grp)+'">'+t+(stems(c,g).length>1?' · '+stems(c,g).length:'')+'</button>').join('');
+ $('thumbs').innerHTML=order.map(k=>'<button class="thumb" data-img="'+k+'" aria-pressed="'+(k===S.img)+'"><img alt="" src="'+IMG(c.id,k)+'"><span>'+esc(stemLabel(k))+'</span></button>').join('');
  const mi=$('mainImg');mi.removeAttribute('data-tinted');mi.alt=c.name+' 样图';mi.src=IMG(c.id,S.img);
  const cols=palColors();const on=!(c.recolor==='locked')&&S.pal!=='orig'&&cols.length>=2&&S.img!=='anchor';
  $('vhint').textContent=on?'样图上的色彩是「色调示意」，按色系粗略映射，正式出图以生成结果为准。':(S.img==='anchor'?'这是原作的风格参考图，不是用这套手册生成的。':'');
@@ -320,6 +329,7 @@ document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)r
  else if(t.dataset.u){S.scene=t.dataset.u==='all'?null:t.dataset.u;if(!S.scene&&S.angle==='use')S.angle='s1';S.useFor=S.scene||S.useFor;renderAll();}
  else if(t.dataset.a){S.angle=t.dataset.a;renderAll();}
  else if(t.dataset.s&&t.classList.contains('card')){openDetail(t.dataset.s);}
+ else if(t.dataset.grp){S.grp=t.dataset.grp;S.img=null;renderDetail();}
  else if(t.dataset.img){S.img=t.dataset.img;renderDetail();}
  else if(t.dataset.for){S.useFor=t.dataset.for;renderDetail();}
  else if(t.dataset.p&&t.classList.contains('pchip')){S.pal=t.dataset.p;if(S.pal==='orig'||S.pal==='brand'){S.light=0;S.sat=0;}if(S.pal!=='brand')S.hex=[];renderDetail();writeHash();}
