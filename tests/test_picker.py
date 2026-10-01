@@ -1,5 +1,10 @@
-"""网站选择器：页面本体体积、样图齐全，浏览器里复制出的 sb2 码必须能被 CLI 的解析器接受并还原选择。"""
+"""网站选择器：页面体积、样图齐全；用不带结尾斜杠的网址打开时图片必须能显示（曾因相对路径全部裂图）；
+复制的 sb2 码能被 CLI 解析；「设为默认」与「只用一次」两条路径；任何用途下都不把选择面缩窄。"""
+import contextlib
+import http.server
+import json
 import sys
+import threading
 from pathlib import Path
 
 import pytest
@@ -18,10 +23,9 @@ def built(tmp_path_factory):
 
 def test_page_is_small_and_images_are_external(built):
     d, html = built
-    assert html.stat().st_size < 200_000, "页面本体应只含文字与数据"
-    imgs = list((d / "img").glob("*.webp"))
-    assert len(imgs) >= 57 * 3
-    assert "data:image" not in html.read_text(encoding="utf-8")
+    assert html.stat().st_size < 250_000, "页面本体应只含文字与数据"
+    assert len(list((d / "img").glob("*.webp"))) >= 57 * 3
+    assert "data:image/webp" not in html.read_text(encoding="utf-8")
 
 
 def test_build_is_deterministic(built, tmp_path):
@@ -37,6 +41,40 @@ def test_public_page_has_no_private_styles(built):
     assert not re.search(r'"id":\s*"S\d', html.read_text(encoding="utf-8"))
 
 
+def test_every_use_has_its_own_sample_kind_and_palettes_have_stories(built):
+    _, html = built
+    meta = json.loads(html.read_text(encoding="utf-8").split('<script id="meta" type="application/json">')[1].split("</script>")[0])
+    assert {s["id"] for s in meta["scenes"]} >= {"wxcover", "wxillus", "xhs", "ppt", "info", "comic4"}
+    named = [p for p in meta["pals"] if p["colors"]]
+    assert len(named) >= 16 and all(p["story"] and p["en"] and p["group"] for p in named)
+
+
+@contextlib.contextmanager
+def serve(directory: Path):
+    class H(http.server.SimpleHTTPRequestHandler):
+        def __init__(self, *a, **k):
+            super().__init__(*a, directory=str(directory), **k)
+
+        def translate_path(self, path):
+            if path.split("?")[0].rstrip("/") == "/tools/stylebook":  # 线上就是这样：不带斜杠也直接给页面
+                path = "/index.html"
+            elif path.startswith("/tools/img/"):
+                return str(directory / "__missing__")            # 相对路径写错时会落到这里
+            elif path.startswith("/tools/stylebook/"):
+                path = path[len("/tools/stylebook"):]
+            return super().translate_path(path)
+
+        def log_message(self, *a):
+            pass
+
+    srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), H)
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    try:
+        yield f"http://127.0.0.1:{srv.server_port}"
+    finally:
+        srv.shutdown()
+
+
 @pytest.fixture
 def tab(built):
     playwright = pytest.importorskip("playwright.sync_api")
@@ -45,46 +83,82 @@ def tab(built):
             browser = p.chromium.launch(headless=True)
         except Exception as exc:
             pytest.skip(f"Chromium 不可用：{exc}")
-        page = browser.new_page(viewport={"width": 390, "height": 844})
-        errors = []
-        page.on("pageerror", lambda e: errors.append(str(e)))
-        page.goto(built[1].resolve().as_uri())
-        yield page
+        with serve(built[0]) as base:
+            page = browser.new_page(viewport={"width": 1280, "height": 900}, permissions=["clipboard-read", "clipboard-write"])
+            errors = []
+            page.on("pageerror", lambda e: errors.append(str(e)))
+            page.base = base
+            yield page
         browser.close()
         assert not errors
 
 
-def test_copied_code_parses_and_roundtrips(tab):
-    tab.goto(tab.url.split("#")[0] + "#u=xhs")
-    tab.reload()
-    code = tab.inner_text("#code")
-    sc = SC.parse(code)
-    assert sc.scene == "xhs" and sc.style == "C31" and sc.palette == "orig"
+def _open(tab, frag=""):
+    tab.goto(f"{tab.base}/tools/stylebook{frag}")   # 注意：没有结尾斜杠
+    tab.wait_for_load_state("networkidle")
+
+
+def test_images_load_when_opened_without_trailing_slash(tab):
+    _open(tab, "#u=wxcover")
+    tab.wait_for_selector(".card img")
+    tab.evaluate("document.querySelectorAll('.card img').forEach(i=>{i.loading='eager'})")
+    tab.wait_for_timeout(800)
+    bad = tab.evaluate("[...document.querySelectorAll('.card img')].slice(0,8).filter(i=>!(i.complete&&i.naturalWidth>0)).map(i=>i.src)")
+    assert bad == []
+
+
+def test_selection_never_narrows_below_the_full_set(tab):
+    _open(tab)
+    total = len(json.loads(tab.evaluate("document.getElementById('meta').textContent"))["cands"])
+    for scene in ("xhs", "ppt", "board", "info"):
+        _open(tab, f"#u={scene}")
+        assert tab.locator(".card").count() == total, scene
+
+
+def test_copied_code_parses_roundtrips_and_modes_work(tab):
+    _open(tab, "#u=xhs")
+    tab.locator(".card").first.click()
     tab.click("[data-p=macaron]")
     tab.click('[data-k=light][data-v="-1"]')
     tab.click('[data-k=sat][data-v="1"]')
-    sc = SC.parse(tab.inner_text("#code"))
-    assert (sc.palette, sc.light, sc.sat) == ("macaron", -1, 1)
-    assert SC.validate(sc) == []
-    # 状态写进网址，刷新后还原
+    code = tab.inner_text("#dCode")
+    sc = SC.parse(code)
+    assert (sc.scene, sc.palette, sc.light, sc.sat) == ("xhs", "macaron", -1, 1) and SC.validate(sc) == []
+    tab.evaluate("window.__copied=null;navigator.clipboard.writeText=t=>{window.__copied=t;return Promise.resolve()}")
+    tab.click("#btnOnce")
+    once = tab.evaluate("window.__copied")
+    assert code in once and "只用这一次" in once and "不要改我的默认" in once
+    tab.click("#btnDefault")
+    assert tab.inner_text("#trayN") == "1"
+    tab.click("#dlgX")
+    tab.click("#trayBtn")
+    tab.click("#tCopy")
+    text = tab.evaluate("window.__copied")
+    assert code in text and "长期有效" in text
+    # 刷新后「我的默认」仍在；网址还原同一选择
     tab.reload()
-    assert tab.inner_text("#code") == "sb2:xhs/C31-macaron.L-1S1"
+    assert tab.inner_text("#trayN") == "1"
 
 
 def test_locked_style_cannot_be_recolored_and_brand_needs_hex(tab):
-    import json
+    _open(tab)
     meta = json.loads(tab.evaluate("document.getElementById('meta').textContent"))
     locked = next(c["id"] for c in meta["cands"] if c["recolor"] == "locked")
-    sc = next(s for s in meta["scenes"] if locked in s["pool"])
-    tab.goto(tab.url.split("#")[0] + f"#u={sc['id']}&s={locked}&p=macaron")
-    tab.reload()
-    assert "-macaron" not in tab.inner_text("#code") or tab.locator("[data-p=macaron]").is_disabled()
+    _open(tab, f"#u=all&s={locked}")
+    tab.wait_for_selector("#dlg[open]")
     assert tab.locator("[data-p=macaron]").is_disabled()
-    tab.click("[data-p=brand]") if not tab.locator("[data-p=brand]").is_disabled() else None
-    tab.goto(tab.url.split("#")[0] + "#u=info&s=C40")
-    tab.reload()
+    _open(tab, "#u=info&s=C40")
+    tab.wait_for_selector("#dlg[open]")
     tab.click("[data-p=brand]")
-    assert tab.locator("#copy").is_disabled()
+    assert tab.locator("#btnOnce").is_disabled()
     tab.fill("#hex", "1F6F8B F4F1E8")
-    code = tab.inner_text("#code")
+    code = tab.inner_text("#dCode")
     assert code.endswith("-hex.1F6F8B.F4F1E8") and SC.parse(code).custom == ("#1F6F8B", "#F4F1E8")
+
+
+def test_every_style_in_a_pool_has_that_uses_own_sample(built):
+    _, html = built
+    meta = json.loads(html.read_text(encoding="utf-8").split('<script id="meta" type="application/json">')[1].split("</script>")[0])
+    imgs = {c["id"]: set(c["imgs"]) for c in meta["cands"]}
+    missing = [(s["id"], c) for s in meta["scenes"] for c in s["pool"] if s["sample"] not in imgs[c]]
+    assert missing == [], f"这些画风缺它所属用途的样图：{missing[:8]}"

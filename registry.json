@@ -2331,7 +2331,9 @@
         "C16",
         "C34"
       ],
-      "use": "小红书"
+      "use": "小红书",
+      "site_sample": "xhs",
+      "site_note": "小红书、微博以图为主、文字为辅：3:4 竖图，一眼抓人，概括性要强，文字精炼。下面是知识卡的样子。"
     },
     {
       "id": "wxillus",
@@ -2350,7 +2352,9 @@
         "C60",
         "C21"
       ],
-      "use": "文章插图"
+      "use": "文章插图",
+      "site_sample": "wxi",
+      "site_note": "文章插图要替读者概括上下文——流程、对比、四象限、要点——图和文字一起把话讲清楚。下面每张都是一张「概括图」。"
     },
     {
       "id": "wxcover",
@@ -2370,7 +2374,9 @@
         "C19",
         "C59"
       ],
-      "use": "封面"
+      "use": "封面",
+      "site_sample": "cv",
+      "site_note": "封面要在一秒内抓住人：一个有冲击力的画面，加上几个字的标题点明主旨，构图要有质感。下面每张都把标题写在了图上。"
     },
     {
       "id": "ppt",
@@ -2389,7 +2395,9 @@
         "C42",
         "C41"
       ],
-      "use": "PPT"
+      "use": "PPT",
+      "site_sample": "ppt",
+      "site_note": "PPT 是一页一个主旨：讲者讲什么，这一页就展示什么——类比、数据、几个部分。下面是「一页」的样子。"
     },
     {
       "id": "info",
@@ -2408,7 +2416,9 @@
         "C31",
         "C32"
       ],
-      "use": "信息图"
+      "use": "信息图",
+      "site_sample": "inf",
+      "site_note": "信息图把一件事讲完整：步骤、层级、关系，信息密度高，文字和图标要对得上。"
     },
     {
       "id": "comic4",
@@ -2427,7 +2437,9 @@
         "C57",
         "C48"
       ],
-      "use": "漫画"
+      "use": "漫画",
+      "site_sample": "cm",
+      "site_note": "四格漫画用连续的静态画面讲一个小故事：人物前后一致，动作一格推进一格，对白简短。"
     },
     {
       "id": "book",
@@ -2446,7 +2458,9 @@
         "C06",
         "C60"
       ],
-      "use": "绘本"
+      "use": "绘本",
+      "site_sample": "s1",
+      "site_note": "绘本：一页一个场景，人物和氛围前后统一。这里用同一组人物题对比画风。"
     },
     {
       "id": "board",
@@ -2465,7 +2479,9 @@
         "C49",
         "C63"
       ],
-      "use": "分镜"
+      "use": "分镜",
+      "site_sample": "s1",
+      "site_note": "视频分镜首帧：像电影里的一帧，主体与镜头清楚。这里用同一组人物题对比画风。"
     },
     {
       "id": "audio",
@@ -2485,7 +2501,9 @@
         "C17",
         "C01"
       ],
-      "use": "音乐封面"
+      "use": "音乐封面",
+      "site_sample": "s1",
+      "site_note": "播客 / 音乐封面：方形，一个意象，缩小了也认得出。这里用同一组人物题对比画风。"
     },
     {
       "id": "sticker",
@@ -2527,7 +2545,9 @@
         "textbook-vocab"
       ],
       "preview_test": "s2",
-      "use": "教材"
+      "use": "教材",
+      "site_sample": "s2",
+      "site_note": "教材单词图：一个主体、纯色背景、数量明确，下面留给单词。这里用「物件」题对比画风。"
     },
     {
       "job": "讲道理",
@@ -2550,7 +2570,9 @@
         "textbook-grammar"
       ],
       "preview_test": "s1",
-      "use": "教材"
+      "use": "教材",
+      "site_sample": "s1",
+      "site_note": "教材语法图：用一个生活场景演示语法点。这里用同一组人物题对比画风。"
     }
   ],
   "structures": [
@@ -2869,7 +2891,10 @@
             "name": "奶油白 cream",
             "hex": "#F5F0E8"
           }
-        ]
+        ],
+        "en": "Macaron",
+        "group": "甜美",
+        "story": "下午茶橱窗里的粉蓝与蜜桃，轻、甜、不抢戏。"
       },
       {
         "id": "earth",
@@ -2895,7 +2920,10 @@
             "name": "亚麻白 linen",
             "hex": "#F3E9DC"
           }
-        ]
+        ],
+        "en": "Earth",
+        "group": "自然",
+        "story": "咖啡豆、焦糖与亚麻，像一间被阳光晒暖的手作工坊。"
       },
       {
         "id": "morandi",
@@ -2921,7 +2949,10 @@
             "name": "雾白 mist white",
             "hex": "#E8E4DE"
           }
-        ]
+        ],
+        "en": "Morandi",
+        "group": "都市",
+        "story": "灰调里的克制：雾、燕麦与豆沙，安静得有分量。"
       },
       {
         "id": "forest",
@@ -2947,7 +2978,10 @@
             "name": "米白 off-white",
             "hex": "#F4F1E8"
           }
-        ]
+        ],
+        "en": "Forest",
+        "group": "自然",
+        "story": "松针、苔藓与麦秆，雨后的林间小径。"
       },
       {
         "id": "ocean",
@@ -2973,7 +3007,10 @@
             "name": "浪花白 foam white",
             "hex": "#F7FBFC"
           }
-        ]
+        ],
+        "en": "Ocean",
+        "group": "自然",
+        "story": "从浅水到深海的一段渐变，再添一抹沙滩的金。"
       },
       {
         "id": "film",
@@ -2999,7 +3036,10 @@
             "name": "相纸白 print white",
             "hex": "#EFE7DA"
           }
-        ]
+        ],
+        "en": "Film",
+        "group": "怀旧",
+        "story": "砖红与奶黄，旧相纸慢慢泛出的暖意。"
       },
       {
         "id": "qinglv",
@@ -3025,7 +3065,10 @@
             "name": "宣纸白 rice paper",
             "hex": "#F3EDE0"
           }
-        ]
+        ],
+        "en": "Azurite & Malachite",
+        "group": "东方",
+        "story": "石青与石绿落在宣纸上，像《千里江山图》的呼吸。"
       },
       {
         "id": "zhusha",
@@ -3051,7 +3094,10 @@
             "name": "宣纸白 rice paper",
             "hex": "#F6F0E4"
           }
-        ]
+        ],
+        "en": "Cinnabar & Gold",
+        "group": "东方",
+        "story": "朱砂、泥金与墨黑，庙堂和年节的庄重喜庆。"
       },
       {
         "id": "mono",
@@ -3077,7 +3123,10 @@
             "name": "纸白 paper white",
             "hex": "#F7F5F0"
           }
-        ]
+        ],
+        "en": "Ink",
+        "group": "都市",
+        "story": "只用墨与纸，把力气都留给线条。"
       },
       {
         "id": "neon",
@@ -3103,7 +3152,10 @@
             "name": "柠檬黄 lemon",
             "hex": "#F9F871"
           }
-        ]
+        ],
+        "en": "Neon Night",
+        "group": "都市",
+        "story": "午夜街角的电光紫与霓虹粉，赛博都市的心跳。"
       },
       {
         "id": "sunset",
@@ -3129,7 +3181,10 @@
             "name": "暖白 warm white",
             "hex": "#FBF1E6"
           }
-        ]
+        ],
+        "en": "Sunset",
+        "group": "怀旧",
+        "story": "天边最后十分钟：落日橙、蜜桃、杏黄，和一点豆沙玫瑰。"
       },
       {
         "id": "creamcoffee",
@@ -3155,7 +3210,10 @@
             "name": "燕麦白 oat white",
             "hex": "#F6EEE2"
           }
-        ]
+        ],
+        "en": "Cream & Coffee",
+        "group": "甜美",
+        "story": "拿铁拉花的一层层：奶泡、焦糖与摩卡。"
       },
       {
         "id": "mintsoda",
@@ -3181,7 +3239,10 @@
             "name": "气泡白 fizz white",
             "hex": "#F4FBF8"
           }
-        ]
+        ],
+        "en": "Mint Soda",
+        "group": "甜美",
+        "story": "气泡往上冒的夏天：薄荷、冰蓝与青柠。"
       },
       {
         "id": "mistblue",
@@ -3206,6 +3267,125 @@
           {
             "name": "晨白 dawn white",
             "hex": "#F3F6F8"
+          }
+        ],
+        "en": "Mist Blue",
+        "group": "都市",
+        "story": "清晨六点的湖面，蓝里带一点紫的雾。"
+      },
+      {
+        "id": "sakura",
+        "name": "樱花和纸",
+        "en": "Sakura Washi",
+        "group": "甜美",
+        "story": "樱粉落在和纸上，淡得像一声轻叹。",
+        "colors": [
+          {
+            "name": "樱粉 sakura",
+            "hex": "#F3C9D3"
+          },
+          {
+            "name": "藕粉 lotus pink",
+            "hex": "#E5A9B8"
+          },
+          {
+            "name": "新叶绿 young leaf",
+            "hex": "#B7C9B2"
+          },
+          {
+            "name": "和纸米 washi",
+            "hex": "#F3E6E1"
+          },
+          {
+            "name": "雪白 snow",
+            "hex": "#FBF6F2"
+          }
+        ]
+      },
+      {
+        "id": "indigo",
+        "name": "靛蓝夜航",
+        "en": "Indigo Voyage",
+        "group": "都市",
+        "story": "深靛的夜里只亮一盏灯，适合讲克制的技术与长途。",
+        "colors": [
+          {
+            "name": "夜靛 night indigo",
+            "hex": "#1B2A49"
+          },
+          {
+            "name": "海军蓝 navy",
+            "hex": "#2F4B7C"
+          },
+          {
+            "name": "雾蓝 haze blue",
+            "hex": "#6D8EC1"
+          },
+          {
+            "name": "灯火金 lamp gold",
+            "hex": "#E7C37A"
+          },
+          {
+            "name": "纸白 paper",
+            "hex": "#F1EFE9"
+          }
+        ]
+      },
+      {
+        "id": "amber",
+        "name": "琥珀秋叶",
+        "en": "Amber Autumn",
+        "group": "怀旧",
+        "story": "银杏落满台阶：琥珀、赭红，和旧书页的米黄。",
+        "colors": [
+          {
+            "name": "琥珀 amber",
+            "hex": "#C2781F"
+          },
+          {
+            "name": "银杏黄 ginkgo",
+            "hex": "#E2A73B"
+          },
+          {
+            "name": "赭红 russet",
+            "hex": "#8C4A2F"
+          },
+          {
+            "name": "旧书页 old page",
+            "hex": "#D9C08F"
+          },
+          {
+            "name": "暖白 warm white",
+            "hex": "#F6EEDC"
+          }
+        ]
+      },
+      {
+        "id": "lilac",
+        "name": "紫藤薄暮",
+        "en": "Wisteria Dusk",
+        "group": "甜美",
+        "story": "黄昏后的紫藤架：淡紫、藕荷，和一线暖灰。",
+        "colors": [
+          {
+            "name": "紫藤 wisteria",
+            "hex": "#B8A7D6"
+          },
+          {
+            "name": "藕荷 pale lilac",
+            "hex": "#D9CCE8"
+          },
+          {
+            "name": "深紫 deep violet",
+            "hex": "#8E7BB5"
+          },
+          {
+            "name": "暖灰 warm grey",
+            "hex": "#CFC3C9"
+          },
+          {
+            "name": "薄雾白 mist",
+            "hex": "#F5F1F7"
           }
         ]
       },

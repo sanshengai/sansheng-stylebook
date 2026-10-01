@@ -9,7 +9,7 @@ from stylebook import data as D  # noqa: E402
 
 def test_counts():
     assert len(D.structures()) == 24
-    assert len(D.palettes()["palettes"]) == 16
+    assert len(D.palettes()["palettes"]) == 20
     assert len(D.scenes()) == 12
     fams = {f["family"] for f in D.formats().values()}
     assert fams == {"单张封面", "多张轮播", "叙事分格", "信息结构", "视频帧", "透明底多宫格", "透明底单图", "教材插图"}

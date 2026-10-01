@@ -92,6 +92,18 @@
       "source_sha256": "a5f7a4bf24cf1d4f7910f73af479b6cc0329f835138a40d4b9d0f9dfd99262b6",
       "renderer": "codex-builtin",
       "date": "2026-09-30"
+    },
+    {
+      "topic": "封面（标题写在图上）",
+      "file": "samples/cv.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "四格漫画",
+      "file": "samples/cm.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
     }
   ],
   "anchor": {

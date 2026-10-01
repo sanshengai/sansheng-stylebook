@@ -95,6 +95,18 @@
       "source_sha256": "c463fcd6678d6c12ce49e24c4905e97c72e1617148ca822b3eb8971cb2c9cdcb",
       "renderer": "codex-builtin",
       "date": "2026-09-30"
+    },
+    {
+      "topic": "封面（标题写在图上）",
+      "file": "samples/cv.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "小红书知识卡",
+      "file": "samples/xhs.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
     }
   ],
   "anchor": {

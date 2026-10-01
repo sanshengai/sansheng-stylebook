@@ -97,11 +97,22 @@
       "date": "2026-09-30"
     },
     {
-      "topic": "信息图",
-      "file": "samples/s3.jpg",
-      "source_sha256": "6d24f675b7e366225b2f4d264649aad7b7d7c62493de427ac02c19761fe74550",
+      "topic": "信息图（简）",
+      "file": "samples/s3.webp",
       "renderer": "codex-builtin",
-      "date": "2026-09-30"
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "文章插图（概括图）",
+      "file": "samples/wxi.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "四格漫画",
+      "file": "samples/cm.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
     }
   ]
 }

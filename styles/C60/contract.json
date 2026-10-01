@@ -89,11 +89,28 @@
       "date": "2026-09-30"
     },
     {
-      "topic": "信息图",
-      "file": "samples/s3.jpg",
-      "source_sha256": "e9860bfe3318bc4b22173dbb07791ba972a073460a5680673a1b3206329bafe2",
+      "topic": "信息图（简）",
+      "file": "samples/s3.webp",
       "renderer": "codex-builtin",
-      "date": "2026-09-30"
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "文章插图（概括图）",
+      "file": "samples/wxi.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "小红书知识卡",
+      "file": "samples/xhs.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "四格漫画",
+      "file": "samples/cm.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
     }
   ],
   "anchor": {

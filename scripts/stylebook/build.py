@@ -219,11 +219,28 @@ def gallery(out: Path | None = None, private: bool = False, samples: list[Path] 
     return out
 
 
-# ---------------- 选择器（首屏三步 + 一行 sb2 码） ----------------
-THUMB = 320  # 边长；外部文件，页面本体只放文字与数据
+# ---------------- 选择器（浏览画风 → 选用途与色彩 → 设为默认 / 只用一次） ----------------
+THUMB = 640  # 长边像素；外部文件，页面本体只放文字与数据
+# 样图种类：同题三张（s1 人物 / s2 物件 / s3 信息图）是所有画风共有的横向对比；其余是按用途做的样图，每个用途看它最需要的东西。
+SITE_KINDS = {
+    "s1": "人物", "s2": "物件", "s3": "信息图（简）",
+    "cv": "封面（标题写在图上）", "wxi": "文章插图（概括图）", "xhs": "小红书知识卡", "ppt": "PPT 一页", "inf": "信息图", "cm": "四格漫画",
+}
+# 用途说明与网格里默认展示的样图：不同用途要的东西不一样，看图的角度也不一样。
 
 
-def _thumb_bytes(p: Path, m: int = THUMB, q: int = 62) -> bytes:
+def _sample_files(code: str, cp: Path | None) -> dict[str, Path]:
+    out: dict[str, Path] = {}
+    if not cp:
+        return out
+    for sample in CT.load(code).get("samples", []):
+        sp = cp.parent / sample["file"]
+        if sp.is_file() and sp.stem in SITE_KINDS:
+            out[sp.stem] = sp
+    return out
+
+
+def _thumb_bytes(p: Path, m: int = THUMB, q: int = 60) -> bytes:
     from PIL import Image
     im = Image.open(p).convert("RGB")
     im.thumbnail((m, m))
@@ -233,7 +250,7 @@ def _thumb_bytes(p: Path, m: int = THUMB, q: int = 62) -> bytes:
 
 
 def picker(out_dir: Path | None = None, private: bool = False) -> Path:
-    """写出 index.html 与 img/<码>-s1..s3.webp。样图缩成外部小文件懒加载，页面本体控制在 1MB 内；输出确定（无时间戳）。"""
+    """写出 index.html 与 img/<码>-<样图种类>.webp。样图缩成外部小文件懒加载；输出确定（无时间戳）。"""
     reg = registry(private)
     problems = check(reg)
     if problems:
@@ -244,42 +261,45 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
     for old in img_dir.glob("*.webp"):
         old.unlink()
     contract_paths = {p.parent.name: p for p in CT.contract_paths()}
-    have: set[str] = set()
+    have: dict[str, list[str]] = {}
+    ratios: dict[str, float] = {}
+    from PIL import Image
     for s in reg["styles"]:
-        cp = contract_paths.get(s["code"])
+        code = s["code"]
+        cp = contract_paths.get(code)
         if not (s["has_contract"] and cp):
             continue
-        for sample in CT.load(s["code"]).get("samples", []):
-            sp = cp.parent / sample["file"]
-            if sp.is_file() and sp.stem in ("s1", "s2", "s3"):
-                (img_dir / f"{s['code']}-{sp.stem}.webp").write_bytes(_thumb_bytes(sp))
-                have.add(f"{s['code']}-{sp.stem}")
-    for s in reg["styles"]:  # 第四张：原作参考图（合同锚点，MIT 来源，可用时才有）
-        cp = contract_paths.get(s["code"])
-        anchor = (CT.load(s["code"]).get("anchor") or {}) if cp else {}
-        if cp and anchor and anchor.get("enabled", True) and (cp.parent / anchor["file"]).is_file():
-            (img_dir / f"{s['code']}-anchor.webp").write_bytes(_thumb_bytes(cp.parent / anchor["file"]))
-            have.add(f"{s['code']}-anchor")
-    topics = {"s1": "人物", "s2": "物件", "s3": "信息图"}
+        files = _sample_files(code, cp)
+        contract = CT.load(code)
+        anchor = contract.get("anchor") or {}
+        if anchor and anchor.get("enabled", True) and (cp.parent / anchor["file"]).is_file():
+            files["anchor"] = cp.parent / anchor["file"]
+        for kind, src in files.items():
+            (img_dir / f"{code}-{kind}.webp").write_bytes(_thumb_bytes(src))
+            have.setdefault(code, []).append(kind)
+            if kind not in ratios:
+                with Image.open(src) as im:
+                    ratios[kind] = round(im.width / im.height, 3)
     inspiration = {}
     for s in reg["styles"]:
         cp = contract_paths.get(s["code"])
         names = ((CT.load(s["code"]).get("inspiration") or {}).get("names") or []) if cp else []
         inspiration[s["code"]] = "、".join(names)
+    scene_ids = [sc["id"] for sc in reg["scenes"] if not sc.get("hidden") and sc.get("use")]
+    pools = {sc["id"]: [c for c in D.styles_for_use(sc["use"]) if c in have] for sc in reg["scenes"] if sc["id"] in scene_ids}
     cands = [{"id": s["code"], "name": s["zh"], "origin": inspiration.get(s["code"], ""), "recolor": s["recolor"],
-              "recolorNote": s.get("recolor_note", ""), "essence": "；".join(s.get("essence", [])[:2]), "anchor": f"{s['code']}-anchor" in have}
-             for s in reg["styles"] if s["has_contract"] and f"{s['code']}-s1" in have]
-    ids = {c["id"] for c in cands}
+              "recolorNote": s.get("recolor_note", ""), "essence": "；".join(s.get("essence", [])[:3]), "family": s.get("family", ""),
+              "imgs": sorted(have[s["code"]]), "uses": [sid for sid in scene_ids if s["code"] in pools[sid]]}
+             for s in reg["styles"] if s["code"] in have]
     scenes = []
     for sc in reg["scenes"]:
-        if sc.get("hidden") or not sc.get("use"):
+        if sc["id"] not in scene_ids:
             continue
-        t = sc.get("preview_test", "s1")
-        pool_ids = [c for c in D.styles_for_use(sc["use"]) if c in ids]
-        scenes.append({"id": sc["id"], "name": sc["zh"], "t": t, "topicName": topics.get(t, ""), "default": sc["default"],
-                       "alternates": [a for a in sc["alternates"] if a in ids], "pool": pool_ids})
-    pals = [{"id": p["id"], "name": p["name"], "colors": p.get("colors", [])} for p in reg["palettes"]["palettes"]]
-    meta = {"cands": cands, "scenes": scenes, "pals": pals, "topics": topics, "first": "wxcover"}
+        scenes.append({"id": sc["id"], "name": sc["zh"], "use": sc["use"], "sample": sc.get("site_sample", "s1"), "note": sc.get("site_note", ""), "default": sc["default"],
+                       "alternates": [a for a in sc["alternates"] if a in have], "pool": pools[sc["id"]]})
+    pals = [{"id": p["id"], "name": p["name"], "en": p.get("en", ""), "group": p.get("group", ""), "story": p.get("story", ""),
+             "colors": p.get("colors", [])} for p in reg["palettes"]["palettes"]]
+    meta = {"cands": cands, "scenes": scenes, "pals": pals, "kinds": SITE_KINDS, "ratios": ratios, "first": "wxcover"}
     html = PICKER.read_text(encoding="utf-8").replace("__META__", json.dumps(meta, ensure_ascii=False, sort_keys=True).replace("</", "<\\/"))
     out = out_dir / ("index.private.html" if private else "index.html")
     out.write_text(html, encoding="utf-8")

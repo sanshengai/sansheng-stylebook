@@ -93,6 +93,12 @@
       "source_sha256": "014321fbc818b3358f6479f178cdeae1ee4d0769b11592f18b5ff3f0c2880312",
       "renderer": "codex-builtin",
       "date": "2026-09-30"
+    },
+    {
+      "topic": "封面（标题写在图上）",
+      "file": "samples/cv.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
     }
   ],
   "anchor": {
