@@ -16,7 +16,7 @@ def test_counts():
     single = D.formats()["sticker-single"]
     assert single["transparent"] and single["export_px"] == [512, 512] and single["text"]["default"] == "none"
     assert D.scenes()["sticker"]["formats"] == ["sticker-grid", "sticker-single"]
-    assert len(json.loads((ROOT / "styles/catalog.json").read_text())["styles"]) == 73
+    assert len(json.loads((ROOT / "styles/catalog.json").read_text())["styles"]) == 72
     for s in json.loads((ROOT / "styles/catalog.json").read_text())["styles"]:
         assert s["uses"], s["code"]
 
@@ -24,7 +24,7 @@ def test_counts():
 def test_removed_styles_absent():
     cat = json.loads((ROOT / "styles/catalog.json").read_text())
     codes = {s["code"] for s in cat["styles"]}
-    assert not codes & {"C23", "C33", "C37", "C43", "C47"}
+    assert not codes & {"C23", "C33", "C37", "C43", "C47", "C78"}
 
 
 def test_scene_references_resolve():
