@@ -126,6 +126,12 @@
       "file": "samples/cm.webp",
       "renderer": "codex-builtin",
       "date": "2026-10-01"
+    },
+    {
+      "topic": "日漫标准页",
+      "file": "samples/cp.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
     }
   ]
 }

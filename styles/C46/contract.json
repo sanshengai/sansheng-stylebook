@@ -112,6 +112,12 @@
       "file": "samples/inf.webp",
       "renderer": "codex-builtin",
       "date": "2026-10-01"
+    },
+    {
+      "topic": "信息图 第 2 张",
+      "file": "samples/inf-2.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
     }
   ]
 }

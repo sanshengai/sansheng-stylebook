@@ -100,8 +100,38 @@
       "date": "2026-10-01"
     },
     {
+      "topic": "文章插图（概括图） 第 2 张",
+      "file": "samples/wxi-2.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "文章插图（概括图） 第 3 张",
+      "file": "samples/wxi-3.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
       "topic": "四格漫画",
       "file": "samples/cm.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "日漫标准页",
+      "file": "samples/cp.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "日漫大格页",
+      "file": "samples/cs.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "竖向长条漫",
+      "file": "samples/cw.webp",
       "renderer": "codex-builtin",
       "date": "2026-10-01"
     }

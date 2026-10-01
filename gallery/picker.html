@@ -217,8 +217,9 @@ function renderHead(){
  const n=Object.keys(mine).length;$('trayN').textContent=n;}
 /* ---------- 选画风 ---------- */
 function sampleKind(c){
- if(S.angle!=='use')return c.imgs.includes(S.angle)?S.angle:'s1';
- const sc=S.scene?scene(S.scene):null;const k=sc?sc.sample:'s1';return c.imgs.includes(k)?k:'s1';}
+ const want=S.angle!=='use'?S.angle:(S.scene?scene(S.scene).sample:'s1');
+ for(const k of [want,'s1','cv','xhs','wxi','ppt','inf','cm'])if(c.imgs.includes(k))return k;
+ return c.imgs[0]||'s1';}
 function kindRatio(k){return M.ratios[k]||1;}
 function minWidth(r){return r>2?360:r>1.5?310:r<0.9?210:250;}
 function renderUses(){
@@ -317,7 +318,7 @@ function renderTray(){
  const ids=Object.keys(mine).filter(id=>scene(id));
  $('tlist').innerHTML=ids.length?ids.map(id=>'<div class="titem"><img alt="" src="'+IMG(mine[id].style,sampleKindFor(mine[id].style,id))+'"><div><div class="u">'+esc(scene(id).name)+'</div><div class="s">'+esc(mine[id].name)+'</div><code>'+esc(mine[id].code)+'</code></div><button data-rm="'+id+'" aria-label="移除">×</button></div>').join(''):'<div class="empty">还没有默认。在画风详情里点「设为我的默认」，这里会汇总成一段话，复制给 Agent 就行。</div>';
  $('tCopy').disabled=!ids.length;$('tClear').disabled=!ids.length;}
-function sampleKindFor(styleId,sceneId){const c=cand(styleId),sc=scene(sceneId);return c&&sc&&c.imgs.includes(sc.sample)?sc.sample:'s1';}
+function sampleKindFor(styleId,sceneId){const c=cand(styleId),sc=scene(sceneId);if(!c)return 's1';for(const k of [sc&&sc.sample,'s1','cv','xhs','wxi','ppt','inf','cm'])if(k&&c.imgs.includes(k))return k;return c.imgs[0]||'s1';}
 function openTray(o){$('tray').classList.toggle('open',o);$('scrim').hidden=!o;if(o)renderTray();}
 /* ---------- 页面切换与事件 ---------- */
 function renderAll(){renderHead();renderUses();renderGrids();

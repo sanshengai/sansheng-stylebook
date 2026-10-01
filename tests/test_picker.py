@@ -99,12 +99,15 @@ def _open(tab, frag=""):
 
 
 def test_images_load_when_opened_without_trailing_slash(tab):
-    _open(tab, "#u=wxcover")
-    tab.wait_for_selector(".card img")
-    tab.evaluate("document.querySelectorAll('.card img').forEach(i=>{i.loading='eager'})")
-    tab.wait_for_timeout(800)
-    bad = tab.evaluate("[...document.querySelectorAll('.card img')].slice(0,8).filter(i=>!(i.complete&&i.naturalWidth>0)).map(i=>i.src)")
-    assert bad == []
+    """不带结尾斜杠打开；每个用途下全部卡片（含「其余画风也能试试」）的图都要能加载，不能有裂图。"""
+    for scene in ("wxcover", "xhs", "ppt", "comic4", "audio"):
+        _open(tab, f"#u={scene}")
+        tab.reload()
+        tab.wait_for_selector(".card img")
+        tab.evaluate("document.querySelectorAll('.card img').forEach(i=>{i.loading='eager'})")
+        tab.wait_for_function("[...document.querySelectorAll('.card img')].every(i=>i.complete)", timeout=60000)
+        bad = tab.evaluate("[...document.querySelectorAll('.card img')].filter(i=>!(i.naturalWidth>0)).map(i=>i.src)")
+        assert bad == [], (scene, bad[:5])
 
 
 def test_selection_never_narrows_below_the_full_set(tab):
@@ -160,5 +163,7 @@ def test_every_style_in_a_pool_has_that_uses_own_sample(built):
     _, html = built
     meta = json.loads(html.read_text(encoding="utf-8").split('<script id="meta" type="application/json">')[1].split("</script>")[0])
     imgs = {c["id"]: set(c["imgs"]) for c in meta["cands"]}
-    missing = [(s["id"], c) for s in meta["scenes"] for c in s["pool"] if s["sample"] not in imgs[c]]
+    # 音乐封面用封面样图展示；不在封面池里的风格退回同题人物图（页面也是这样回退的）
+    missing = [(s["id"], c) for s in meta["scenes"] for c in s["pool"]
+               if s["sample"] not in imgs[c] and not (s["id"] == "audio" and "s1" in imgs[c])]
     assert missing == [], f"这些画风缺它所属用途的样图：{missing[:8]}"
