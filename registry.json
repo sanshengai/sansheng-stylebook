@@ -2876,7 +2876,9 @@
       "zh": "公众号文章配图",
       "job": "讲道理",
       "formats": [
-        "article-illustration"
+        "article-illustration",
+        "article-summary",
+        "article-summary-tall"
       ],
       "preview_test": "s1",
       "uses_structure": true,
@@ -2962,6 +2964,7 @@
       "job": "讲故事",
       "formats": [
         "comic-4panel",
+        "comic-mixed-page",
         "comic-manga-page",
         "comic-splash-page",
         "comic-webtoon"
@@ -4258,7 +4261,7 @@
         1536
       ],
       "safe_zone": {
-        "note": "四格等大，起承转合"
+        "note": "四格等大，起承转合；每格换景别"
       },
       "text": {
         "default": "native",
@@ -4270,7 +4273,7 @@
       ],
       "alt_ratio": "3:4",
       "density_max": "sparse",
-      "compose": "A four-panel comic laid out as a 2×2 grid of equal panels with thin gutters, read left to right, top to bottom: setup, development, twist, payoff."
+      "compose": "A four-panel comic laid out as a 2×2 grid of equal panels with thin gutters, read left to right, top to bottom: setup, development, twist, payoff. Each panel uses a different shot (extreme wide, medium, close-up or overhead, low angle) and the place, action or light changes from panel to panel; never the same character in the same spot talking four times."
     },
     {
       "id": "comic-page",
@@ -4567,6 +4570,78 @@
       ],
       "density_max": "sparse",
       "compose": "A vertical webtoon strip in a single column: four full-width panels stacked top to bottom with generous white space between them, panels of varying height (tall, medium, wide, tall), allowed to bleed off the side edges. Read top to bottom. Floating rounded speech bubbles may overlap the panel edges; a narrator box in the first panel."
+    },
+    {
+      "id": "article-summary",
+      "zh": "文章归纳插图（横）",
+      "family": "信息结构",
+      "ratio": "16:9",
+      "export_px": [
+        1600,
+        900
+      ],
+      "safe_zone": {
+        "note": "公众号正文宽 900–1080；四周留 6% 边"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 16
+      },
+      "count": [
+        1,
+        16
+      ],
+      "alt_ratio": "4:3",
+      "density_max": "dense",
+      "compose": "An article summary illustration, read at phone width: a judgement-style title at the top, an optional one-line subtitle, then three to five labelled parts arranged in one clear horizontal structure (left-right comparison, a path of stations, three side-by-side columns or a radial hub). Each label sits next to one concrete prop that shows its meaning, connectors such as arrows, roads or bridges show how the parts relate, and the key word of the title is in the accent colour. A reader who skips the text should still get this section's conclusion from the picture alone."
+    },
+    {
+      "id": "article-summary-tall",
+      "zh": "文章归纳插图（竖）",
+      "family": "信息结构",
+      "ratio": "9:16",
+      "export_px": [
+        1080,
+        1920
+      ],
+      "safe_zone": {
+        "note": "手机长图与转小红书；不进公众号正文"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 16
+      },
+      "count": [
+        1,
+        16
+      ],
+      "alt_ratio": "3:4",
+      "density_max": "dense",
+      "compose": "A vertical 9:16 article summary card for phones: a judgement-style title at the top, then three to five labelled parts arranged top to bottom in one vertical structure (rising steps, stacked cards or a vertical timeline), each with one concrete prop and a short note, connected by a path; the key word of the title is in the accent colour. The card alone should tell the reader what the section concludes."
+    },
+    {
+      "id": "comic-mixed-page",
+      "zh": "日漫混排页",
+      "family": "叙事分格",
+      "ratio": "3:4",
+      "export_px": [
+        1536,
+        2048
+      ],
+      "safe_zone": {
+        "note": "斜切、跨格、破格、出血"
+      },
+      "text": {
+        "default": "native",
+        "title_max_chars": 10
+      },
+      "count": [
+        1,
+        1
+      ],
+      "alt_ratio": "2:3",
+      "density_max": "balanced",
+      "compose": "One portrait manga page with six panels of clearly different sizes and shapes, thin black borders and white gutters. Top: one wide establishing panel across the full width. Middle: a tall narrow panel on the left; on the right two panels split by a slanted dividing line tilted about 12 degrees, and the character in the upper one breaks out of the frame, hair and an arm overlapping the gutter. Bottom: a small square reaction close-up at lower left and a large panel at lower right that bleeds off the right and bottom page edges with no border, carrying the emotional peak. Every panel uses a different shot size or angle and the light changes with the time of day."
     }
   ],
   "tests": {

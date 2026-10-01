@@ -24,6 +24,7 @@ from . import plan as PL
 from .qa import content_expectations, judge
 
 SERIES_FAMILIES = {"多张轮播"}
+ARTICLE_FORMATS = {"article-illustration", "article-summary", "article-summary-tall"}
 STOP_KINDS = {"auth", "verify", "unconfigured"}
 
 
@@ -132,7 +133,7 @@ def run(plan: dict, out_dir: Path, *, provider: str | None = None, model: str | 
     setting = plan.get("series")
     formats_in_plan = {m["format"] for m in ms}
     auto_series = (fmt0["family"] in SERIES_FAMILIES or plan["scene"] in {"xhs", "ppt"}
-                   or (plan["scene"] == "wxillus" and "article-illustration" in formats_in_plan)
+                   or (plan["scene"] == "wxillus" and bool(formats_in_plan & ARTICLE_FORMATS))
                    or (plan["scene"] == "book" and "picturebook-page" in formats_in_plan))
     series = len(ms) > 1 and setting is not False and (setting is not None or auto_series)
     stop = {"flag": False}
@@ -277,7 +278,7 @@ def run(plan: dict, out_dir: Path, *, provider: str | None = None, model: str | 
         requested_master = setting.get("master_id") if isinstance(setting, dict) else None
         master = next((m for m in ms if m["_id"] == requested_master), None) if requested_master else None
         if master is None:
-            master = next((m for m in ms if m["format"] in {"article-illustration", "picturebook-page"}), ms[0])
+            master = next((m for m in ms if m["format"] in ARTICLE_FORMATS | {"picturebook-page"}), ms[0])
         do(master, None)
         first = out / f"{master['_id']}.raw.png"
         accepted = do_review and items[master["_id"]].get("status") == "passed" and bool(items[master["_id"]].get("review_source")) and first.is_file()
