@@ -90,6 +90,24 @@
       "source_sha256": "8b008e15850a68602a0823a8f5870434a7a6582ca1d53eb53f2205e8200a2142",
       "renderer": "codex-builtin",
       "date": "2026-09-30"
+    },
+    {
+      "topic": "小红书知识卡",
+      "file": "samples/xhs.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "PPT 一页",
+      "file": "samples/ppt.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/inf.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
     }
   ]
 }

@@ -93,6 +93,24 @@
       "source_sha256": "218a239f2883ef203eb94464a99fbc83b8f08c33819c3cc50cf721acb81354b2",
       "renderer": "codex-builtin",
       "date": "2026-09-30"
+    },
+    {
+      "topic": "封面（标题写在图上）",
+      "file": "samples/cv.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "PPT 一页",
+      "file": "samples/ppt.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/inf.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
     }
   ],
   "anchor": {

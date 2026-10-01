@@ -102,6 +102,12 @@
       "source_sha256": "637bdfed3f5ee9d9eaeb26a6b476fb9a682ea5ae66c788697caa4d7d1cdf989b",
       "renderer": "codex-builtin",
       "date": "2026-09-30"
+    },
+    {
+      "topic": "封面（标题写在图上）",
+      "file": "samples/cv.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
     }
   ]
 }

@@ -113,6 +113,18 @@
       "source_sha256": "e4d0fa786164581cab2b7cc644c06f3799d6b6c6e86d591c1c5ad9c07c42be24",
       "renderer": "codex-builtin",
       "date": "2026-09-30"
+    },
+    {
+      "topic": "文章插图（概括图）",
+      "file": "samples/wxi.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "小红书知识卡",
+      "file": "samples/xhs.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
     }
   ]
 }

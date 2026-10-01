@@ -129,6 +129,24 @@
       "source_sha256": "0e4d89728bd9fd3bbbc4c00d9a4fcbfdcd03b56e9723c28ffb93b720c8b66d02",
       "renderer": "codex-builtin",
       "date": "2026-09-30"
+    },
+    {
+      "topic": "文章插图（概括图）",
+      "file": "samples/wxi.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "小红书知识卡",
+      "file": "samples/xhs.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "四格漫画",
+      "file": "samples/cm.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
     }
   ]
 }

@@ -106,6 +106,30 @@
       "source_sha256": "76e2fa8339a6c3f4d151aaffe5bd80b98bab684aee96257c70bdb7c39d6984aa",
       "renderer": "codex-builtin",
       "date": "2026-09-30"
+    },
+    {
+      "topic": "小红书知识卡",
+      "file": "samples/xhs.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "PPT 一页",
+      "file": "samples/ppt.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/inf.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "四格漫画",
+      "file": "samples/cm.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
     }
   ]
 }

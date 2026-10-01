@@ -101,6 +101,12 @@
       "source_sha256": "cd03e3557894ab195063683c01ca195a8732ab3342af504229f69c8a373e7aad",
       "renderer": "codex-builtin",
       "date": "2026-09-30"
+    },
+    {
+      "topic": "四格漫画",
+      "file": "samples/cm.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
     }
   ]
 }

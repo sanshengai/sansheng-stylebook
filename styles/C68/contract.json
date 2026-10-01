@@ -92,6 +92,18 @@
       "source_sha256": "e8f53691759261b7d38f82502e17b3f29c0f1e8861a75cb79d8cc170d3b60e23",
       "renderer": "codex-builtin",
       "date": "2026-09-30"
+    },
+    {
+      "topic": "文章插图（概括图）",
+      "file": "samples/wxi.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "四格漫画",
+      "file": "samples/cm.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
     }
   ],
   "anchor": {
