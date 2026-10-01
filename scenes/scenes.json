@@ -29,7 +29,9 @@
       "zh": "公众号文章配图",
       "job": "讲道理",
       "formats": [
-        "article-illustration"
+        "article-illustration",
+        "article-summary",
+        "article-summary-tall"
       ],
       "preview_test": "s1",
       "uses_structure": true,
@@ -115,6 +117,7 @@
       "job": "讲故事",
       "formats": [
         "comic-4panel",
+        "comic-mixed-page",
         "comic-manga-page",
         "comic-splash-page",
         "comic-webtoon"

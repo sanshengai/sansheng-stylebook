@@ -184,7 +184,7 @@ def check(plan: dict, *, base_path: Path | None = None) -> tuple[list[str], list
         pos = str(it.get("position", ""))
         item_fmt_id = it.get("format") or fmt_id
         errs.extend(f"{tag} {problem}" for problem in validate_comic_content(item_fmt_id, it))
-        if item_fmt_id == "article-illustration" and pos and not re.search(r"「[^」]{4,}」(之后|之前)", pos):
+        if item_fmt_id in {"article-illustration", "article-summary", "article-summary-tall"} and pos and not re.search(r"「[^」]{4,}」(之后|之前)", pos):
             errs.append(f"{tag} 位置要引用原文的一句话，写成「……」之后（不写「段首」「一节末」这类含糊位置）")
         if it.get("why") and len(it["why"]) < 8:
             errs.append(f"{tag} 依据句太短，要写清为什么在这里配图、为什么是这个形式")
