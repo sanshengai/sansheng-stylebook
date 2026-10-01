@@ -2808,7 +2808,7 @@
     },
     {
       "code": "C88",
-      "zh": "乐高式积木",
+      "zh": "积木拼搭",
       "family": "立体材质",
       "fit": [
         "讲道理",
@@ -2820,7 +2820,7 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
-      "en": "Toy-Brick Construction",
+      "en": "Brick Construction",
       "revision": 1,
       "essence": [
         "可见凸点的塑料积木",
@@ -2834,12 +2834,12 @@
       ],
       "abilities": {},
       "facets": {
-        "medium": "乐高式积木",
+        "medium": "积木拼搭",
         "density": "极简留白"
       },
       "admission": "pending",
       "tests": {},
-      "recipe_sha": "52f8dafe9845"
+      "recipe_sha": "5b08306584a1"
     },
     {
       "code": "C89",
@@ -3077,8 +3077,8 @@
         "C01"
       ],
       "use": "音乐封面",
-      "site_sample": "s1",
-      "site_note": "播客 / 音乐封面：方形，一个意象，缩小了也认得出。这里用同一组人物题对比画风。"
+      "site_sample": "cv",
+      "site_note": "播客 / 音乐封面：方形，一个意象，缩小了也认得出。这里用封面样图对比画风（实际会按 1:1 重新构图）。"
     },
     {
       "id": "sticker",

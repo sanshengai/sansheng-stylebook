@@ -83,5 +83,12 @@
     "音乐封面"
   ],
   "renderer": "codex",
-  "samples": []
+  "samples": [
+    {
+      "topic": "封面（标题写在图上）",
+      "file": "samples/cv.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    }
+  ]
 }

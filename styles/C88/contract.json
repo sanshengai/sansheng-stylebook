@@ -2,8 +2,8 @@
   "code": "C88",
   "revision": 1,
   "name": {
-    "zh": "乐高式积木",
-    "en": "Toy-Brick Construction"
+    "zh": "积木拼搭",
+    "en": "Brick Construction"
   },
   "family": "立体材质",
   "fit": [
@@ -11,7 +11,7 @@
     "封面"
   ],
   "facets": {
-    "medium": "乐高式积木",
+    "medium": "积木拼搭",
     "density": "极简留白"
   },
   "visibility": "public",
@@ -26,7 +26,7 @@
     "说明书式分步构图"
   ],
   "recipe": {
-    "positive": "Visual style (follow exactly): Toy-brick construction with visible studs, classic red, blue, yellow and green plastic, original brick-built minifigure-style characters, instruction-booklet step layout, glossy plastic sheen; strictly original designs, no real brand characters or logos.",
+    "positive": "Visual style (follow exactly): Toy-brick construction with visible studs, classic red, blue, yellow and green plastic, original brick-built characters of our own design, instruction-booklet step layout, glossy plastic sheen; strictly original designs, no real brand characters or logos.",
     "text_mode": [
       "native",
       "none"
@@ -61,10 +61,8 @@
     }
   ],
   "inspiration": {
-    "names": [
-      "乐高式积木（原创角色）"
-    ],
-    "prompt": "乐高式积木（原创角色）"
+    "names": [],
+    "prompt": ""
   },
   "uses": [
     "信息图",
@@ -73,5 +71,66 @@
     "封面"
   ],
   "renderer": "codex",
-  "samples": []
+  "samples": [
+    {
+      "topic": "封面（标题写在图上）",
+      "file": "samples/cv.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "小红书知识卡",
+      "file": "samples/xhs.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "小红书知识卡 第 2 张",
+      "file": "samples/xhs-2.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "小红书知识卡 第 3 张",
+      "file": "samples/xhs-3.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "小红书知识卡 第 4 张",
+      "file": "samples/xhs-4.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "文章插图（概括图）",
+      "file": "samples/wxi.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "文章插图（概括图） 第 2 张",
+      "file": "samples/wxi-2.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "文章插图（概括图） 第 3 张",
+      "file": "samples/wxi-3.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "信息图",
+      "file": "samples/inf.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "信息图 第 2 张",
+      "file": "samples/inf-2.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    }
+  ]
 }

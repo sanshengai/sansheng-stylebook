@@ -125,14 +125,44 @@
       "date": "2026-10-01"
     },
     {
-      "topic": "PPT 一页",
-      "file": "samples/ppt.webp",
+      "topic": "文章插图（概括图） 第 2 张",
+      "file": "samples/wxi-2.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "文章插图（概括图） 第 3 张",
+      "file": "samples/wxi-3.webp",
       "renderer": "codex-builtin",
       "date": "2026-10-01"
     },
     {
       "topic": "信息图",
       "file": "samples/inf.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "信息图 第 2 张",
+      "file": "samples/inf-2.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "PPT 一页",
+      "file": "samples/ppt.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "PPT 一页 第 2 张",
+      "file": "samples/ppt-2.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-01"
+    },
+    {
+      "topic": "PPT 一页 第 3 张",
+      "file": "samples/ppt-3.webp",
       "renderer": "codex-builtin",
       "date": "2026-10-01"
     }
