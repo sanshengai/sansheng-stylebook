@@ -115,52 +115,52 @@
       "date": "2026-09-30"
     },
     {
-      "topic": "小红书知识卡",
+      "topic": "风格参考板",
+      "file": "samples/bd.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-02"
+    },
+    {
+      "topic": "小红书 第 1 张",
       "file": "samples/xhs.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "小红书知识卡 第 2 张",
+      "topic": "小红书 第 2 张",
       "file": "samples/xhs-2.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "小红书知识卡 第 3 张",
+      "topic": "小红书 第 3 张",
       "file": "samples/xhs-3.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "小红书知识卡 第 4 张",
+      "topic": "小红书 第 4 张",
       "file": "samples/xhs-4.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "四格漫画",
-      "file": "samples/cm.webp",
+      "topic": "小红书 第 5 张",
+      "file": "samples/xhs-5.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "日漫标准页",
-      "file": "samples/cp.webp",
+      "topic": "小红书 第 6 张",
+      "file": "samples/xhs-6.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "日漫大格页",
-      "file": "samples/cs.webp",
+      "topic": "日漫混排页",
+      "file": "samples/cx.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
-    },
-    {
-      "topic": "竖向长条漫",
-      "file": "samples/cw.webp",
-      "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     }
   ]
 }

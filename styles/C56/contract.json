@@ -174,52 +174,58 @@
       "date": "2026-09-30"
     },
     {
-      "topic": "封面（标题写在图上）",
+      "topic": "风格参考板",
+      "file": "samples/bd.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-02"
+    },
+    {
+      "topic": "公众号封面",
       "file": "samples/cv.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "文章插图（概括图）",
+      "topic": "横版插图 第 1 张",
       "file": "samples/wxi.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "文章插图（概括图） 第 2 张",
+      "topic": "横版插图 第 2 张",
       "file": "samples/wxi-2.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "文章插图（概括图） 第 3 张",
+      "topic": "横版插图 第 3 张",
       "file": "samples/wxi-3.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "四格漫画",
-      "file": "samples/cm.webp",
+      "topic": "竖版插图 第 1 张",
+      "file": "samples/wxt.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "日漫标准页",
-      "file": "samples/cp.webp",
+      "topic": "竖版插图 第 2 张",
+      "file": "samples/wxt-2.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "日漫大格页",
-      "file": "samples/cs.webp",
+      "topic": "推特单图",
+      "file": "samples/wxx.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "竖向长条漫",
-      "file": "samples/cw.webp",
+      "topic": "日漫混排页",
+      "file": "samples/cx.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     }
   ],
   "anchor": {
