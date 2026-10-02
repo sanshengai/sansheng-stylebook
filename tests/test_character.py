@@ -39,7 +39,9 @@ def test_sheet_and_scene_manifests_compile(tmp_path):
     sheet = tmp_path / "sheet.png"
     m = CH.scene_manifest(GIRL, "C58", "She reads a book at her desk by the window", sheet)
     c = CP.compile_manifest(m)
-    assert c.references == [{"path": str(sheet), "role": "identity"}]
+    # 角色身份参考之外，合同有画风锚点时编译器会把锚点作为画风参考放在最前
+    assert c.references[-1] == {"path": str(sheet), "role": "identity"}
+    assert [r["role"] for r in c.references[:-1]] == (["style"] if CT.load("C58").get("anchor") else [])
     assert "character identity reference" in c.prompt and "big round glasses" in c.prompt
 
 

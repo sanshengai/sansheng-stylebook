@@ -1,6 +1,6 @@
 {
   "code": "C57",
-  "revision": 3,
+  "revision": 4,
   "name": {
     "zh": "九十年代赛璐璐动画",
     "en": "1990s Cel Animation"
@@ -68,6 +68,11 @@
       "revision": 3,
       "date": "2026-09-30",
       "note": "画风库 v2：配方加入原作名；旧自产锚点退役（移入 legacy/），改用 MIT 原作样图或不配锚点；新增用途、渲染器与同题样图。"
+    },
+    {
+      "revision": 4,
+      "date": "2026-10-02",
+      "note": "加入叁笙自制的无人物风格参考板作为画风锚点（色板、材质、母题、构图），出图时自动当画风参考；不含人物与动物，避免内容串入。"
     }
   ],
   "inspiration": {
@@ -173,5 +178,11 @@
       "renderer": "codex-builtin",
       "date": "2026-10-01"
     }
-  ]
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "78127d6329d1430213464cc694af461a13d3ef5e065d06eb2d74c541cbf4ca0a",
+    "enabled": true,
+    "isolation": "This image is a style reference sheet for this visual style. Transfer only its rendering technique, line or brush character, material, texture, colour tendency and decorative language. Never copy the sheet's layout, panels, swatches, labels, words, objects or composition; all subjects, layout and text come exclusively from the current brief."
+  }
 }

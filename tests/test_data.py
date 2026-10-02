@@ -96,16 +96,22 @@ def test_merged_and_retired_codes():
 
 
 def test_style_rules_of_library_v2():
-    """原作名进提示词；有锚点的必须登记来源；没有锚点的不能声称有。"""
+    """原作名进提示词；有锚点的必须登记来源；没有锚点的不能声称有。
+    2026-10-02 起原本没有原作样图的画风改用自制的无人物风格参考板当锚点，来源登记为本项目。"""
     from stylebook import contract as CT
     c = CT.load("C06")
     assert "Quentin Blake" in c["recipe"]["positive"] and c["inspiration"]["names"] == ["昆汀·布莱克"]
     assert c["anchor"]["origin"]["license"] == "MIT" and c["renderer"] == "codex"
-    assert "anchor" not in CT.load("C30")
+    import json as _json
+    ledger = {e["style"]: e for e in _json.loads((ROOT / "styles/anchor-provenance.json").read_text(encoding="utf-8"))["anchors"]}
+    c30 = CT.load("C30")
+    assert c30["anchor"]["sha256"] == ledger["C30"]["sha256"]
+    assert ledger["C30"]["origin"]["repo"] == "sanshengai/sansheng-stylebook" and "no people" in ledger["C30"]["derivation"]
+    assert ledger["C06"]["origin"]["repo"] != "sanshengai/sansheng-stylebook", "有开源原作样图的画风不被自制参考板替换"
 
 
 def test_demoted_styles_keep_prior_admission_record():
     from stylebook import contract as CT
     for code in ("C01", "C08", "C25", "C32", "C58"):
         ev = CT.load(code)["evidence"]
-        assert ev["admission"] == "pending" and ev["prior"]["revision"] == CT.load(code)["revision"] - 1, code
+        assert ev["admission"] == "pending" and ev["prior"]["revision"] < CT.load(code)["revision"], code

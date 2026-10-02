@@ -2,6 +2,8 @@
 
 Since 2026-09-30 (library v2) the bundled `styles/C*/anchor.png` files are **reference images taken from MIT-licensed upstream repositories** (`yang0/handraw-style`, `threerocks/hand-drawn-styles`), resized to at most 768 px. They are used only to convey technique, line, material and colour to the image model; the compiler forbids copying their subjects. Thirty-eight of the 57 styles carry such a reference; the rest are described by text only. The earlier self-generated anchors were retired (they remain in Git history).
 
+Since 2026-10-02 the 34 styles that had no upstream sample use a **project-made style reference sheet** as their anchor (palette, materials, motifs, composition; drawn with no people or animals so that no subject leaks into new pictures), resized to 1024 px. These are recorded with origin `sanshengai/sansheng-stylebook` under the project's MIT license. Every style also ships a display version of its style sheet as `samples/bd.webp`.
+
 `styles/anchor-provenance.json` records, for each distributed reference, its SHA-256, upstream repository, item number and license. `python3 scripts/stylebook/anchor_provenance.py` checks the ledger against the files and the contracts, and rejects a reference that has no MIT upstream entry.
 
 Style names in contracts (`inspiration.names`) credit the artists, studios and works that inspired a look. They describe where an image style comes from; they do not imply affiliation with or endorsement by those creators. The per-style same-topic samples in `styles/C*/samples/` (a person scene, an object scene and a small infographic, all generated on 2026-09-30 with the Codex built-in image tool, whose underlying model ID is not exposed) show one successful result each, not a guarantee for other subjects.

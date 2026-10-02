@@ -1,6 +1,6 @@
 {
   "code": "C88",
-  "revision": 1,
+  "revision": 2,
   "name": {
     "zh": "积木拼搭",
     "en": "Brick Construction"
@@ -58,6 +58,11 @@
       "revision": 1,
       "date": "2026-10-01",
       "note": "新增：风格调研后吸收，准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-10-02",
+      "note": "加入叁笙自制的无人物风格参考板作为画风锚点（色板、材质、母题、构图），出图时自动当画风参考；不含人物与动物，避免内容串入。"
     }
   ],
   "inspiration": {
@@ -132,5 +137,11 @@
       "renderer": "codex-builtin",
       "date": "2026-10-01"
     }
-  ]
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "fde57e2abff2caf94edd9601daf68a93f03ade937b6d9bd81bcdd1909f1733f8",
+    "enabled": true,
+    "isolation": "This image is a style reference sheet for this visual style. Transfer only its rendering technique, line or brush character, material, texture, colour tendency and decorative language. Never copy the sheet's layout, panels, swatches, labels, words, objects or composition; all subjects, layout and text come exclusively from the current brief."
+  }
 }

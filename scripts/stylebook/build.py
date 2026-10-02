@@ -152,6 +152,15 @@ def _enc(p: Path, m: int = 640, q: int = 72) -> str:
     return "data:image/webp;base64," + base64.b64encode(b.getvalue()).decode()
 
 
+def _self_made_anchors() -> set[str]:
+    """锚点是本项目自制风格参考板的画风：它已作为「风格参考板」样图展示，不再当「原作参考」重复列出。"""
+    ledger = CT.ROOT / "styles" / "anchor-provenance.json"
+    if not ledger.is_file():
+        return set()
+    return {e["style"] for e in json.loads(ledger.read_text(encoding="utf-8"))["anchors"]
+            if (e.get("origin") or {}).get("repo") == "sanshengai/sansheng-stylebook"}
+
+
 def collect_images(reg: dict, samples: list[Path] | None = None) -> dict[str, Path]:
     """键：<码>-<题号/anchor/example>。不同证据类型保留不同键。"""
     found: dict[str, Path] = {}
@@ -164,7 +173,7 @@ def collect_images(reg: dict, samples: list[Path] | None = None) -> dict[str, Pa
             if contract_path:
                 contract = CT.load(code)
                 anchor = contract.get("anchor") or {}
-                if anchor and anchor.get("enabled", True):
+                if anchor and anchor.get("enabled", True) and code not in _self_made_anchors():
                     found[f"{code}-anchor"] = contract_path.parent / anchor["file"]
                 for sample in contract.get("samples", []):  # 同题样图（人物 / 物件 / 信息图），键 s1/s2/s3
                     sp = contract_path.parent / sample["file"]
@@ -272,9 +281,7 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
     for old in img_dir.glob("*.webp"):
         old.unlink()
     contract_paths = {p.parent.name: p for p in CT.contract_paths()}
-    ledger = CT.ROOT / "styles" / "anchor-provenance.json"
-    self_anchors = {e["style"] for e in (json.loads(ledger.read_text(encoding="utf-8"))["anchors"] if ledger.is_file() else [])
-                    if (e.get("origin") or {}).get("repo") == "sanshengai/sansheng-stylebook"}
+    self_anchors = _self_made_anchors()
     have: dict[str, list[str]] = {}
     ratios: dict[str, float] = {}
     from PIL import Image

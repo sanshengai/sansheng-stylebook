@@ -125,5 +125,5 @@ def test_gallery_builds_with_samples(profile, tmp_path):
 def test_disabled_anchor_is_not_gallery_sample():
     reg = BD.registry()
     images = BD.collect_images(reg)
-    assert "C30-anchor" not in images  # C30 没有原作样图，不配锚点
+    assert "C30-anchor" not in images  # C30 的锚点是自制风格参考板，按风格档案展示，不当原作参考
     assert "C06-anchor" in images and "C06-s1" in images
