@@ -27,7 +27,7 @@
 
 已有角色或画风参考可放整组 `references: [{"role": "identity", "path": "character.png"}]`，路径也相对 brief。职责沿用编译器的画风、身份、姿势、构图等分类；用户提供 `role: style` 时优先使用该图，替代合同默认锚点。
 
-可传 `sb2:` 或旧 `sb1:` 码到 `code`；码优先于明说画风和配色。sb2 自带用途，brief 可以省略 scene；两处都有用途时必须一致。品牌色如 `sb2:info/C42-hex.1F6F8B.F4F1E8`。教材用途现有 tb-vocab / tb-grammar；自动返修和飞轮捕获仍在接入。网站 sb2 复制按钮尚未完成。
+可传 `sb2:` 或旧 `sb1:` 码到 `code`；码优先于明说画风和配色。sb2 自带用途，brief 可以省略 scene；两处都有用途时必须一致。品牌色如 `sb2:info/C42-hex.1F6F8B.F4F1E8`。教材用途现有 tb-vocab / tb-grammar；自动返修和飞轮捕获仍在接入。官网选择器复制的就是 sb2 码加一句说明。
 
 ## 一条命令执行
 

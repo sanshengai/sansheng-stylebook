@@ -59,7 +59,8 @@ def _contracts(private: bool) -> dict[str, dict]:
 def _entry(cat: dict, visibility: str, c: dict | None) -> dict:
     e = {"code": cat["code"], "zh": cat["zh"], "family": cat["family"], "fit": cat["fit"], "visibility": visibility,
          "origin": cat.get("origin", ""), "status": cat.get("status", "draft"), "has_contract": c is not None,
-         "recolor": cat.get("recolor", "free"), "recolor_note": cat.get("recolor_note", "")}
+         "recolor": cat.get("recolor", "free"), "recolor_note": cat.get("recolor_note", ""),
+         "tone": cat.get("tone", []), "craft": cat.get("craft", "")}
     if c:
         pal = c["palette"]
         e.update({
@@ -223,12 +224,19 @@ def gallery(out: Path | None = None, private: bool = False, samples: list[Path] 
 THUMB = 640  # 长边像素；外部文件，页面本体只放文字与数据
 # 样图种类：同题三张（s1 人物 / s2 物件 / s3 信息图）是所有画风共有的横向对比；其余是按用途做的样图，每个用途看它最需要的东西。
 SITE_KINDS = {
-    "s1": "人物", "s2": "物件", "s3": "信息图（简）",
-    "cv": "封面（标题写在图上）", "wxi": "文章插图（概括图）", "xhs": "小红书知识卡", "ppt": "PPT 一页", "inf": "信息图", "cm": "四格漫画",
-    "cp": "日漫标准页", "cs": "日漫大格页", "cw": "竖向长条漫",
+    "s1": "人物", "s2": "物件", "s3": "信息图（简）", "bd": "风格参考板",
+    "cv": "封面", "wxi": "横版插图", "wxt": "竖版插图", "wxx": "推特单图", "xhs": "小红书", "ppt": "PPT", "inf": "信息图",
+    "cm": "四格漫画", "cx": "日漫混排页", "ce": "知识条漫",
 }
+SET_KINDS = ["cv", "wxi", "wxt", "wxx", "xhs", "ppt", "inf", "cm", "cx", "ce"]
 # 一组图：<种类> 是第一张，<种类>-2、-3…… 是同组后面的图
-SET_RE = re.compile(r"^(" + "|".join(["cv", "wxi", "xhs", "ppt", "inf", "cm", "cp", "cs", "cw"]) + r")(?:-(\d+))?$")
+SET_RE = re.compile(r"^(" + "|".join(SET_KINDS) + r")(?:-(\d+))?$")
+# 一组里每一张的名字（详情页缩略图下显示）
+KIND_LABELS = {
+    "ppt": ["封面", "目录", "章节页", "大数字", "数据", "对比", "四象限", "流程", "图文", "金句", "全幅图", "谢谢观看"],
+    "inf": ["流程", "对比", "金字塔", "时间线", "数据看板", "便当格", "冰山", "循环", "中心辐射", "漏斗", "2×2 矩阵"],
+    "xhs": ["封面", "第 2 页", "第 3 页", "第 4 页", "第 5 页", "总结卡"],
+}
 # 用途说明与网格里默认展示的样图：不同用途要的东西不一样，看图的角度也不一样。
 
 
@@ -264,6 +272,9 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
     for old in img_dir.glob("*.webp"):
         old.unlink()
     contract_paths = {p.parent.name: p for p in CT.contract_paths()}
+    ledger = CT.ROOT / "styles" / "anchor-provenance.json"
+    self_anchors = {e["style"] for e in (json.loads(ledger.read_text(encoding="utf-8"))["anchors"] if ledger.is_file() else [])
+                    if (e.get("origin") or {}).get("repo") == "sanshengai/sansheng-stylebook"}
     have: dict[str, list[str]] = {}
     ratios: dict[str, float] = {}
     from PIL import Image
@@ -275,8 +286,8 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
         files = _sample_files(code, cp)
         contract = CT.load(code)
         anchor = contract.get("anchor") or {}
-        if anchor and anchor.get("enabled", True) and (cp.parent / anchor["file"]).is_file():
-            files["anchor"] = cp.parent / anchor["file"]
+        if anchor and anchor.get("enabled", True) and (cp.parent / anchor["file"]).is_file() and code not in self_anchors:
+            files["anchor"] = cp.parent / anchor["file"]  # 开源原作样图；自制参考板已作为「风格参考板」展示
         for kind, src in files.items():
             (img_dir / f"{code}-{kind}.webp").write_bytes(_thumb_bytes(src))
             have.setdefault(code, []).append(kind)
@@ -293,7 +304,8 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
     pools = {sc["id"]: [c for c in D.styles_for_use(sc["use"]) if c in have] for sc in reg["scenes"] if sc["id"] in scene_ids}
     cands = [{"id": s["code"], "name": s["zh"], "origin": inspiration.get(s["code"], ""), "recolor": s["recolor"],
               "recolorNote": s.get("recolor_note", ""), "essence": "；".join(s.get("essence", [])[:3]), "family": s.get("family", ""),
-              "imgs": sorted(have[s["code"]]), "uses": [sid for sid in scene_ids if s["code"] in pools[sid]]}
+              "imgs": sorted(have[s["code"]]), "uses": [sid for sid in scene_ids if s["code"] in pools[sid]],
+              "tone": s.get("tone", []), "craft": s.get("craft", "")}
              for s in reg["styles"] if s["code"] in have]
     scenes = []
     for sc in reg["scenes"]:
@@ -303,7 +315,7 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
                        "alternates": [a for a in sc["alternates"] if a in have], "pool": pools[sc["id"]]})
     pals = [{"id": p["id"], "name": p["name"], "en": p.get("en", ""), "group": p.get("group", ""), "story": p.get("story", ""),
              "colors": p.get("colors", [])} for p in reg["palettes"]["palettes"]]
-    meta = {"cands": cands, "scenes": scenes, "pals": pals, "kinds": SITE_KINDS, "ratios": ratios, "first": "wxcover"}
+    meta = {"cands": cands, "scenes": scenes, "pals": pals, "kinds": SITE_KINDS, "labels": KIND_LABELS, "ratios": ratios, "first": "wxcover"}
     html = PICKER.read_text(encoding="utf-8").replace("__META__", json.dumps(meta, ensure_ascii=False, sort_keys=True).replace("</", "<\\/"))
     out = out_dir / ("index.private.html" if private else "index.html")
     out.write_text(html, encoding="utf-8")
