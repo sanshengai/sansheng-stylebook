@@ -164,6 +164,38 @@ def test_every_style_in_a_pool_has_that_uses_own_sample(built):
     meta = json.loads(html.read_text(encoding="utf-8").split('<script id="meta" type="application/json">')[1].split("</script>")[0])
     imgs = {c["id"]: set(c["imgs"]) for c in meta["cands"]}
     # 音乐封面用封面样图展示；不在封面池里的风格退回同题人物图（页面也是这样回退的）
+    siblings = {"cm": {"cm", "cx", "ce"}, "wxi": {"wxi", "wxt", "wxx"}}  # 同组的兄弟种类也算本用途样图（页面同样按组回退）
     missing = [(s["id"], c) for s in meta["scenes"] for c in s["pool"]
-               if s["sample"] not in imgs[c] and not (s["id"] == "audio" and "s1" in imgs[c])]
+               if not (siblings.get(s["sample"], {s["sample"]}) & imgs[c]) and not (s["id"] == "audio" and "s1" in imgs[c])]
     assert missing == [], f"这些画风缺它所属用途的样图：{missing[:8]}"
+
+
+def test_set_labels_cover_every_page(built):
+    """详情里每张图标页型名：PPT 12 页、信息图 11 种都要有名字，且与入库的张数对得上。"""
+    _, html = built
+    meta = json.loads(html.read_text(encoding="utf-8").split('<script id="meta" type="application/json">')[1].split("</script>")[0])
+    assert len(meta["labels"]["ppt"]) == 12 and len(meta["labels"]["inf"]) == 11
+    for c in meta["cands"]:
+        for kind, cap in (("ppt", 12), ("inf", 11), ("xhs", 6)):
+            n = sum(1 for k in c["imgs"] if k == kind or k.startswith(kind + "-"))
+            assert n <= cap, (c["id"], kind, n)
+    assert all(c.get("tone") and c.get("craft") for c in meta["cands"]), "三问推荐需要每个画风的气质与画法"
+
+
+def test_quiz_recommends_only_from_the_chosen_use(tab):
+    _open(tab, "#u=xhs")
+    tab.click("#quizBtn")
+    tab.wait_for_selector("#quiz[open]")
+    tab.click("[data-qu=ppt]")
+    tab.click("[data-qt=可爱童趣]")   # 黏土、毛绒、积木等立体可爱画风大多不做 PPT：过滤失效时它们会排进推荐
+    tab.click("[data-qk=立体质感]")
+    meta = json.loads(tab.evaluate("document.getElementById('meta').textContent"))
+    pool = next(s["pool"] for s in meta["scenes"] if s["id"] == "ppt")
+    tags = {c["id"]: c for c in meta["cands"]}
+    picks = tab.eval_on_selector_all("[data-qpick]", "els=>els.map(e=>e.dataset.qpick)")
+    assert 1 <= len(picks) <= 5 and all(p in pool for p in picks), picks
+    first = tags[picks[0]]
+    assert "可爱童趣" in first["tone"] or first["craft"] == "立体质感"
+    tab.click(f"[data-qpick={picks[0]}]")
+    tab.wait_for_selector("#dlg[open]")
+    assert tab.inner_text("#dCode").startswith(f"sb2:ppt/{picks[0]}")

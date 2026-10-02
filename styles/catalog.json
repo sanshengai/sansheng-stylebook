@@ -57,7 +57,11 @@
         "吉卜力工作室"
       ],
       "origin": "hand-drawn-styles #3；baoyu-skills fantasy-animation",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C02",
@@ -78,7 +82,11 @@
       "origin": "hand-drawn-styles #10",
       "status": "contract",
       "recolor": "locked",
-      "recolor_note": "靛蓝线 + 全画一处橙"
+      "recolor_note": "靛蓝线 + 全画一处橙",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C04",
@@ -100,7 +108,11 @@
       "origin": "hand-drawn-styles #14",
       "status": "contract",
       "recolor": "locked",
-      "recolor_note": "丹宁蓝 × 芥末黄"
+      "recolor_note": "丹宁蓝 × 芥末黄",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C06",
@@ -120,7 +132,11 @@
         "昆汀·布莱克"
       ],
       "origin": "handraw-style #036（描述已重写，不含人名）",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C07",
@@ -140,7 +156,11 @@
         "岩崎知弘"
       ],
       "origin": "handraw-style #088（描述已重写，不含人名）",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C08",
@@ -163,7 +183,11 @@
         "几米"
       ],
       "origin": "handraw-style #254（描述已重写，不含人名）",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C11",
@@ -181,7 +205,12 @@
         "埃尔热《丁丁历险记》"
       ],
       "origin": "baoyu-skills comic；baoyu-skills comic ligne-claire + warm",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "温暖治愈",
+        "清新明亮"
+      ],
+      "craft": "漫画动画"
     },
     {
       "code": "C12",
@@ -200,7 +229,11 @@
         "桑贝《小淘气尼古拉》"
       ],
       "origin": "handraw-style #003（描述已重写，不含人名）",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "清新明亮"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C14",
@@ -219,7 +252,12 @@
         "托芙·扬松《姆明》"
       ],
       "origin": "handraw-style #037（描述已重写，不含人名）",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "清新明亮",
+        "可爱童趣"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C16",
@@ -236,7 +274,11 @@
       ],
       "names": [],
       "origin": "handraw-style #181（描述已重写，不含人名）",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "可爱童趣"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C17",
@@ -256,7 +298,11 @@
       ],
       "names": [],
       "origin": "handraw-style #189（描述已重写，不含人名）",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "东方雅致"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C18",
@@ -277,7 +323,11 @@
       "origin": "handraw-style #191（描述已重写，不含人名）",
       "status": "contract",
       "recolor": "locked",
-      "recolor_note": "青绿赭石"
+      "recolor_note": "青绿赭石",
+      "tone": [
+        "东方雅致"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C19",
@@ -298,7 +348,11 @@
         "老树画画（刘树勇）"
       ],
       "origin": "handraw-style #192（描述已重写，不含人名）",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "东方雅致"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C20",
@@ -319,7 +373,11 @@
         "民国月份牌"
       ],
       "origin": "handraw-style #194（描述已重写，不含人名）",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "东方雅致"
+      ],
+      "craft": "海报版式"
     },
     {
       "code": "C21",
@@ -340,7 +398,12 @@
         "人教版八九十年代教材插图"
       ],
       "origin": "handraw-style #271（描述已重写，不含人名）",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "东方雅致",
+        "温暖治愈"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C22",
@@ -360,7 +423,12 @@
         "Laika《魔女嘉》"
       ],
       "origin": "handraw-style #277（描述已重写，不含人名）",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "东方雅致",
+        "可爱童趣"
+      ],
+      "craft": "立体质感"
     },
     {
       "code": "C24",
@@ -381,7 +449,11 @@
         "Aardman《超级无敌掌门狗》"
       ],
       "origin": "handraw-style #248（描述已重写，不含人名）；baoyu-skills claymation",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "可爱童趣"
+      ],
+      "craft": "立体质感"
     },
     {
       "code": "C25",
@@ -403,7 +475,11 @@
         "Jellycat 毛绒玩具"
       ],
       "origin": "handraw-style #232（描述已重写，不含人名）",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "可爱童趣"
+      ],
+      "craft": "立体质感"
     },
     {
       "code": "C27",
@@ -423,7 +499,11 @@
       ],
       "names": [],
       "origin": "hand-drawn-styles #13",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "立体质感"
     },
     {
       "code": "C28",
@@ -440,7 +520,11 @@
       ],
       "names": [],
       "origin": "handraw-style #197（描述已重写，不含人名）",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "可爱童趣"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C29",
@@ -461,7 +545,11 @@
       "origin": "baoyu-skills chalkboard",
       "status": "contract",
       "recolor": "locked",
-      "recolor_note": "黑板底"
+      "recolor_note": "黑板底",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C30",
@@ -479,7 +567,12 @@
       ],
       "names": [],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "温暖治愈",
+        "可爱童趣"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C31",
@@ -497,7 +590,12 @@
         "Mike Rohde 手绘笔记"
       ],
       "origin": "baoyu-skills sketch-notes",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "专业克制",
+        "清新明亮"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C32",
@@ -514,7 +612,11 @@
       ],
       "names": [],
       "origin": "baoyu-skills intuition-machine",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "扁平图形"
     },
     {
       "code": "C34",
@@ -533,7 +635,11 @@
         "The Verge 编辑风"
       ],
       "origin": "baoyu-skills editorial-infographic",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "扁平图形"
     },
     {
       "code": "C35",
@@ -553,7 +659,12 @@
         "Notion 插图风"
       ],
       "origin": "baoyu-skills notion",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "专业克制",
+        "清新明亮"
+      ],
+      "craft": "扁平图形"
     },
     {
       "code": "C36",
@@ -572,7 +683,11 @@
         "xkcd（Randall Munroe）"
       ],
       "origin": "hand-drawn-styles #1",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "扁平图形"
     },
     {
       "code": "C39",
@@ -591,7 +706,11 @@
       "origin": "baoyu-skills blueprint",
       "status": "contract",
       "recolor": "locked",
-      "recolor_note": "蓝底白线"
+      "recolor_note": "蓝底白线",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "扁平图形"
     },
     {
       "code": "C40",
@@ -609,7 +728,12 @@
         "纪念碑谷（ustwo games）"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "专业克制",
+        "清新明亮"
+      ],
+      "craft": "扁平图形"
     },
     {
       "code": "C41",
@@ -629,7 +753,12 @@
       ],
       "names": [],
       "origin": "baoyu-skills vector-illustration",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "专业克制",
+        "个性潮流"
+      ],
+      "craft": "扁平图形"
     },
     {
       "code": "C42",
@@ -652,7 +781,12 @@
       ],
       "names": [],
       "origin": "handraw-style #276（描述已重写，不含人名）",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "清新明亮",
+        "专业克制"
+      ],
+      "craft": "扁平图形"
     },
     {
       "code": "C46",
@@ -668,7 +802,11 @@
       ],
       "names": [],
       "origin": "baoyu-skills vintage",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "海报版式"
     },
     {
       "code": "C48",
@@ -685,7 +823,11 @@
         "井上雄彦"
       ],
       "origin": "baoyu-skills manga",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "漫画动画"
     },
     {
       "code": "C49",
@@ -704,7 +846,11 @@
         "韩国网络条漫"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "清新明亮"
+      ],
+      "craft": "漫画动画"
     },
     {
       "code": "C51",
@@ -725,7 +871,11 @@
         "三丽鸥式卡哇伊"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "可爱童趣"
+      ],
+      "craft": "漫画动画"
     },
     {
       "code": "C52",
@@ -743,7 +893,11 @@
         "乔治·康多"
       ],
       "origin": "handraw-style #074（描述已重写，不含人名）",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C53",
@@ -763,7 +917,11 @@
         "居斯塔夫·多雷版画"
       ],
       "origin": "handraw-style #244（描述已重写，不含人名）",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C54",
@@ -782,7 +940,11 @@
         "16 位机时代像素游戏"
       ],
       "origin": "hand-drawn-styles #9",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "扁平图形"
     },
     {
       "code": "C55",
@@ -799,7 +961,12 @@
         "David Shrigley"
       ],
       "origin": "hand-drawn-styles #5",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "个性潮流",
+        "可爱童趣"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C56",
@@ -820,7 +987,11 @@
         "新海诚《你的名字。》《天气之子》"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "清新明亮"
+      ],
+      "craft": "漫画动画"
     },
     {
       "code": "C57",
@@ -843,7 +1014,11 @@
         "高桥留美子《乱马 1/2》"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "清新明亮"
+      ],
+      "craft": "漫画动画"
     },
     {
       "code": "C58",
@@ -865,7 +1040,11 @@
         "京都动画《轻音少女》《紫罗兰永恒花园》"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "清新明亮"
+      ],
+      "craft": "漫画动画"
     },
     {
       "code": "C59",
@@ -886,7 +1065,11 @@
         "Mary Blair"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C60",
@@ -906,7 +1089,11 @@
         "Beatrix Potter《彼得兔》"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C61",
@@ -926,7 +1113,11 @@
         "Shaun Tan《抵岸》"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C62",
@@ -946,7 +1137,11 @@
         "Jon Klassen《我的帽子呢》"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "清新明亮"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C63",
@@ -965,7 +1160,11 @@
         "Cartoon Saloon《海洋之歌》《狼行者》"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "漫画动画"
     },
     {
       "code": "C64",
@@ -986,7 +1185,11 @@
         "《中国奇谭》"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "东方雅致"
+      ],
+      "craft": "漫画动画"
     },
     {
       "code": "C65",
@@ -1008,7 +1211,11 @@
         "丰子恺《子恺漫画》"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "东方雅致"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C66",
@@ -1034,7 +1241,11 @@
         "木内达朗"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C67",
@@ -1052,7 +1263,11 @@
         "手冢治虫"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "可爱童趣"
+      ],
+      "craft": "漫画动画"
     },
     {
       "code": "C68",
@@ -1070,7 +1285,11 @@
         "中国连环画（小人书）"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "东方雅致"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C69",
@@ -1092,7 +1311,11 @@
       ],
       "names": [],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "可爱童趣"
+      ],
+      "craft": "立体质感"
     },
     {
       "code": "C70",
@@ -1110,7 +1333,12 @@
       ],
       "names": [],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "可爱童趣",
+        "温暖治愈"
+      ],
+      "craft": "立体质感"
     },
     {
       "code": "C71",
@@ -1129,7 +1357,11 @@
         "Charley Harper"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "扁平图形"
     },
     {
       "code": "C72",
@@ -1148,7 +1380,11 @@
         "Knolling 俯拍陈列"
       ],
       "origin": "JimLiu/baoyu-skills #infographic/styles/knolling.md",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "立体质感"
     },
     {
       "code": "C73",
@@ -1164,7 +1400,12 @@
       ],
       "names": [],
       "origin": "JimLiu/baoyu-skills #infographic/styles/hand-drawn-edu.md",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "可爱童趣",
+        "清新明亮"
+      ],
+      "craft": "手绘插画"
     },
     {
       "code": "C74",
@@ -1185,7 +1426,11 @@
         "Mondo 丝网印电影海报"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "海报版式"
     },
     {
       "code": "C75",
@@ -1204,7 +1449,11 @@
         "《纽约客》封面插画"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "海报版式"
     },
     {
       "code": "C76",
@@ -1223,7 +1472,11 @@
         "Monocle、Kinfolk 杂志封面"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "海报版式"
     },
     {
       "code": "C77",
@@ -1239,7 +1492,11 @@
       ],
       "names": [],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "海报版式"
     },
     {
       "code": "C79",
@@ -1257,7 +1514,11 @@
         "弥散渐变（Aura）海报"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "海报版式"
     },
     {
       "code": "C80",
@@ -1275,7 +1536,11 @@
       ],
       "names": [],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "立体质感"
     },
     {
       "code": "C81",
@@ -1294,7 +1559,11 @@
         "杂志撕纸拼贴"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "海报版式"
     },
     {
       "code": "C82",
@@ -1313,7 +1582,12 @@
       ],
       "names": [],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "清新明亮",
+        "可爱童趣"
+      ],
+      "craft": "立体质感"
     },
     {
       "code": "C83",
@@ -1329,7 +1603,11 @@
       ],
       "names": [],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "海报版式"
     },
     {
       "code": "C84",
@@ -1348,7 +1626,11 @@
         "Saul Bass 电影海报"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "海报版式"
     },
     {
       "code": "C85",
@@ -1369,7 +1651,11 @@
         "赛博朋克（《银翼杀手》美学）"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "海报版式"
     },
     {
       "code": "C86",
@@ -1388,7 +1674,11 @@
         "Corporate Memphis、孟菲斯设计"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "清新明亮"
+      ],
+      "craft": "扁平图形"
     },
     {
       "code": "C87",
@@ -1406,7 +1696,11 @@
       ],
       "names": [],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "清新明亮"
+      ],
+      "craft": "立体质感"
     },
     {
       "code": "C88",
@@ -1424,7 +1718,11 @@
       ],
       "names": [],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "可爱童趣"
+      ],
+      "craft": "立体质感"
     },
     {
       "code": "C89",
@@ -1442,7 +1740,11 @@
         "地铁线路图（Harry Beck）"
       ],
       "origin": "original",
-      "status": "contract"
+      "status": "contract",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "扁平图形"
     }
   ]
 }

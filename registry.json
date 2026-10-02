@@ -16,6 +16,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "手绘插画",
       "en": "Warm Hand-painted Animation",
       "revision": 5,
       "essence": [
@@ -64,6 +68,10 @@
       "has_contract": true,
       "recolor": "locked",
       "recolor_note": "靛蓝线 + 全画一处橙",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "手绘插画",
       "en": "Expressive Pale-Wash Sketch",
       "revision": 3,
       "essence": [
@@ -112,6 +120,10 @@
       "has_contract": true,
       "recolor": "locked",
       "recolor_note": "丹宁蓝 × 芥末黄",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "手绘插画",
       "en": "Nordic Gouache Picture Book",
       "revision": 3,
       "essence": [
@@ -160,6 +172,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "手绘插画",
       "en": "Loose Ink-and-Wash Storybook",
       "revision": 3,
       "essence": [
@@ -195,6 +211,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "手绘插画",
       "en": "Airy Transparent Watercolour Figures",
       "revision": 3,
       "essence": [
@@ -231,6 +251,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "手绘插画",
       "en": "Poetic White-space Picture Book",
       "revision": 4,
       "essence": [
@@ -276,6 +300,11 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "温暖治愈",
+        "清新明亮"
+      ],
+      "craft": "漫画动画",
       "en": "Warm Clear-Line Comic",
       "revision": 3,
       "essence": [
@@ -312,6 +341,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "清新明亮"
+      ],
+      "craft": "手绘插画",
       "en": "Fine-Line Urban Miniature",
       "revision": 3,
       "essence": [
@@ -347,6 +380,11 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "清新明亮",
+        "可爱童趣"
+      ],
+      "craft": "手绘插画",
       "en": "Nordic Fine-Line Whimsy",
       "revision": 3,
       "essence": [
@@ -383,6 +421,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "可爱童趣"
+      ],
+      "craft": "手绘插画",
       "en": "Heisei Diary Scrapbook",
       "revision": 3,
       "essence": [
@@ -419,6 +461,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "东方雅致"
+      ],
+      "craft": "手绘插画",
       "en": "Modern Guochao Gongbi Flat Art",
       "revision": 3,
       "essence": [
@@ -455,6 +501,10 @@
       "has_contract": true,
       "recolor": "locked",
       "recolor_note": "青绿赭石",
+      "tone": [
+        "东方雅致"
+      ],
+      "craft": "手绘插画",
       "en": "Modern Song-Dynasty Light Colour",
       "revision": 3,
       "essence": [
@@ -504,6 +554,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "东方雅致"
+      ],
+      "craft": "手绘插画",
       "en": "Modern Chinese Ink Miniatures",
       "revision": 3,
       "essence": [
@@ -539,6 +593,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "东方雅致"
+      ],
+      "craft": "海报版式",
       "en": "Shanghai Calendar-Poster Retro",
       "revision": 3,
       "essence": [
@@ -575,6 +633,11 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "东方雅致",
+        "温暖治愈"
+      ],
+      "craft": "手绘插画",
       "en": "Retro Chinese Textbook Illustration",
       "revision": 3,
       "essence": [
@@ -610,6 +673,11 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "东方雅致",
+        "可爱童趣"
+      ],
+      "craft": "立体质感",
       "en": "Vintage Wooden Puppet Stop-Motion",
       "revision": 3,
       "essence": [
@@ -646,6 +714,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "可爱童趣"
+      ],
+      "craft": "立体质感",
       "en": "Clay Stop-motion",
       "revision": 5,
       "essence": [
@@ -693,6 +765,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "可爱童趣"
+      ],
+      "craft": "立体质感",
       "en": "Plush Toy 3D",
       "revision": 3,
       "essence": [
@@ -740,6 +816,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "立体质感",
       "en": "Layered Paper Sculpture",
       "revision": 3,
       "essence": [
@@ -775,6 +855,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "可爱童趣"
+      ],
+      "craft": "手绘插画",
       "en": "Naive Childlike Crayon",
       "revision": 3,
       "essence": [
@@ -810,6 +894,10 @@
       "has_contract": true,
       "recolor": "locked",
       "recolor_note": "黑板底",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "手绘插画",
       "en": "Colorful Chalkboard Drawing",
       "revision": 3,
       "essence": [
@@ -859,6 +947,11 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "温暖治愈",
+        "可爱童趣"
+      ],
+      "craft": "手绘插画",
       "en": "Coloured Pencil Picture Book",
       "revision": 3,
       "essence": [
@@ -894,6 +987,11 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "专业克制",
+        "清新明亮"
+      ],
+      "craft": "手绘插画",
       "en": "Hand-drawn Sketch Notes",
       "revision": 5,
       "essence": [
@@ -980,6 +1078,10 @@
       "has_contract": true,
       "recolor": "lightness_only",
       "recolor_note": "",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "扁平图形",
       "en": "Technical Briefing on Aged Paper",
       "revision": 5,
       "essence": [
@@ -1066,6 +1168,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "扁平图形",
       "en": "Editorial Magazine Infographic",
       "revision": 3,
       "essence": [
@@ -1101,6 +1207,11 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "专业克制",
+        "清新明亮"
+      ],
+      "craft": "扁平图形",
       "en": "Minimal Knowledge Doodle",
       "revision": 3,
       "essence": [
@@ -1136,6 +1247,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "扁平图形",
       "en": "Minimal Stick-Figure Explainer",
       "revision": 3,
       "essence": [
@@ -1172,6 +1287,10 @@
       "has_contract": true,
       "recolor": "locked",
       "recolor_note": "蓝底白线",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "扁平图形",
       "en": "Engineering Blueprint",
       "revision": 3,
       "essence": [
@@ -1216,6 +1335,11 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "专业克制",
+        "清新明亮"
+      ],
+      "craft": "扁平图形",
       "en": "Friendly Isometric Miniature",
       "revision": 3,
       "essence": [
@@ -1252,6 +1376,11 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "专业克制",
+        "个性潮流"
+      ],
+      "craft": "扁平图形",
       "en": "Retro Outlined Vector",
       "revision": 3,
       "essence": [
@@ -1288,6 +1417,11 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "清新明亮",
+        "专业克制"
+      ],
+      "craft": "扁平图形",
       "en": "Airy Flat Vector",
       "revision": 4,
       "essence": [
@@ -1324,6 +1458,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "海报版式",
       "en": "Nostalgic Aged Paper",
       "revision": 3,
       "essence": [
@@ -1359,6 +1497,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "漫画动画",
       "en": "Black-and-White Manga",
       "revision": 3,
       "essence": [
@@ -1394,6 +1536,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "清新明亮"
+      ],
+      "craft": "漫画动画",
       "en": "Painterly Webtoon",
       "revision": 3,
       "essence": [
@@ -1430,6 +1576,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "可爱童趣"
+      ],
+      "craft": "漫画动画",
       "en": "Cute Chibi",
       "revision": 3,
       "essence": [
@@ -1465,6 +1615,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "手绘插画",
       "en": "Grotesque Classical Comic Portrait",
       "revision": 3,
       "essence": [
@@ -1501,6 +1655,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "手绘插画",
       "en": "Medieval Dark Ink",
       "revision": 3,
       "essence": [
@@ -1537,6 +1695,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "扁平图形",
       "en": "Retro Pixel Art",
       "revision": 3,
       "essence": [
@@ -1572,6 +1734,11 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "个性潮流",
+        "可爱童趣"
+      ],
+      "craft": "手绘插画",
       "en": "Deliberately Bad Doodle",
       "revision": 3,
       "essence": [
@@ -1608,6 +1775,10 @@
       "has_contract": true,
       "recolor": "lightness_only",
       "recolor_note": "",
+      "tone": [
+        "清新明亮"
+      ],
+      "craft": "漫画动画",
       "en": "Luminous Cinematic Anime",
       "revision": 3,
       "essence": [
@@ -1690,6 +1861,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "清新明亮"
+      ],
+      "craft": "漫画动画",
       "en": "1990s Cel Animation",
       "revision": 3,
       "essence": [
@@ -1725,6 +1900,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "清新明亮"
+      ],
+      "craft": "漫画动画",
       "en": "Fresh Japanese School Anime",
       "revision": 10,
       "essence": [
@@ -1774,6 +1953,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "手绘插画",
       "en": "Midcentury Geometric Fairytale",
       "revision": 1,
       "essence": [
@@ -1810,6 +1993,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "手绘插画",
       "en": "Naturalistic Watercolour Animal Storybook",
       "revision": 1,
       "essence": [
@@ -1846,6 +2033,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "手绘插画",
       "en": "Dreamlike Surreal Picture Book",
       "revision": 1,
       "essence": [
@@ -1882,6 +2073,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "清新明亮"
+      ],
+      "craft": "手绘插画",
       "en": "Deadpan Muted Picture Book",
       "revision": 1,
       "essence": [
@@ -1918,6 +2113,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "温暖治愈"
+      ],
+      "craft": "漫画动画",
       "en": "Celtic Hand-Drawn Animation",
       "revision": 1,
       "essence": [
@@ -1955,6 +2154,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "东方雅致"
+      ],
+      "craft": "漫画动画",
       "en": "Ethereal Chinese Ink Fantasy Animation",
       "revision": 1,
       "essence": [
@@ -1992,6 +2195,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "东方雅致"
+      ],
+      "craft": "手绘插画",
       "en": "Literati Brush Cartoon",
       "revision": 1,
       "essence": [
@@ -2029,6 +2236,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "手绘插画",
       "en": "Quiet Muted Japanese Editorial",
       "revision": 1,
       "essence": [
@@ -2065,6 +2276,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "可爱童趣"
+      ],
+      "craft": "漫画动画",
       "en": "Rounded Classic Manga Character",
       "revision": 1,
       "essence": [
@@ -2101,6 +2316,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "东方雅致"
+      ],
+      "craft": "手绘插画",
       "en": "Chinese Retro Lianhuanhua",
       "revision": 1,
       "essence": [
@@ -2138,6 +2357,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "可爱童趣"
+      ],
+      "craft": "立体质感",
       "en": "Round Knitted Clay Doll",
       "revision": 1,
       "essence": [
@@ -2174,6 +2397,11 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "可爱童趣",
+        "温暖治愈"
+      ],
+      "craft": "立体质感",
       "en": "Felt and Knit Stop-Motion Puppet",
       "revision": 1,
       "essence": [
@@ -2210,6 +2438,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "扁平图形",
       "en": "Ultra-Geometric Nature",
       "revision": 1,
       "essence": [
@@ -2246,6 +2478,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "立体质感",
       "en": "Knolling Flat Lay",
       "revision": 1,
       "essence": [
@@ -2281,6 +2517,11 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "可爱童趣",
+        "清新明亮"
+      ],
+      "craft": "手绘插画",
       "en": "Hand-Drawn Educational Macaron Blocks",
       "revision": 1,
       "essence": [
@@ -2317,6 +2558,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "海报版式",
       "en": "Screen-print Poster",
       "revision": 1,
       "essence": [
@@ -2352,6 +2597,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "海报版式",
       "en": "Warm Paper Two-Colour Editorial",
       "revision": 1,
       "essence": [
@@ -2387,6 +2636,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "海报版式",
       "en": "Editorial Magazine Cover",
       "revision": 1,
       "essence": [
@@ -2422,6 +2675,10 @@
       "has_contract": true,
       "recolor": "locked",
       "recolor_note": "",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "海报版式",
       "en": "Sansheng Deep Space",
       "revision": 1,
       "essence": [
@@ -2470,6 +2727,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "海报版式",
       "en": "Aura Gradient with Grain",
       "revision": 1,
       "essence": [
@@ -2505,6 +2766,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "立体质感",
       "en": "Studio Still Life",
       "revision": 1,
       "essence": [
@@ -2540,6 +2805,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "海报版式",
       "en": "Torn-Paper Collage",
       "revision": 1,
       "essence": [
@@ -2575,6 +2844,11 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "清新明亮",
+        "可爱童趣"
+      ],
+      "craft": "立体质感",
       "en": "Soft 3D Clay Icons",
       "revision": 1,
       "essence": [
@@ -2610,6 +2884,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "海报版式",
       "en": "Oversized Type Poster",
       "revision": 1,
       "essence": [
@@ -2645,6 +2923,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "海报版式",
       "en": "Mid-Century Film Poster Silhouette",
       "revision": 1,
       "essence": [
@@ -2680,6 +2962,10 @@
       "has_contract": true,
       "recolor": "lightness_only",
       "recolor_note": "",
+      "tone": [
+        "个性潮流"
+      ],
+      "craft": "海报版式",
       "en": "Cyberpunk Neon",
       "revision": 1,
       "essence": [
@@ -2715,6 +3001,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "清新明亮"
+      ],
+      "craft": "扁平图形",
       "en": "Corporate Memphis",
       "revision": 1,
       "essence": [
@@ -2750,6 +3040,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "清新明亮"
+      ],
+      "craft": "立体质感",
       "en": "Origami",
       "revision": 1,
       "essence": [
@@ -2785,6 +3079,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "可爱童趣"
+      ],
+      "craft": "立体质感",
       "en": "Brick Construction",
       "revision": 1,
       "essence": [
@@ -2819,6 +3117,10 @@
       "has_contract": true,
       "recolor": "free",
       "recolor_note": "",
+      "tone": [
+        "专业克制"
+      ],
+      "craft": "扁平图形",
       "en": "Transit Map Diagram",
       "revision": 1,
       "essence": [
