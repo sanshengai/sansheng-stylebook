@@ -196,7 +196,7 @@ try{mine=JSON.parse(localStorage.getItem('sb-mine')||'{}')||{};}catch(e){mine={}
 const saveMine=()=>{try{localStorage.setItem('sb-mine',JSON.stringify(mine));}catch(e){}};
 const GROUPS=['甜美','自然','东方','都市','怀旧'];
 const IMG_GROUPS=[['cv','封面'],['xhs','小红书'],['wxi','文章插图'],['inf','信息图'],['ppt','PPT'],['comic','漫画'],['bd','风格档案'],['same','同题对比'],['anchor','原作参考']];
-const GROUP_KINDS={cv:['cv'],xhs:['xhs'],wxi:['wxi','wxt','wxx'],inf:['inf'],ppt:['ppt'],comic:['cm','cx','ce'],bd:['bd'],same:['s1','s2','s3'],anchor:['anchor']};
+const GROUP_KINDS={cv:['cv','au'],xhs:['xhs'],wxi:['wxi','wxt','wxx'],inf:['inf'],ppt:['ppt'],comic:['cm','cx','ce'],bd:['bd'],same:['s1','s2','s3'],anchor:['anchor']};
 const baseKind=k=>k.replace(/-\d+$/,'');
 const groupOf=k=>{const b=baseKind(k);return Object.keys(GROUP_KINDS).find(g=>GROUP_KINDS[g].includes(b));};
 function stems(c,g){const out=[];GROUP_KINDS[g].forEach(b=>{if(c.imgs.includes(b))out.push(b);for(let i=2;i<=12;i++)if(c.imgs.includes(b+'-'+i))out.push(b+'-'+i);});return out;}
@@ -332,8 +332,8 @@ const TONES=['温暖治愈','清新明亮','专业克制','东方雅致','个性
 const CRAFTS=['手绘插画','扁平图形','立体质感','漫画动画','海报版式'];
 const Q={u:null,t:null,k:null};
 function quizPicks(){if(!Q.u)return [];const sc=scene(Q.u);const pref=[sc.default,...(sc.alternates||[])];
-  return M.cands.filter(c=>c.uses.includes(Q.u)).map(c=>({c,s:(Q.t&&(c.tone||[]).includes(Q.t)?2:0)+(Q.k&&c.craft===Q.k?1.5:0)+(pref.includes(c.id)?0.5:0)}))
-   .sort((a,b)=>b.s-a.s||a.c.id.localeCompare(b.c.id)).slice(0,5).map(x=>x.c);}
+  const r=M.cands.filter(c=>c.uses.includes(Q.u)).map(c=>({c,s:(Q.t&&(c.tone||[]).includes(Q.t)?2:0)+(Q.k&&c.craft===Q.k?1.5:0)+(pref.includes(c.id)?0.5:0)}))
+   .sort((a,b)=>b.s-a.s||a.c.id.localeCompare(b.c.id));const hit=r.filter(x=>x.s>=1);return (hit.length>=3?hit:r).slice(0,5).map(x=>x.c);}
 function chipRow(key,list,cur){return '<div class="row scroll">'+list.map(([v,t])=>'<button class="chip small" data-q'+key+'="'+v+'" aria-pressed="'+(cur===v)+'">'+esc(t)+'</button>').join('')+'</div>';}
 function renderQuiz(){const picks=quizPicks();
   $('quizBody').innerHTML='<h2>三个问题，帮你挑画风</h2><p class="small">选完就出推荐，点卡片看整组样图。</p>'

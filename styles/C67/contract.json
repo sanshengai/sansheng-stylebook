@@ -94,28 +94,16 @@
       "date": "2026-09-30"
     },
     {
-      "topic": "四格漫画",
-      "file": "samples/cm.webp",
+      "topic": "风格参考板",
+      "file": "samples/bd.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "日漫标准页",
-      "file": "samples/cp.webp",
+      "topic": "日漫混排页",
+      "file": "samples/cx.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
-    },
-    {
-      "topic": "日漫大格页",
-      "file": "samples/cs.webp",
-      "renderer": "codex-builtin",
-      "date": "2026-10-01"
-    },
-    {
-      "topic": "竖向长条漫",
-      "file": "samples/cw.webp",
-      "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     }
   ],
   "anchor": {

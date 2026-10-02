@@ -109,10 +109,16 @@
       "date": "2026-09-30"
     },
     {
-      "topic": "封面（标题写在图上）",
+      "topic": "风格参考板",
+      "file": "samples/bd.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-02"
+    },
+    {
+      "topic": "公众号封面",
       "file": "samples/cv.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     }
   ],
   "anchor": {

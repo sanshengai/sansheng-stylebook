@@ -80,46 +80,124 @@
   "renderer": "codex",
   "samples": [
     {
-      "topic": "封面（标题写在图上）",
-      "file": "samples/cv.webp",
+      "topic": "风格参考板",
+      "file": "samples/bd.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "文章插图（概括图）",
+      "topic": "音乐封面",
+      "file": "samples/au.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-02"
+    },
+    {
+      "topic": "横版插图 第 1 张",
       "file": "samples/wxi.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "文章插图（概括图） 第 2 张",
+      "topic": "横版插图 第 2 张",
       "file": "samples/wxi-2.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "文章插图（概括图） 第 3 张",
+      "topic": "横版插图 第 3 张",
       "file": "samples/wxi-3.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "PPT 一页",
+      "topic": "竖版插图 第 1 张",
+      "file": "samples/wxt.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-02"
+    },
+    {
+      "topic": "竖版插图 第 2 张",
+      "file": "samples/wxt-2.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-02"
+    },
+    {
+      "topic": "推特单图",
+      "file": "samples/wxx.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-02"
+    },
+    {
+      "topic": "PPT 第 1 张",
       "file": "samples/ppt.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "PPT 一页 第 2 张",
+      "topic": "PPT 第 2 张",
       "file": "samples/ppt-2.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
     },
     {
-      "topic": "PPT 一页 第 3 张",
+      "topic": "PPT 第 3 张",
       "file": "samples/ppt-3.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-01"
+      "date": "2026-10-02"
+    },
+    {
+      "topic": "PPT 第 4 张",
+      "file": "samples/ppt-4.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-02"
+    },
+    {
+      "topic": "PPT 第 5 张",
+      "file": "samples/ppt-5.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-02"
+    },
+    {
+      "topic": "PPT 第 6 张",
+      "file": "samples/ppt-6.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-02"
+    },
+    {
+      "topic": "PPT 第 7 张",
+      "file": "samples/ppt-7.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-02"
+    },
+    {
+      "topic": "PPT 第 8 张",
+      "file": "samples/ppt-8.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-02"
+    },
+    {
+      "topic": "PPT 第 9 张",
+      "file": "samples/ppt-9.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-02"
+    },
+    {
+      "topic": "PPT 第 10 张",
+      "file": "samples/ppt-10.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-02"
+    },
+    {
+      "topic": "PPT 第 11 张",
+      "file": "samples/ppt-11.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-02"
+    },
+    {
+      "topic": "PPT 第 12 张",
+      "file": "samples/ppt-12.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-02"
     }
   ],
   "anchor": {
