@@ -306,7 +306,7 @@
       ],
       "craft": "漫画动画",
       "en": "Warm Clear-Line Comic",
-      "revision": 3,
+      "revision": 4,
       "essence": [
         "粗细统一的干净轮廓",
         "平涂色块与亲切人物",
@@ -899,7 +899,7 @@
       ],
       "craft": "手绘插画",
       "en": "Colorful Chalkboard Drawing",
-      "revision": 3,
+      "revision": 4,
       "essence": [
         "深色黑板底",
         "彩色粉笔颗粒与手绘擦痕",
@@ -953,7 +953,7 @@
       ],
       "craft": "手绘插画",
       "en": "Coloured Pencil Picture Book",
-      "revision": 3,
+      "revision": 4,
       "essence": [
         "清楚的彩铅笔触与纸纹",
         "柔和叠色和圆润人物",
@@ -993,7 +993,7 @@
       ],
       "craft": "手绘插画",
       "en": "Hand-drawn Sketch Notes",
-      "revision": 5,
+      "revision": 6,
       "essence": [
         "暖奶油色纸底，带细纸纹",
         "线条、箭头、小涂鸦与文字都是黑色手绘线",
@@ -1083,7 +1083,7 @@
       ],
       "craft": "扁平图形",
       "en": "Technical Briefing on Aged Paper",
-      "revision": 5,
+      "revision": 6,
       "essence": [
         "做旧奶油纸底，有细纸纹和浅折痕",
         "青绿、暖棕、酒红的沉稳配色，深炭描边",
@@ -1173,7 +1173,7 @@
       ],
       "craft": "扁平图形",
       "en": "Editorial Magazine Infographic",
-      "revision": 3,
+      "revision": 4,
       "essence": [
         "杂志式信息层级",
         "清楚的插图与视觉隐喻",
@@ -1213,7 +1213,7 @@
       ],
       "craft": "扁平图形",
       "en": "Minimal Knowledge Doodle",
-      "revision": 3,
+      "revision": 4,
       "essence": [
         "轻微手抖的简洁线稿",
         "单一概念和大留白",
@@ -1292,7 +1292,7 @@
       ],
       "craft": "扁平图形",
       "en": "Engineering Blueprint",
-      "revision": 3,
+      "revision": 4,
       "essence": [
         "网格对齐的精密制图线",
         "蓝图色系与白色标注",
@@ -1341,7 +1341,7 @@
       ],
       "craft": "扁平图形",
       "en": "Friendly Isometric Miniature",
-      "revision": 3,
+      "revision": 4,
       "essence": [
         "一致的三十度等距视角",
         "简洁几何体与三面平涂明暗",
@@ -1382,7 +1382,7 @@
       ],
       "craft": "扁平图形",
       "en": "Retro Outlined Vector",
-      "revision": 3,
+      "revision": 4,
       "essence": [
         "等粗黑色封闭轮廓",
         "复古柔和彩色平面",
@@ -1463,7 +1463,7 @@
       ],
       "craft": "海报版式",
       "en": "Nostalgic Aged Paper",
-      "revision": 3,
+      "revision": 4,
       "essence": [
         "泛黄旧纸与历史档案质感",
         "复古地图或探险日志装饰",
@@ -1502,7 +1502,7 @@
       ],
       "craft": "漫画动画",
       "en": "Black-and-White Manga",
-      "revision": 3,
+      "revision": 4,
       "essence": [
         "干净而有轻重的漫画墨线",
         "表情夸张的动态人物",
@@ -1541,7 +1541,7 @@
       ],
       "craft": "漫画动画",
       "en": "Painterly Webtoon",
-      "revision": 3,
+      "revision": 4,
       "essence": [
         "清晰人物线与柔和厚涂赛璐璐明暗",
         "发光肤色与有表情的眼睛",
@@ -1581,7 +1581,7 @@
       ],
       "craft": "漫画动画",
       "en": "Cute Chibi",
-      "revision": 3,
+      "revision": 4,
       "essence": [
         "二点五头身的大头小身",
         "闪亮大眼与圆润造型",
@@ -1780,7 +1780,7 @@
       ],
       "craft": "漫画动画",
       "en": "Luminous Cinematic Anime",
-      "revision": 3,
+      "revision": 4,
       "essence": [
         "通透发光的动画背景美术",
         "壮阔天空、积云、光束与镜头光晕",
@@ -1866,7 +1866,7 @@
       ],
       "craft": "漫画动画",
       "en": "1990s Cel Animation",
-      "revision": 3,
+      "revision": 4,
       "essence": [
         "九十年代赛璐璐硬边双色明暗",
         "轻微胶片颗粒与手绘水彩背景",
@@ -1905,7 +1905,7 @@
       ],
       "craft": "漫画动画",
       "en": "Fresh Japanese School Anime",
-      "revision": 10,
+      "revision": 11,
       "essence": [
         "细而干净的线稿",
         "柔和粉彩光与轻微光晕",
@@ -2483,7 +2483,7 @@
       ],
       "craft": "立体质感",
       "en": "Knolling Flat Lay",
-      "revision": 1,
+      "revision": 2,
       "essence": [
         "俯拍视角",
         "物品直角整齐陈列",
@@ -2523,7 +2523,7 @@
       ],
       "craft": "手绘插画",
       "en": "Hand-Drawn Educational Macaron Blocks",
-      "revision": 1,
+      "revision": 2,
       "essence": [
         "暖奶油纸纹底",
         "马卡龙粉彩色块",
@@ -2563,7 +2563,7 @@
       ],
       "craft": "海报版式",
       "en": "Screen-print Poster",
-      "revision": 1,
+      "revision": 2,
       "essence": [
         "平涂色块无描边、2 到 5 个专色",
         "半色调网点与轻微套印错位",
@@ -2602,7 +2602,7 @@
       ],
       "craft": "海报版式",
       "en": "Warm Paper Two-Colour Editorial",
-      "revision": 1,
+      "revision": 2,
       "essence": [
         "暖奶油纸底与细纸纹",
         "深墨色加一个暖金或红的点缀色",
@@ -2641,7 +2641,7 @@
       ],
       "craft": "海报版式",
       "en": "Editorial Magazine Cover",
-      "revision": 1,
+      "revision": 2,
       "essence": [
         "衬线大标题是画面主角",
         "细线框、编号式小标签、清晰网格",
@@ -2680,7 +2680,7 @@
       ],
       "craft": "海报版式",
       "en": "Sansheng Deep Space",
-      "revision": 1,
+      "revision": 2,
       "essence": [
         "深炭底、左侧大标题加半隐英文影字",
         "品牌绿作唯一点缀",
@@ -2732,7 +2732,7 @@
       ],
       "craft": "海报版式",
       "en": "Aura Gradient with Grain",
-      "revision": 1,
+      "revision": 2,
       "essence": [
         "失焦的柔和色雾",
         "整体细密胶片颗粒",
@@ -2771,7 +2771,7 @@
       ],
       "craft": "立体质感",
       "en": "Studio Still Life",
-      "revision": 1,
+      "revision": 2,
       "essence": [
         "纯色背景上单个实物",
         "柔和棚拍光与轻投影",
@@ -2810,7 +2810,7 @@
       ],
       "craft": "海报版式",
       "en": "Torn-Paper Collage",
-      "revision": 1,
+      "revision": 2,
       "essence": [
         "撕边纸片与半色调剪影",
         "手写批注与胶带",
@@ -2850,7 +2850,7 @@
       ],
       "craft": "立体质感",
       "en": "Soft 3D Clay Icons",
-      "revision": 1,
+      "revision": 2,
       "essence": [
         "磨砂塑料或黏土质感的圆润图标",
         "柔和棚光与浅色背景",
@@ -2889,7 +2889,7 @@
       ],
       "craft": "海报版式",
       "en": "Oversized Type Poster",
-      "revision": 1,
+      "revision": 2,
       "essence": [
         "一个巨大汉字或短语占满画面",
         "纯色背景加一个对比色块",
@@ -2928,7 +2928,7 @@
       ],
       "craft": "海报版式",
       "en": "Mid-Century Film Poster Silhouette",
-      "revision": 1,
+      "revision": 2,
       "essence": [
         "手刻剪影与负形",
         "两三个平涂色",
@@ -2967,7 +2967,7 @@
       ],
       "craft": "海报版式",
       "en": "Cyberpunk Neon",
-      "revision": 1,
+      "revision": 2,
       "essence": [
         "近黑底上的粉青霓虹描边",
         "雨夜反光与全息金属",
@@ -3006,7 +3006,7 @@
       ],
       "craft": "扁平图形",
       "en": "Corporate Memphis",
-      "revision": 1,
+      "revision": 2,
       "essence": [
         "超大肢体的抽象人物",
         "无描边平涂",
@@ -3045,7 +3045,7 @@
       ],
       "craft": "立体质感",
       "en": "Origami",
-      "revision": 1,
+      "revision": 2,
       "essence": [
         "折痕清晰的几何纸形",
         "平涂的红蓝绿金",
@@ -3084,7 +3084,7 @@
       ],
       "craft": "立体质感",
       "en": "Brick Construction",
-      "revision": 1,
+      "revision": 2,
       "essence": [
         "可见凸点的塑料积木",
         "红蓝黄绿经典配色",
@@ -3122,7 +3122,7 @@
       ],
       "craft": "扁平图形",
       "en": "Transit Map Diagram",
-      "revision": 1,
+      "revision": 2,
       "essence": [
         "只用 45 和 90 度的彩色线路",
         "站点圆点与换乘标记",

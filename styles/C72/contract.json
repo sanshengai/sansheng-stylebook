@@ -1,6 +1,6 @@
 {
   "code": "C72",
-  "revision": 1,
+  "revision": 2,
   "name": {
     "zh": "俯拍物品陈列 Knolling",
     "en": "Knolling Flat Lay"
@@ -58,6 +58,11 @@
       "revision": 1,
       "date": "2026-09-30",
       "note": "画风库 v2 新增"
+    },
+    {
+      "revision": 2,
+      "date": "2026-10-02",
+      "note": "加入叁笙自制的无人物风格参考板作为画风锚点（色板、材质、母题、构图），出图时自动当画风参考；不含人物与动物，避免内容串入。"
     }
   ],
   "inspiration": {
@@ -136,5 +141,11 @@
       "renderer": "codex-builtin",
       "date": "2026-10-01"
     }
-  ]
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "ecc644469ac660ddb63b0e06b13f189d08a2d2ba45c2aec8a4903ffa5212a998",
+    "enabled": true,
+    "isolation": "This image is a style reference sheet for this visual style. Transfer only its rendering technique, line or brush character, material, texture, colour tendency and decorative language. Never copy the sheet's layout, panels, swatches, labels, words, objects or composition; all subjects, layout and text come exclusively from the current brief."
+  }
 }

@@ -1,6 +1,6 @@
 {
   "code": "C85",
-  "revision": 1,
+  "revision": 2,
   "name": {
     "zh": "赛博霓虹",
     "en": "Cyberpunk Neon"
@@ -58,6 +58,11 @@
       "revision": 1,
       "date": "2026-10-01",
       "note": "新增：风格调研后吸收，准入待验证"
+    },
+    {
+      "revision": 2,
+      "date": "2026-10-02",
+      "note": "加入叁笙自制的无人物风格参考板作为画风锚点（色板、材质、母题、构图），出图时自动当画风参考；不含人物与动物，避免内容串入。"
     }
   ],
   "inspiration": {
@@ -135,5 +140,11 @@
       "renderer": "codex-builtin",
       "date": "2026-10-01"
     }
-  ]
+  ],
+  "anchor": {
+    "file": "anchor.png",
+    "sha256": "d0ecc6ea287185f14b1c93a2f85975a34baa244065e19416bca61d15eff4e880",
+    "enabled": true,
+    "isolation": "This image is a style reference sheet for this visual style. Transfer only its rendering technique, line or brush character, material, texture, colour tendency and decorative language. Never copy the sheet's layout, panels, swatches, labels, words, objects or composition; all subjects, layout and text come exclusively from the current brief."
+  }
 }
