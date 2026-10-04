@@ -617,6 +617,11 @@
           },
           "date": {
             "type": "string"
+          },
+          "ratio": {
+            "type": "number",
+            "minimum": 0.1,
+            "description": "样图宽高比（宽/高，保留三位）。公开下载包不带样图文件，选择器据此无图重建"
           }
         }
       },

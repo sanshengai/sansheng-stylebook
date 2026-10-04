@@ -101,75 +101,87 @@
       "file": "samples/s1.jpg",
       "source_sha256": "00ba06bc961f65948809bd01b6eb37f375edd0de7787fe8fc333749c54348281",
       "renderer": "codex-builtin",
-      "date": "2026-09-30"
+      "date": "2026-09-30",
+      "ratio": 1.0
     },
     {
       "topic": "物件",
       "file": "samples/s2.jpg",
       "source_sha256": "d9fc1af3573b4979e1fa41db9b6e79a1dd35dea245ff942cafe6ef8d183a5ee8",
       "renderer": "codex-builtin",
-      "date": "2026-09-30"
+      "date": "2026-09-30",
+      "ratio": 1.0
     },
     {
       "topic": "信息图",
       "file": "samples/s3.jpg",
       "source_sha256": "ef97ff8415283fb9784e50b5412e8c83a057c2b75068a8700d3d839cfafea837",
       "renderer": "codex-builtin",
-      "date": "2026-09-30"
+      "date": "2026-09-30",
+      "ratio": 1.0
     },
     {
       "topic": "风格参考板",
       "file": "samples/bd.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 1.776
     },
     {
       "topic": "公众号封面",
       "file": "samples/cv.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 2.35
     },
     {
       "topic": "小红书 第 1 张",
       "file": "samples/xhs.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 0.75
     },
     {
       "topic": "小红书 第 2 张",
       "file": "samples/xhs-2.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 0.75
     },
     {
       "topic": "小红书 第 3 张",
       "file": "samples/xhs-3.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 0.75
     },
     {
       "topic": "小红书 第 4 张",
       "file": "samples/xhs-4.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 0.75
     },
     {
       "topic": "小红书 第 5 张",
       "file": "samples/xhs-5.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 0.75
     },
     {
       "topic": "小红书 第 6 张",
       "file": "samples/xhs-6.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 0.75
     },
     {
       "topic": "四格漫画",
       "file": "samples/cm.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 1.0
     }
   ]
 }

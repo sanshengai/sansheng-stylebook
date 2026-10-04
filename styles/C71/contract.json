@@ -78,171 +78,199 @@
       "file": "samples/s1.jpg",
       "source_sha256": "a37e3d092afff723a322b731e6ddfa395553298e6c16f7400e81aca86219fd9d",
       "renderer": "codex-builtin",
-      "date": "2026-09-30"
+      "date": "2026-09-30",
+      "ratio": 1.0
     },
     {
       "topic": "物件",
       "file": "samples/s2.jpg",
       "source_sha256": "309275a7e6de072022cdfe325f85c9ddaf1442ddd10b9123867f999218dc954c",
       "renderer": "codex-builtin",
-      "date": "2026-09-30"
+      "date": "2026-09-30",
+      "ratio": 1.0
     },
     {
       "topic": "信息图",
       "file": "samples/s3.jpg",
       "source_sha256": "218a239f2883ef203eb94464a99fbc83b8f08c33819c3cc50cf721acb81354b2",
       "renderer": "codex-builtin",
-      "date": "2026-09-30"
+      "date": "2026-09-30",
+      "ratio": 1.0
     },
     {
       "topic": "风格参考板",
       "file": "samples/bd.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 1.776
     },
     {
       "topic": "公众号封面",
       "file": "samples/cv.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 2.35
     },
     {
       "topic": "PPT 第 1 张",
       "file": "samples/ppt.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 1.776
     },
     {
       "topic": "PPT 第 2 张",
       "file": "samples/ppt-2.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 1.776
     },
     {
       "topic": "PPT 第 3 张",
       "file": "samples/ppt-3.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 1.776
     },
     {
       "topic": "PPT 第 4 张",
       "file": "samples/ppt-4.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 1.776
     },
     {
       "topic": "PPT 第 5 张",
       "file": "samples/ppt-5.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 1.776
     },
     {
       "topic": "PPT 第 6 张",
       "file": "samples/ppt-6.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 1.776
     },
     {
       "topic": "PPT 第 7 张",
       "file": "samples/ppt-7.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 1.776
     },
     {
       "topic": "PPT 第 8 张",
       "file": "samples/ppt-8.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 1.776
     },
     {
       "topic": "PPT 第 9 张",
       "file": "samples/ppt-9.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 1.776
     },
     {
       "topic": "PPT 第 10 张",
       "file": "samples/ppt-10.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 1.776
     },
     {
       "topic": "PPT 第 11 张",
       "file": "samples/ppt-11.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 1.776
     },
     {
       "topic": "PPT 第 12 张",
       "file": "samples/ppt-12.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 1.776
     },
     {
       "topic": "信息图 第 1 张",
       "file": "samples/inf.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 0.75
     },
     {
       "topic": "信息图 第 2 张",
       "file": "samples/inf-2.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 0.75
     },
     {
       "topic": "信息图 第 3 张",
       "file": "samples/inf-3.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 0.75
     },
     {
       "topic": "信息图 第 4 张",
       "file": "samples/inf-4.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 0.75
     },
     {
       "topic": "信息图 第 5 张",
       "file": "samples/inf-5.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 0.75
     },
     {
       "topic": "信息图 第 6 张",
       "file": "samples/inf-6.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 0.75
     },
     {
       "topic": "信息图 第 7 张",
       "file": "samples/inf-7.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 0.75
     },
     {
       "topic": "信息图 第 8 张",
       "file": "samples/inf-8.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 0.75
     },
     {
       "topic": "信息图 第 9 张",
       "file": "samples/inf-9.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 0.75
     },
     {
       "topic": "信息图 第 10 张",
       "file": "samples/inf-10.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 0.75
     },
     {
       "topic": "信息图 第 11 张",
       "file": "samples/inf-11.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 0.75
     }
   ],
   "anchor": {

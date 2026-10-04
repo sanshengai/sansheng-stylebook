@@ -3141,6 +3141,63 @@
       "admission": "pending",
       "tests": {},
       "recipe_sha": "1e9b1cbe2f65"
+    },
+    {
+      "code": "C90",
+      "zh": "深色系列封面",
+      "family": "封面与海报",
+      "fit": [
+        "讲道理",
+        "封面"
+      ],
+      "visibility": "public",
+      "origin": "original",
+      "status": "contract",
+      "has_contract": true,
+      "recolor": "free",
+      "recolor_note": "",
+      "tone": [
+        "专业克制",
+        "个性潮流"
+      ],
+      "craft": "海报版式",
+      "en": "Dark Series Cover",
+      "revision": 1,
+      "essence": [
+        "深色底，左侧自上而下：品牌名一行小字、系列标签（圆角色块）、超大粗衬线主标题",
+        "右侧一个认得出的主体（可多件叠放）加一轮暖色圆日与剪影",
+        "只用一个暖色强调（橙红）加米金细线，其余深色"
+      ],
+      "colors": [
+        {
+          "name": "深紫黑 aubergine black",
+          "hex": "#1B1624"
+        },
+        {
+          "name": "暖橙红 warm orange-red",
+          "hex": "#E8704E"
+        },
+        {
+          "name": "暖米白 warm off-white",
+          "hex": "#F5EDE0"
+        },
+        {
+          "name": "香槟金 champagne gold",
+          "hex": "#C9A56B"
+        }
+      ],
+      "text_mode": [
+        "native",
+        "none"
+      ],
+      "abilities": {},
+      "facets": {
+        "medium": "深色系列封面",
+        "density": "中等"
+      },
+      "admission": "pending",
+      "tests": {},
+      "recipe_sha": "e88edb539cdc"
     }
   ],
   "removed": [

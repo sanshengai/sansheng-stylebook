@@ -36,6 +36,9 @@ FORBIDDEN = re.compile(
     r"[Cc]:\\Users\\|/Us" + r"ers/[^/\s]+/|/ho" + r"me/[^/\s]+/)", re.I)
 
 
+SAMPLE_RE = re.compile(r"styles/C\d{2,3}/samples/.+")
+
+
 class ExportError(ValueError):
     pass
 
@@ -44,6 +47,8 @@ def select(entries: list[tuple[str, str]]) -> list[str]:
     """Only regular files from the explicit public surface may leave the repo."""
     selected = []
     for mode, name in entries:
+        if SAMPLE_RE.fullmatch(name):
+            continue  # 样图只在官网选择器里展示，不进下载包（出图只用合同与锚点，不读样图）
         if name in PUBLIC_FILES or name.startswith(PUBLIC_DIRS):
             if mode not in {"100644", "100755"}:
                 raise ExportError(f"公开文件不是普通文件：{name}")

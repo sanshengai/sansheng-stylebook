@@ -93,13 +93,15 @@
       "topic": "风格参考板",
       "file": "samples/bd.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 1.776
     },
     {
       "topic": "公众号封面",
       "file": "samples/cv.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 2.35
     }
   ],
   "anchor": {

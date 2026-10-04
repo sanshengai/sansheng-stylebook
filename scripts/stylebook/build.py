@@ -249,14 +249,18 @@ KIND_LABELS = {
 # 用途说明与网格里默认展示的样图：不同用途要的东西不一样，看图的角度也不一样。
 
 
-def _sample_files(code: str, cp: Path | None) -> dict[str, Path]:
-    out: dict[str, Path] = {}
+def _sample_files(code: str, cp: Path | None) -> dict[str, tuple[Path, float | None]]:
+    """合同登记的样图：键是样图种类（如 ppt-3），值是 (文件路径, 登记的宽高比)。
+
+    公开下载包不带样图文件（样图在官网图片目录里），所以这里按合同登记返回，不要求文件存在；
+    文件存在时由 picker() 校验登记比例与实际一致。"""
+    out: dict[str, tuple[Path, float | None]] = {}
     if not cp:
         return out
     for sample in CT.load(code).get("samples", []):
         sp = cp.parent / sample["file"]
-        if sp.is_file() and (sp.stem in SITE_KINDS or SET_RE.match(sp.stem)):
-            out[sp.stem] = sp
+        if sp.stem in SITE_KINDS or SET_RE.match(sp.stem):
+            out[sp.stem] = (sp, sample.get("ratio"))
     return out
 
 
@@ -284,6 +288,7 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
     self_anchors = _self_made_anchors()
     have: dict[str, list[str]] = {}
     ratios: dict[str, float] = {}
+    expected_imgs: list[str] = []  # 页面会引用的全部缩略图文件名（含公开包里没有文件的样图）
     from PIL import Image
     for s in reg["styles"]:
         code = s["code"]
@@ -295,13 +300,23 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
         anchor = contract.get("anchor") or {}
         if anchor and anchor.get("enabled", True) and (cp.parent / anchor["file"]).is_file() and code not in self_anchors:
             files["anchor"] = cp.parent / anchor["file"]  # 开源原作样图；自制参考板已作为「风格参考板」展示
-        for kind, src in files.items():
-            (img_dir / f"{code}-{kind}.webp").write_bytes(_thumb_bytes(src))
-            have.setdefault(code, []).append(kind)
+        for kind, entry in files.items():
+            src, registered = entry if isinstance(entry, tuple) else (entry, None)
             base_kind = kind.split("-")[0]
-            if base_kind not in ratios:
+            if src.is_file():
+                (img_dir / f"{code}-{kind}.webp").write_bytes(_thumb_bytes(src))
                 with Image.open(src) as im:
-                    ratios[base_kind] = round(im.width / im.height, 3)
+                    actual = round(im.width / im.height, 3)
+                if registered is not None and abs(actual - registered) > 0.002:
+                    raise ValueError(f"{code} 的样图 {kind} 登记比例 {registered} 与实际 {actual} 不一致")
+                ratio = actual
+            elif registered is not None:
+                ratio = registered  # 无样图文件（公开包）：按合同登记
+            else:
+                raise ValueError(f"{code} 的样图 {kind} 缺少文件，合同里也没有登记宽高比")
+            have.setdefault(code, []).append(kind)
+            expected_imgs.append(f"{code}-{kind}.webp")
+            ratios.setdefault(base_kind, ratio)
     inspiration = {}
     for s in reg["styles"]:
         cp = contract_paths.get(s["code"])
@@ -326,4 +341,7 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
     html = PICKER.read_text(encoding="utf-8").replace("__META__", json.dumps(meta, ensure_ascii=False, sort_keys=True).replace("</", "<\\/"))
     out = out_dir / ("index.private.html" if private else "index.html")
     out.write_text(html, encoding="utf-8")
+    if not private:  # 官网投影检查据此核对官网图片目录：缺一张或多一张都要红
+        (out_dir / "img-manifest.json").write_text(
+            json.dumps({"schema_version": 1, "images": sorted(expected_imgs)}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     return out

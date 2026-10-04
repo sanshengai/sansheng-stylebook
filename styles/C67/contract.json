@@ -77,33 +77,38 @@
       "file": "samples/s1.jpg",
       "source_sha256": "bb8ddad94a30ba3a87eb7665f7e38fd09e8bced684cbbcf8345185bdc94ed52f",
       "renderer": "codex-builtin",
-      "date": "2026-09-30"
+      "date": "2026-09-30",
+      "ratio": 1.0
     },
     {
       "topic": "物件",
       "file": "samples/s2.jpg",
       "source_sha256": "09a361abf07d893ade5dcb931f5abd05bd8274e95f2819e9d35bfabe9bf688d4",
       "renderer": "codex-builtin",
-      "date": "2026-09-30"
+      "date": "2026-09-30",
+      "ratio": 1.0
     },
     {
       "topic": "信息图",
       "file": "samples/s3.jpg",
       "source_sha256": "1d3d591d29b5610604a6018c8158c0bbf70d0e6b146ec9ccb69c19dffaaaa9c8",
       "renderer": "codex-builtin",
-      "date": "2026-09-30"
+      "date": "2026-09-30",
+      "ratio": 1.0
     },
     {
       "topic": "风格参考板",
       "file": "samples/bd.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 1.776
     },
     {
       "topic": "日漫混排页",
       "file": "samples/cx.webp",
       "renderer": "codex-builtin",
-      "date": "2026-10-02"
+      "date": "2026-10-02",
+      "ratio": 0.75
     }
   ],
   "anchor": {

@@ -1,0 +1,105 @@
+{
+  "code": "C90",
+  "revision": 1,
+  "name": {
+    "zh": "深色系列封面",
+    "en": "Dark Series Cover"
+  },
+  "family": "封面与海报",
+  "fit": [
+    "讲道理",
+    "封面"
+  ],
+  "facets": {
+    "medium": "深色系列封面",
+    "density": "中等"
+  },
+  "visibility": "public",
+  "source": {
+    "from": "original",
+    "license": "original",
+    "notes": "2026-10-01 按封面调研新增：学习成熟的封面做法（类型与渲染拆分、单一强焦点、标题与画面呼应），自行撰写配方；基础可调用版，尚未通过准入。"
+  },
+  "essence": [
+    "深色底，左侧自上而下：品牌名一行小字、系列标签（圆角色块）、超大粗衬线主标题",
+    "右侧一个认得出的主体（可多件叠放）加一轮暖色圆日与剪影",
+    "只用一个暖色强调（橙红）加米金细线，其余深色"
+  ],
+  "recipe": {
+    "positive": "Visual style (follow exactly): a premium dark series cover for articles in a numbered series. Deep aubergine-black canvas (#1B1624). Left side top to bottom: a small brand line with a thin underline, a rounded tag chip in warm orange-red (#E8704E) carrying the series name, then a very large bold serif headline in warm off-white (#F5EDE0) on one or two lines, and a thin champagne-gold rule beneath. Right side: one clearly recognisable hero subject (several overlapping items allowed) with a large flat warm-coloured sun disc and a dark silhouette skyline or landscape behind it, flat graphic shapes with fine paper grain; cinematic, calm and premium; no neon, no glow, no gradient starfield, no frames or boxes around the headline.",
+    "text_mode": [
+      "native",
+      "none"
+    ]
+  },
+  "palette": {
+    "recolor": "free",
+    "colors": [
+      {
+        "name": "深紫黑 aubergine black",
+        "hex": "#1B1624"
+      },
+      {
+        "name": "暖橙红 warm orange-red",
+        "hex": "#E8704E"
+      },
+      {
+        "name": "暖米白 warm off-white",
+        "hex": "#F5EDE0"
+      },
+      {
+        "name": "香槟金 champagne gold",
+        "hex": "#C9A56B"
+      }
+    ]
+  },
+  "qa": {
+    "must_see": [
+      "深色底、左侧品牌名加系列标签加超大主标题",
+      "右侧一个认得出的主体加暖色圆日与剪影",
+      "只有一个暖色强调加米金细线"
+    ],
+    "must_not_see": [
+      "霓虹光效堆砌",
+      "标题被方框圈住",
+      "未请求的文字或水印"
+    ]
+  },
+  "evidence": {
+    "admission": "pending",
+    "model": "尚未实测",
+    "date": "2026-10-04",
+    "notes": "依 sandy 提供的系列封面参考新增，仅完成合同校验；样图待出。"
+  },
+  "changelog": [
+    {
+      "revision": 1,
+      "date": "2026-10-04",
+      "note": "新增：系列文章封面（品牌名、系列标签、超大主标题），色彩可换。"
+    }
+  ],
+  "inspiration": {
+    "names": [],
+    "prompt": ""
+  },
+  "uses": [
+    "封面"
+  ],
+  "renderer": "codex",
+  "samples": [
+    {
+      "topic": "公众号封面（横版）",
+      "file": "samples/cv.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-04",
+      "ratio": 2.35
+    },
+    {
+      "topic": "公众号封面（方形，单独出）",
+      "file": "samples/cv-2.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-04",
+      "ratio": 1.0
+    }
+  ]
+}
