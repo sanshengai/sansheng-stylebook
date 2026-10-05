@@ -70,7 +70,6 @@ python3 scripts/sb.py motion 信息图.png --template labels --layout overlay配
 
 官网「动图」用途：每个画风的合同登记 `samples/mo.webp`（动画，原样复制，不缩略）和 `samples/mo-0.webp`（静态原图），topic 写成「动图·子类·动效」，详情里显示「静图 → 动图」对比。
 
-样例与参数记录在 `_workspace/assets/画风手册/v9动图/samples.json`。
 
 ## 不做
 
