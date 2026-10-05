@@ -3431,7 +3431,8 @@
       "site_note": "视频分镜首帧：像电影里的一帧，主体与镜头清楚。",
       "site_name": "视频分镜",
       "site_short": "分镜",
-      "site_more": true
+      "site_more": true,
+      "site_hide": true
     },
     {
       "job": "讲道理",
@@ -3458,7 +3459,8 @@
       "site_note": "教材单词图：一个主体、纯色背景、数量明确，下面留给单词。",
       "site_name": "教材单词",
       "site_short": "单词图",
-      "site_more": true
+      "site_more": true,
+      "site_hide": true
     },
     {
       "job": "讲道理",
@@ -3486,7 +3488,8 @@
       "site_note": "教材语法图：用一个生活场景演示语法点。",
       "site_name": "教材语法",
       "site_short": "语法图",
-      "site_more": true
+      "site_more": true,
+      "site_hide": true
     },
     {
       "id": "sticker",

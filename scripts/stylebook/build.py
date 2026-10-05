@@ -341,7 +341,7 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
         cp = contract_paths.get(s["code"])
         names = ((CT.load(s["code"]).get("inspiration") or {}).get("names") or []) if cp else []
         inspiration[s["code"]] = "、".join(names)
-    scene_ids = [sc["id"] for sc in reg["scenes"] if not sc.get("hidden") and sc.get("use")]
+    scene_ids = [sc["id"] for sc in reg["scenes"] if not sc.get("hidden") and not sc.get("site_hide") and sc.get("use")]  # site_hide：Skill 里可用，官网不展示（教材自用；视频分镜待重做样图）
     pools = {sc["id"]: [c for c in D.styles_for_use(sc["use"]) if c in have] for sc in reg["scenes"] if sc["id"] in scene_ids}
     cands = [{"id": s["code"], "name": s["zh"], "origin": inspiration.get(s["code"], ""), "recolor": s["recolor"],
               "recolorNote": s.get("recolor_note", ""), "essence": "；".join(s.get("essence", [])[:3]), "family": s.get("family", ""),

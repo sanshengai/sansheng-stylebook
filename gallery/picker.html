@@ -171,7 +171,7 @@ p.small{font-size:12.5px;color:var(--soft);margin:8px 0 0}.btn.sm{font-size:13px
   <div class="dlg-grid">
     <div class="viewer"><img class="main-img" id="mainImg" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><div class="thumbs" id="thumbs"></div><div class="also" id="also"></div><div class="vhint" id="vhint"></div></div>
     <div class="info">
-      <div class="ttl"><span class="code" id="dCodeTag"></span><h2 id="dName"></h2><span class="pill">试用中</span></div>
+      <div class="ttl"><span class="code" id="dCodeTag"></span><h2 id="dName"></h2></div>
       <p class="origin" id="dOrigin"></p><p class="ess" id="dEss"></p>
       <h3>① 用在哪</h3><div class="row" id="dUses"></div><div class="note attached" id="dUseNote" style="margin-top:8px"></div>
       <h3>② 色彩</h3><div class="palstrip" id="dPals"></div>
@@ -268,11 +268,9 @@ function renderGrids(){
  else{
   const pool=sc.pool.filter(id=>id!==sc.default);
   const dflt=cand(sc.default);const rec=pool.map(cand).filter(Boolean).filter(matches);
-  const rest=M.cands.filter(c=>!sc.pool.includes(c.id)).filter(matches);
   const first=[dflt].filter(x=>x&&matches(x));
   const tops=first.concat(rec);
-  if(tops.length)html+='<div class="sec"><h2>适合「'+esc(sc.name)+'」</h2><span>'+tops.length+' 种，第一张是默认推荐</span></div>'+gridHtml(tops,c=>({tag:c.id===sc.default?'默认':''}));
-  if(rest.length)html+='<div class="sec"><h2>其余画风</h2><span>'+rest.length+' 种，没有专门为「'+esc(sc.name)+'」做过样图</span></div><div class="masonry">'+rest.map(c=>cardHtml(c,{dim:true})).join('')+'</div>';}
+  if(tops.length)html+='<div class="sec"><h2>适合「'+esc(sc.name)+'」</h2><span>'+tops.length+' 种，第一张是默认推荐</span></div>'+gridHtml(tops,c=>({tag:c.id===sc.default?'默认':''}));}
  $('grids').innerHTML=html||'<div class="empty">没有找到匹配的画风，换个词试试。</div>';}
 /* ---------- 色卡 ---------- */
 const SHOT_NAME={p:'人物',o:'静物',i:'信息图'};

@@ -113,12 +113,19 @@ def test_images_load_when_opened_without_trailing_slash(tab):
         assert bad == [], (scene, bad[:5])
 
 
-def test_selection_never_narrows_below_the_full_set(tab):
+def test_each_use_shows_only_its_own_pool_and_all_shows_everything(tab):
+    """用途页只放适合的画风（不再有「其余画风」）；「全部」仍是全部；教材与视频分镜不在官网用途条里。"""
     _open(tab)
-    total = len(json.loads(tab.evaluate("document.getElementById('meta').textContent"))["cands"])
-    for scene in ("xhs", "ppt", "board", "info"):
+    meta = json.loads(tab.evaluate("document.getElementById('meta').textContent"))
+    assert {s["id"] for s in meta["scenes"]}.isdisjoint({"tb-vocab", "tb-grammar", "board"})
+    for scene in ("xhs", "ppt", "info"):
         _open(tab, f"#u={scene}")
-        assert tab.locator(".card").count() == total, scene
+        pool = next(s["pool"] for s in meta["scenes"] if s["id"] == scene)
+        assert tab.locator(".card").count() == len(pool), scene
+        assert "其余画风" not in tab.content()
+    _open(tab, "#u=all")
+    assert tab.locator(".card").count() == len(meta["cands"])
+    assert "试用中" not in tab.content()
 
 
 def test_copied_code_parses_roundtrips_and_modes_work(tab):
