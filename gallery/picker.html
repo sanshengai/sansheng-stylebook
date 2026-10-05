@@ -275,7 +275,7 @@ function renderGrids(){
  $('grids').innerHTML=html||'<div class="empty">没有找到匹配的画风，换个词试试。</div>';}
 /* ---------- 色卡 ---------- */
 const SHOT_NAME={p:'人物',o:'静物',i:'信息图'};
-function shots(pid){const l=(M.palShots||{})[pid]||[];if(!l.length)return '';return '<div class="pshots">'+l.map(x=>{const c=cand(x.code);const t=(x.topic||'').split('·').pop();return '<button data-shot="'+x.code+'" data-shotp="'+pid+'"><img loading="lazy" alt="" src="'+IMG(x.code,x.kind)+'"><span>'+esc(x.code)+' '+esc(c?c.name:'')+'<br>'+esc(t)+'</span></button>';}).join('')+'</div>';}
+function shots(pid){const l=(M.palShots||{})[pid]||[];if(!l.length)return '';return '<div class="pshots">'+l.map(x=>{const c=cand(x.code);const t=SHOT_NAME[x.k]||'';return '<button data-shot="'+x.code+'" data-shotp="'+pid+'"><img loading="lazy" alt="" src="'+IMG(x.code,x.kind)+'"><span>'+esc(x.code)+' '+esc(c?c.name:'')+'<br>'+esc(t)+'</span></button>';}).join('')+'</div>';}
 function renderPals(){
  let html='';
  GROUPS.forEach(g=>{const list=M.pals.filter(p=>p.group===g);if(!list.length)return;

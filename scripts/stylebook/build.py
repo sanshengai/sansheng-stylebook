@@ -249,6 +249,9 @@ KIND_LABELS = {
 # 用途说明与网格里默认展示的样图：不同用途要的东西不一样，看图的角度也不一样。
 
 
+PAL_SHOT_KEY = {"人物场景": "p", "物件静物": "o", "简易信息图": "i"}  # 色系真图的类别：人物、静物、信息图
+
+
 def _pal_ids() -> set[str]:
     return {p["id"] for p in D.palettes()["palettes"] if p["id"] not in ("orig", "brand")}
 
@@ -329,7 +332,7 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
             expected_imgs.append(f"{code}-{kind}.webp")
             if _pal_kind(kind):  # 色系真图：只出现在「色系」页，不进画风详情的样图列表
                 topic = next((x.get("topic", "") for x in contract.get("samples", []) if Path(x["file"]).stem == kind), "")
-                pal_shots.setdefault(_pal_kind(kind), []).append({"code": code, "kind": kind, "topic": topic, "ratio": ratio})
+                pal_shots.setdefault(_pal_kind(kind), []).append({"code": code, "kind": kind, "k": PAL_SHOT_KEY.get(topic.split("·")[-1], ""), "ratio": ratio})
                 continue
             have.setdefault(code, []).append(kind)
             ratios.setdefault(base_kind, ratio)
@@ -355,7 +358,7 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
     pals = [{"id": p["id"], "name": p["name"], "en": p.get("en", ""), "group": p.get("group", ""), "story": p.get("story", ""),
              "colors": p.get("colors", [])} for p in reg["palettes"]["palettes"]]
     meta = {"cands": cands, "scenes": scenes, "pals": pals, "kinds": SITE_KINDS, "labels": KIND_LABELS, "ratios": ratios, "first": "wxcover",
-            "palShots": {k: sorted(v, key=lambda x: x["kind"] + x["code"]) for k, v in sorted(pal_shots.items())}}
+            "palShots": {k: sorted(v, key=lambda x: ("poi".find(x["k"]), x["code"])) for k, v in sorted(pal_shots.items())}}
     html = PICKER.read_text(encoding="utf-8").replace("__META__", json.dumps(meta, ensure_ascii=False, sort_keys=True).replace("</", "<\\/"))
     out = out_dir / ("index.private.html" if private else "index.html")
     out.write_text(html, encoding="utf-8")
