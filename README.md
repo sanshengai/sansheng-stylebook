@@ -31,7 +31,7 @@
 需要 Python 3.10+。克隆公开仓并让 Agent 的 Skill 目录指向整个仓目录；Claude Code 也可通过仓内 `.claude-plugin/marketplace.json` 安装。先安装基础依赖：
 
 ```bash
-git clone https://github.com/sanshengai/sansheng-stylebook.git
+git clone --depth 1 https://github.com/sanshengai/sansheng-stylebook.git
 cd sansheng-stylebook
 python3 -m venv .venv
 . .venv/bin/activate
@@ -39,7 +39,11 @@ python3 -m pip install -r requirements.txt
 python3 scripts/sb.py doctor
 ```
 
+推荐用 `--depth 1` 浅克隆：完整克隆会带上历史里的旧样图，体积大得多，而出图只用合同与锚点，不读样图。
+
 参与修改时运行 `git config core.hooksPath .githooks` 启用提交前脱敏检查。PPTX 组装另需 `python3 -m pip install -r requirements-ppt.txt`。
+
+**维护者：样图在 `samples` 分支。** 主分支不跟踪 `styles/*/samples/`（只给人在官网选择器里看的样图不随安装分发），它们放在同仓与主分支无共同历史的 `samples` 分支。新克隆后运行 `git fetch origin samples:refs/remotes/origin/samples && python3 scripts/samples_sync.py pull` 取回样图；新样图入库后运行 `python3 scripts/samples_sync.py push` 更新本地 `samples` 分支，再 `git push origin samples`；`python3 scripts/samples_sync.py status` 对比工作区与分支。锚点图（`styles/<码>/anchor.*`）和出图用的范例图不在 `samples/` 下，仍随主分支。
 
 ## 日常轻量入口（仓库未发布改进）
 

@@ -27,7 +27,7 @@ Temporary edits affect only the current task. Explicit long-term preferences liv
 Python 3.10+ is required. Clone the repository and link it into your Agent's skill directory. The repository also includes a Claude Code plugin manifest:
 
 ```bash
-git clone https://github.com/sanshengai/sansheng-stylebook.git
+git clone --depth 1 https://github.com/sanshengai/sansheng-stylebook.git
 cd sansheng-stylebook
 python3 -m venv .venv
 . .venv/bin/activate
@@ -36,7 +36,11 @@ python3 scripts/sb.py doctor
 python3 scripts/sb.py compile examples/quickstart/manifest.json --json
 ```
 
+A shallow clone (`--depth 1`) is recommended: a full clone also downloads the old sample images kept in history, while image generation only needs the contracts and anchors.
+
 Contributors should run `git config core.hooksPath .githooks` to enable the staged-file redaction guard.
+
+**Maintainers: sample images live on the `samples` branch.** `main` does not track `styles/*/samples/` (gallery-only images are not part of what users install); they are kept on the `samples` branch of the same repository, which shares no history with `main`. After a fresh clone run `git fetch origin samples:refs/remotes/origin/samples && python3 scripts/samples_sync.py pull`. After adding new samples run `python3 scripts/samples_sync.py push` to update the local `samples` branch, then `git push origin samples`; `python3 scripts/samples_sync.py status` compares the workspace with the branch. Anchor images (`styles/<code>/anchor.*`) and exemplar images used for generation are not under `samples/` and stay on `main`.
 
 For an Agent with a built-in image generator, pass the full compiled `prompt` and any listed references to that tool. For an external image provider, configure credentials locally with `python3 scripts/sb.py setup --env-template` and then:
 

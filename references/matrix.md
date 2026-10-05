@@ -24,6 +24,18 @@ python3 scripts/sb.py matrix C31 --no-review             # 只出图（或只按
 
 能力标签（`abilities`）只能来自实测：中文 ← T7、T8；角色一致 ← T2；儿童 ← T3；视频帧 ← T6；会不会给无人场景加人 ← T5。
 
+## 样图入库与 samples 分支
+
+主分支不跟踪 `styles/*/samples/`（已写入 `.gitignore`），样图放在同仓的孤儿分支 `samples`。入库脚本（`ingest*.py` 等）照旧把文件写进工作区的 `styles/<码>/samples/`，写完后：
+
+```bash
+python3 scripts/samples_sync.py push      # 工作区样图 → 本地 samples 分支（内容没变不产生新提交），输出提交 sha
+python3 scripts/samples_sync.py status    # 对比工作区与分支头
+# 再由维护者推送：git push origin samples
+```
+
+新克隆的维护者先 `git fetch origin samples:refs/remotes/origin/samples`，再 `python3 scripts/samples_sync.py pull` 取回样图。合同 `samples` 里登记的 `ratio` 要与文件一致——没有样图文件时，选择器按登记比例重建。锚点图（`styles/<码>/anchor.*`）与范例图（合同 `exemplars`）不得放进 `samples/`，它们随主分支分发。
+
 ## 注册表与画廊
 
 ```bash
