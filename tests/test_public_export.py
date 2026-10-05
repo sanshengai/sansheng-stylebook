@@ -47,3 +47,25 @@ def test_manifest_check_detects_changed_and_missing_files(tmp_path):
     (tmp_path / "SKILL.md").unlink()
     with pytest.raises(ExportError, match="缺失"):
         check_manifest(tmp_path)
+
+
+def test_check_staged_uses_the_same_rules_as_export(tmp_path):
+    """提交前钩子与公开导出共用一套规则：内部目录名、密钥形态都要在暂存时被拦；干净文件与空暂存放行。"""
+    import subprocess
+    from scripts.public_export import check_staged
+
+    def git(*a):
+        subprocess.run(["git", *a], cwd=tmp_path, check=True, capture_output=True)
+
+    git("init", "-q")
+    assert check_staged(tmp_path) == []                       # 空暂存
+    (tmp_path / "ok.md").write_text("普通文档\n", encoding="utf-8")
+    git("add", "ok.md")
+    assert check_staged(tmp_path) == []
+    (tmp_path / "leak.md").write_text("样例在 `_" + "workspace/assets/x.json`\n", encoding="utf-8")
+    (tmp_path / "key.txt").write_text("sk-" + "B" * 30 + "\n", encoding="utf-8")
+    (tmp_path / "pic.png").write_bytes(b"\x89PNG not text sk-" + b"C" * 30)
+    git("add", "leak.md", "key.txt", "pic.png")
+    found = check_staged(tmp_path)
+    assert any("leak.md" in f for f in found) and any("key.txt" in f for f in found)
+    assert not any("pic.png" in f for f in found)              # 图片不按文本扫

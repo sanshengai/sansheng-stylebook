@@ -10,6 +10,7 @@ import hashlib
 import json
 import re
 import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -172,15 +173,37 @@ def check_manifest_structure(root: Path) -> dict:
     return receipt
 
 
+def check_staged(root: Path = ROOT) -> list[str]:
+    """提交前钩子用：对暂存区里的文本文件跑与公开导出完全相同的 scan_text 规则（同一份 FORBIDDEN 与内部目录名）。"""
+    names = subprocess.run(["git", "diff", "--cached", "--name-only", "-z", "--diff-filter=ACMR"],
+                           cwd=root, capture_output=True, check=True).stdout.decode("utf-8").split("\0")
+    problems = []
+    for name in filter(None, names):
+        if name.startswith(".githooks/"):
+            continue
+        raw = subprocess.run(["git", "show", f":{name}"], cwd=root, capture_output=True, check=True).stdout
+        try:
+            scan_text(name, raw)
+        except ExportError as exc:
+            problems.append(str(exc))
+    return problems
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("-o", "--output", type=Path)
     parser.add_argument("--check-manifest", action="store_true")
     parser.add_argument("--refresh-manifest", action="store_true")
+    parser.add_argument("--check-staged", action="store_true", help="提交前钩子：用公开导出的同一套规则检查暂存区")
     args = parser.parse_args()
-    if sum(bool(x) for x in (args.output, args.check_manifest, args.refresh_manifest)) != 1:
-        parser.error("请选择 --output、--check-manifest 或 --refresh-manifest 其中一项")
+    if sum(bool(x) for x in (args.output, args.check_manifest, args.refresh_manifest, args.check_staged)) != 1:
+        parser.error("请选择 --output、--check-manifest、--refresh-manifest 或 --check-staged 其中一项")
     try:
+        if args.check_staged:
+            problems = check_staged()
+            for item in problems:
+                print(f"redact-guard: {item}", file=sys.stderr)
+            return 1 if problems else 0
         if args.check_manifest:
             receipt = check_manifest()
             print(f"公开清单有效：{receipt['file_count']} 个文件")
