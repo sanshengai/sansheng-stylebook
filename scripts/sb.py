@@ -12,6 +12,8 @@
   qa     <图> --style C31 [--text ...]  出图验收：像素 + 独立看图 + 文字逐字比对
   qa-contrast <问题图> <候选图> --criterion ...  匿名双图换序比较单一缺陷（仅相对改进）
   qa-focus <局部裁图> --criterion ...       两次独立判断局部是否仍有已知缺陷
+  deck budget|check <文件> --mode talk-read  PPT 页预算（由论点数推）与页规格卡检查
+  comic-book <分镜.json>                     整册漫画分镜检查（页数档位、对白、钩子、概念道具）
   motion <图> --template glow --region x,y,w,h  局部动效 GIF（可选子板块，见 references/motion.md）
   qa-palette <图> --family sea               色板偏差报告（只报告，不拒绝）
   sheet  <定妆图> <图>... -o 输出.png    一致性对照网格（--thumbs 看缩略图可辨认）
@@ -260,6 +262,31 @@ def cmd_motion(a) -> int:
         print(str(e), file=sys.stderr)
         return 1
     return 0
+
+
+def cmd_deck(a) -> int:
+    from stylebook import deck as DK
+    data = json.loads(Path(a.file).read_text(encoding="utf-8"))
+    try:
+        if a.action == "budget":
+            print(json.dumps(DK.page_budget(data["ledger"], a.mode, int(a.chars), user_pages=a.pages, user_minutes=a.minutes),
+                             ensure_ascii=False, indent=2))
+            return 0
+        problems = DK.check_cards(data["cards"] if isinstance(data, dict) else data, a.mode)
+    except DK.DeckError as e:
+        print(str(e), file=sys.stderr)
+        return 2
+    for item in problems:
+        print(item)
+    return 1 if problems else 0
+
+
+def cmd_comic_book(a) -> int:
+    from stylebook import comic_book as CB
+    problems = CB.check(json.loads(Path(a.file).read_text(encoding="utf-8")))
+    for item in problems:
+        print(item)
+    return 1 if problems else 0
 
 
 def cmd_sheet(a) -> int:
@@ -647,6 +674,14 @@ def main(argv=None) -> int:
     criterion.add_argument("--criterion-file", help="UTF-8 文本文件，含一个可观察的禁止特征")
     p.add_argument("--report", help="保存两次独立复核及图片哈希的 JSON 路径")
     p.set_defaults(fn=cmd_qa_focus)
+    p = sub.add_parser("deck"); p.add_argument("action", choices=["budget", "check"])
+    p.add_argument("file", help="budget：含 ledger 的 JSON；check：含 cards 的 JSON 或卡片数组")
+    p.add_argument("--mode", choices=["talk", "talk-read", "read"], default="talk-read")
+    p.add_argument("--chars", type=int, default=0, help="budget：源文汉字数")
+    p.add_argument("--pages", type=int, help="用户指定页数"); p.add_argument("--minutes", type=float, help="用户指定时长（分钟）")
+    p.set_defaults(fn=cmd_deck)
+    p = sub.add_parser("comic-book"); p.add_argument("file", help="分镜文档 JSON（见 references/scenes/comic.md）")
+    p.set_defaults(fn=cmd_comic_book)
     p = sub.add_parser("motion"); p.add_argument("image", help="已通过验收的静态图")
     p.add_argument("--template", choices=["glow", "particles", "breathe"], required=True)
     p.add_argument("--region", required=True, help="作用区域 x,y,w,h（占画面比例）")

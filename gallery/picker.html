@@ -197,6 +197,7 @@ p.small{font-size:12.5px;color:var(--soft);margin:8px 0 0}.btn.sm{font-size:13px
 
 <script id="meta" type="application/json">__META__</script>
 <script>
+const raf=f=>typeof requestAnimationFrame==='function'?requestAnimationFrame(f):setTimeout(f,0);
 const M=JSON.parse(document.getElementById('meta').textContent);
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -250,7 +251,7 @@ function renderUses(){
  $('uses').innerHTML='<button class="chip" data-u="all" aria-pressed="'+(S.scene===null)+'">全部</button>'+main.map(chip).join('')
   +(more.length?(open?more.map(chip).join(''):'<button class="chip" data-more="1">更多 ▾</button>'):'');
  const sc=S.scene?scene(S.scene):null;$('useNote').textContent=sc?sc.note:'每个画风放的是它最拿手的那张样图。选上面一个用途，就换成那个用途的整套样图。';
- requestAnimationFrame(()=>placeCaret($('uses'),$('useNote')));}
+ raf(()=>placeCaret($('uses'),$('useNote')));}
 function placeCaret(bar,note){const on=bar.querySelector('[aria-pressed="true"]');if(!on||!note)return;
  const x=on.getBoundingClientRect().left-note.getBoundingClientRect().left+on.offsetWidth/2-6;note.style.setProperty('--caret',Math.max(14,Math.min(x,note.offsetWidth-26))+'px');}
 function matches(c){const q=S.q.trim().toLowerCase();if(!q)return true;const hay=(c.name+' '+c.origin+' '+c.id+' '+c.family+' '+(c.essence||'')+' '+(c.tone||[]).join(' ')+' '+(c.craft||'')+' '+c.uses.map(u=>{const sc=scene(u);return sc?sc.name+' '+sc.short:'';}).join(' ')).toLowerCase();return q.split(/\s+/).every(w=>hay.includes(w));}
@@ -319,7 +320,7 @@ function renderDetail(){
  const goods=M.scenes.filter(s=>c.uses.includes(s.id)),bads=M.scenes.filter(s=>!c.uses.includes(s.id));
  $('dUses').innerHTML=goods.map(s=>'<button class="chip small" data-for="'+s.id+'" aria-pressed="'+(S.useFor===s.id&&!S.extra)+'">'+esc(s.name)+'</button>').join('')
   +bads.map(s=>'<button class="chip small off" disabled title="这个画风还没有为「'+esc(s.name)+'」做过">'+esc(s.name)+'</button>').join('');
- $('dUseNote').textContent=sc?sc.note:'';requestAnimationFrame(()=>placeCaret($('dUses'),$('dUseNote')));
+ $('dUseNote').textContent=sc?sc.note:'';raf(()=>placeCaret($('dUses'),$('dUseNote')));
  const sh=sc?(sc.short||sc.name):'';$('btnDefault').textContent='设为'+sh+'默认';
  $('howNote').textContent='「复制，只用这次」：发给 Agent，只管这一次。「设为'+sh+'默认」：先记在右上角，选好几个用途后一起复制给 Agent，以后做'+sh+'都按它出。';
  // 色彩

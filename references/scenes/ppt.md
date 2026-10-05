@@ -38,6 +38,8 @@
 | 10,000 字 | 约 13–16 页 | 约 17–20 页 | 约 20–24 页 |
 | 30,000 字 | 约 20–24 页 | 约 28–30 页，越上限须降级或分卷 | 须总览卷加分卷 |
 
-## 状态
+## 检查
 
-规划层规则已写入；页数公式、文字预算尚未用真实稿件回测，回测前以「建议值」对待。
+`python3 scripts/sb.py deck budget 台账.json --mode talk-read --chars 5000 [--pages N | --minutes M]` 按台账算页预算（结果带 `calibrated: false`）；`python3 scripts/sb.py deck check 页规格卡.json --mode talk-read` 检查整套规格卡（文字真源、禁渲染、标题与正文字数、必须保留、承载方式、页型相邻与密度节奏）。`stylebook.deck.check_prompt` 检查出图提示词逐字包含 `rendered_text` 且不夹带规格卡之外的可见文字。
+
+公式与文字预算尚未用真实稿件回测，回测前以「建议值」对待。
