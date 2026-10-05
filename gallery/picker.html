@@ -86,6 +86,7 @@ h1{margin:0;font-size:36px;line-height:1.15;letter-spacing:.02em}
 .pstory{margin:10px 0 10px;color:var(--ink2);font-size:14.5px}
 .pcols{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:12px;color:var(--soft)}.pcols span{display:inline-flex;align-items:center;gap:6px}.pcols i{width:11px;height:11px;border-radius:50%;border:1px solid var(--line);display:inline-block}
 .pact{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.pshots{align-items:start;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 14px 0}.pshots button{border:0;padding:0;background:none;text-align:left;cursor:pointer;color:inherit;font:inherit}.pshots img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:10px;background:var(--bg2);display:block}.pshots span{display:block;font-size:11.5px;color:var(--soft);margin-top:4px;line-height:1.35}
 .pprev{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px}.pprev img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;background:var(--bg2);display:block}
 /* 详情 */
 dialog{border:0;padding:0;background:transparent;max-width:min(1120px,96vw);width:100%;color:var(--ink)}
@@ -160,7 +161,7 @@ p.small{font-size:12.5px;color:var(--soft);margin:8px 0 0}.btn.sm{font-size:13px
 </section>
 
 <section id="palTab" hidden>
-  <div class="note">每个色系都有名字和故事，像一年一度的流行色。挑中了点「用这个色系」，之后在画风详情里会默认选中它；也可以先「试色」看它落在画面上的样子。</div>
+  <div class="note">每个色系都有名字和故事，像一年一度的流行色。挑中了点「用这个色系」，之后在画风详情里会默认选中它。每个色系下面是用它真实画出来的三张图（人物、静物、信息图），点图可以看对应画风。</div>
   <div id="pals"></div>
 </section>
 </main>
@@ -273,22 +274,15 @@ function renderGrids(){
   if(rest.length)html+='<div class="sec"><h2>其余画风</h2><span>'+rest.length+' 种，没有专门为「'+esc(sc.name)+'」做过样图</span></div><div class="masonry">'+rest.map(c=>cardHtml(c,{dim:true})).join('')+'</div>';}
  $('grids').innerHTML=html||'<div class="empty">没有找到匹配的画风，换个词试试。</div>';}
 /* ---------- 色卡 ---------- */
+const SHOT_NAME={p:'人物',o:'静物',i:'信息图'};
+function shots(pid){const l=(M.palShots||{})[pid]||[];if(!l.length)return '';return '<div class="pshots">'+l.map(x=>{const c=cand(x.code);const t=(x.topic||'').split('·').pop();return '<button data-shot="'+x.code+'" data-shotp="'+pid+'"><img loading="lazy" alt="" src="'+IMG(x.code,x.kind)+'"><span>'+esc(x.code)+' '+esc(c?c.name:'')+'<br>'+esc(t)+'</span></button>';}).join('')+'</div>';}
 function renderPals(){
  let html='';
  GROUPS.forEach(g=>{const list=M.pals.filter(p=>p.group===g);if(!list.length)return;
   html+='<div class="pgroup"><h2>'+g+'</h2><span>'+list.length+' 种</span></div><div class="pgrid">'+list.map(p=>
-   '<div class="pcard" data-p="'+p.id+'"><div class="pbar">'+p.colors.map(c=>'<i style="background:'+c.hex+'"></i>').join('')+'</div><div class="pbody"><div class="pname">'+esc(p.name)+'</div><div class="pen">'+esc(p.en)+'</div><p class="pstory">'+esc(p.story)+'</p><div class="pcols">'+p.colors.map(c=>'<span><i style="background:'+c.hex+'"></i>'+esc(c.name.split(' ')[0])+' '+c.hex+'</span>').join('')+'</div><div class="pact"><button class="btn sm" data-try="'+p.id+'">试色</button><button class="btn primary sm" data-usepal="'+p.id+'">'+(S.pal===p.id?'已选用':'用这个色系')+'</button></div><div class="pprev" hidden></div></div></div>').join('')+'</div>';});
+   '<div class="pcard" data-p="'+p.id+'"><div class="pbar">'+p.colors.map(c=>'<i style="background:'+c.hex+'"></i>').join('')+'</div>'+shots(p.id)+'<div class="pbody"><div class="pname">'+esc(p.name)+'</div><div class="pen">'+esc(p.en)+'</div><p class="pstory">'+esc(p.story)+'</p><div class="pcols">'+p.colors.map(c=>'<span><i style="background:'+c.hex+'"></i>'+esc(c.name.split(' ')[0])+' '+c.hex+'</span>').join('')+'</div><div class="pact"><button class="btn primary sm" data-usepal="'+p.id+'">'+(S.pal===p.id?'已选用':'用这个色系')+'</button></div></div></div>').join('')+'</div>';});
  $('pals').innerHTML=html;}
-/* ---------- 色调示意（浏览器端，亮度渐变映射） ---------- */
-const lum=h=>{const n=parseInt(h.slice(1),16);return .2126*(n>>16&255)+.7152*(n>>8&255)+.0722*(n&255);};
-function ramp(colors){return colors.slice().sort((a,b)=>lum(a.hex)-lum(b.hex)).map(x=>{const n=parseInt(x.hex.slice(1),16);return [n>>16&255,n>>8&255,n&255];});}
-function tintImg(img,rp,light,sat){try{const w=img.naturalWidth,h=img.naturalHeight;if(!w||rp.length<2)return;const cv=document.createElement('canvas');cv.width=w;cv.height=h;const x=cv.getContext('2d');x.drawImage(img,0,0);const d=x.getImageData(0,0,w,h),a=d.data,k=.62+.12*sat;
- for(let i=0;i<a.length;i+=4){let l=(.2126*a[i]+.7152*a[i+1]+.0722*a[i+2])/255+.09*light;l=Math.min(1,Math.max(0,l));const f=l*(rp.length-1),j=Math.min(rp.length-2,Math.floor(f)),t=f-j;const c0=rp[j],c1=rp[j+1];
-  for(let c=0;c<3;c++){a[i+c]=Math.round(a[i+c]*(1-k)+(c0[c]+(c1[c]-c0[c])*t)*k);}}
- x.putImageData(d,0,0);img.src=cv.toDataURL('image/webp',.85);img.dataset.tinted='1';return true;}catch(e){return false;}}
-function tintOnLoad(img,cols,light,sat){const rp=ramp(cols);const go=()=>tintImg(img,rp,light,sat);img.complete&&img.naturalWidth?go():img.addEventListener('load',go,{once:true});}
 function palColors(){if(S.pal==='brand')return S.hex.map(h=>({hex:'#'+h}));const p=pal(S.pal);return p?p.colors:[];}
-const TRY_STYLES=()=>{const free=M.cands.filter(c=>c.recolor==='free'&&c.imgs.includes('s1'));const pick=['C24','C30','C17'].map(cand).filter(c=>c&&c.recolor==='free');return (pick.length===3?pick:free.slice(0,3));};
 /* ---------- 详情 ---------- */
 function usable(c){return M.scenes.filter(s=>c.uses.includes(s.id));}
 function applyCode(){const c=cand(S.sel);if(!c)return '';const u=S.useFor||M.first;let s='sb2:'+u+'/'+c.id;
@@ -318,10 +312,9 @@ function renderDetail(){
  const also=[['bd','风格档案'],['anchor','原作参考']].filter(([g])=>stems(c,g).length);
  $('also').innerHTML=also.length?'另见：'+also.map(([g,t])=>'<button class="chip small" data-extra="'+g+'" aria-pressed="'+(S.extra===g)+'">'+t+'</button>').join(''):'';
  $('thumbs').innerHTML=order.map(k=>'<button class="thumb" data-img="'+k+'" aria-pressed="'+(k===S.img)+'"><img alt="" src="'+IMG(c.id,k)+'"><span>'+esc(stemLabel(k))+'</span></button>').join('');
- const mi=$('mainImg');mi.removeAttribute('data-tinted');mi.alt=c.name+' 样图';mi.src=IMG(c.id,S.img);
- const cols=palColors();const on=!(c.recolor==='locked')&&S.pal!=='orig'&&cols.length>=2&&S.img!=='anchor';
- $('vhint').textContent=on?'样图上的色彩是「色调示意」，按色系粗略映射，正式出图以生成结果为准。':(S.img==='anchor'?'这是原作的风格参考图，不是用这套手册生成的。':'');
- if(on)tintOnLoad(mi,cols,S.light,S.sat);
+ const mi=$('mainImg');mi.alt=c.name+' 样图';mi.src=IMG(c.id,S.img);
+ const on=!(c.recolor==='locked')&&S.pal!=='orig'&&S.img!=='anchor';
+ $('vhint').textContent=on?'图上是这个画风的原色。换色系会按所选颜色重新画，真实效果看「色系」页的真图。':(S.img==='anchor'?'这是原作的风格参考图，不是用这套手册生成的。':'');
  // 用途
  const goods=M.scenes.filter(s=>c.uses.includes(s.id)),bads=M.scenes.filter(s=>!c.uses.includes(s.id));
  $('dUses').innerHTML=goods.map(s=>'<button class="chip small" data-for="'+s.id+'" aria-pressed="'+(S.useFor===s.id&&!S.extra)+'">'+esc(s.name)+'</button>').join('')
@@ -390,10 +383,7 @@ document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)r
  else if(t.dataset.for){S.useFor=t.dataset.for;S.extra=null;S.img=null;renderDetail();}
  else if(t.dataset.p&&t.classList.contains('pchip')){S.pal=t.dataset.p;if(S.pal==='orig'||S.pal==='brand'){S.light=0;S.sat=0;}if(S.pal!=='brand')S.hex=[];renderDetail();writeHash();}
  else if(t.dataset.k){S[t.dataset.k]=+t.dataset.v;renderDetail();writeHash();}
- else if(t.dataset.try){const card=t.closest('.pcard'),box=card.querySelector('.pprev'),p=pal(t.dataset.try);
-  if(!box.hidden){box.hidden=true;return;}
-  box.hidden=false;box.innerHTML=TRY_STYLES().map(c=>'<img alt="" src="'+IMG(c.id,'s1')+'">').join('');
-  box.querySelectorAll('img').forEach(im=>tintOnLoad(im,p.colors,0,0));}
+ else if(t.dataset.shot){S.pal=t.dataset.shotp;S.light=0;S.sat=0;S.hex=[];openDetail(t.dataset.shot);}
  else if(t.dataset.usepal){S.pal=t.dataset.usepal;S.light=0;S.sat=0;S.hex=[];renderPals();writeHash();toast('已选用「'+pal(S.pal).name+'」，回到「选画风」点开任意画风就会默认选中它');}
  else if(t.dataset.rm){delete mine[t.dataset.rm];saveMine();renderHead();renderTray();renderGrids();}
  else if(t.id==='dlgX')closeDetail();

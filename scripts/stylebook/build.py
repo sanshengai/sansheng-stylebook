@@ -249,6 +249,17 @@ KIND_LABELS = {
 # 用途说明与网格里默认展示的样图：不同用途要的东西不一样，看图的角度也不一样。
 
 
+def _pal_ids() -> set[str]:
+    return {p["id"] for p in D.palettes()["palettes"] if p["id"] not in ("orig", "brand")}
+
+
+def _pal_kind(stem: str) -> str | None:
+    """色系真图的文件名是 pl-<色系 id>；返回色系 id，不是则 None。"""
+    if stem.startswith("pl-") and stem[3:] in _pal_ids():
+        return stem[3:]
+    return None
+
+
 def _sample_files(code: str, cp: Path | None) -> dict[str, tuple[Path, float | None]]:
     """合同登记的样图：键是样图种类（如 ppt-3），值是 (文件路径, 登记的宽高比)。
 
@@ -259,7 +270,7 @@ def _sample_files(code: str, cp: Path | None) -> dict[str, tuple[Path, float | N
         return out
     for sample in CT.load(code).get("samples", []):
         sp = cp.parent / sample["file"]
-        if sp.stem in SITE_KINDS or SET_RE.match(sp.stem):
+        if sp.stem in SITE_KINDS or SET_RE.match(sp.stem) or _pal_kind(sp.stem):
             out[sp.stem] = (sp, sample.get("ratio"))
     return out
 
@@ -288,6 +299,7 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
     self_anchors = _self_made_anchors()
     have: dict[str, list[str]] = {}
     ratios: dict[str, float] = {}
+    pal_shots: dict[str, list[dict]] = {}
     expected_imgs: list[str] = []  # 页面会引用的全部缩略图文件名（含公开包里没有文件的样图）
     from PIL import Image
     for s in reg["styles"]:
@@ -314,8 +326,12 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
                 ratio = registered  # 无样图文件（公开包）：按合同登记
             else:
                 raise ValueError(f"{code} 的样图 {kind} 缺少文件，合同里也没有登记宽高比")
-            have.setdefault(code, []).append(kind)
             expected_imgs.append(f"{code}-{kind}.webp")
+            if _pal_kind(kind):  # 色系真图：只出现在「色系」页，不进画风详情的样图列表
+                topic = next((x.get("topic", "") for x in contract.get("samples", []) if Path(x["file"]).stem == kind), "")
+                pal_shots.setdefault(_pal_kind(kind), []).append({"code": code, "kind": kind, "topic": topic, "ratio": ratio})
+                continue
+            have.setdefault(code, []).append(kind)
             ratios.setdefault(base_kind, ratio)
     inspiration = {}
     for s in reg["styles"]:
@@ -338,7 +354,8 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
                        "alternates": [a for a in sc["alternates"] if a in have], "pool": pools[sc["id"]]})
     pals = [{"id": p["id"], "name": p["name"], "en": p.get("en", ""), "group": p.get("group", ""), "story": p.get("story", ""),
              "colors": p.get("colors", [])} for p in reg["palettes"]["palettes"]]
-    meta = {"cands": cands, "scenes": scenes, "pals": pals, "kinds": SITE_KINDS, "labels": KIND_LABELS, "ratios": ratios, "first": "wxcover"}
+    meta = {"cands": cands, "scenes": scenes, "pals": pals, "kinds": SITE_KINDS, "labels": KIND_LABELS, "ratios": ratios, "first": "wxcover",
+            "palShots": {k: sorted(v, key=lambda x: x["kind"] + x["code"]) for k, v in sorted(pal_shots.items())}}
     html = PICKER.read_text(encoding="utf-8").replace("__META__", json.dumps(meta, ensure_ascii=False, sort_keys=True).replace("</", "<\\/"))
     out = out_dir / ("index.private.html" if private else "index.html")
     out.write_text(html, encoding="utf-8")

@@ -367,6 +367,13 @@
       "renderer": "codex-builtin",
       "date": "2026-10-02",
       "ratio": 0.75
+    },
+    {
+      "topic": "色系·薄荷苏打·人物场景",
+      "file": "samples/pl-mintsoda.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
     }
   ],
   "anchor": {

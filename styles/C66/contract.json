@@ -376,6 +376,20 @@
       "renderer": "codex-builtin",
       "date": "2026-10-02",
       "ratio": 1.0
+    },
+    {
+      "topic": "色系·雾灰燕麦·人物场景",
+      "file": "samples/pl-morandi.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·湖面晨雾·人物场景",
+      "file": "samples/pl-mistblue.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
     }
   ],
   "anchor": {

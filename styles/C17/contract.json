@@ -231,6 +231,13 @@
       "renderer": "codex-builtin",
       "date": "2026-10-02",
       "ratio": 1.0
+    },
+    {
+      "topic": "色系·千里青绿·人物场景",
+      "file": "samples/pl-qinglv.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
     }
   ]
 }

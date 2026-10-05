@@ -131,6 +131,20 @@
       "renderer": "codex-builtin",
       "date": "2026-10-02",
       "ratio": 1.0
+    },
+    {
+      "topic": "色系·海盐浅湾·人物场景",
+      "file": "samples/pl-ocean.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·奶油咖啡·人物场景",
+      "file": "samples/pl-creamcoffee.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
     }
   ],
   "anchor": {

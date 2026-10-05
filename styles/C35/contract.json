@@ -329,6 +329,27 @@
       "renderer": "codex-builtin",
       "date": "2026-10-02",
       "ratio": 0.563
+    },
+    {
+      "topic": "色系·雾灰燕麦·简易信息图",
+      "file": "samples/pl-morandi.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·一墨单色·简易信息图",
+      "file": "samples/pl-mono.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·樱花和纸·简易信息图",
+      "file": "samples/pl-sakura.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
     }
   ],
   "anchor": {

@@ -279,6 +279,48 @@
       "renderer": "codex-builtin",
       "date": "2026-10-02",
       "ratio": 0.75
+    },
+    {
+      "topic": "色系·海盐浅湾·简易信息图",
+      "file": "samples/pl-ocean.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·旧照暖阳·简易信息图",
+      "file": "samples/pl-film.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·朱砂泥金·简易信息图",
+      "file": "samples/pl-zhusha.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·午夜霓虹·简易信息图",
+      "file": "samples/pl-neon.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·湖面晨雾·简易信息图",
+      "file": "samples/pl-mistblue.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·靛蓝夜航·简易信息图",
+      "file": "samples/pl-indigo.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
     }
   ],
   "anchor": {

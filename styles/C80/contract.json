@@ -181,6 +181,41 @@
       "renderer": "codex-builtin",
       "date": "2026-10-02",
       "ratio": 0.75
+    },
+    {
+      "topic": "色系·焦糖亚麻·物件静物",
+      "file": "samples/pl-earth.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·旧照暖阳·物件静物",
+      "file": "samples/pl-film.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·一墨单色·物件静物",
+      "file": "samples/pl-mono.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·奶油咖啡·物件静物",
+      "file": "samples/pl-creamcoffee.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·靛蓝夜航·物件静物",
+      "file": "samples/pl-indigo.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
     }
   ],
   "anchor": {

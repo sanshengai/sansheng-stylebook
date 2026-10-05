@@ -266,6 +266,27 @@
       "renderer": "codex-builtin",
       "date": "2026-10-02",
       "ratio": 0.75
+    },
+    {
+      "topic": "色系·焦糖亚麻·人物场景",
+      "file": "samples/pl-earth.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·日落暖城·人物场景",
+      "file": "samples/pl-sunset.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·琥珀秋叶·人物场景",
+      "file": "samples/pl-amber.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
     }
   ],
   "anchor": {

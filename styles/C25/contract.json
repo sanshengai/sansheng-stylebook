@@ -248,6 +248,13 @@
       "renderer": "codex-builtin",
       "date": "2026-10-02",
       "ratio": 1.0
+    },
+    {
+      "topic": "色系·日落暖城·物件静物",
+      "file": "samples/pl-sunset.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
     }
   ],
   "anchor": {

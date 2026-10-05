@@ -301,6 +301,20 @@
       "renderer": "codex-builtin",
       "date": "2026-10-02",
       "ratio": 1.0
+    },
+    {
+      "topic": "色系·松林晨雾·人物场景",
+      "file": "samples/pl-forest.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·靛蓝夜航·人物场景",
+      "file": "samples/pl-indigo.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
     }
   ]
 }

@@ -400,6 +400,41 @@
       "renderer": "codex-builtin",
       "date": "2026-10-02",
       "ratio": 0.563
+    },
+    {
+      "topic": "色系·桃粉奶霜·简易信息图",
+      "file": "samples/pl-macaron.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·千里青绿·简易信息图",
+      "file": "samples/pl-qinglv.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·日落暖城·简易信息图",
+      "file": "samples/pl-sunset.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·薄荷苏打·简易信息图",
+      "file": "samples/pl-mintsoda.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "色系·紫藤薄暮·简易信息图",
+      "file": "samples/pl-lilac.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
     }
   ]
 }
