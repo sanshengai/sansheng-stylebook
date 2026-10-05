@@ -15,12 +15,12 @@ def _flat(tmp_path, color, name="x.png"):
 
 def test_image_inside_palette_has_no_off_palette_share(tmp_path):
     r = check(_flat(tmp_path, "#1F6F8B"), BLUE_ORANGE)
-    assert r["mode"] == "report_only" and r["off_palette_share"] == 0
+    assert r["mode"] == "report_only" and r["off_palette_share"] == 0 and r["flag"] is False
 
 
 def test_saturated_off_palette_colour_is_flagged(tmp_path):
     r = check(_flat(tmp_path, "#D81B60"), BLUE_ORANGE)  # 品红，离蓝橙很远
-    assert r["off_palette_share"] > 0.9
+    assert r["off_palette_share"] > 0.9 and r["flag"] is True
 
 
 def test_neutral_paper_is_not_a_deviation(tmp_path):

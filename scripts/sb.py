@@ -15,6 +15,7 @@
   deck budget|check <文件> --mode talk-read  PPT 页预算（由论点数推）与页规格卡检查
   comic-book <分镜.json>                     整册漫画分镜检查（页数档位、对白、钩子、概念道具）
   motion <图> --template glow --region x,y,w,h  局部动效 GIF（可选子板块，见 references/motion.md）
+  qa-leak <成图> <参考图>                      串味报告：参考图局部是否被原样搬进成图（只报告）
   qa-palette <图> --family sea               色板偏差报告（只报告，不拒绝）
   sheet  <定妆图> <图>... -o 输出.png    一致性对照网格（--thumbs 看缩略图可辨认）
   matrix <风格码> [--only T1,T2]        8 道标准题测试矩阵（断点续跑、成本记账）
@@ -287,6 +288,17 @@ def cmd_comic_book(a) -> int:
     for item in problems:
         print(item)
     return 1 if problems else 0
+
+
+def cmd_qa_leak(a) -> int:
+    from stylebook.qa.leak_check import check
+    try:
+        r = check(Path(a.image), Path(a.reference))
+    except ValueError as e:
+        print(str(e), file=sys.stderr)
+        return 2
+    print(json.dumps(r, ensure_ascii=False, indent=2))
+    return 0
 
 
 def cmd_sheet(a) -> int:
@@ -682,6 +694,8 @@ def main(argv=None) -> int:
     p.set_defaults(fn=cmd_deck)
     p = sub.add_parser("comic-book"); p.add_argument("file", help="分镜文档 JSON（见 references/scenes/comic.md）")
     p.set_defaults(fn=cmd_comic_book)
+    p = sub.add_parser("qa-leak"); p.add_argument("image", help="成图"); p.add_argument("reference", help="当时挂的参考图")
+    p.set_defaults(fn=cmd_qa_leak)
     p = sub.add_parser("motion"); p.add_argument("image", help="已通过验收的静态图")
     p.add_argument("--template", choices=["glow", "particles", "breathe"], required=True)
     p.add_argument("--region", required=True, help="作用区域 x,y,w,h（占画面比例）")
