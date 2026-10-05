@@ -41,6 +41,12 @@ M = {
 }
 
 
+
+def real(refs):
+    """自动附上的无字色带不算「用户或合同给的参考图」。"""
+    return [r for r in refs if r["role"] != "palette_swatch"]
+
+
 def c(m=None, contract=FREE):
     return CP.compile_manifest(copy.deepcopy(m or M), contract=copy.deepcopy(contract))
 
@@ -180,7 +186,7 @@ def test_composition_reference_keeps_style_lock():
     assert g.prompt.startswith("Image 1: composition guide only")
     assert "do not copy its medium, colors, texture" in g.prompt
     assert FREE["recipe"]["positive"] in g.prompt
-    assert g.references == m["references"]
+    assert real(g.references) == m["references"]
     sd = c(dict(m, model="seedream"))
     assert sd.prompt.startswith("图一：只作构图参考")
 
@@ -189,7 +195,7 @@ def test_face_identity_reference_does_not_lock_clothing():
     m = copy.deepcopy(M)
     m["references"] = [{"path": "face-crop.png", "role": "identity_face"}]
     g = c(dict(m, model="gpt-image-2"))
-    assert g.references == m["references"]
+    assert real(g.references) == m["references"]
     assert g.prompt.startswith("Image 1: face identity reference only")
     assert "take clothing, pose, body framing, setting and props only from the subject instructions" in g.prompt
     sd = c(dict(m, model="seedream"))
@@ -209,14 +215,14 @@ def test_anchor_isolation_is_compiled_only_when_anchor_is_used(model):
     m["references"] = [{"path": "other-style.png", "role": "style"},
                        {"path": "character.png", "role": "identity"}]
     result = c(m, contract=contract)
-    assert result.references == [{"path": "anchor.png", "role": "style"},
+    assert real(result.references) == [{"path": "anchor.png", "role": "style"},
                                  {"path": "character.png", "role": "identity"}]
     assert contract["anchor"]["isolation"] in result.prompt
     assert result.prompt.count(contract["anchor"]["isolation"]) == 1
 
     m["use_anchor"] = False
     opted_out = c(m, contract=contract)
-    assert opted_out.references == m["references"]
+    assert real(opted_out.references) == m["references"]
     assert contract["anchor"]["isolation"] not in opted_out.prompt
 
 
@@ -225,7 +231,7 @@ def test_relative_anchor_resolves_from_contract_file(tmp_path):
     contract["_path"] = str(tmp_path / "styles" / "C99" / "contract.json")
     contract["anchor"] = {"file": "anchor.png", "sha256": "a" * 64}
     result = c(copy.deepcopy(M), contract=contract)
-    assert result.references == [{"path": str(tmp_path / "styles" / "C99" / "anchor.png"),
+    assert real(result.references) == [{"path": str(tmp_path / "styles" / "C99" / "anchor.png"),
                                   "role": "style"}]
 
 
@@ -410,7 +416,7 @@ PL_FORMATS = ["wechat-cover-head", "xhs-cover", "podcast-cover", "picturebook-pa
 def test_disabled_anchor_rejects_forced_use_and_omits_default():
     contract = copy.deepcopy(FREE)
     contract["anchor"] = {"file": "bad.png", "enabled": False, "isolation": "BAD_REFERENCE"}
-    assert c(contract=contract).references == []
+    assert real(c(contract=contract).references) == []
     assert "BAD_REFERENCE" not in c(contract=contract).prompt
     m = copy.deepcopy(M)
     m["use_anchor"] = True
@@ -436,3 +442,16 @@ def test_ppt_slide_text_limits():
     long_body["text"]["items"][2]["text"] = "很长" * 20
     with pytest.raises(CP.CompileError, match="超过"):
         CP.compile_manifest(long_body)
+
+
+def test_chosen_palette_attaches_a_textless_swatch_as_last_reference():
+    got = c(copy.deepcopy(M))  # M 默认选了 macaron 色系
+    swatches = [r for r in got.references if r["role"] == "palette_swatch"]
+    assert len(swatches) == 1 and got.references[-1] is swatches[0]
+    assert Path(swatches[0]["path"]).is_file()
+    assert "no subject, no text" in got.prompt
+    again = c(copy.deepcopy(M))
+    assert again.references[-1]["path"] == swatches[0]["path"]  # 同一组颜色同一个文件
+    plain = copy.deepcopy(M)
+    plain["palette"] = {"family": "orig"}
+    assert not [r for r in c(plain).references if r["role"] == "palette_swatch"]

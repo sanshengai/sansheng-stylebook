@@ -12,6 +12,8 @@
   qa     <图> --style C31 [--text ...]  出图验收：像素 + 独立看图 + 文字逐字比对
   qa-contrast <问题图> <候选图> --criterion ...  匿名双图换序比较单一缺陷（仅相对改进）
   qa-focus <局部裁图> --criterion ...       两次独立判断局部是否仍有已知缺陷
+  motion <图> --template glow --region x,y,w,h  局部动效 GIF（可选子板块，见 references/motion.md）
+  qa-palette <图> --family sea               色板偏差报告（只报告，不拒绝）
   sheet  <定妆图> <图>... -o 输出.png    一致性对照网格（--thumbs 看缩略图可辨认）
   matrix <风格码> [--only T1,T2]        8 道标准题测试矩阵（断点续跑、成本记账）
   build  [--private] [--gallery]        由风格合同生成 registry.json；--gallery 生成选择器（index.html + img/）；--advanced 生成旧完整画廊
@@ -226,6 +228,38 @@ def cmd_qa_focus(a) -> int:
     report.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"passed": result["passed"], "report": str(report), "scope": result["scope"]}, ensure_ascii=False))
     return 0 if result["passed"] else 1
+
+
+def cmd_qa_palette(a) -> int:
+    from stylebook import palette as PL
+    from stylebook.qa.palette_check import check
+    hexes = [c["hex"] for c in PL.resolve(a.family, a.light, a.sat, a.hex or None)] if a.family != "orig" else list(a.hex or [])
+    if not hexes:
+        print("需要 --family 色系，或用 --hex 给出至少一个颜色", file=sys.stderr)
+        return 2
+    print(json.dumps(check(Path(a.image), hexes), ensure_ascii=False, indent=2))
+    return 0
+
+
+def cmd_motion(a) -> int:
+    from stylebook import motion as MO
+    try:
+        region = tuple(float(x) for x in a.region.split(","))
+        if len(region) != 4:
+            raise ValueError
+    except ValueError:
+        print("--region 要写成 x,y,w,h 四个 0–1 的比例，例如 0.55,0.1,0.4,0.5", file=sys.stderr)
+        return 2
+    out = Path(a.output)
+    if out.exists():
+        print(f"输出已存在，不覆盖：{out}", file=sys.stderr)
+        return 2
+    try:
+        print(json.dumps(MO.make(Path(a.image), a.template, region, a.target, out), ensure_ascii=False))
+    except MO.MotionError as e:
+        print(str(e), file=sys.stderr)
+        return 1
+    return 0
 
 
 def cmd_sheet(a) -> int:
@@ -613,6 +647,17 @@ def main(argv=None) -> int:
     criterion.add_argument("--criterion-file", help="UTF-8 文本文件，含一个可观察的禁止特征")
     p.add_argument("--report", help="保存两次独立复核及图片哈希的 JSON 路径")
     p.set_defaults(fn=cmd_qa_focus)
+    p = sub.add_parser("motion"); p.add_argument("image", help="已通过验收的静态图")
+    p.add_argument("--template", choices=["glow", "particles", "breathe"], required=True)
+    p.add_argument("--region", required=True, help="作用区域 x,y,w,h（占画面比例）")
+    p.add_argument("--target", choices=["wechat-article", "wechat-sticker", "x"], default="wechat-article")
+    p.add_argument("-o", "--output", required=True)
+    p.set_defaults(fn=cmd_motion)
+    p = sub.add_parser("qa-palette"); p.add_argument("image")
+    p.add_argument("--family", default="orig", help="色系 id；orig 时用 --hex")
+    p.add_argument("--light", type=int, default=0); p.add_argument("--sat", type=int, default=0)
+    p.add_argument("--hex", nargs="*", help="直接给色板 hex")
+    p.set_defaults(fn=cmd_qa_palette)
     p = sub.add_parser("sheet"); p.add_argument("images", nargs="+"); p.add_argument("-o", "--out", required=True)
     p.add_argument("--thumbs", action="store_true", help="单图缩成 46/66/128 像素检查可辨认"); p.set_defaults(fn=cmd_sheet)
     p = sub.add_parser("matrix"); p.add_argument("style"); p.add_argument("--only", help="只跑这些题，逗号分隔")

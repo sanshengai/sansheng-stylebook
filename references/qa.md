@@ -66,6 +66,10 @@ python3 scripts/sb.py qa-contrast 问题图.png 候选图.png --defect-file 禁�
 
 批量输出的 `deliverables.json` 和 `report.md` 记录每张图的 `review_source`。默认 Claude CLI 标为 `claude_cli`，选 Agent Plan 标为 `ark_agent_plan`；注入其他看图结果时由调用者标明来源，未标明则为 `provided_unspecified`；历史缓存缺来源标为 `legacy_unknown`。`ready: true` 只表示该来源下的检查已通过，不能单独证明独立复核或样式准入。续跑沿用缓存结论时保留原来源，不用本次传入的来源覆盖。
 
+## 色板偏差报告（只报告）
+
+`python3 scripts/sb.py qa-palette <图> --family macaron`（或 `--hex #1F6F8B …`）统计成图主要颜色离色板多远：只有饱和、面积 ≥ 5% 且离色板 OKLab 距离 ×100 超过 15 的颜色才算偏差，纸色墨色这类中性色不计。结果固定写 `mode: report_only`，不拒绝任何图；阈值要拿现有样图回测后才能升级成闸门。串味检查（成图里出现参考图的人物、物件）目前靠独立看图，嵌入式自动检查需要额外模型，尚未做。
+
 ## 返修
 
 `overlay` / `hybrid` 的底图可能要求「无字、留白」，最终成图则应有准确文字。若 `content.relations` 写了只适用于底图的指令，在清单另写 `content.final_relations` 描述成图的实际空间关系；生图仍用 `relations`，成品质检用 `final_relations`，而 `subject`、全部 `points` 和逐字文字要求照常检查。`final_relations` 不得省略必要事实或拿来豁免内容错误。

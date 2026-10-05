@@ -41,13 +41,21 @@ ROLE_TEXT = {
     "composition": "composition guide only — preserve relative placement, scale, focal hierarchy and spatial relationships of required elements; do not copy its medium, colors, texture, lighting, character identity, incidental props or text",
     "background": "background and setting reference only",
     "product": "the real object that must appear, keep its shape and details",
+    "exemplar_character": "figure-drawing exemplar only — borrow how people or animals are drawn in this style (proportions, line quality, shading, face construction); do not copy its subject, pose, clothing, hair colour, background, props or any text",
+    "exemplar_graphic": "diagram-drawing exemplar only — borrow how arrows, boxes, icons and labels are drawn in this style (stroke, fill, corner treatment, spacing); do not copy its content, layout, numbers or any text",
+    "palette_swatch": "colour swatch strip — match these exact colours and their relative amounts for the whole picture; it contains no subject, no text and no layout, so take nothing from it except the colours",
 }
 ROLE_TEXT_ZH = {"style": "只作画风参考，只学线条、笔触、媒介、材质、色彩倾向与整体视觉语言，不照搬其中的人物、服装、姿势、场景、构图、文字或情节",
                 "identity": "角色身份参考，保持这个角色的五官、发型、体型与标志性服装",
                 "identity_face": "只作面部身份参考，保持五官、发型及有辨识度的眼镜或发饰；服装、姿势、取景、场景和道具只按主体说明，不从参考图照搬",
                 "pose": "只作姿势参考",
                 "composition": "只作构图参考，保持必要元素的相对位置、大小、视觉主次和空间关系；不照搬媒介、颜色、纹理、光线、角色身份、偶然道具或文字",
-                "background": "只作背景与场景参考", "product": "必须出现的真实物件，保持其外形与细节"}
+                "background": "只作背景与场景参考", "product": "必须出现的真实物件，保持其外形与细节",
+                "exemplar_character": "只作人物画法范例，只借人物或动物怎么画（比例、线条、明暗、脸部构造），不照搬主体、姿势、服装、发色、背景、道具或文字",
+                "exemplar_graphic": "只作图示画法范例，只借箭头、方框、图标、标签怎么画（笔触、填色、转角、间距），不照搬内容、版式、数字或文字",
+                "palette_swatch": "色带参考，只取这些颜色和各自的大致占比；它没有主体、文字和版式，除颜色外什么都不要借"}
+MAX_REFS = 3  # 单次请求最多挂 3 张参考图：风格板、按内容命中的范例、系列母版
+EXEMPLAR_ROLE = {"character": "exemplar_character", "graphic": "exemplar_graphic"}
 
 
 class CompileError(ValueError):
@@ -97,7 +105,7 @@ def _check_bans(contract: dict, manifest: dict) -> None:
         raise CompileError(f"{contract['code']} 的冲突词出现在内容里：{hits}。改写内容，或换一个样式")
 
 
-def _palette_section(contract: dict, manifest: dict) -> str | None:
+def _palette_colors(contract: dict, manifest: dict) -> list[dict] | None:
     p = manifest.get("palette") or {"family": "orig"}
     fam, light, sat = p.get("family", "orig"), int(p.get("light", 0)), int(p.get("sat", 0))
     rule = contract["palette"]["recolor"]
@@ -116,6 +124,13 @@ def _palette_section(contract: dict, manifest: dict) -> str | None:
         cols = [{"name": c["name"], "hex": PL.adjust(c["hex"], light, sat)} for c in base]
     else:
         cols = PL.resolve(fam, light, sat, p.get("custom"))
+    return cols
+
+
+def _palette_section(contract: dict, manifest: dict) -> str | None:
+    cols = _palette_colors(contract, manifest)
+    if not cols:
+        return None
     listing = ", ".join(f"{c['name']} {c['hex']}" for c in cols)
     return (f"Colour palette (use only these colours; each name goes with its hex): {listing}. "
             "Only the colours change; keep the style's rendering technique, line work and texture unchanged.")
@@ -279,6 +294,10 @@ def compile_manifest(manifest: dict, contract: dict | None = None, *, stage: str
         sec.append(("camera", "Camera: " + "; ".join(f"{k} {cam[k]}" for k in order if cam.get(k)) + "."))
     if content.get("lighting"):
         sec.append(("lighting", "Lighting: " + content["lighting"].strip()))
+    tr = contract.get("translation_rules") or {}
+    if tr:
+        sec.append(("translation", "How this style draws what the picture needs (follow exactly): "
+                    + " ".join(f"{k}: {v.strip()}" for k, v in tr.items() if k != "unsuitable" and isinstance(v, str) and v.strip())))
     pal = _palette_section(contract, manifest)
     if pal:
         sec.append(("palette", pal))
@@ -332,11 +351,50 @@ def compile_manifest(manifest: dict, contract: dict | None = None, *, stage: str
         ref_list = [{"path": str(anchor_path), "role": "style"}] + [r for r in refs if r.get("role") != "style"]
 
     anchor_isolation = anchor.get("isolation", "").strip() if anchor_enabled else ""
+    mounted, iso = _mount_exemplars(contract, manifest, ref_list)
+    if mounted:
+        at = 1 if anchor_enabled else 0
+        ref_list = ref_list[:at] + mounted + ref_list[at:]
+        anchor_isolation = " ".join(x for x in [anchor_isolation, *iso] if x)
+    cols = _palette_colors(contract, manifest)
+    if cols and len(ref_list) < MAX_REFS:  # 选了色系：最后附一张无字色带，让颜色靠图而不只靠色值文字
+        ref_list = ref_list + [{"path": str(PL.swatch_png([c["hex"] for c in cols])), "role": "palette_swatch"}]
     prompt, params = _dialect(family, sec, ref_list, contract, aspect, anchor_isolation)
     return Compiled(prompt=prompt, model=model, family=family, style=f"{contract['code']}@r{contract['revision']}",
                     aspect=aspect, size=gen_size(aspect, model, max([1536, *((fmt or {}).get("export_px") or [])])),
                     export_px=None if stage == "center_square_master" else tuple((fmt or {}).get("export_px", [])) or None,
                     references=ref_list, params=params, manifest_hash=manifest_hash(manifest))
+
+
+def _wanted_exemplar_kinds(manifest: dict) -> list[str]:
+    """内容里有什么，就挂什么范例：显式 manifest.exemplars 优先；带 structure 的清单自动要图示范例。"""
+    wanted = list(manifest.get("exemplars") or [])
+    if manifest.get("structure") and "graphic" not in wanted:
+        wanted.append("graphic")
+    bad = [k for k in wanted if k not in EXEMPLAR_ROLE]
+    if bad:
+        raise CompileError(f"exemplars 只接受 {list(EXEMPLAR_ROLE)}：{bad}")
+    return wanted
+
+
+def _mount_exemplars(contract: dict, manifest: dict, ref_list: list[dict]) -> tuple[list[dict], list[str]]:
+    """按合同 exemplars 挂内容范例；总数不超过 MAX_REFS，装不下的范例直接不挂（不挤掉用户或系列参考）。"""
+    room = MAX_REFS - len(ref_list)
+    out: list[dict] = []
+    iso: list[str] = []
+    for kind in _wanted_exemplar_kinds(manifest):
+        if len(out) >= room:
+            break
+        ex = next((e for e in contract.get("exemplars", []) if e.get("kind") == kind and e.get("enabled", True)), None)
+        if not ex:
+            continue
+        path = Path(ex["file"])
+        if not path.is_absolute() and contract.get("_path"):
+            path = Path(contract["_path"]).parent / path
+        out.append({"path": str(path), "role": EXEMPLAR_ROLE[kind]})
+        if ex.get("isolation", "").strip():
+            iso.append(ex["isolation"].strip())
+    return out, iso
 
 
 def _dialect(family: str, sec: list[tuple[str, str]], refs: list[dict], contract: dict,

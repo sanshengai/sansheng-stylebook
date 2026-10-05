@@ -78,3 +78,28 @@ def luma(hex_color: str) -> float:
     h = hex_color.lstrip("#")
     r, g, b = (int(h[i:i + 2], 16) for i in (0, 2, 4))
     return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+
+def swatch_png(hexes: list[str], *, size: tuple[int, int] = (1024, 256)):
+    """无字色带：按顺序等宽排开，内容寻址缓存，同一组颜色永远得到同一个文件。"""
+    import hashlib
+    import os
+    import tempfile
+    from pathlib import Path
+
+    from PIL import Image, ImageDraw
+
+    key = hashlib.sha256("|".join(h.upper() for h in hexes).encode()).hexdigest()[:16]
+    root = Path(os.environ.get("STYLEBOOK_CACHE") or Path(tempfile.gettempdir()) / "sansheng-stylebook-cache")
+    root.mkdir(parents=True, exist_ok=True)
+    path = root / f"swatch-{key}.png"
+    if not path.exists():
+        img = Image.new("RGB", size, "#FFFFFF")
+        draw = ImageDraw.Draw(img)
+        w = size[0] / max(1, len(hexes))
+        for i, h in enumerate(hexes):
+            draw.rectangle([round(i * w), 0, round((i + 1) * w), size[1]], fill=h)
+        tmp = path.with_suffix(".tmp")
+        img.save(tmp, "PNG")
+        tmp.replace(path)
+    return path

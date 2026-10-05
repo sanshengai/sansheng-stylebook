@@ -626,6 +626,100 @@
         }
       },
       "description": "同题样图（人物 / 物件 / 信息图）"
+    },
+    "exemplars": {
+      "type": "array",
+      "description": "按内容命中才挂的范例参考图（单次请求参考图总数 ≤ 3）。character=人物画法，graphic=图示画法",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "file",
+          "sha256",
+          "contains"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "character",
+              "graphic"
+            ]
+          },
+          "file": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "contains": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "isolation": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "translation_rules": {
+      "type": "object",
+      "description": "参考图覆盖不到的内容怎么用这个画风画；unsuitable 写明本画风不适合的内容",
+      "additionalProperties": false,
+      "properties": {
+        "people": {
+          "type": "string"
+        },
+        "animals": {
+          "type": "string"
+        },
+        "surfaces": {
+          "type": "string"
+        },
+        "glyphs": {
+          "type": "string"
+        },
+        "diagrams": {
+          "type": "string"
+        },
+        "unsuitable": {
+          "type": "string"
+        }
+      }
+    },
+    "palette_spec": {
+      "type": "array",
+      "description": "5–7 个色块：名字、hex、作用、面积占比",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "hex",
+          "role"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "hex": {
+            "type": "string",
+            "pattern": "^#[0-9A-Fa-f]{6}$"
+          },
+          "role": {
+            "type": "string"
+          },
+          "area": {
+            "type": "string"
+          }
+        }
+      }
     }
   },
   "$defs": {
