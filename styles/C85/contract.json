@@ -95,6 +95,13 @@
       "ratio": 2.35
     },
     {
+      "topic": "音乐封面",
+      "file": "samples/au.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-02",
+      "ratio": 1.0
+    },
+    {
       "topic": "小红书 第 1 张",
       "file": "samples/xhs.webp",
       "renderer": "codex-builtin",

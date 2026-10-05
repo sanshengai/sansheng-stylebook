@@ -166,10 +166,10 @@ def test_every_style_in_a_pool_has_that_uses_own_sample(built):
     _, html = built
     meta = json.loads(html.read_text(encoding="utf-8").split('<script id="meta" type="application/json">')[1].split("</script>")[0])
     imgs = {c["id"]: set(c["imgs"]) for c in meta["cands"]}
-    # 音乐封面用封面样图展示；不在封面池里的风格退回同题人物图（页面也是这样回退的）
-    siblings = {"cm": {"cm", "cx", "ce"}, "wxi": {"wxi", "wxt", "wxx"}, "cv": {"cv", "au"}}  # 同组的兄弟种类也算本用途样图（页面同样按组回退）
+    # 音乐/播客封面必须有自己的 1:1 方形样图（不能拿 2.35:1 公众号封面充数）
+    siblings = {"cm": {"cm", "cx", "ce"}, "wxi": {"wxi", "wxt", "wxx"}}  # 同组的兄弟种类也算本用途样图（页面同样按组回退）
     missing = [(s["id"], c) for s in meta["scenes"] for c in s["pool"]
-               if not (siblings.get(s["sample"], {s["sample"]}) & imgs[c]) and not (s["id"] == "audio" and "s1" in imgs[c])]
+               if not (siblings.get(s["sample"], {s["sample"]}) & imgs[c])]
     assert missing == [], f"这些画风缺它所属用途的样图：{missing[:8]}"
 
 

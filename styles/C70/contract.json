@@ -111,6 +111,13 @@
       "ratio": 2.35
     },
     {
+      "topic": "音乐封面",
+      "file": "samples/au.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-02",
+      "ratio": 1.0
+    },
+    {
       "topic": "四格漫画",
       "file": "samples/cm.webp",
       "renderer": "codex-builtin",

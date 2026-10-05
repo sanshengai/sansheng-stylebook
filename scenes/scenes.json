@@ -3,26 +3,29 @@
   "note": "公开版出厂默认；私有 profile 的 author.json 可逐场景覆盖",
   "scenes": [
     {
-      "id": "xhs",
-      "zh": "小红书知识卡",
-      "job": "讲道理",
+      "id": "wxcover",
+      "zh": "公众号封面",
+      "job": "封面",
       "formats": [
-        "xhs-carousel",
-        "xhs-cover"
+        "wechat-cover-head",
+        "wechat-cover-square"
       ],
-      "preview_test": "s3",
-      "uses_structure": true,
-      "default_density": "balanced",
-      "default": "C31",
+      "preview_test": "s1",
+      "uses_structure": false,
+      "default_density": "sparse",
+      "default": "C30",
       "alternates": [
-        "C73",
-        "C35",
-        "C42",
-        "C16"
+        "C01",
+        "C17",
+        "C19",
+        "C59"
       ],
-      "use": "小红书",
-      "site_sample": "xhs",
-      "site_note": "小红书、微博以图为主、文字为辅：3:4 竖图，一眼抓人，概括性要强，文字精炼。下面是知识卡的样子。"
+      "use": "封面",
+      "site_sample": "cv",
+      "site_note": "封面要在一秒内抓住人：一个有冲击力的画面，加几个字的标题点明主旨。",
+      "site_name": "公众号封面",
+      "site_short": "封面",
+      "site_more": false
     },
     {
       "id": "wxillus",
@@ -45,29 +48,35 @@
       ],
       "use": "文章插图",
       "site_sample": "wxi",
-      "site_note": "文章插图要替读者概括上下文——流程、对比、四象限、要点——图和文字一起把话讲清楚。下面每张都是一张「概括图」。"
+      "site_note": "配图替读者归纳一段内容：判断句标题、几个要点、一个结构（对比、流程、四象限……）。横版放正文，竖版用于手机长图。",
+      "site_name": "公众号配图",
+      "site_short": "配图",
+      "site_more": false
     },
     {
-      "id": "wxcover",
-      "zh": "公众号封面",
-      "job": "封面",
+      "id": "xhs",
+      "zh": "小红书知识卡",
+      "job": "讲道理",
       "formats": [
-        "wechat-cover-head",
-        "wechat-cover-square"
+        "xhs-carousel",
+        "xhs-cover"
       ],
-      "preview_test": "s1",
-      "uses_structure": false,
-      "default_density": "sparse",
-      "default": "C30",
+      "preview_test": "s3",
+      "uses_structure": true,
+      "default_density": "balanced",
+      "default": "C31",
       "alternates": [
-        "C01",
-        "C17",
-        "C19",
-        "C59"
+        "C73",
+        "C35",
+        "C42",
+        "C16"
       ],
-      "use": "封面",
-      "site_sample": "cv",
-      "site_note": "封面要在一秒内抓住人：一个有冲击力的画面，加上几个字的标题点明主旨，构图要有质感。下面每张都把标题写在了图上。"
+      "use": "小红书",
+      "site_sample": "xhs",
+      "site_note": "3:4 竖图一组 5–6 张：封面抓人、内页每页一个点、最后一张是可收藏的总结卡。",
+      "site_name": "小红书/微博",
+      "site_short": "小红书",
+      "site_more": false
     },
     {
       "id": "ppt",
@@ -88,7 +97,10 @@
       ],
       "use": "PPT",
       "site_sample": "ppt",
-      "site_note": "PPT 是一页一个主旨：讲者讲什么，这一页就展示什么——类比、数据、几个部分。下面是「一页」的样子。"
+      "site_note": "整页图片型 PPT：一套 12 页，封面、目录、章节、数据、对比……每页一句结论当标题。",
+      "site_name": "PPT",
+      "site_short": "PPT",
+      "site_more": false
     },
     {
       "id": "info",
@@ -109,7 +121,10 @@
       ],
       "use": "信息图",
       "site_sample": "inf",
-      "site_note": "信息图把一件事讲完整：步骤、层级、关系，信息密度高，文字和图标要对得上。"
+      "site_note": "把一件事讲完整：流程、对比、金字塔、时间线、数据看板等 11 种版式。",
+      "site_name": "信息图",
+      "site_short": "信息图",
+      "site_more": false
     },
     {
       "id": "comic4",
@@ -134,7 +149,10 @@
       ],
       "use": "漫画",
       "site_sample": "cm",
-      "site_note": "四格漫画用连续的静态画面讲一个小故事：人物前后一致，动作一格推进一格，对白简短。"
+      "site_note": "日漫混排页、四格、知识条漫：一个有场景变化的小故事，每格换镜头和光线。",
+      "site_name": "漫画",
+      "site_short": "漫画",
+      "site_more": false
     },
     {
       "id": "book",
@@ -155,28 +173,10 @@
       ],
       "use": "绘本",
       "site_sample": "s1",
-      "site_note": "绘本：一页一个场景，人物和氛围前后统一。这里用同一组人物题对比画风。"
-    },
-    {
-      "id": "board",
-      "zh": "视频分镜首帧",
-      "job": "讲故事",
-      "formats": [
-        "storyboard-frame"
-      ],
-      "preview_test": "s1",
-      "uses_structure": false,
-      "default_density": null,
-      "default": "C01",
-      "alternates": [
-        "C56",
-        "C57",
-        "C49",
-        "C63"
-      ],
-      "use": "分镜",
-      "site_sample": "s1",
-      "site_note": "视频分镜首帧：像电影里的一帧，主体与镜头清楚。这里用同一组人物题对比画风。"
+      "site_note": "绘本一页一个场景，人物和氛围前后统一。",
+      "site_name": "绘本",
+      "site_short": "绘本",
+      "site_more": false
     },
     {
       "id": "audio",
@@ -197,28 +197,35 @@
         "C01"
       ],
       "use": "音乐封面",
-      "site_sample": "cv",
-      "site_note": "播客 / 音乐封面：方形，一个意象，缩小了也认得出。这里用封面样图对比画风（实际会按 1:1 重新构图）。"
+      "site_sample": "au",
+      "site_note": "方形封面，一个意象，缩成小图也认得出。",
+      "site_name": "音乐/播客封面",
+      "site_short": "音乐封面",
+      "site_more": false
     },
     {
-      "id": "sticker",
-      "zh": "表情包",
+      "id": "board",
+      "zh": "视频分镜首帧",
       "job": "讲故事",
       "formats": [
-        "sticker-grid",
-        "sticker-single"
+        "storyboard-frame"
       ],
       "preview_test": "s1",
       "uses_structure": false,
       "default_density": null,
-      "default": "C24",
+      "default": "C01",
       "alternates": [
-        "C51",
-        "C25",
-        "C55",
-        "C28"
+        "C56",
+        "C57",
+        "C49",
+        "C63"
       ],
-      "hidden": true
+      "use": "分镜",
+      "site_sample": "s1",
+      "site_note": "视频分镜首帧：像电影里的一帧，主体与镜头清楚。",
+      "site_name": "视频分镜",
+      "site_short": "分镜",
+      "site_more": true
     },
     {
       "job": "讲道理",
@@ -242,7 +249,10 @@
       "preview_test": "s2",
       "use": "教材",
       "site_sample": "s2",
-      "site_note": "教材单词图：一个主体、纯色背景、数量明确，下面留给单词。这里用「物件」题对比画风。"
+      "site_note": "教材单词图：一个主体、纯色背景、数量明确，下面留给单词。",
+      "site_name": "教材单词",
+      "site_short": "单词图",
+      "site_more": true
     },
     {
       "job": "讲道理",
@@ -267,7 +277,30 @@
       "preview_test": "s1",
       "use": "教材",
       "site_sample": "s1",
-      "site_note": "教材语法图：用一个生活场景演示语法点。这里用同一组人物题对比画风。"
+      "site_note": "教材语法图：用一个生活场景演示语法点。",
+      "site_name": "教材语法",
+      "site_short": "语法图",
+      "site_more": true
+    },
+    {
+      "id": "sticker",
+      "zh": "表情包",
+      "job": "讲故事",
+      "formats": [
+        "sticker-grid",
+        "sticker-single"
+      ],
+      "preview_test": "s1",
+      "uses_structure": false,
+      "default_density": null,
+      "default": "C24",
+      "alternates": [
+        "C51",
+        "C25",
+        "C55",
+        "C28"
+      ],
+      "hidden": true
     }
   ]
 }

@@ -333,7 +333,8 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
     for sc in reg["scenes"]:
         if sc["id"] not in scene_ids:
             continue
-        scenes.append({"id": sc["id"], "name": sc["zh"], "use": sc["use"], "sample": sc.get("site_sample", "s1"), "note": sc.get("site_note", ""), "default": sc["default"],
+        scenes.append({"id": sc["id"], "name": sc.get("site_name", sc["zh"]), "short": sc.get("site_short", sc.get("site_name", sc["zh"])),
+                       "more": bool(sc.get("site_more")), "use": sc["use"], "sample": sc.get("site_sample", "s1"), "note": sc.get("site_note", ""), "default": sc["default"],
                        "alternates": [a for a in sc["alternates"] if a in have], "pool": pools[sc["id"]]})
     pals = [{"id": p["id"], "name": p["name"], "en": p.get("en", ""), "group": p.get("group", ""), "story": p.get("story", ""),
              "colors": p.get("colors", [])} for p in reg["palettes"]["palettes"]]
