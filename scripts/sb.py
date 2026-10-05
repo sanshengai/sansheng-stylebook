@@ -247,18 +247,30 @@ def cmd_qa_palette(a) -> int:
 def cmd_motion(a) -> int:
     from stylebook import motion as MO
     try:
-        region = tuple(float(x) for x in a.region.split(","))
-        if len(region) != 4:
-            raise ValueError
-    except ValueError:
-        print("--region 要写成 x,y,w,h 四个 0–1 的比例，例如 0.55,0.1,0.4,0.5", file=sys.stderr)
+        if a.template == "labels":
+            if a.layout:
+                region = MO.boxes_from_layout(Path(a.layout))
+            elif a.boxes:
+                region = [[tuple(float(x) for x in b.split(",")) for b in grp.split("+")] for grp in a.boxes.split(";") if grp.strip()]
+                if any(len(r) != 4 for g in region for r in g):
+                    raise ValueError
+            else:
+                print("labels 模板要给 --boxes \"x,y,w,h;x,y,w,h\" 或 --layout 排字配置", file=sys.stderr)
+                return 2
+        else:
+            region = tuple(float(x) for x in a.region.split(","))
+            if len(region) != 4:
+                raise ValueError
+    except (ValueError, AttributeError, OSError, KeyError):
+        print("--region 要写成 x,y,w,h 四个 0–1 的比例，例如 0.55,0.1,0.4,0.5；--boxes 用分号分隔多个框", file=sys.stderr)
         return 2
     out = Path(a.output)
     if out.exists():
         print(f"输出已存在，不覆盖：{out}", file=sys.stderr)
         return 2
     try:
-        print(json.dumps(MO.make(Path(a.image), a.template, region, a.target, out), ensure_ascii=False))
+        print(json.dumps(MO.make(Path(a.image), a.template, region, a.target, out, a.format, not a.no_loop,
+                                    tuple(int(a.color.lstrip('#')[i:i + 2], 16) for i in (0, 2, 4)) if a.color else None), ensure_ascii=False))
     except MO.MotionError as e:
         print(str(e), file=sys.stderr)
         return 1
@@ -697,9 +709,14 @@ def main(argv=None) -> int:
     p = sub.add_parser("qa-leak"); p.add_argument("image", help="成图"); p.add_argument("reference", help="当时挂的参考图")
     p.set_defaults(fn=cmd_qa_leak)
     p = sub.add_parser("motion"); p.add_argument("image", help="已通过验收的静态图")
-    p.add_argument("--template", choices=["glow", "particles", "breathe"], required=True)
-    p.add_argument("--region", required=True, help="作用区域 x,y,w,h（占画面比例）")
-    p.add_argument("--target", choices=["wechat-article", "wechat-sticker", "x"], default="wechat-article")
+    p.add_argument("--template", choices=["glow", "particles", "breathe", "labels"], required=True)
+    p.add_argument("--region", help="作用区域 x,y,w,h（占画面比例）；labels 模板改用 --boxes / --layout")
+    p.add_argument("--boxes", help="labels：按出现顺序的标签框 \"x,y,w,h;x,y,w,h\"（占画面比例），同时出现的几个框用 + 连接")
+    p.add_argument("--layout", help="labels：overlay 排字配置 JSON，按 items 顺序取 box")
+    p.add_argument("--target", choices=["wechat-article", "wechat-sticker", "x", "web"], default="wechat-article")
+    p.add_argument("--format", choices=["gif", "webp"], help="缺省按输出后缀")
+    p.add_argument("--color", help="glow / particles 的颜色，如 #F0BE6E；浅底图要用深一点的颜色才看得见")
+    p.add_argument("--no-loop", action="store_true", help="播完停在最后一帧")
     p.add_argument("-o", "--output", required=True)
     p.set_defaults(fn=cmd_motion)
     p = sub.add_parser("qa-palette"); p.add_argument("image")

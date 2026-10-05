@@ -10,7 +10,8 @@ from stylebook import data as D  # noqa: E402
 def test_counts():
     assert len(D.structures()) == 24
     assert len(D.palettes()["palettes"]) == 20
-    assert len(D.scenes()) == 12
+    assert len(D.scenes()) == 13  # 2026-10-05 新增「动图」场景 motion
+    assert D.scenes()["motion"]["use"] == "动图" and D.scenes()["motion"]["default"] == "C34"
     fams = {f["family"] for f in D.formats().values()}
     assert fams == {"单张封面", "多张轮播", "叙事分格", "信息结构", "视频帧", "透明底多宫格", "透明底单图", "教材插图"}
     single = D.formats()["sticker-single"]

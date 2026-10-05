@@ -2,7 +2,7 @@
 
 **Choose one visual style and keep it across a set of static images.** This Agent skill plans illustrations from source content, compiles style and palette rules, generates images through an available image tool, and checks each result. Article covers and illustrations are its first use case. Slide images, cards, infographics, stories, comics, audio covers, and stickers are at varying trial stages. [中文说明](./README.md)
 
-> Public beta. All 72 public styles have callable contracts, each crediting its inspiration (artists, studios, works) and shipping same-topic sample images. After the 2026-09-30 library rebuild every style is pending admission under its new revision (five had passed the older matrix on earlier revisions and need re-testing). A passing style test does not approve every subject or complete format. The official website selector and integration into `sansheng-write` are still pending.
+> Public beta. All 73 public styles have callable contracts, each crediting its inspiration (artists, studios, works) and shipping same-topic sample images. After the 2026-09-30 library rebuild every style is pending admission under its new revision (five had passed the older matrix on earlier revisions and need re-testing). A passing style test does not approve every subject or complete format. The official website selector and integration into `sansheng-write` are still pending.
 
 ## Preview
 

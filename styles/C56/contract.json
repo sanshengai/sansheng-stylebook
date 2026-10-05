@@ -245,6 +245,34 @@
       "renderer": "codex-builtin",
       "date": "2026-10-02",
       "ratio": 0.75
+    },
+    {
+      "topic": "AI 短剧分镜·角色三视图",
+      "file": "samples/sb.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 1.776
+    },
+    {
+      "topic": "AI 短剧分镜·竖屏镜头 1",
+      "file": "samples/sb-2.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.563
+    },
+    {
+      "topic": "AI 短剧分镜·竖屏镜头 2",
+      "file": "samples/sb-3.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.563
+    },
+    {
+      "topic": "AI 短剧分镜·横屏电影感",
+      "file": "samples/sb-4.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 1.776
     }
   ],
   "anchor": {

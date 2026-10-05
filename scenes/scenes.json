@@ -218,15 +218,42 @@
         "C56",
         "C57",
         "C49",
-        "C63"
+        "C24"
       ],
       "use": "分镜",
-      "site_sample": "s1",
-      "site_note": "视频分镜首帧：像电影里的一帧，主体与镜头清楚。",
-      "site_name": "视频分镜",
-      "site_short": "分镜",
-      "site_more": true,
-      "site_hide": true
+      "site_sample": "sb",
+      "site_note": "竖屏为主：先定人物三视图，再出每个镜头的首帧，交给视频模型去动。",
+      "site_name": "AI 短剧分镜",
+      "site_short": "短剧分镜"
+    },
+    {
+      "id": "motion",
+      "zh": "动图（局部动效）",
+      "job": "讲道理",
+      "formats": [
+        "article-illustration"
+      ],
+      "preview_test": "s1",
+      "uses_structure": false,
+      "default_density": "balanced",
+      "default": "C34",
+      "alternates": [
+        "C42",
+        "C31",
+        "C07",
+        "C30",
+        "C51",
+        "C24",
+        "C25",
+        "C74",
+        "C85"
+      ],
+      "use": "动图",
+      "site_sample": "mo",
+      "site_note": "局部动起来：文章里的要点依次出现、表情包轻轻呼吸；画风不变、体积小。公众号插图、X、微信表情可用。",
+      "site_name": "动图",
+      "site_short": "动图",
+      "site_more": false
     },
     {
       "job": "讲道理",

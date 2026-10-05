@@ -217,6 +217,139 @@
       "renderer": "codex-builtin",
       "date": "2026-10-02",
       "ratio": 1.776
+    },
+    {
+      "topic": "换色示例·原色",
+      "file": "samples/pc-orig.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "换色示例·桃粉奶霜",
+      "file": "samples/pc-macaron.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "换色示例·焦糖亚麻",
+      "file": "samples/pc-earth.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "换色示例·雾灰燕麦",
+      "file": "samples/pc-morandi.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "换色示例·松林晨雾",
+      "file": "samples/pc-forest.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "换色示例·海盐浅湾",
+      "file": "samples/pc-ocean.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "换色示例·旧照暖阳",
+      "file": "samples/pc-film.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "换色示例·千里青绿",
+      "file": "samples/pc-qinglv.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "换色示例·朱砂泥金",
+      "file": "samples/pc-zhusha.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "换色示例·一墨单色",
+      "file": "samples/pc-mono.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "换色示例·午夜霓虹",
+      "file": "samples/pc-neon.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "换色示例·日落暖城",
+      "file": "samples/pc-sunset.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "换色示例·奶油咖啡",
+      "file": "samples/pc-creamcoffee.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "换色示例·薄荷苏打",
+      "file": "samples/pc-mintsoda.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "换色示例·湖面晨雾",
+      "file": "samples/pc-mistblue.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "换色示例·樱花和纸",
+      "file": "samples/pc-sakura.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "换色示例·靛蓝夜航",
+      "file": "samples/pc-indigo.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "换色示例·琥珀秋叶",
+      "file": "samples/pc-amber.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
+    },
+    {
+      "topic": "换色示例·紫藤薄暮",
+      "file": "samples/pc-lilac.webp",
+      "renderer": "codex-builtin",
+      "date": "2026-10-05",
+      "ratio": 0.75
     }
   ],
   "anchor": {

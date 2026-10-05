@@ -34,5 +34,16 @@ def test_mini_repo_passes_then_each_defect_is_rejected(tmp_path):
     assert any("nope" in p for p in check(root))
 
 
+def test_readme_style_codes_are_checked(tmp_path):
+    root = _mini(tmp_path)
+    (root / "README.md").write_text("默认 C44，另见 C01。\n")
+    assert any("README.md" in p and "C44" in p for p in check(root))
+    (root / "README.md").write_text("默认 C01。\n")
+    (root / "README_EN.md").write_text("default C99\n")
+    assert any("README_EN.md" in p and "C99" in p for p in check(root))
+    (root / "README_EN.md").write_text("default C01\n")
+    assert check(root) == []
+
+
 def test_empty_input_is_rejected(tmp_path):
     assert check(tmp_path) != []

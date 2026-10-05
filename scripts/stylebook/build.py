@@ -235,9 +235,10 @@ THUMB = 640  # 长边像素；外部文件，页面本体只放文字与数据
 SITE_KINDS = {
     "s1": "人物", "s2": "物件", "s3": "信息图（简）", "bd": "风格参考板",
     "cv": "封面", "au": "音乐封面", "wxi": "横版插图", "wxt": "竖版插图", "wxx": "推特单图", "xhs": "小红书", "ppt": "PPT", "inf": "信息图",
-    "cm": "四格漫画", "cx": "日漫混排页", "ce": "知识条漫",
+    "cm": "四格漫画", "cx": "日漫混排页", "ce": "知识条漫", "sb": "短剧分镜",
+    "mo": "动图", "mo-0": "动图的静态原图",   # mo 是动画 WebP（原样复制，不缩略）；mo-0 是对比用的静态首图
 }
-SET_KINDS = ["cv", "wxi", "wxt", "wxx", "xhs", "ppt", "inf", "cm", "cx", "ce"]
+SET_KINDS = ["cv", "wxi", "wxt", "wxx", "xhs", "ppt", "inf", "cm", "cx", "ce", "sb"]
 # 一组图：<种类> 是第一张，<种类>-2、-3…… 是同组后面的图
 SET_RE = re.compile(r"^(" + "|".join(SET_KINDS) + r")(?:-(\d+))?$")
 # 一组里每一张的名字（详情页缩略图下显示）
@@ -245,6 +246,7 @@ KIND_LABELS = {
     "ppt": ["封面", "目录", "章节页", "大数字", "数据", "对比", "四象限", "流程", "图文", "金句", "全幅图", "谢谢观看"],
     "inf": ["流程", "对比", "金字塔", "时间线", "数据看板", "便当格", "冰山", "循环", "中心辐射", "漏斗", "2×2 矩阵"],
     "xhs": ["封面", "第 2 页", "第 3 页", "第 4 页", "第 5 页", "总结卡"],
+    "sb": ["角色三视图", "竖屏镜头 1", "竖屏镜头 2", "横屏电影感"],
 }
 # 用途说明与网格里默认展示的样图：不同用途要的东西不一样，看图的角度也不一样。
 
@@ -263,6 +265,13 @@ def _pal_kind(stem: str) -> str | None:
     return None
 
 
+def _pc_kind(stem: str) -> str | None:
+    """换色对比图的文件名是 pc-<色系 id>，pc-orig 是对比用的原色示例；返回 id（含 orig），不是则 None。"""
+    if stem.startswith("pc-") and (stem[3:] == "orig" or stem[3:] in _pal_ids()):
+        return stem[3:]
+    return None
+
+
 def _sample_files(code: str, cp: Path | None) -> dict[str, tuple[Path, float | None]]:
     """合同登记的样图：键是样图种类（如 ppt-3），值是 (文件路径, 登记的宽高比)。
 
@@ -273,7 +282,7 @@ def _sample_files(code: str, cp: Path | None) -> dict[str, tuple[Path, float | N
         return out
     for sample in CT.load(code).get("samples", []):
         sp = cp.parent / sample["file"]
-        if sp.stem in SITE_KINDS or SET_RE.match(sp.stem) or _pal_kind(sp.stem):
+        if sp.stem in SITE_KINDS or SET_RE.match(sp.stem) or _pal_kind(sp.stem) or _pc_kind(sp.stem):
             out[sp.stem] = (sp, sample.get("ratio"))
     return out
 
@@ -303,6 +312,8 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
     have: dict[str, list[str]] = {}
     ratios: dict[str, float] = {}
     pal_shots: dict[str, list[dict]] = {}
+    pal_compare: dict[str, dict] = {}  # 码 -> {"ratio": 原色示例比例, "pals": [有换色图的色系]}
+    motion: dict[str, dict] = {}  # 码 -> {"sub": 子类, "how": 动效, "ratio": 宽高比}，取自合同里动图样图的 topic「动图·子类·动效」
     expected_imgs: list[str] = []  # 页面会引用的全部缩略图文件名（含公开包里没有文件的样图）
     from PIL import Image
     for s in reg["styles"]:
@@ -319,7 +330,7 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
             src, registered = entry if isinstance(entry, tuple) else (entry, None)
             base_kind = kind.split("-")[0]
             if src.is_file():
-                (img_dir / f"{code}-{kind}.webp").write_bytes(_thumb_bytes(src))
+                (img_dir / f"{code}-{kind}.webp").write_bytes(src.read_bytes() if kind == "mo" else _thumb_bytes(src))
                 with Image.open(src) as im:
                     actual = round(im.width / im.height, 3)
                 if registered is not None and abs(actual - registered) > 0.002:
@@ -330,9 +341,20 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
             else:
                 raise ValueError(f"{code} 的样图 {kind} 缺少文件，合同里也没有登记宽高比")
             expected_imgs.append(f"{code}-{kind}.webp")
+            if kind == "mo":
+                topic = next((x.get("topic", "") for x in contract.get("samples", []) if Path(x["file"]).stem == "mo"), "")
+                parts = topic.split("·")
+                motion[code] = {"sub": parts[1] if len(parts) > 1 else "", "how": parts[2] if len(parts) > 2 else "", "ratio": ratio}
             if _pal_kind(kind):  # 色系真图：只出现在「色系」页，不进画风详情的样图列表
                 topic = next((x.get("topic", "") for x in contract.get("samples", []) if Path(x["file"]).stem == kind), "")
                 pal_shots.setdefault(_pal_kind(kind), []).append({"code": code, "kind": kind, "k": PAL_SHOT_KEY.get(topic.split("·")[-1], ""), "ratio": ratio})
+                continue
+            if _pc_kind(kind):  # 换色对比图：只给详情里的对比卡用，不进样图缩略图列表
+                pc = pal_compare.setdefault(code, {"ratio": None, "pals": []})
+                if _pc_kind(kind) == "orig":
+                    pc["ratio"] = ratio
+                else:
+                    pc["pals"].append(_pc_kind(kind))
                 continue
             have.setdefault(code, []).append(kind)
             ratios.setdefault(base_kind, ratio)
@@ -357,8 +379,9 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
                        "alternates": [a for a in sc["alternates"] if a in have], "pool": pools[sc["id"]]})
     pals = [{"id": p["id"], "name": p["name"], "en": p.get("en", ""), "group": p.get("group", ""), "story": p.get("story", ""),
              "colors": p.get("colors", [])} for p in reg["palettes"]["palettes"]]
-    meta = {"cands": cands, "scenes": scenes, "pals": pals, "kinds": SITE_KINDS, "labels": KIND_LABELS, "ratios": ratios, "first": "wxcover",
-            "palShots": {k: sorted(v, key=lambda x: ("poi".find(x["k"]), x["code"])) for k, v in sorted(pal_shots.items())}}
+    meta = {"cands": cands, "scenes": scenes, "pals": pals, "kinds": SITE_KINDS, "labels": KIND_LABELS, "ratios": ratios, "first": "wxcover", "motion": dict(sorted(motion.items())),
+            "palShots": {k: sorted(v, key=lambda x: ("poi".find(x["k"]), x["code"])) for k, v in sorted(pal_shots.items())},
+            "palCompare": {k: {"ratio": v["ratio"], "pals": sorted(v["pals"])} for k, v in sorted(pal_compare.items()) if v["ratio"] and v["pals"]}}
     html = PICKER.read_text(encoding="utf-8").replace("__META__", json.dumps(meta, ensure_ascii=False, sort_keys=True).replace("</", "<\\/"))
     out = out_dir / ("index.private.html" if private else "index.html")
     out.write_text(html, encoding="utf-8")

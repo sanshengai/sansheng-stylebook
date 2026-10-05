@@ -114,10 +114,13 @@ def test_images_load_when_opened_without_trailing_slash(tab):
 
 
 def test_each_use_shows_only_its_own_pool_and_all_shows_everything(tab):
-    """用途页只放适合的画风（不再有「其余画风」）；「全部」仍是全部；教材与视频分镜不在官网用途条里。"""
+    """用途页只放适合的画风（不再有「其余画风」）；「全部」仍是全部；教材不在官网用途条里，AI 短剧分镜在。"""
     _open(tab)
     meta = json.loads(tab.evaluate("document.getElementById('meta').textContent"))
-    assert {s["id"] for s in meta["scenes"]}.isdisjoint({"tb-vocab", "tb-grammar", "board"})
+    assert {s["id"] for s in meta["scenes"]}.isdisjoint({"tb-vocab", "tb-grammar"})
+    board = next(s for s in meta["scenes"] if s["id"] == "board")
+    assert board["name"] == "AI 短剧分镜" and sorted(board["pool"]) == sorted(
+        "C01 C22 C24 C49 C56 C57 C58 C63 C69 C70".split())
     for scene in ("xhs", "ppt", "info"):
         _open(tab, f"#u={scene}")
         pool = next(s["pool"] for s in meta["scenes"] if s["id"] == scene)

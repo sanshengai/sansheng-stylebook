@@ -54,7 +54,8 @@ def check(root: Path = ROOT) -> list[str]:
     # 画风码
     styles = _known_styles(root)
     private_ok = {c for c in re.findall(r"S\d{2}", "") }  # 私有画风 S* 不在公开包里，不校验
-    for doc in docs:
+    readmes = [root / n for n in ("README.md", "README_EN.md") if (root / n).is_file()]
+    for doc in [*docs, *readmes]:
         for code in sorted(set(STYLE.findall(doc.read_text(encoding="utf-8")))):
             if code.startswith("S") or code in private_ok:
                 continue
