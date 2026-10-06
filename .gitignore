@@ -11,5 +11,5 @@ out/
 .venv/
 *.local.json
 gallery/build/
-# 样图在同仓 samples 分支（scripts/samples_sync.py），主分支不跟踪
+# 样图只在本机与官网，不进仓库（scripts/samples_sync.py 管理本机样图与备份）
 styles/*/samples/
