@@ -121,7 +121,8 @@ def pull(repo: Path, ref: str | None = None, overwrite: bool = True) -> int:
 
 def status(repo: Path) -> dict:
     files = local_samples(repo)
-    ref = f"refs/heads/{BRANCH}" if _rev(repo, f"refs/heads/{BRANCH}") else None
+    local = f"refs/heads/{BRANCH}"
+    ref = local if _rev(repo, local) else pull_ref(repo)  # 维护者看本地分支；新克隆只有 origin/samples
     branch = tree_files(repo, ref) if ref else {}
     hashes: dict[str, str] = {}
     if files:
@@ -131,7 +132,7 @@ def status(repo: Path) -> dict:
     only_br = sorted(set(branch) - set(hashes))
     differ = sorted(n for n in set(hashes) & set(branch) if hashes[n] != branch[n])
     res = {"local": len(hashes), "branch": len(branch), "only_local": len(only_ws),
-           "only_branch": len(only_br), "different": len(differ), "head": _rev(repo, f"refs/heads/{BRANCH}")}
+           "only_branch": len(only_br), "different": len(differ), "head": _rev(repo, ref) if ref else None}
     print(f"工作区样图 {res["local"]}；samples 分支头 {res['branch']}（{res['head'] or '无分支'}）；"
           f"仅工作区 {res['only_local']}、仅分支 {res['only_branch']}、内容不同 {res['different']}")
     return res
