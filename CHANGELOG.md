@@ -6,7 +6,7 @@
 
 ### Changed
 
-- 主分支不再跟踪 `styles/*/samples/`（只给人在官网选择器里看的样图），样图移到同仓孤儿分支 `samples`；新增 `scripts/samples_sync.py`（push / pull / status）。浅克隆与 Claude Code 插件安装不再带样图，锚点图与范例图不受影响。
+- 仓库不再跟踪 `styles/*/samples/`（只给人在官网选择器里看的样图，不进任何分支）；新增 `scripts/samples_sync.py`（status / backup / restore）管理本机样图。浅克隆与 Claude Code 插件安装不再带样图，锚点图与范例图不受影响。
 
 ## [0.7.1] -- 2026-10-06
 

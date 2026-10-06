@@ -36,11 +36,11 @@ python3 scripts/sb.py doctor
 python3 scripts/sb.py compile examples/quickstart/manifest.json --json
 ```
 
-A shallow clone (`--depth 1`) is recommended: a full clone also downloads the old sample images kept in history, while image generation only needs the contracts and anchors.
+A shallow clone (`--depth 1`) is recommended: the repository no longer contains sample images, so the only difference from a full clone is history, and a full clone also downloads the old sample images kept there; image generation only needs the contracts and anchors.
 
 Contributors should run `git config core.hooksPath .githooks` to enable the staged-file redaction guard.
 
-**Maintainers: sample images live on the `samples` branch.** `main` does not track `styles/*/samples/` (gallery-only images are not part of what users install); they are kept on the `samples` branch of the same repository, which shares no history with `main`. After a fresh clone run `git fetch origin samples:refs/remotes/origin/samples && python3 scripts/samples_sync.py pull`. After adding new samples run `python3 scripts/samples_sync.py push` to update the local `samples` branch, then `git push origin samples`; `python3 scripts/samples_sync.py status` compares the workspace with the branch. Anchor images (`styles/<code>/anchor.*`) and exemplar images used for generation are not under `samples/` and stay on `main`.
+**Maintainers: sample images are not in the repository.** Gallery-only images (`styles/*/samples/`) live only on the maintainer's machine and the website and are in `.gitignore`; contract registrations (file names and ratios) stay, and the selector rebuilds from them when the files are absent. After adding samples run `python3 scripts/samples_sync.py status` (compare with contract registrations) and `python3 scripts/samples_sync.py backup --dest <dir outside the repo>` (add-only backup); use `restore --src <backup dir>` on a new machine. Anchor images (`styles/<code>/anchor.*`) and exemplar images used for generation are not under `samples/` and stay in the repository.
 
 For an Agent with a built-in image generator, pass the full compiled `prompt` and any listed references to that tool. For an external image provider, configure credentials locally with `python3 scripts/sb.py setup --env-template` and then:
 
