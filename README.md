@@ -83,7 +83,7 @@ python3 scripts/sb.py qa /tmp/stylebook-first.png --style C32 --manifest example
 ## 选画风、手动调整与记忆
 
 - `python3 scripts/sb.py style-for wxillus`：查看公众号插图的当前默认、候选、选择来源及画风准入状态。当前出厂默认 C24（公众号插图／表情包）、C31（小红书）、C40（信息图）、C30（公众号封面）仍待正式准入；默认能出图不代表成图已通过验收。
-- 官网选择器 <https://sanshengai.top/tools/stylebook/>：先逛 73 种画风（每种标原作出处），按用途筛选并换成该用途最需要看的样图——封面看「标题写在图上」、文章插图看「概括图」、小红书看一组 3:4 知识卡、PPT 看三页、竖版信息图、漫画有四格 / 日漫标准页 / 日漫大格页 / 长条漫四种版式；每个风格都配了贴合它气质的主题，点开能按组看整套图；点开一种画风，选用途和色彩，再选「设为我的默认」（记在浏览器里，攒几个后一次复制给 Agent）或「只用这一次」（直接复制一行 `sb2:` 码）。「看色卡」里是 18 个有名字、有故事的色系。本地用 `python3 scripts/sb.py build --gallery` 生成同一份页面（`gallery/build/index.html` 加 `img/`，请在 `gallery/build/` 里起一个静态服务器打开，色调示意需要同源）；`--advanced` 生成旧的完整画廊（内嵌全部样图、含偏好页与选择 JSON 往返）。
+- 官网选择器 <https://sanshengai.top/tools/image/>：先逛 73 种画风（每种标原作出处），按用途筛选并换成该用途最需要看的样图——封面看「标题写在图上」、文章插图看「概括图」、小红书看一组 3:4 知识卡、PPT 看三页、竖版信息图、漫画有四格 / 日漫标准页 / 日漫大格页 / 长条漫四种版式；每个风格都配了贴合它气质的主题，点开能按组看整套图；点开一种画风，选用途和色彩，再选「设为我的默认」（记在浏览器里，攒几个后一次复制给 Agent）或「只用这一次」（直接复制一行 `sb2:` 码）。「看色卡」里是 18 个有名字、有故事的色系。本地用 `python3 scripts/sb.py build --gallery` 生成同一份页面（`gallery/build/index.html` 加 `img/`，请在 `gallery/build/` 里起一个静态服务器打开，色调示意需要同源）；`--advanced` 生成旧的完整画廊（内嵌全部样图、含偏好页与选择 JSON 往返）。
 - `python3 scripts/sb.py preferences set --scene wxillus --field style --value C01`：设置以后公众号插图的默认画风；`preferences show`、`clear`、`undo`、`forget` 管理记录。详见 [偏好规则](./references/preferences.md)。
 - 对整篇文章，先写内容计划并用 `sb.py plan` 检查位置、依据和关系，再使用 `sb.py batch` 或逐张编译。规则见 [内容规划](./references/planning.md)；[合成示例](./examples/content-plan-v2/plan.json)演示计划形状，其中 C31 仍是待准入样式。
 
