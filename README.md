@@ -1,6 +1,6 @@
-# 叁笙画风手册 · sansheng-stylebook
+# 叁笙生图 · Sansheng Image
 
-**选一个画风，让一组静态图沿用同一套画法。** 适用于文章封面和插图，也提供课件、知识卡、信息图、故事、漫画、AI 短剧分镜首帧、动图、音频封面与表情包的试用流程。它是给 Agent 使用的 Skill，不是独立生图模型；实际出图需要当前 Agent 的生图能力、你配置的图像服务，或把编译好的提示词交给其他工具。
+**选一个画风，让一组静态图沿用同一套画法。** 适用于文章封面和插图，也提供课件、知识卡、信息图、故事、漫画、AI 短剧分镜首帧、音频封面与表情包的试用流程。它是给 Agent 使用的 Skill，不是独立生图模型；实际出图需要当前 Agent 的生图能力、你配置的图像服务，或把编译好的提示词交给其他工具。
 
 > 当前为公开 beta。73 种公开画风都有可调用合同，每种在合同里标注原作灵感来源（画家、工作室、作品）并附同题样图；2026-09-30 画风库重建后全部按新修订待正式准入（其中 5 种曾在旧修订通过测试矩阵，需复测）。样式准入也不等于某种用途的整组验收。公众号文章是首要用途；跨格式与长期个人偏好仍在实际使用中验证。进展以 [能力边界](#能力边界)为准。 [English](./README_EN.md)
 
@@ -15,7 +15,7 @@
 
 需要短剧或视频的分镜时，官网「AI 短剧分镜」用途下有 10 个画风，每个画风各 4 张样图：一张角色三视图（正、侧、背加三种表情），两张竖屏 9:16 镜头（中景与特写），一张横屏 16:9 电影感远景。分镜只出每个镜头的静态首帧，人物靠三视图跨镜头固定，运动交给视频模型。做法见 [references/scenes/storyboard.md](./references/scenes/storyboard.md)。
 
-需要会动的图时，官网新增「动图」用途，卡片是「静图 → 动图」对比（动画 WebP）。动图只做局部动效：文章插图里的要点按阅读顺序依次出现，表情包和海报做光晕、粒子或呼吸，区域外每一帧不变，所以画风不漂、体积小。收到 `sb2:motion/<码>` 的具体做法见 [references/motion.md](./references/motion.md)。
+旧版动图入口已下架；旧命令与 [motion.md](./references/motion.md) 保留供旧任务查阅，动态版将另行提供。
 
 ## 它怎样决定一张图
 
@@ -28,16 +28,25 @@
 
 ## 安装
 
-需要 Python 3.10+。克隆公开仓并让 Agent 的 Skill 目录指向整个仓目录；Claude Code 也可通过仓内 `.claude-plugin/marketplace.json` 安装。先安装基础依赖：
+推荐从 GitHub 安装：
 
 ```bash
-git clone --depth 1 https://github.com/sanshengai/sansheng-stylebook.git
-cd sansheng-stylebook
+npx skills add sanshengai/sansheng-image -g
+```
+
+需要电脑里有 Node.js 和 Python 3.10+，并使用 Claude Code、Codex 这类能执行本机命令的 AI 助手。不会用命令行，可把仓库链接交给 AI 助手，请它替你安装。
+
+手动安装时，克隆公开仓并让 Agent 的 Skill 目录指向整个仓目录；Claude Code 也可通过仓内 `.claude-plugin/marketplace.json` 安装。建议在虚拟环境运行：
+
+```bash
+git clone --depth 1 https://github.com/sanshengai/sansheng-image.git
+cd sansheng-image
 python3 -m venv .venv
 . .venv/bin/activate
-python3 -m pip install -r requirements.txt
 python3 scripts/sb.py doctor
 ```
+
+首次运行会检查基础依赖，缺少时由当前 Python 自动安装；失败会说明手动安装方法。首次成功完成整组图片后会提示一次 GitHub 点星，随后不再提示。
 
 推荐用 `--depth 1` 浅克隆：现在仓库本身不含样图，浅克隆与完整克隆的差别只在历史，完整克隆会带上历史里的旧样图，体积大得多；出图只用合同与锚点，不读样图。
 
@@ -87,13 +96,12 @@ python3 scripts/sb.py qa /tmp/stylebook-first.png --style C32 --manifest example
 | 本地画廊与选择 JSON 往返、可撤销的本地偏好 | 已实现；真实长期学习效果仍需连续使用验证 |
 | PPT、小红书、信息图、漫画、绘本、音频封面、表情包 | 有实现和旧样例；完整实际消费者验收按格式逐项推进，PPT 中文渲染尚需在目标软件核对 |
 | 官网选择器（逛画风 → 选用途与色彩 → 设为默认 / 只用一次，复制一行 sb2 码）、按用途的样图、18 个命名色系 | 已上线；全部画风为“试用中”，尚无通过正式准入者 |
-| 动图（文章动态插图、表情包、X 动图） | 只做局部动效，区域外每一帧完全相同，不重画像素、不走图生视频；输出 GIF 与动画 WebP，按公众号、微信表情、X 的体积预算自动降档。公众号、微信、X 的真机自动播放与清晰度尚未验证，对外承诺前要在三个平台各看一次 |
 | AI 短剧分镜 | 出每个镜头的静态首帧（可选尾帧）和一张角色三视图，不出视频；运动只写成一行文字交给视频模型。人物跨镜头一致与画面无字仍须看图验收 |
 | Codex 订阅额度出图（默认）、按张付费服务（显式备用） | 可用；Codex 单张约 45–100 秒，比中转服务慢，但不额外花钱 |
 | 成长飞轮（自动记录选择 / 采用 / 返修，同向 3 个任务问一次） | 已实现；长期效果仍需连续使用验证 |
 | 跨设备记忆同步、视频、Logo | 当前未提供 |
 
-两种私有画风及其默认值不在公开包中。个人记忆默认留在 `~/.config/sansheng-stylebook/profile/`，可用 `STYLEBOOK_PROFILE` 指向自己的私有目录；显式指定的目录若不存在，本次不读取默认私有目录。图像服务适配的实测范围见 [后端说明](./references/backends.md)；未实测的适配器不会写成已验收。
+两种私有画风及其默认值不在公开包中。个人记忆默认留在 `~/.config/sansheng-image/profile/`，可用 `SANSHENG_IMAGE_PROFILE` 指向自己的私有目录；显式指定的目录若不存在，本次不读取默认私有目录。图像服务适配的实测范围见 [后端说明](./references/backends.md)；未实测的适配器不会写成已验收。
 
 ## 更新、致谢与许可
 

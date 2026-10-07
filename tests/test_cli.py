@@ -18,7 +18,7 @@ def test_generate_refuses_to_overwrite(tmp_path, capsys):
 
 
 def test_errors_become_chinese_messages(tmp_path, capsys, monkeypatch):
-    monkeypatch.setenv("STYLEBOOK_PROFILE", str(tmp_path / "none"))
+    monkeypatch.setenv("SANSHENG_IMAGE_PROFILE", str(tmp_path / "none"))
     assert sb.main(["compile", str(tmp_path / "nope.json")]) == 2
     assert "文件不存在" in capsys.readouterr().err
     bad = tmp_path / "bad.json"

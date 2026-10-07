@@ -147,20 +147,6 @@
       "ratio": 0.75
     },
     {
-      "topic": "动图·文章动态插图·飘动粒子",
-      "file": "samples/mo.webp",
-      "renderer": "motion-local",
-      "date": "2026-10-05",
-      "ratio": 2.353
-    },
-    {
-      "topic": "动图·静态原图",
-      "file": "samples/mo-0.webp",
-      "renderer": "motion-local",
-      "date": "2026-10-05",
-      "ratio": 2.35
-    },
-    {
       "topic": "换色示例·原色",
       "file": "samples/pc-orig.webp",
       "renderer": "codex-builtin",

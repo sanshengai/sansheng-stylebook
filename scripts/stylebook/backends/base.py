@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from urllib.parse import urlsplit
 
-CONFIG_DIR = Path(os.environ.get("STYLEBOOK_CONFIG_DIR", Path.home() / ".config" / "sansheng-stylebook"))
+CONFIG_DIR = Path(os.environ.get("SANSHENG_IMAGE_CONFIG_DIR", Path.home() / ".config" / "sansheng-image"))
 
 
 class BackendError(RuntimeError):
@@ -43,7 +43,7 @@ def redact(url: str) -> str:
 
 
 def load_dotenv() -> None:
-    """读 ~/.config/sansheng-stylebook/.env 与项目 .stylebook/.env；已存在的环境变量不覆盖，不打印任何值。"""
+    """读 ~/.config/sansheng-image/.env 与项目 .stylebook/.env；已存在的环境变量不覆盖，不打印任何值。"""
     for f in (Path.cwd() / ".stylebook" / ".env", CONFIG_DIR / ".env"):
         if not f.is_file():
             continue

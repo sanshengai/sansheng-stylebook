@@ -1,6 +1,6 @@
 # 本地偏好与逐渐适应
 
-偏好保存在 `STYLEBOOK_PROFILE/memory.json`；未设置环境变量时使用 `~/.config/sansheng-stylebook/profile/memory.json`。公开仓库和网页不读取这份本地文件。已有 `author.json` 保留原状，新的明确设置覆盖其默认；项目锁定和本次指定仍有更高优先级。
+偏好保存在 `SANSHENG_IMAGE_PROFILE/memory.json`；未设置环境变量时使用 `~/.config/sansheng-image/profile/memory.json`。公开仓库和网页不读取这份本地文件。已有 `author.json` 保留原状，新的明确设置覆盖其默认；项目锁定和本次指定仍有更高优先级。
 
 ## 何时记录
 

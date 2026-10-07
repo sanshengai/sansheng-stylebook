@@ -40,7 +40,7 @@ def env_template() -> Path:
     f = CONFIG_DIR / ".env"
     if f.exists():
         return f
-    body = ["# 叁笙画风手册的密钥文件：只在本机，不进任何仓库。去掉行首 # 并填入你的密钥。", ""]
+    body = ["# 叁笙生图的密钥文件：只在本机，不进任何仓库。去掉行首 # 并填入你的密钥。", ""]
     for name in ORDER:
         body.append(f"# {PROVIDERS[name]['zh']}")
         body += [f"# {x}" for x in ENV_HELP[name]] + [""]

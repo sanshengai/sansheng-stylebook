@@ -18,7 +18,7 @@ GIRL = {"id": "xiaoyu", "name": "小雨", "desc": "A young student with a slim b
 
 @pytest.fixture(autouse=True)
 def _no_profile(tmp_path, monkeypatch):
-    monkeypatch.setenv("STYLEBOOK_PROFILE", str(tmp_path / "none"))
+    monkeypatch.setenv("SANSHENG_IMAGE_PROFILE", str(tmp_path / "none"))
     monkeypatch.setattr(CT.Path, "home", staticmethod(lambda: tmp_path))
 
 

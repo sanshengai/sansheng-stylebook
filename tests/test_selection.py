@@ -14,7 +14,7 @@ from stylebook import selection as S  # noqa: E402
 
 @pytest.fixture(autouse=True)
 def no_private_profile(tmp_path, monkeypatch):
-    monkeypatch.setenv("STYLEBOOK_PROFILE", str(tmp_path / "none"))
+    monkeypatch.setenv("SANSHENG_IMAGE_PROFILE", str(tmp_path / "none"))
     monkeypatch.setattr(S.CT.Path, "home", staticmethod(lambda: tmp_path))
 
 

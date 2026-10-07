@@ -44,7 +44,12 @@ def test_public_page_has_no_private_styles(built):
 def test_every_use_has_its_own_sample_kind_and_palettes_have_stories(built):
     _, html = built
     meta = json.loads(html.read_text(encoding="utf-8").split('<script id="meta" type="application/json">')[1].split("</script>")[0])
-    assert {s["id"] for s in meta["scenes"]} >= {"wxcover", "wxillus", "xhs", "ppt", "info", "comic4"}
+    ids = {s["id"] for s in meta["scenes"]}
+    assert ids >= {"wxcover", "wxillus", "xhs", "ppt", "info", "comic4"} and "motion" not in ids
+    assert len(ids) == 9, ids
+    assert not any(k.startswith("mo") for c in meta["cands"] for k in c["imgs"]) and "motion" not in meta
+    assert not any(k.startswith("mo") for k in meta["kinds"])
+    assert "githubStars" in meta
     named = [p for p in meta["pals"] if p["colors"]]
     assert len(named) >= 16 and all(p["story"] and p["en"] and p["group"] for p in named)
 
@@ -56,12 +61,12 @@ def serve(directory: Path):
             super().__init__(*a, directory=str(directory), **k)
 
         def translate_path(self, path):
-            if path.split("?")[0].rstrip("/") == "/tools/stylebook":  # 线上就是这样：不带斜杠也直接给页面
+            if path.split("?")[0].rstrip("/") == "/tools/image":  # 线上就是这样：不带斜杠也直接给页面
                 path = "/index.html"
             elif path.startswith("/tools/img/"):
                 return str(directory / "__missing__")            # 相对路径写错时会落到这里
-            elif path.startswith("/tools/stylebook/"):
-                path = path[len("/tools/stylebook"):]
+            elif path.startswith("/tools/image/"):
+                path = path[len("/tools/image"):]
             return super().translate_path(path)
 
         def log_message(self, *a):
@@ -94,7 +99,7 @@ def tab(built):
 
 
 def _open(tab, frag=""):
-    tab.goto(f"{tab.base}/tools/stylebook{frag}")   # 注意：没有结尾斜杠
+    tab.goto(f"{tab.base}/tools/image{frag}")   # 注意：没有结尾斜杠
     tab.wait_for_load_state("networkidle")
 
 
@@ -143,14 +148,18 @@ def test_copied_code_parses_roundtrips_and_modes_work(tab):
     tab.evaluate("window.__copied=null;navigator.clipboard.writeText=t=>{window.__copied=t;return Promise.resolve()}")
     tab.click("#btnOnce")
     once = tab.evaluate("window.__copied")
-    assert code in once and "只用这一次" in once and "不要改我的默认" in once
+    c_id, c_name = tab.inner_text("#dCodeTag"), tab.inner_text("#dName")
+    scene_name = tab.evaluate("scene(S.useFor).name")
+    assert once.startswith(f"用叁笙生图帮我出一组{scene_name}图：画风 ") and f"画风 {c_id} {c_name}，色系「" in once and once.endswith(f"（{code}）。内容是：")
+    assert SC.find(once) == [code] and SC.parse(SC.find(once)[0]).scene == "xhs"  # 完整有效码
+    assert tab.inner_text("#btnOnce") == "复制给 AI"
     tab.click("#btnDefault")
     assert tab.inner_text("#trayN") == "1"
     tab.click("#dlgX")
     tab.click("#trayBtn")
     tab.click("#tCopy")
     text = tab.evaluate("window.__copied")
-    assert code in text and "长期有效" in text
+    assert f"（{code}）" in text and text.startswith("请 AI 助手记住") and "没特别说明" in text
     # 刷新后「我的默认」仍在；网址还原同一选择
     tab.reload()
     assert tab.inner_text("#trayN") == "1"
@@ -212,3 +221,46 @@ def test_quiz_recommends_only_from_the_chosen_use(tab):
     tab.click(f"[data-qpick={picks[0]}]")
     tab.wait_for_selector("#dlg[open]")
     assert tab.inner_text("#dCode").startswith(f"sb2:ppt/{picks[0]}")
+
+
+def test_hero_github_button_and_origin_wording(tab):
+    _open(tab)
+    btn = tab.locator("#ghBtn")
+    stars = tab.evaluate("M.githubStars")
+    assert btn.inner_text() == (f"GitHub ★ {stars}" if stars != "" and stars is not None else "GitHub")
+    assert btn.get_attribute("href") == "https://github.com/sanshengai/sansheng-image"
+    tab.evaluate("M.githubStars=null;renderHead()")
+    assert btn.inner_text() == "GitHub"
+    tab.evaluate("M.githubStars='1.2k';renderHead()")
+    assert btn.inner_text() == "GitHub ★ 1.2k"
+    assert "npx skills add sanshengai/sansheng-image -g" in tab.inner_text("#step1")
+    assert "画风参考，不代表与创作者有关" in tab.inner_text(".foot")
+    _open(tab, "#u=xhs")
+    tab.locator(".card").first.click()
+    tab.wait_for_selector("#dlg[open]")
+    origin = tab.inner_text("#dOrigin")
+    assert (not origin) or (origin.startswith("类似") and origin.endswith("的风格") and "原作灵感" not in origin)
+
+
+def test_phone_copy_actions_fit_viewport(tab):
+    import os
+    review_dir = os.environ.get("SANSHENG_IMAGE_REVIEW_DIR")
+    if review_dir:
+        _open(tab)
+        tab.screenshot(path=str(Path(review_dir) / "desktop-home.png"), full_page=False)
+    try:
+        for width in (360, 390):
+            tab.set_viewport_size({"width": width, "height": 844})
+            _open(tab, "#u=xhs")
+            assert tab.evaluate("document.documentElement.scrollWidth <= innerWidth + 1")
+            if review_dir and width == 390:
+                tab.screenshot(path=str(Path(review_dir) / "mobile-home.png"), full_page=False)
+            tab.locator(".card").first.click()
+            tab.wait_for_selector("#dlg[open]")
+            assert tab.locator("#btnOnce").is_visible()
+            assert tab.locator("#btnDefault").get_attribute("class") == "linkbtn"
+            assert tab.locator("#dlg").bounding_box()["width"] <= width
+            if review_dir and width == 390:
+                tab.screenshot(path=str(Path(review_dir) / "mobile-detail.png"), full_page=False)
+    finally:
+        tab.set_viewport_size({"width": 1280, "height": 900})

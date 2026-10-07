@@ -1,15 +1,15 @@
 ---
-name: sansheng-stylebook
-description: 用户说“给这篇文章配几张图”“做个封面”“出一张图”“换个画风”，或要做小红书知识卡、信息图、教材插图、漫画、绘本、整页 PPT、音乐或播客封面时使用；给出 sb2/sb1 或 C31 等画风码，或配置、检查叁笙画风手册时也用。读内容后挑视觉要点，同一系列保持选定画风，默认轻量出图，出图走 Codex 订阅额度。以静态图为主；另有可选的局部动效 GIF 子板块（文章插图呼吸感、微信表情，见 references/motion.md）。
+name: sansheng-image
+description: 用户说“给这篇文章配几张图”“做个封面”“出一张图”“换个画风”，或要做小红书知识卡、信息图、教材插图、漫画、绘本、整页 PPT、音乐或播客封面时使用；给出 sb2/sb1 或 C31 等画风码，或配置、检查叁笙生图时也用。读内容后挑视觉要点，同一系列保持选定画风，默认轻量出图，出图走 Codex 订阅额度。当前提供静态图。
 ---
 
-# 叁笙画风手册
+# 叁笙生图
 
-先理解图片要帮读者看懂什么，再选画风。主体场景、流程、分类、对比可以在同一画风中共存；内容结构不能被审美偏好替代。支持 72 种公开画风合同（每种标注原作灵感来源，选了用途只列出适合的画风），正式准入与某次成图通过分别记账，范围见 [README](README.md#能力边界)。
+先理解图片要帮读者看懂什么，再选画风。主体场景、流程、分类、对比可以在同一画风中共存；内容结构不能被审美偏好替代。支持 73 种公开画风合同（每种标注原作灵感来源，选了用途只列出适合的画风），正式准入与某次成图通过分别记账，范围见 [README](README.md#能力边界)。
 
 ## 先路由，再按场景读
 
-先读 [route.md](references/route.md)：判断场景（封面、文章插图、小红书、PPT、信息图、漫画、动图），只读该场景手册和它点名的库，不一次读完所有参考文件。日常单图、教材、音乐封面等读 [quick.md](references/quick.md)；各类图的页序速查在 [recipes.md](references/recipes.md)。
+先读 [route.md](references/route.md)：判断场景（封面、文章插图、小红书、PPT、信息图、漫画），只读该场景手册和它点名的库，不一次读完所有参考文件。日常单图、教材、音乐封面等读 [quick.md](references/quick.md)；各类图的页序速查在 [recipes.md](references/recipes.md)。
 
 1. 完整读内容，挑真正值得画的观点与关系，先给用户一张计划卡（每张一行：段落、判断句标题、图型、比例、图上文字），再写 `brief.json`：整组用途、画风、色彩、选择理由；每张仅位置、读者应明白的一句话、画面、图上的字。有原文时保留实际源文件和准确位置引用。已有视觉足够时可以不新增图。
 2. 信息足够就执行并简短解释推荐理由。用户有画风码时用码；没有时采用已确认偏好、作者档案或用途默认。不要逐层让用户选择。
@@ -44,4 +44,4 @@ python3 scripts/sb.py make brief.json -o 新目录
 
 `sb2:wxcover/C30`、`sb2:xhs/C35-earth`、`sb2:info/C42-hex.1F6F8B.F4F1E8` 可传用途、画风和色彩；`@rN` 锁当前修订。旧 sb1 继续可读。网站复制端升级前，语法与语言修改见 selection.md。
 
-源数据是 `styles/`、`scenes/scenes.json`、`formats/formats.json`、`structures/structures.json`、`palettes/palettes.json`；`registry.json` 用 `python3 scripts/sb.py build` 重建，不手改。作者设置和私有样式放 `STYLEBOOK_PROFILE` 或 `~/.config/sansheng-stylebook/profile/`，不进入公开包。
+源数据是 `styles/`、`scenes/scenes.json`、`formats/formats.json`、`structures/structures.json`、`palettes/palettes.json`；`registry.json` 用 `python3 scripts/sb.py build` 重建，不手改。作者设置和私有样式放 `SANSHENG_IMAGE_PROFILE` 或 `~/.config/sansheng-image/profile/`，不进入公开包。

@@ -56,9 +56,9 @@ def fake(tmp_path, monkeypatch):
     exe.write_text(FAKE)
     exe.chmod(exe.stat().st_mode | stat.S_IEXEC)
     log = tmp_path / "calls.jsonl"
-    monkeypatch.setenv("STYLEBOOK_CODEX", str(exe))
+    monkeypatch.setenv("SANSHENG_IMAGE_CODEX", str(exe))
     monkeypatch.setenv("FAKE_CODEX_LOG", str(log))
-    monkeypatch.setenv("STYLEBOOK_LOG_DIR", str(tmp_path / "logs"))
+    monkeypatch.setenv("SANSHENG_IMAGE_LOG_DIR", str(tmp_path / "logs"))
     monkeypatch.setattr(B, "LOG_DIR", tmp_path / "logs")
     monkeypatch.setattr(B, "config", lambda: {})
     P._CODEX_LOGIN.clear()
@@ -86,7 +86,7 @@ def test_missing_prompt_would_fail_if_image_flag_came_first(fake, tmp_path):
     import subprocess
     ref = tmp_path / "r.png"
     ref.write_bytes(PNG)
-    r = subprocess.run([os.environ["STYLEBOOK_CODEX"], "exec", "-i", str(ref), "make an image"], capture_output=True, text=True,
+    r = subprocess.run([os.environ["SANSHENG_IMAGE_CODEX"], "exec", "-i", str(ref), "make an image"], capture_output=True, text=True,
                        env={**os.environ})
     assert r.returncode == 2
 
@@ -145,7 +145,7 @@ def test_raw_generate_cli_returns_machine_readable_result(fake, tmp_path):
     prompt = tmp_path / "p.txt"
     prompt.write_text("a lake", encoding="utf-8")
     out = tmp_path / "raw.png"
-    env = {**os.environ, "STYLEBOOK_LOG_DIR": str(tmp_path / "logs")}
+    env = {**os.environ, "SANSHENG_IMAGE_LOG_DIR": str(tmp_path / "logs")}
     r = subprocess.run([sys.executable, str(ROOT / "scripts" / "sb.py"), "raw-generate", "--prompt-file", str(prompt), "--aspect", "16:9",
                         "--size", "1536x864", "-o", str(out), "--provider", "codex"], capture_output=True, text=True, env=env)
     info = json.loads(r.stdout.splitlines()[-1])

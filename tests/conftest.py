@@ -4,7 +4,7 @@ import pytest
 
 @pytest.fixture(autouse=True)
 def _no_real_codex(monkeypatch):
-    monkeypatch.setenv("STYLEBOOK_CODEX", "/nonexistent/codex")
+    monkeypatch.setenv("SANSHENG_IMAGE_CODEX", "/nonexistent/codex")
     try:
         from stylebook.backends import providers
         providers._CODEX_LOGIN.clear()

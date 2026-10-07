@@ -14,7 +14,7 @@ from stylebook import contract as CT  # noqa: E402
 @pytest.fixture(autouse=True)
 def _iso(tmp_path, monkeypatch):
     monkeypatch.setattr(B, "LOG_DIR", tmp_path / "logs")
-    monkeypatch.setenv("STYLEBOOK_PROFILE", str(tmp_path / "none"))
+    monkeypatch.setenv("SANSHENG_IMAGE_PROFILE", str(tmp_path / "none"))
     monkeypatch.setattr(CT.Path, "home", staticmethod(lambda: tmp_path))
 
 
@@ -75,7 +75,7 @@ def run(tmp_path, plan, **kw):
 
 def test_default_batch_reviewer_records_agent_plan_source(tmp_path, monkeypatch):
     from stylebook.qa import reviewer
-    monkeypatch.setenv("STYLEBOOK_QA_BACKEND", "ark_agent_plan")
+    monkeypatch.setenv("SANSHENG_IMAGE_QA_BACKEND", "ark_agent_plan")
     monkeypatch.setattr(reviewer, "review", ok_review)
     state = BT.run(xhs_plan(1), tmp_path / "b", gen_fn=Gen(), model="gpt-image-2", quality="normal",
                    jobs=1, log=lambda *_: None)

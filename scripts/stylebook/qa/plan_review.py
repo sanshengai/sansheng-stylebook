@@ -114,13 +114,13 @@ def _complete(data: dict | None, plan: dict) -> bool:
 
 def _output_budget(plan: dict) -> int:
     default = min(32000, max(5000, 1500 + 1000 * len(plan["items"])))
-    raw = os.environ.get("STYLEBOOK_PLAN_REVIEW_MAX_OUTPUT_TOKENS", str(default))
+    raw = os.environ.get("SANSHENG_IMAGE_PLAN_REVIEW_MAX_OUTPUT_TOKENS", str(default))
     try:
         budget = int(raw)
     except ValueError as exc:
-        raise ValueError("STYLEBOOK_PLAN_REVIEW_MAX_OUTPUT_TOKENS 必须是 2000–32000 的整数") from exc
+        raise ValueError("SANSHENG_IMAGE_PLAN_REVIEW_MAX_OUTPUT_TOKENS 必须是 2000–32000 的整数") from exc
     if not 2000 <= budget <= 32000:
-        raise ValueError("STYLEBOOK_PLAN_REVIEW_MAX_OUTPUT_TOKENS 必须是 2000–32000 的整数")
+        raise ValueError("SANSHENG_IMAGE_PLAN_REVIEW_MAX_OUTPUT_TOKENS 必须是 2000–32000 的整数")
     return budget
 
 
@@ -177,7 +177,7 @@ def _review_ark(plan: dict, article: Path, model: str | None, timeout: int) -> d
 
 def review(plan: dict, article: Path, model: str | None = None, timeout: int = 600) -> dict:
     article = Path(article).resolve()
-    backend = os.environ.get("STYLEBOOK_PLAN_REVIEW_BACKEND") or os.environ.get("STYLEBOOK_QA_BACKEND", "claude_cli")
+    backend = os.environ.get("SANSHENG_IMAGE_PLAN_REVIEW_BACKEND") or os.environ.get("SANSHENG_IMAGE_QA_BACKEND", "claude_cli")
     if backend == "ark_agent_plan":
         return _review_ark(plan, article, model, timeout)
     if backend != "claude_cli":

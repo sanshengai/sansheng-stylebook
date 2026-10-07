@@ -441,7 +441,7 @@ def test_reviewer_reasks_when_items_missing(tmp_path, monkeypatch):
     full = _rv()
     part = {**full, "must_not_see": full["must_not_see"][:1]}
     exe = _fake_claude(tmp_path, [part, full])
-    monkeypatch.setenv("STYLEBOOK_QA_CLAUDE", str(exe))
+    monkeypatch.setenv("SANSHENG_IMAGE_QA_CLAUDE", str(exe))
     img = _img(tmp_path, (230, 230, 230))
     out = reviewer.review(img, K, [], "native")
     assert (tmp_path / "n").read_text() == "2"
@@ -454,7 +454,7 @@ def test_reviewer_still_missing_is_judged_fail(tmp_path, monkeypatch):
     full = _rv()
     part = {**full, "must_not_see": full["must_not_see"][:1]}
     exe = _fake_claude(tmp_path, [part, part])
-    monkeypatch.setenv("STYLEBOOK_QA_CLAUDE", str(exe))
+    monkeypatch.setenv("SANSHENG_IMAGE_QA_CLAUDE", str(exe))
     img = _img(tmp_path, (230, 230, 230))
     out = reviewer.review(img, K, [], "native")
     v = judge(img, K, out, [], "native")
@@ -465,7 +465,7 @@ def test_agent_plan_reviewer_sends_image_and_checks_model(tmp_path, monkeypatch)
     import json as _j
     from stylebook.qa import reviewer
 
-    monkeypatch.setenv("STYLEBOOK_QA_BACKEND", "ark_agent_plan")
+    monkeypatch.setenv("SANSHENG_IMAGE_QA_BACKEND", "ark_agent_plan")
     monkeypatch.setenv("ARK_AGENT_PLAN_BASE_URL", reviewer.ARK_PLAN_URL)
     monkeypatch.setenv("ARK_AGENT_PLAN_API_KEY", "test-key")
     calls = []
@@ -500,7 +500,7 @@ def test_agent_plan_reviewer_reads_real_thumbnail_and_jpeg(tmp_path, monkeypatch
     import json as _j
     from stylebook.qa import reviewer
 
-    monkeypatch.setenv("STYLEBOOK_QA_BACKEND", "ark_agent_plan")
+    monkeypatch.setenv("SANSHENG_IMAGE_QA_BACKEND", "ark_agent_plan")
     monkeypatch.setenv("ARK_AGENT_PLAN_BASE_URL", reviewer.ARK_PLAN_URL)
     monkeypatch.setenv("ARK_AGENT_PLAN_API_KEY", "test-key")
     image = _img(tmp_path, (230, 230, 230), "large.jpg")
@@ -540,7 +540,7 @@ def test_agent_plan_reviewer_fails_closed_on_endpoint_and_auth(tmp_path, monkeyp
     import io
     from stylebook.qa import reviewer
 
-    monkeypatch.setenv("STYLEBOOK_QA_BACKEND", "ark_agent_plan")
+    monkeypatch.setenv("SANSHENG_IMAGE_QA_BACKEND", "ark_agent_plan")
     monkeypatch.setenv("ARK_AGENT_PLAN_API_KEY", "test-key")
     image = _img(tmp_path, (230, 230, 230))
     monkeypatch.setenv("ARK_AGENT_PLAN_BASE_URL", "https://ark.cn-beijing.volces.com/api/v3")
@@ -561,7 +561,7 @@ def test_agent_plan_reviewer_fails_closed_on_endpoint_and_auth(tmp_path, monkeyp
 def test_agent_plan_reviewer_stops_on_network_error_without_retry(tmp_path, monkeypatch):
     from stylebook.qa import reviewer
 
-    monkeypatch.setenv("STYLEBOOK_QA_BACKEND", "ark_agent_plan")
+    monkeypatch.setenv("SANSHENG_IMAGE_QA_BACKEND", "ark_agent_plan")
     monkeypatch.setenv("ARK_AGENT_PLAN_API_KEY", "test-key")
     monkeypatch.setenv("ARK_AGENT_PLAN_BASE_URL", reviewer.ARK_PLAN_URL)
     calls = []
@@ -582,7 +582,7 @@ def test_reviewer_stops_on_quota(tmp_path, monkeypatch):
     exe = tmp_path / "claude"
     exe.write_text('#!/bin/sh\necho \'{"is_error":true,"api_error_status":429}\'\n', encoding="utf-8")
     exe.chmod(exe.stat().st_mode | stat.S_IEXEC)
-    monkeypatch.setenv("STYLEBOOK_QA_CLAUDE", str(exe))
+    monkeypatch.setenv("SANSHENG_IMAGE_QA_CLAUDE", str(exe))
     with pytest.raises(reviewer.QuotaExhausted):
         reviewer.review(_img(tmp_path, (230, 230, 230)), K, [], "none")
 
@@ -593,7 +593,7 @@ def test_reviewer_stops_on_missing_login_without_retry(tmp_path, monkeypatch):
     exe = tmp_path / "claude"
     exe.write_text('#!/bin/sh\necho \'{"is_error":true,"result":"Not logged in · Please run /login"}\'\n', encoding="utf-8")
     exe.chmod(exe.stat().st_mode | stat.S_IEXEC)
-    monkeypatch.setenv("STYLEBOOK_QA_CLAUDE", str(exe))
+    monkeypatch.setenv("SANSHENG_IMAGE_QA_CLAUDE", str(exe))
     with pytest.raises(reviewer.ReviewerAuthUnavailable, match="未登录"):
         reviewer.review(_img(tmp_path, (230, 230, 230)), K, [], "none")
 
@@ -609,7 +609,7 @@ echo 'Your organization has disabled Claude subscription access for Claude Code 
 exit 1
 ''', encoding="utf-8")
     exe.chmod(exe.stat().st_mode | stat.S_IEXEC)
-    monkeypatch.setenv("STYLEBOOK_QA_CLAUDE", str(exe))
+    monkeypatch.setenv("SANSHENG_IMAGE_QA_CLAUDE", str(exe))
     with pytest.raises(reviewer.ReviewerAuthUnavailable, match="订阅访问被禁用"):
         reviewer.review(_img(tmp_path, (230, 230, 230)), K, [], "none")
     assert calls.read_text().splitlines() == ["called"]

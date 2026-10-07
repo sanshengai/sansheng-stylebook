@@ -20,8 +20,8 @@ BRIEF = {"version": 1, "scene": "wxillus", "style": "C42", "reason": "清楚表�
 
 @pytest.fixture(autouse=True)
 def private_preferences_are_isolated(tmp_path, monkeypatch):
-    monkeypatch.setenv("STYLEBOOK_PREFERENCES", str(tmp_path / "prefs.json"))
-    monkeypatch.setenv("STYLEBOOK_PROFILE", str(tmp_path / "absent-profile"))
+    monkeypatch.setenv("SANSHENG_IMAGE_PREFERENCES", str(tmp_path / "prefs.json"))
+    monkeypatch.setenv("SANSHENG_IMAGE_PROFILE", str(tmp_path / "absent-profile"))
     monkeypatch.setattr(P, "lookup", lambda *args, **kwargs: None)
 
 

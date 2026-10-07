@@ -90,7 +90,7 @@ def swatch_png(hexes: list[str], *, size: tuple[int, int] = (1024, 256)):
     from PIL import Image, ImageDraw
 
     key = hashlib.sha256("|".join(h.upper() for h in hexes).encode()).hexdigest()[:16]
-    root = Path(os.environ.get("STYLEBOOK_CACHE") or Path(tempfile.gettempdir()) / "sansheng-stylebook-cache")
+    root = Path(os.environ.get("SANSHENG_IMAGE_CACHE") or Path(tempfile.gettempdir()) / "sansheng-image-cache")
     root.mkdir(parents=True, exist_ok=True)
     path = root / f"swatch-{key}.png"
     if not path.exists():

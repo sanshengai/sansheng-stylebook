@@ -1,6 +1,6 @@
 # 测试矩阵与准入（维护者）
 
-矩阵 `state.json` 的每次 `reviews[]` 和 `report.md` 逐题记录看图来源：默认独立 CLI 为 `claude_cli`；设 `STYLEBOOK_QA_BACKEND=ark_agent_plan` 时使用现有 Agent Plan 套餐的豆包视觉，来源为 `ark_agent_plan`。两者各自的无历史上下文请求可计入独立双评；由调用者提供的结论须标明来源，未标明记作 `provided_unspecified`，旧缓存无来源记作 `legacy_unknown`，这些不能顶替独立双评。续跑沿用旧看图结论时不改写其来源；已有维护者自检也不能挡住补看独立结论。`admission.matrix_verdict` 只表示八题数量和指定题的自动判据；`admission.verdict` 是正式准入状态。即使前者为 `pass`，同词三次稳定及跨样式可区分仍须另附证据，后者保持 `pending`，不能凭八题数量把合同标为正式准入。来源标签不能代替检查原始看图记录。
+矩阵 `state.json` 的每次 `reviews[]` 和 `report.md` 逐题记录看图来源：默认独立 CLI 为 `claude_cli`；设 `SANSHENG_IMAGE_QA_BACKEND=ark_agent_plan` 时使用现有 Agent Plan 套餐的豆包视觉，来源为 `ark_agent_plan`。两者各自的无历史上下文请求可计入独立双评；由调用者提供的结论须标明来源，未标明记作 `provided_unspecified`，旧缓存无来源记作 `legacy_unknown`，这些不能顶替独立双评。续跑沿用旧看图结论时不改写其来源；已有维护者自检也不能挡住补看独立结论。`admission.matrix_verdict` 只表示八题数量和指定题的自动判据；`admission.verdict` 是正式准入状态。即使前者为 `pass`，同词三次稳定及跨样式可区分仍须另附证据，后者保持 `pending`，不能凭八题数量把合同标为正式准入。来源标签不能代替检查原始看图记录。
 
 ## 8 道标准题
 

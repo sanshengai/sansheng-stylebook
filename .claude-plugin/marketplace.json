@@ -1,5 +1,5 @@
 {
-  "name": "sansheng-stylebook-marketplace",
+  "name": "sansheng-image-marketplace",
   "description": "Style-consistent static image workflows for Claude Code.",
   "owner": {
     "name": "叁笙 (sansheng)",
@@ -7,7 +7,7 @@
   },
   "plugins": [
     {
-      "name": "sansheng-stylebook",
+      "name": "sansheng-image",
       "description": "Keep a consistent visual style across article and other static images.",
       "version": "0.7.2",
       "source": "./",

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>叁笙画风手册</title>
+<title>叁笙生图</title>
 <style>
 :root{
   --bg:#F5F5F2; --surface:#FFFFFF; --sunk:#ECECE7; --ink:#1B1E23; --muted:#62666E; --line:#D9DAD4;
@@ -104,7 +104,7 @@ h1{font-size:19px;margin:0}
 </head>
 <body>
 <header class="top"><div class="top-in">
-  <h1>叁笙画风手册</h1>
+  <h1>叁笙生图</h1>
   <div class="tabs" role="tablist">
     <button class="tab" role="tab" data-tab="defaults" aria-selected="true">① 出厂默认</button>
     <button class="tab" role="tab" data-tab="pick" aria-selected="false">② 全部样式</button>
@@ -429,7 +429,7 @@ function renderOut(){
   const sc=scene(); const c=cand(S.style); if(!c) return;
   const code=styleCode();
   $('codeOut').textContent = code.human+'   ('+code.mach+')';
-  try{ const v=selectionRecord(); const json=JSON.stringify(v,null,2); $('selectionOut').value=json; $('skillOut').value='用叁笙画风手册，按下面的选择记录处理'+($('theme').value.trim()?'「'+$('theme').value.trim()+'」':'我的内容')+'。请先读原文提炼图意与位置，再按风格合同编译并验收。\n\n'+json+'\n\n（在这里附上文章、课件或故事原文）'; $('selectionError').textContent=''; }
+  try{ const v=selectionRecord(); const json=JSON.stringify(v,null,2); $('selectionOut').value=json; $('skillOut').value='用叁笙生图，按下面的选择记录处理'+($('theme').value.trim()?'「'+$('theme').value.trim()+'」':'我的内容')+'。请先读原文提炼图意与位置，再按风格合同编译并验收。\n\n'+json+'\n\n（在这里附上文章、课件或故事原文）'; $('selectionError').textContent=''; }
   catch(e){ $('selectionOut').value=''; $('skillOut').value=''; $('selectionError').textContent=e.message; }
 }
 $('seriesId').oninput=renderOut;

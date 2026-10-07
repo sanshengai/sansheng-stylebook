@@ -10,8 +10,8 @@ from stylebook import data as D  # noqa: E402
 def test_counts():
     assert len(D.structures()) == 24
     assert len(D.palettes()["palettes"]) == 20
-    assert len(D.scenes()) == 13  # 2026-10-05 新增「动图」场景 motion
-    assert D.scenes()["motion"]["use"] == "动图" and D.scenes()["motion"]["default"] == "C34"
+    assert len(D.scenes()) == 12  # 动图已下架（旧版 motion 命令保留）
+    assert "motion" not in D.scenes()
     fams = {f["family"] for f in D.formats().values()}
     assert fams == {"单张封面", "多张轮播", "叙事分格", "信息结构", "视频帧", "透明底多宫格", "透明底单图", "教材插图"}
     single = D.formats()["sticker-single"]
@@ -59,7 +59,7 @@ def test_public_defaults_follow_ledger():
 def test_author_profile_matches_ledger():
     import os
     import pytest
-    if not os.environ.get("STYLEBOOK_PROFILE"):
+    if not os.environ.get("SANSHENG_IMAGE_PROFILE"):
         pytest.skip("未设置私有 profile")
     for sid, code in LEDGER_1247.items():
         d, _, src = D.scene_choice(sid)
@@ -107,8 +107,8 @@ def test_style_rules_of_library_v2():
     ledger = {e["style"]: e for e in _json.loads((ROOT / "styles/anchor-provenance.json").read_text(encoding="utf-8"))["anchors"]}
     c30 = CT.load("C30")
     assert c30["anchor"]["sha256"] == ledger["C30"]["sha256"]
-    assert ledger["C30"]["origin"]["repo"] == "sanshengai/sansheng-stylebook" and "no people" in ledger["C30"]["derivation"]
-    assert ledger["C06"]["origin"]["repo"] != "sanshengai/sansheng-stylebook", "有开源原作样图的画风不被自制参考板替换"
+    assert ledger["C30"]["origin"]["repo"] == "sanshengai/sansheng-image" and "no people" in ledger["C30"]["derivation"]
+    assert ledger["C06"]["origin"]["repo"] != "sanshengai/sansheng-image", "有开源原作样图的画风不被自制参考板替换"
 
 
 def test_demoted_styles_keep_prior_admission_record():

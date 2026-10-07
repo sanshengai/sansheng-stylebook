@@ -2,6 +2,17 @@
 
 本项目采用一条 SemVer 版本线。画风合同可调用范围与正式准入范围分开记录。
 
+## [未发布]
+
+### Changed
+
+- **整体更名**：Skill、Claude Code 插件与 marketplace 名称由 `sansheng-stylebook` 改为 `sansheng-image`，中文产品名由「叁笙画风手册」改为「叁笙生图」（挑选页称「画风库」）。环境变量前缀由 `STYLEBOOK_` 改为 `SANSHENG_IMAGE_`（含 `STYLEBOOK_PROFILE` → `SANSHENG_IMAGE_PROFILE`），本机配置目录随之改为 `~/.config/sansheng-image/`。旧前缀不再读取，已有本地配置需要改名。
+
+- 官网入口迁为 `/tools/image/`。安装主推 GitHub，复制为能直接发给 AI 的一句话，默认设置改为小链接；详情展示为「类似某某的风格」，页脚说明参考关系。
+- 旧动图用途和展示已下架，静态样图归档保留；旧命令与手册暂留。
+- 首次运行自动检查并安装基础依赖；首次成功完成整组图后仅提示一次 GitHub 点星。
+- GitHub 星数快照随公开包分发，确保无样图下载包仍可逐字节重建官网选择器。
+
 ## [0.7.2] -- 2026-10-06
 
 ### Fixed

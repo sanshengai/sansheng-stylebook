@@ -1,4 +1,4 @@
-# sansheng-stylebook
+# 叁笙生图 · Sansheng Image
 
 **Choose one visual style and keep it across a set of static images.** This Agent skill plans illustrations from source content, compiles style and palette rules, generates images through an available image tool, and checks each result. Article covers and illustrations are its first use case. Slide images, cards, infographics, stories, comics, audio covers, and stickers are at varying trial stages. [中文说明](./README.md)
 
@@ -24,14 +24,15 @@ Temporary edits affect only the current task. Explicit long-term preferences liv
 
 ## Install and try
 
-Python 3.10+ is required. Clone the repository and link it into your Agent's skill directory. The repository also includes a Claude Code plugin manifest:
+Install from GitHub with `npx skills add sanshengai/sansheng-image -g` (Node.js required), then restart your AI assistant. Use an assistant such as Claude Code or Codex that can run commands on your computer. Python 3.10+ is required.
+
+For manual installation, clone the repository and link it into your Agent's skill directory. The repository also includes a Claude Code plugin manifest:
 
 ```bash
-git clone --depth 1 https://github.com/sanshengai/sansheng-stylebook.git
-cd sansheng-stylebook
+git clone --depth 1 https://github.com/sanshengai/sansheng-image.git
+cd sansheng-image
 python3 -m venv .venv
 . .venv/bin/activate
-python3 -m pip install -r requirements.txt
 python3 scripts/sb.py doctor
 python3 scripts/sb.py compile examples/quickstart/manifest.json --json
 ```
@@ -59,7 +60,7 @@ The QA command requires a working independent vision reviewer, or a separately s
 - `python3 scripts/sb.py preferences set --scene wxillus --field style --value C01` saves a style preference. See [preference controls](./references/preferences.md).
 - For an article, create a source-grounded plan and run `sb.py plan` before generating. See [planning rules](./references/planning.md) and the [synthetic plan](./examples/content-plan-v2/plan.json); its C31 style remains pending admission.
 
-Private styles and personal memory are excluded from the public package. Local memory defaults to `~/.config/sansheng-stylebook/profile/` and can be relocated with `STYLEBOOK_PROFILE`. Provider support and its verified limits are listed in [backends.md](./references/backends.md).
+Private styles and personal memory are excluded from the public package. Local memory defaults to `~/.config/sansheng-image/profile/` and can be relocated with `SANSHENG_IMAGE_PROFILE`. Provider support and its verified limits are listed in [backends.md](./references/backends.md).
 
 ## Credits and license
 

@@ -52,7 +52,7 @@ def full_and_bare(tmp_path_factory):
     bare_root = tmp_path_factory.mktemp("bare") / "sb"
     shutil.copytree(ROOT, bare_root, ignore=shutil.ignore_patterns(".git", "gallery/build", "__pycache__", "logs", "samples", ".pytest_cache"))
     assert not list(bare_root.glob("styles/C*/samples"))
-    env = {"PATH": "/usr/bin:/bin:/usr/local/bin:/opt/homebrew/bin", "STYLEBOOK_PROFILE": str(bare_root / "none"), "PYTHONDONTWRITEBYTECODE": "1"}
+    env = {"PATH": "/usr/bin:/bin:/usr/local/bin:/opt/homebrew/bin", "SANSHENG_IMAGE_PROFILE": str(bare_root / "none"), "PYTHONDONTWRITEBYTECODE": "1"}
     r = subprocess.run([sys.executable, "scripts/sb.py", "build", "--gallery"], cwd=bare_root, env=env, capture_output=True, text=True)
     assert r.returncode == 0, r.stderr[-400:]
     return full, bare_root / "gallery/build"

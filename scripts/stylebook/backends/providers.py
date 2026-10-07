@@ -142,7 +142,7 @@ def dashscope_generate(prompt: str, size: tuple[int, int], quality: str, refs: l
 
 # ---------------- Codex 内置生图（走 ChatGPT / Codex 订阅额度，不按张计费） ----------------
 def codex_bin() -> str | None:
-    env = os.environ.get("STYLEBOOK_CODEX")
+    env = os.environ.get("SANSHENG_IMAGE_CODEX")
     if env:
         return env if Path(env).is_file() else None
     local = Path.home() / ".local" / "bin" / "codex"
@@ -188,10 +188,10 @@ def codex_generate(prompt: str, size: tuple[int, int], quality: str, refs: list[
     exe = codex_bin()
     if not exe:
         raise BackendError("unconfigured", "没有找到 codex 命令。安装 Codex CLI 并运行 codex login，或改用其他生图服务。")
-    timeout = int(os.environ.get("STYLEBOOK_CODEX_TIMEOUT", "900"))
+    timeout = int(os.environ.get("SANSHENG_IMAGE_CODEX_TIMEOUT", "900"))
     with tempfile.TemporaryDirectory(prefix="stylebook-codex-") as tmp:
         out = Path(tmp) / "out.png"
-        effort = os.environ.get("STYLEBOOK_CODEX_EFFORT", "low")  # 只是转发提示词，不需要深度推理；实测省约四成额度，耗时不变
+        effort = os.environ.get("SANSHENG_IMAGE_CODEX_EFFORT", "low")  # 只是转发提示词，不需要深度推理；实测省约四成额度，耗时不变
         cmd = [exe, "exec", "--skip-git-repo-check", "--ephemeral", "-s", "workspace-write", "-C", tmp,
                "-c", f"model_reasoning_effort={effort}", codex_instruction(prompt, out, aspect, size, len(refs))]
         if refs:  # -i 会吞掉后面的参数，必须放在提示词之后
@@ -218,7 +218,7 @@ def codex_generate(prompt: str, size: tuple[int, int], quality: str, refs: list[
 
 
 PROVIDERS: dict[str, dict] = {
-    "codex": {"zh": "Codex 内置生图（ChatGPT 订阅，不按张付费）", "fn": codex_generate, "ping": codex_ping, "env": ["STYLEBOOK_CODEX"],
+    "codex": {"zh": "Codex 内置生图（ChatGPT 订阅，不按张付费）", "fn": codex_generate, "ping": codex_ping, "env": ["SANSHENG_IMAGE_CODEX"],
               "default_model": "codex-builtin", "refs": True, "verified": True,
               "blurb": "用 ChatGPT / Codex 订阅额度出图，中文字准、能带参考图；模型版本由 Codex 决定，不能指定，也不支持透明底",
               "apply": "https://developers.openai.com/codex"},

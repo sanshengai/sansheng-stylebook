@@ -34,13 +34,13 @@ def profile(tmp_path, monkeypatch):
         ensure_ascii=False), encoding="utf-8")
     (prof / "author.json").write_text(json.dumps({"scene_defaults": {"xhs": {"default": "S77", "alternates": ["C31"]}}},
                                                  ensure_ascii=False), encoding="utf-8")
-    monkeypatch.setenv("STYLEBOOK_PROFILE", str(prof))
+    monkeypatch.setenv("SANSHENG_IMAGE_PROFILE", str(prof))
     return prof
 
 
 @pytest.fixture
 def no_profile(tmp_path, monkeypatch):
-    monkeypatch.setenv("STYLEBOOK_PROFILE", str(tmp_path / "none"))
+    monkeypatch.setenv("SANSHENG_IMAGE_PROFILE", str(tmp_path / "none"))
     monkeypatch.setattr(CT.Path, "home", staticmethod(lambda: tmp_path))
 
 

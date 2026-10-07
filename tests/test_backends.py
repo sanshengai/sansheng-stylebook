@@ -14,8 +14,8 @@ def B(tmp_path, monkeypatch):
     for k in ("GOOGLE_BASE_URL", "GEMINI_API_KEY", "GOOGLE_API_KEY", "ARK_API_KEY", "ARK_BASE_URL", "DASHSCOPE_API_KEY",
               "DASHSCOPE_BASE_URL", "OPENROUTER_API_KEY"):
         monkeypatch.delenv(k, raising=False)  # 本机真实环境里可能设着这些，测试必须隔离
-    monkeypatch.setenv("STYLEBOOK_CONFIG_DIR", str(tmp_path / "cfg"))
-    monkeypatch.setenv("STYLEBOOK_LOG_DIR", str(tmp_path / "logs"))
+    monkeypatch.setenv("SANSHENG_IMAGE_CONFIG_DIR", str(tmp_path / "cfg"))
+    monkeypatch.setenv("SANSHENG_IMAGE_LOG_DIR", str(tmp_path / "logs"))
     monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
     monkeypatch.setenv("OPENAI_BASE_URL", "https://relay.example.com/v1")
     monkeypatch.chdir(tmp_path)

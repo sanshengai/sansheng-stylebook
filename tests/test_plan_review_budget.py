@@ -25,7 +25,7 @@ class Reply:
 def setup_review(monkeypatch, tmp_path, response):
     monkeypatch.setenv("ARK_AGENT_PLAN_BASE_URL", PR.ARK_PLAN_URL)
     monkeypatch.setenv("ARK_AGENT_PLAN_API_KEY", "test-only-key")
-    monkeypatch.delenv("STYLEBOOK_PLAN_REVIEW_MAX_OUTPUT_TOKENS", raising=False)
+    monkeypatch.delenv("SANSHENG_IMAGE_PLAN_REVIEW_MAX_OUTPUT_TOKENS", raising=False)
     article = tmp_path / "article.md"
     article.write_text("只读原文")
     monkeypatch.setattr(PR, "prompt", lambda plan, path: "逐张检查")
@@ -69,7 +69,7 @@ def test_completed_full_review_retains_usage_and_explicit_budget(monkeypatch, tm
                 "output": [{"content": [{"type": "output_text", "text":
                     json.dumps({"items": [item], "missed_positions": []})}]}]}
     article, sent = setup_review(monkeypatch, tmp_path, response)
-    monkeypatch.setenv("STYLEBOOK_PLAN_REVIEW_MAX_OUTPUT_TOKENS", "12000")
+    monkeypatch.setenv("SANSHENG_IMAGE_PLAN_REVIEW_MAX_OUTPUT_TOKENS", "12000")
     result = PR._review_ark({"items": [{"id": "01"}]}, article, None, 1)
     assert sent[0]["max_output_tokens"] == 12000
     assert result["items"][0]["reasonable"] is True
@@ -79,7 +79,7 @@ def test_completed_full_review_retains_usage_and_explicit_budget(monkeypatch, tm
 @pytest.mark.parametrize("value", ["", "abc", "0", "32001"])
 def test_invalid_budget_does_not_send_request(monkeypatch, tmp_path, value):
     article, sent = setup_review(monkeypatch, tmp_path, {})
-    monkeypatch.setenv("STYLEBOOK_PLAN_REVIEW_MAX_OUTPUT_TOKENS", value)
+    monkeypatch.setenv("SANSHENG_IMAGE_PLAN_REVIEW_MAX_OUTPUT_TOKENS", value)
     with pytest.raises(ValueError, match="2000–32000"):
         PR._review_ark({"items": []}, article, None, 1)
     assert sent == []

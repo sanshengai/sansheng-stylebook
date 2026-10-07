@@ -23,11 +23,11 @@ class ContractError(ValueError):
 
 def profile_dir() -> Path | None:
     """显式目录优先；显式目录不存在时禁用私有层，不回落到本机默认目录。"""
-    env = os.environ.get("STYLEBOOK_PROFILE")
+    env = os.environ.get("SANSHENG_IMAGE_PROFILE")
     if env is not None:
         candidate = Path(env).expanduser()
         return candidate if candidate.is_dir() else None
-    candidate = Path.home() / ".config" / "sansheng-stylebook" / "profile"
+    candidate = Path.home() / ".config" / "sansheng-image" / "profile"
     return candidate if candidate.is_dir() else None
 
 

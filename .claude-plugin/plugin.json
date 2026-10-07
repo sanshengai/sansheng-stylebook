@@ -1,13 +1,13 @@
 {
-  "name": "sansheng-stylebook",
+  "name": "sansheng-image",
   "description": "Keep a consistent visual style across article and other static images.",
   "version": "0.7.2",
   "author": {
     "name": "叁笙 (sansheng)",
     "email": "sandypoli@gmail.com"
   },
-  "homepage": "https://github.com/sanshengai/sansheng-stylebook",
-  "repository": "https://github.com/sanshengai/sansheng-stylebook",
+  "homepage": "https://github.com/sanshengai/sansheng-image",
+  "repository": "https://github.com/sanshengai/sansheng-image",
   "license": "MIT",
   "keywords": [
     "claude-code",

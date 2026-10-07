@@ -118,7 +118,7 @@ def test_loaded_contract_compiles(tmp_path, monkeypatch):
     d.mkdir(parents=True)
     (d / "contract.json").write_text(json.dumps(GOOD, ensure_ascii=False), encoding="utf-8")
     monkeypatch.setattr(C, "STYLES_DIR", tmp_path / "styles")
-    monkeypatch.setenv("STYLEBOOK_PROFILE", str(tmp_path / "none"))
+    monkeypatch.setenv("SANSHENG_IMAGE_PROFILE", str(tmp_path / "none"))
     monkeypatch.setattr(C.Path, "home", staticmethod(lambda: tmp_path))
     loaded = C.load("C99")
     assert loaded["_path"].endswith("C99/contract.json")

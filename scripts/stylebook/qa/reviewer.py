@@ -1,7 +1,7 @@
 """独立看图：每张图单独调用 Claude CLI 或 Ark Agent Plan 视觉模型，按合同逐条转述。
 
-环境变量：STYLEBOOK_QA_BACKEND（claude_cli 默认，或 ark_agent_plan）；Claude 路径还可设
-STYLEBOOK_QA_MODEL（默认 claude-sonnet-5）、STYLEBOOK_QA_CLAUDE（claude 可执行文件）。
+环境变量：SANSHENG_IMAGE_QA_BACKEND（claude_cli 默认，或 ark_agent_plan）；Claude 路径还可设
+SANSHENG_IMAGE_QA_MODEL（默认 claude-sonnet-5）、SANSHENG_IMAGE_QA_CLAUDE（claude 可执行文件）。
 Ark 路径只认现有 Agent Plan 套餐地址及其环境变量，不回退到按量平台。
 没有 claude CLI 的宿主（如 Codex）：用 manual 模式，由宿主模型按 review_prompt 看图后写出同样的 JSON。
 """
@@ -21,7 +21,7 @@ from pathlib import Path
 
 from . import missing_items, review_prompt, review_schema
 
-DEFAULT_MODEL = os.environ.get("STYLEBOOK_QA_MODEL", "claude-sonnet-5")
+DEFAULT_MODEL = os.environ.get("SANSHENG_IMAGE_QA_MODEL", "claude-sonnet-5")
 ARK_MODEL = "doubao-seed-2.1-turbo"
 ARK_PLAN_URL = "https://ark.cn-beijing.volces.com/api/plan/v3"
 INDEPENDENT_SOURCES = frozenset({"claude_cli", "ark_agent_plan"})
@@ -49,7 +49,7 @@ def _auth_hit(text: str) -> bool:
 
 
 def _claude_bin() -> str | None:
-    env = os.environ.get("STYLEBOOK_QA_CLAUDE")
+    env = os.environ.get("SANSHENG_IMAGE_QA_CLAUDE")
     if env:
         return env
     home = Path.home() / ".local" / "bin" / "claude"
@@ -82,7 +82,7 @@ def _extract(text: str) -> dict | None:
 
 
 def source() -> str:
-    backend = os.environ.get("STYLEBOOK_QA_BACKEND", "claude_cli")
+    backend = os.environ.get("SANSHENG_IMAGE_QA_BACKEND", "claude_cli")
     if backend not in INDEPENDENT_SOURCES:
         raise ValueError(f"未知看图后端：{backend}")
     return backend

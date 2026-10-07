@@ -16,17 +16,17 @@ from stylebook import contract as CT  # noqa: E402
 
 @pytest.fixture(autouse=True)
 def isolated_profile(tmp_path, monkeypatch):
-    monkeypatch.setenv("STYLEBOOK_PROFILE", str(tmp_path / "profile"))
+    monkeypatch.setenv("SANSHENG_IMAGE_PROFILE", str(tmp_path / "profile"))
 
 
 def test_explicit_missing_profile_does_not_fall_back_to_host(tmp_path, monkeypatch):
-    default = tmp_path / ".config" / "sansheng-stylebook" / "profile"
+    default = tmp_path / ".config" / "sansheng-image" / "profile"
     default.mkdir(parents=True)
     monkeypatch.setattr(CT.Path, "home", staticmethod(lambda: tmp_path))
-    monkeypatch.setenv("STYLEBOOK_PROFILE", str(tmp_path / "missing"))
+    monkeypatch.setenv("SANSHENG_IMAGE_PROFILE", str(tmp_path / "missing"))
     assert CT.profile_dir() is None
     assert PL.resolve_style("wxillus")["code"] == "C24"
-    monkeypatch.delenv("STYLEBOOK_PROFILE")
+    monkeypatch.delenv("SANSHENG_IMAGE_PROFILE")
     assert CT.profile_dir() == default
 
 
@@ -116,7 +116,7 @@ def test_style_for_reports_admission_without_implying_scene_acceptance(tmp_path)
     def run(*args):
         cp = subprocess.run([sys.executable, str(ROOT / "scripts" / "sb.py"), "style-for", *args],
                             capture_output=True, text=True, check=True,
-                            env={**os.environ, "STYLEBOOK_PROFILE": str(tmp_path / "fresh-profile")})
+                            env={**os.environ, "SANSHENG_IMAGE_PROFILE": str(tmp_path / "fresh-profile")})
         return json.loads(cp.stdout)
 
     pending = run("wxillus")
@@ -141,7 +141,7 @@ def test_export_import_conflict_and_forgetting(tmp_path, monkeypatch):
     P.export_to(bundle)
     with pytest.raises(P.ProfileError, match="已存在"):
         P.export_to(bundle)
-    monkeypatch.setenv("STYLEBOOK_PROFILE", str(tmp_path / "second"))
+    monkeypatch.setenv("SANSHENG_IMAGE_PROFILE", str(tmp_path / "second"))
     P.set_explicit("style", "C25", scene="wxillus")
     with pytest.raises(P.ProfileError, match="明确偏好冲突"):
         P.import_from(bundle)
@@ -155,7 +155,7 @@ def test_export_import_conflict_and_forgetting(tmp_path, monkeypatch):
 
 
 def test_preferences_cli_persists_between_processes(tmp_path):
-    env = {**os.environ, "STYLEBOOK_PROFILE": str(tmp_path / "cli-profile")}
+    env = {**os.environ, "SANSHENG_IMAGE_PROFILE": str(tmp_path / "cli-profile")}
     def cli(*args):
         return subprocess.run([sys.executable, str(ROOT / "scripts" / "sb.py"), *args], env=env,
                               cwd=ROOT, text=True, capture_output=True, check=True).stdout

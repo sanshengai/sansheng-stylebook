@@ -14,7 +14,7 @@ from stylebook import profile as P  # noqa: E402
 
 @pytest.fixture(autouse=True)
 def isolated(tmp_path, monkeypatch):
-    monkeypatch.setenv("STYLEBOOK_PROFILE", str(tmp_path / "profile"))
+    monkeypatch.setenv("SANSHENG_IMAGE_PROFILE", str(tmp_path / "profile"))
     return tmp_path
 
 

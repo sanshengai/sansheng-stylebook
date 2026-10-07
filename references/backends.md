@@ -7,12 +7,12 @@
 - 条件：本机装了 `codex` 命令且已用 ChatGPT 账号登录（`codex login status`）。`sb.py make`、`generate`、`batch` 在没有指定服务时自动使用它。
 - 做法：适配层无人值守地调用 `codex exec`，把编译好的完整提示词原样交给 Codex 的内置生图工具，参考图用 `-i` 传入（必须放在提示词之后），并明确要求目标画幅（16:9、2.35:1、3:4 等都实测可用，像素大小是近似值，导出时再裁切缩放）。
 - 已知限制：**不能指定模型版本**（工具没有 model 参数；实际多为 Image 2，官方说 2.5 已上线但社区实测仍是 2）；**不支持透明底**；受订阅额度限制，额度用完会报 `quota`。编译输出里的 `model: gpt-image-2` 只是提示词方言，不是运行模型的证明。
-- 速度与额度：单张约 60–120 秒（并行 4 路互不干扰），一张约 1.7–3 万 token 额度。默认用低推理强度（`STYLEBOOK_CODEX_EFFORT` 可改），比默认省约四成额度、耗时不变。
+- 速度与额度：单张约 60–120 秒（并行 4 路互不干扰），一张约 1.7–3 万 token 额度。默认用低推理强度（`SANSHENG_IMAGE_CODEX_EFFORT` 可改），比默认省约四成额度、耗时不变。
 - 日志：`logs/cost.jsonl` 记 provider、耗时和 tokens；费用为空（订阅额度）。
 
 ### Codex 不可用时
 
-默认**不会**自动改用按张付费的服务。想允许，在 `~/.config/sansheng-stylebook/config.json` 写 `"allow_paid_fallback": true`，并可用 `"paid_fallback_cap_usd"` 设当天估算花费上限（默认 5 美元）；达到上限后不再退。自动退到付费服务时，日志里会有一条 `fallback_to` 记录。用户明确指定了 `--provider` 时不做自动备用。
+默认**不会**自动改用按张付费的服务。想允许，在 `~/.config/sansheng-image/config.json` 写 `"allow_paid_fallback": true`，并可用 `"paid_fallback_cap_usd"` 设当天估算花费上限（默认 5 美元）；达到上限后不再退。自动退到付费服务时，日志里会有一条 `fallback_to` 记录。用户明确指定了 `--provider` 时不做自动备用。
 
 ## 手动接力（Agent 有内置生图工具的会话）
 
@@ -29,11 +29,11 @@
 | Google Gemini | `GEMINI_API_KEY`（可选 `GOOGLE_BASE_URL`） | gemini-3.1-flash-image | 支持 | 待实测 |
 | OpenRouter | `OPENROUTER_API_KEY` | google/gemini-3.1-flash-image | 支持 | 待实测 |
 
-使用 `sb.py generate` / `batch` 时，选服务顺序：命令行 `--provider` > 配置文件 `~/.config/sansheng-stylebook/config.json` > 按上表顺序找第一个配好的（Codex 排第一）。当前会话没有内置工具且外部服务都未配置时，用 `sb.py inbox` 把编译好的提示词写成「待出图清单」，用户拿去任何工具出图，再回来验收。
+使用 `sb.py generate` / `batch` 时，选服务顺序：命令行 `--provider` > 配置文件 `~/.config/sansheng-image/config.json` > 按上表顺序找第一个配好的（Codex 排第一）。当前会话没有内置工具且外部服务都未配置时，用 `sb.py inbox` 把编译好的提示词写成「待出图清单」，用户拿去任何工具出图，再回来验收。
 
 ## 报错怎么处理
 
-Ark Agent Plan 的全文计划复核按图片数分配输出预算（最少 5,000、最多 32,000 tokens），可用 `STYLEBOOK_PLAN_REVIEW_MAX_OUTPUT_TOKENS` 指定 2,000–32,000。服务返回 `incomplete` 时仍拒绝验收，并报告状态、预算、使用量和中断原因；先依据实际诊断判断是否需要增加预算，不把不完整结论记为通过。
+Ark Agent Plan 的全文计划复核按图片数分配输出预算（最少 5,000、最多 32,000 tokens），可用 `SANSHENG_IMAGE_PLAN_REVIEW_MAX_OUTPUT_TOKENS` 指定 2,000–32,000。服务返回 `incomplete` 时仍拒绝验收，并报告状态、预算、使用量和中断原因；先依据实际诊断判断是否需要增加预算，不把不完整结论记为通过。
 
 | 类型 | 表现 | 处理 |
 |---|---|---|
@@ -44,4 +44,4 @@ Ark Agent Plan 的全文计划复核按图片数分配输出预算（最少 5,00
 | network | 连不上 | 重试；仍不行检查网络或 `*_BASE_URL` |
 | quota | Codex 额度用完 | 不重试；等额度重置，或允许付费备用（见上） |
 
-每次请求（成功与失败）都记进 `logs/cost.jsonl`（可用 `STYLEBOOK_LOG_DIR` 改位置），含估算费用、当前调用累计耗时 `seconds`（含此前重试等待）和本次尝试耗时 `attempt_seconds`。Codex 通道同样写入此日志（含 `tokens`）。
+每次请求（成功与失败）都记进 `logs/cost.jsonl`（可用 `SANSHENG_IMAGE_LOG_DIR` 改位置），含估算费用、当前调用累计耗时 `seconds`（含此前重试等待）和本次尝试耗时 `attempt_seconds`。Codex 通道同样写入此日志（含 `tokens`）。

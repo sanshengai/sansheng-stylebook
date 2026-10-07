@@ -36,7 +36,7 @@ def test_rejects(bad):
 
 
 def test_find_in_sentence():
-    s = "用叁笙画风手册 sb1:C31-flow-balanced-macaron.L1S0（C31 / 流程），把下面的内容做成「一张信息图（3:4）」"
+    s = "用叁笙生图 sb1:C31-flow-balanced-macaron.L1S0（C31 / 流程），把下面的内容做成「一张信息图（3:4）」"
     assert SC.find(s) == ["sb1:C31-flow-balanced-macaron.L1S0"]
 
 
@@ -68,3 +68,10 @@ def test_sb2_hex_normalizes_and_extracts_from_sentence():
     assert SC.find("用 sb2:info/C42-hex.abcdef.123456 做图，旧码 sb1:C01-orig") == [
         "sb2:info/C42-hex.abcdef.123456", "sb1:C01-orig"]
     assert SC.validate(SC.parse("sb2:missing/C42"))
+
+
+@pytest.mark.parametrize("code", ["sb2:xhs/C30-ocean", "sb2:wxillus/C31-ocean.L-1S1", "sb2:xhs/C31-hex.FFFFFF.273D63"])
+def test_find_picker_sentence(code):
+    sentence = f"用叁笙生图帮我出一组小红书图：画风 C30 彩铅绘本，色系「海盐浅湾」（{code}）。内容是：学习方法。"
+    assert SC.find(sentence) == [code]
+    assert SC.parse(SC.find(sentence)[0]).format() == code

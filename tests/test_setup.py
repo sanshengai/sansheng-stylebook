@@ -12,7 +12,7 @@ def _fresh(monkeypatch, tmp_path):
     for k in list(os.environ):
         if k.endswith("_API_KEY") or k.endswith("_BASE_URL"):
             monkeypatch.delenv(k, raising=False)
-    monkeypatch.setenv("STYLEBOOK_CONFIG_DIR", str(tmp_path / "cfg"))
+    monkeypatch.setenv("SANSHENG_IMAGE_CONFIG_DIR", str(tmp_path / "cfg"))
     monkeypatch.chdir(tmp_path)
     import stylebook.backends.base as base
     importlib.reload(base)

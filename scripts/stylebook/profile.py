@@ -22,8 +22,8 @@ class ProfileError(ValueError):
 
 
 def profile_path() -> Path:
-    env = os.environ.get("STYLEBOOK_PROFILE")
-    root = Path(env).expanduser() if env else Path.home() / ".config" / "sansheng-stylebook" / "profile"
+    env = os.environ.get("SANSHENG_IMAGE_PROFILE")
+    root = Path(env).expanduser() if env else Path.home() / ".config" / "sansheng-image" / "profile"
     return root / "memory.json"
 
 

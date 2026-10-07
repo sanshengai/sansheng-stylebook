@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>叁笙画风手册 · 选画风</title>
+<title>叁笙生图 · 选画风</title>
 <meta name="description" content="逛画风、看色卡，选好后复制一行码交给 Agent；可以设为长期默认，也可以只用一次。">
 <style>
 :root{--bg:#17120E;--bg2:#211A14;--acc:#E2A64B;--acc2:#F0C06C;--on-acc:#1B1208;--ink:#F1E8D8;--ink2:#CFC3AE;--soft:#9D917F;--line:rgba(241,232,216,.13);--grid:rgba(241,232,216,.035);
@@ -84,9 +84,6 @@ h1{margin:0;font:700 68px/1.08 var(--serif);letter-spacing:.06em}
 .chip:disabled{opacity:.35;cursor:not-allowed}
 .chip.small{font-size:13px;padding:5px 12px}
 .chip.off{opacity:.38;text-decoration:line-through;cursor:not-allowed}.chip.off:hover{border-color:var(--line)}
-.mo-row{display:flex;align-items:center;gap:12px}.mo figure{margin:0}.mo img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--line);background:var(--bg2)}
-.mo-from{flex:0 0 26%;min-width:0}.mo-to{flex:1 1 0;min-width:0}.mo figcaption{margin-top:6px;font-size:12px;color:var(--soft);text-align:center}.mo-arrow{font:700 24px var(--serif);color:var(--acc);flex:none}
-.mo-meta{margin:12px 0 0;font-size:12.5px;color:var(--ink2)}.mo-meta b{color:var(--acc2)}
 .also{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--soft)}
 .search{flex:1;min-width:160px;max-width:300px;font:inherit;font-size:14px;color:var(--ink);background:var(--ctl);border:1px solid var(--line);border-radius:999px;padding:7px 16px}
 .search:focus{outline:2px solid var(--acc);outline-offset:1px}
@@ -106,7 +103,6 @@ h1{margin:0;font:700 68px/1.08 var(--serif);letter-spacing:.06em}
 .card .n{font:700 16px/1.35 var(--serif)}
 .card .c{font-family:var(--mono);font-size:12px;color:var(--acc);margin-right:8px;font-weight:700}
 .card .o{margin-top:3px;font-size:12.5px;color:var(--soft);line-height:1.45;min-height:1.45em}
-.card .msub{margin-left:8px;font-size:12.5px;color:var(--soft)}
 .tag{position:absolute;top:10px;left:10px;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:800;background:rgba(15,10,6,.72);color:#fff;border:1px solid rgba(255,255,255,.25)}
 .tag.def{background:var(--acc);color:var(--on-acc);border-color:transparent}.tag.mine{background:var(--acc2);color:var(--on-acc);border-color:transparent;left:auto;right:10px}
 .empty{padding:40px;text-align:center;color:var(--soft)}
@@ -162,6 +158,8 @@ h3{margin:14px 0 6px;font-size:14px;letter-spacing:.06em;color:var(--acc)}
 .tune{display:flex;gap:16px;flex-wrap:wrap;margin-top:6px}.tune .row{gap:5px}
 .hex{width:100%;font:inherit;font-family:var(--mono);font-size:13px;color:var(--ink);background:var(--ctl);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
 .codebar{font-family:var(--mono);font-size:14.5px;font-weight:700;color:var(--acc);background:var(--ctl);border:1px solid var(--line);border-radius:10px;padding:11px 14px;overflow-wrap:anywhere}
+.linkbtn{background:none;border:0;padding:6px 4px;font:inherit;font-size:13px;color:var(--acc);text-decoration:underline;cursor:pointer;align-self:center}.linkbtn:disabled{opacity:.4;cursor:not-allowed}
+details.alt{margin:10px 0 0;font-size:13px;color:var(--ink2)}details.alt summary{cursor:pointer;color:var(--soft)}details.alt .cmd{margin:6px 0}
 .actions{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}.actions .btn{flex:1;min-width:150px;padding:11px 16px}
 p.small{font-size:12.5px;color:var(--soft);margin:8px 0 0}.btn.sm{font-size:13px;padding:6px 14px}
 /* 我的默认 */
@@ -193,7 +191,7 @@ p.small{font-size:12.5px;color:var(--soft);margin:8px 0 0}.btn.sm{font-size:13px
 <body>
 <header class="top" id="top"><div class="top-in">
   <a class="brand" href="/" aria-label="叁笙早安 AI 首页"><img class="logo-d" src="/logo.webp" alt="叁笙早安 AI" width="89" height="32" onerror="this.parentNode.classList.add('nologo')"><img class="logo-l" src="/logo-dark.webp" alt="" width="89" height="32" onerror="this.parentNode.classList.add('nologo')"><span class="brand-txt">叁笙早安 <b>AI</b></span></a>
-  <nav class="crumb"><a href="/">首页</a> · <a href="/tools/">百宝箱</a> · 画风手册</nav>
+  <nav class="crumb"><a href="/">首页</a> · <a href="/tools/">百宝箱</a> · 画风库</nav>
   <span class="sp"></span>
   <button class="btn" id="trayBtn" aria-haspopup="dialog">我的默认<span class="badge" id="trayN">0</span></button>
 </div><div class="palbar" id="palBar" hidden></div></header>
@@ -201,11 +199,11 @@ p.small{font-size:12.5px;color:var(--soft);margin:8px 0 0}.btn.sm{font-size:13px
 <section class="hero">
   <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
   <div class="hero-in">
-    <h1>画风手册</h1>
+    <h1>画风库</h1>
     <p class="sub">一句话，让 AI 按你选的画风出整组图</p>
-    <p class="lead">叁笙画风手册是一个出图 Skill：在这里挑好用途、画风和色系，复制一行码交给装了它的 Agent，文章配图、封面、小红书卡片、PPT 就按同一套画风画出来。本页是挑选的地方，网页本身不出图。</p>
+    <p class="lead">叁笙生图是一个出图 Skill：在这里挑好用途、画风和色系，复制一行码交给装了它的 Agent，文章配图、封面、小红书卡片、PPT 就按同一套画风画出来。本页是挑选的地方，网页本身不出图。</p>
     <div class="stats" id="stats"></div>
-    <div class="cta"><button class="btn primary big" id="installBtn">安装 Skill</button><a class="btn big" href="https://github.com/sanshengai/sansheng-stylebook" target="_blank" rel="noopener">GitHub</a></div>
+    <div class="cta"><button class="btn big" id="installBtn">安装 Skill</button><a class="btn primary big" id="ghBtn" href="https://github.com/sanshengai/sansheng-image" target="_blank" rel="noopener">GitHub</a></div>
   </div>
 </section>
 
@@ -213,17 +211,24 @@ p.small{font-size:12.5px;color:var(--soft);margin:8px 0 0}.btn.sm{font-size:13px
   <div class="sec" style="margin-top:0"><h2>怎么用</h2><i>How it works</i><span>先装 Skill，再来这里挑</span></div>
   <div class="how-grid">
     <div class="step" id="step1"><div class="no">1</div><h3>安装 Skill <span class="req">（必须先装）</span></h3>
-      <p>网页本身不出图，出图由装了 Skill 的 Agent 完成。</p>
-      <div class="who">Claude Code，在对话里依次输入</div>
-      <div class="cmd"><code>/plugin marketplace add sanshengai/sansheng-stylebook</code><button class="cp" data-copy="/plugin marketplace add sanshengai/sansheng-stylebook">复制</button></div>
-      <div class="cmd"><code>/plugin install sansheng-stylebook@sansheng-stylebook-marketplace</code><button class="cp" data-copy="/plugin install sansheng-stylebook@sansheng-stylebook-marketplace">复制</button></div>
-      <div class="who">其他 Agent（Codex 等）</div>
-      <div class="cmd"><code>git clone https://github.com/sanshengai/sansheng-stylebook.git</code><button class="cp" data-copy="git clone https://github.com/sanshengai/sansheng-stylebook.git">复制</button></div>
-      <p>把整个目录放进 Agent 的 Skill 目录，再按 README 的「安装」一节装依赖。</p>
-      <div class="links"><a class="btn sm" href="https://github.com/sanshengai/sansheng-stylebook" target="_blank" rel="noopener">GitHub</a><a class="btn sm" href="/tools/github/repo/sanshengai/sansheng-stylebook">本站宝藏页（国内下载镜像）</a></div>
+      <p><b>从 GitHub 安装（推荐）</b></p>
+      <div class="cmd"><code>npx skills add sanshengai/sansheng-image -g</code><button class="cp" data-copy="npx skills add sanshengai/sansheng-image -g">复制</button></div>
+      <p>复制这一行到电脑终端执行（需要 Node.js），装完重开 AI 助手。不会用命令行？把这句话发给你的 AI 助手，让它替你装：</p>
+      <div class="cmd"><code>请从 GitHub 安装叁笙生图 Skill：https://github.com/sanshengai/sansheng-image</code><button class="cp" data-copy="请从 GitHub 安装叁笙生图 Skill：https://github.com/sanshengai/sansheng-image">复制</button></div>
+      <p>觉得好用，去 GitHub 点个星。</p>
+      <p class="small">完整出图需要 Claude Code、Codex 这类能在电脑上执行命令的 AI 助手。</p>
+      <details class="alt"><summary>打不开 GitHub？</summary>
+        <p>从本站的「宝藏页」下载 zip 镜像包，解压后对你的 AI 助手说：把这个文件夹装成 Skill。</p>
+        <div class="links"><a class="btn sm" href="/tools/github/repo/sanshengai/sansheng-image">本站宝藏页（zip 镜像）</a></div></details>
+      <details class="alt"><summary>其他装法</summary>
+        <div class="who">Claude Code，在对话里依次输入</div>
+        <div class="cmd"><code>/plugin marketplace add sanshengai/sansheng-image</code><button class="cp" data-copy="/plugin marketplace add sanshengai/sansheng-image">复制</button></div>
+        <div class="cmd"><code>/plugin install sansheng-image@sansheng-image-marketplace</code><button class="cp" data-copy="/plugin install sansheng-image@sansheng-image-marketplace">复制</button></div>
+        <div class="who">手动下载</div>
+        <div class="cmd"><code>git clone https://github.com/sanshengai/sansheng-image.git</code><button class="cp" data-copy="git clone https://github.com/sanshengai/sansheng-image.git">复制</button></div></details>
     </div>
     <div class="step"><div class="no">2</div><h3>在这里挑</h3>
-      <p>选用途、画风、色系，点「复制，只用这次」或「设为默认」，得到一行码：</p><span class="eg">sb2:xhs/C30-ocean</span>
+      <p>选用途、画风、色系，点「复制给 AI」，得到一段能直接发给 AI 助手的话，里面带着一行码：</p><span class="eg">sb2:xhs/C30-ocean</span>
       <p>想先看效果，往下逛画廊，或点「帮我挑」回答三个问题。</p></div>
     <div class="step"><div class="no">3</div><h3>交给 Agent</h3>
       <p>把这行码和你的文章或主题一起发给装了 Skill 的 Agent。它会规划、出图、逐张检查，同一系列的图保持同一个画风。</p></div>
@@ -244,13 +249,13 @@ p.small{font-size:12.5px;color:var(--soft);margin:8px 0 0}.btn.sm{font-size:13px
   <div class="note">每个色系都有名字和故事，像一年一度的流行色。挑中了点「用这个色系」，之后在画风详情里会默认选中它。每个色系下面是用它真实画出来的三张图（人物、静物、信息图），点图可以看对应画风。</div>
   <div id="pals"></div>
 </section>
-<footer class="foot"><span>许可证 MIT</span><a href="https://github.com/sanshengai/sansheng-stylebook" target="_blank" rel="noopener">GitHub</a><a href="/tools/github/repo/sanshengai/sansheng-stylebook">宝藏页（国内下载镜像）</a><a href="/">叁笙早安 AI</a></footer>
+<footer class="foot"><span>许可证 MIT</span><a href="https://github.com/sanshengai/sansheng-image" target="_blank" rel="noopener">GitHub</a><a href="/tools/github/repo/sanshengai/sansheng-image">宝藏页（国内下载镜像）</a><a href="/">叁笙早安 AI</a><span>画风参考，不代表与创作者有关</span></footer>
 </main>
 
 <dialog id="dlg" aria-label="画风详情"><div class="dlg">
   <button class="dlg-x" id="dlgX" aria-label="关闭">×</button>
   <div class="dlg-grid">
-    <div class="viewer"><div class="mo" id="moCmp" hidden></div><img class="main-img" id="mainImg" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><div class="thumbs" id="thumbs"></div><div class="also" id="also"></div><div class="vhint" id="vhint"></div></div>
+    <div class="viewer"><img class="main-img" id="mainImg" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><div class="thumbs" id="thumbs"></div><div class="also" id="also"></div><div class="vhint" id="vhint"></div></div>
     <div class="info">
       <div class="ttl"><span class="code" id="dCodeTag"></span><h2 id="dName"></h2></div>
       <p class="origin" id="dOrigin"></p><p class="ess" id="dEss"></p>
@@ -262,7 +267,7 @@ p.small{font-size:12.5px;color:var(--soft);margin:8px 0 0}.btn.sm{font-size:13px
       <p class="small" id="palNote"></p>
       <h3>③ 怎么用</h3>
       <div class="codebar" id="dCode"></div>
-      <div class="actions"><button class="btn primary" id="btnOnce">复制，只用这次</button><button class="btn gold" id="btnDefault">设为默认</button></div>
+      <div class="actions"><button class="btn primary" id="btnOnce">复制给 AI</button><button class="linkbtn" id="btnDefault">设为默认</button></div>
       <p class="small" id="howNote"></p>
     </div>
   </div>
@@ -271,9 +276,9 @@ p.small{font-size:12.5px;color:var(--soft);margin:8px 0 0}.btn.sm{font-size:13px
 <dialog id="quiz" aria-label="三问推荐"><div class="dlg quiz"><button class="dlg-x" id="quizX" aria-label="关闭">×</button><div id="quizBody"></div></div></dialog>
 <div class="scrim" id="scrim" hidden></div>
 <aside class="tray" id="tray" aria-label="我的默认"><h2>我的默认</h2>
-  <p class="small" style="margin:0">每个用途一个画风。全部选好后点「复制给 Agent」，Agent 会记下来：以后做这类图，你不特别说明就用它。</p>
+  <p class="small" style="margin:0">每个用途一个画风。全部选好后点「复制给 AI」，AI 助手会记下来：以后做这类图，你不特别说明就用它。</p>
   <div class="tlist" id="tlist"></div>
-  <div class="actions"><button class="btn primary" id="tCopy">复制给 Agent</button><button class="btn" id="tClear">清空</button></div>
+  <div class="actions"><button class="btn primary" id="tCopy">复制给 AI</button><button class="btn" id="tClear">清空</button></div>
   <button class="btn" id="tClose">关闭</button>
 </aside>
 
@@ -294,9 +299,9 @@ try{mine=JSON.parse(localStorage.getItem('sb-mine')||'{}')||{};}catch(e){mine={}
 const saveMine=()=>{try{localStorage.setItem('sb-mine',JSON.stringify(mine));}catch(e){}};
 const GROUPS=['甜美','自然','东方','都市','怀旧'];
 const GROUP_EN={'甜美':'Sweet','自然':'Natural','东方':'Oriental','都市':'Urban','怀旧':'Nostalgic'};
-const SCENE_EN={wxcover:'Covers',wxillus:'Article illustrations',xhs:'Social cards',ppt:'Slides',info:'Infographics',comic4:'Comics',book:'Picture books',audio:'Album covers',motion:'Motion'};
-const IMG_GROUPS=[['cv','封面'],['au','音乐封面'],['xhs','小红书'],['wxi','文章插图'],['inf','信息图'],['ppt','PPT'],['comic','漫画'],['sb','AI 短剧分镜'],['mo','动图'],['bd','风格档案'],['same','同题对比'],['anchor','原作参考']];
-const GROUP_KINDS={cv:['cv'],au:['au'],xhs:['xhs'],wxi:['wxi','wxt','wxx'],inf:['inf'],ppt:['ppt'],comic:['cm','cx','ce'],sb:['sb'],mo:['mo'],bd:['bd'],same:['s1','s2','s3'],anchor:['anchor']};
+const SCENE_EN={wxcover:'Covers',wxillus:'Article illustrations',xhs:'Social cards',ppt:'Slides',info:'Infographics',comic4:'Comics',book:'Picture books',audio:'Album covers'};
+const IMG_GROUPS=[['cv','封面'],['au','音乐封面'],['xhs','小红书'],['wxi','文章插图'],['inf','信息图'],['ppt','PPT'],['comic','漫画'],['sb','AI 短剧分镜'],['bd','风格档案'],['same','同题对比'],['anchor','原作参考']];
+const GROUP_KINDS={cv:['cv'],au:['au'],xhs:['xhs'],wxi:['wxi','wxt','wxx'],inf:['inf'],ppt:['ppt'],comic:['cm','cx','ce'],sb:['sb'],bd:['bd'],same:['s1','s2','s3'],anchor:['anchor']};
 const baseKind=k=>k.replace(/-\d+$/,'');
 const groupOf=k=>{const b=baseKind(k);return Object.keys(GROUP_KINDS).find(g=>GROUP_KINDS[g].includes(b));};
 function stems(c,g){const out=[];GROUP_KINDS[g].forEach(b=>{if(c.imgs.includes(b))out.push(b);for(let i=2;i<=12;i++)if(c.imgs.includes(b+'-'+i))out.push(b+'-'+i);});return out;}
@@ -315,6 +320,7 @@ function writeHash(){const p=new URLSearchParams();if(S.tab==='palettes')p.set('
 /* ---------- 头部 ---------- */
 function renderHead(){
  $('stats').innerHTML='<span class="stat"><b>'+M.cands.length+'</b>种画风</span><span class="stat"><b>'+M.pals.filter(p=>p.colors.length).length+'</b>种色系</span><span class="stat"><b>'+M.scenes.length+'</b>种用途</span>';
+ const gh=$('ghBtn'),st=M.githubStars==null?'':String(M.githubStars).trim();if(gh)gh.textContent=st?'GitHub ★ '+st:'GitHub';
  const n=Object.keys(mine).length;$('trayN').textContent=n;renderPalBar();renderHero();}
 let heroDone=false;
 const HERO_POS=[[44,6,230,-7],[62,40,200,6],[80,4,210,9],[30,56,180,-10],[88,50,190,-4],[3,62,170,8],[16,-4,160,5]];
@@ -332,11 +338,9 @@ function sampleKind(c){
  const g=groupOf(want);for(const k of [want,...(g?GROUP_KINDS[g]:[]),'s1','cv','xhs','wxi','ppt','inf','cm','cx','ce'])if(c.imgs.includes(k))return k;
  return c.imgs[0]||'s1';}
 function heroKind(c){
- for(const sc of M.scenes){if(sc.sample!=='mo'&&(sc.default===c.id||(sc.alternates||[]).includes(c.id))&&c.imgs.includes(sc.sample))return sc.sample;}
+ for(const sc of M.scenes){if((sc.default===c.id||(sc.alternates||[]).includes(c.id))&&c.imgs.includes(sc.sample))return sc.sample;}
  for(const k of ['cv','xhs','wxi','ppt','inf','cx','cm','ce','au','bd','s1'])if(c.imgs.includes(k))return k;
  return c.imgs[0]||'s1';}
-const MO_PLAT={'文章动态插图':['文章动态插图','公众号插图用 GIF，后台手动插入，≤10MB'],'表情包':['表情包','微信表情用 GIF，240×240，≤500KB'],'X动图':['X 动图','X 动图用 GIF，≤15MB']};
-function moInfo(c){const m=(M.motion||{})[c.id];if(!m)return null;const p=MO_PLAT[m.sub]||[m.sub,''];return {label:p[0],plat:p[1],how:m.how,ratio:m.ratio||1};}
 function setCount(c,k){const g=groupOf(k);return g?stems(c,g).length:0;}
 function kindRatio(k){return M.ratios[baseKind(k)]||1;}
 function minWidth(r){return r>2?360:r>1.5?310:r<0.9?210:250;}
@@ -349,13 +353,12 @@ function placeCaret(bar,note){const on=bar.querySelector('[aria-pressed="true"]'
  const x=on.getBoundingClientRect().left-note.getBoundingClientRect().left+on.offsetWidth/2-6;note.style.setProperty('--caret',Math.max(14,Math.min(x,note.offsetWidth-26))+'px');}
 function matches(c){const q=S.q.trim().toLowerCase();if(!q)return true;const hay=(c.name+' '+c.origin+' '+c.id+' '+c.family+' '+(c.essence||'')+' '+(c.tone||[]).join(' ')+' '+(c.craft||'')+' '+c.uses.map(u=>{const sc=scene(u);return sc?sc.name+' '+sc.short:'';}).join(' ')).toLowerCase();return q.split(/\s+/).every(w=>hay.includes(w));}
 function cardHtml(c,opts){
- const k=sampleKind(c);const r=k==='mo'&&moInfo(c)?moInfo(c).ratio:kindRatio(k);
+ const k=sampleKind(c);const r=kindRatio(k);
  const isMine=S.scene&&mine[S.scene]&&mine[S.scene].style===c.id;
- const mo=k==='mo'&&moInfo(c)?moInfo(c):null;
  return '<button class="card'+(opts.dim?' dim':'')+'" data-s="'+c.id+'" style="--ar:'+r+'"><img loading="lazy" decoding="async" alt="'+esc(c.name)+' 样图" src="'+IMG(c.id,k)+'">'
-  +(opts.tag?'<span class="tag def">'+opts.tag+'</span>':'')+(isMine?'<span class="tag mine">我的默认</span>':(k!=='mo'&&setCount(c,k)>1?'<span class="tag cnt">'+setCount(c,k)+' 张</span>':''))
-  +'<div class="t"><div><span class="c">'+c.id+'</span><span class="n">'+esc(c.name)+'</span>'+(mo?'<span class="msub">'+esc(mo.label)+'</span>':'')+'</div><div class="o">'+esc(c.origin||' ')+'</div></div></button>';}
-function gridHtml(list,opts){if(list.length&&sampleKind(list[0])==='mo')return '<div class="masonry">'+list.map(c=>cardHtml(c,opts(c))).join('')+'</div>';
+  +(opts.tag?'<span class="tag def">'+opts.tag+'</span>':'')+(isMine?'<span class="tag mine">我的默认</span>':(setCount(c,k)>1?'<span class="tag cnt">'+setCount(c,k)+' 张</span>':''))
+  +'<div class="t"><div><span class="c">'+c.id+'</span><span class="n">'+esc(c.name)+'</span>'+'</div><div class="o">'+esc(c.origin||' ')+'</div></div></button>';}
+function gridHtml(list,opts){
  return list.length?'<div class="grid" style="--min:'+minWidth(kindRatio(sampleKind(list[0])))+'px">'+list.map(c=>cardHtml(c,opts(c))).join('')+'</div>':'';}
 function renderGrids(){
  const sc=S.scene?scene(S.scene):null;let html='';
@@ -395,16 +398,13 @@ function closeDetail(){if($('dlg').open)$('dlg').close();S.sel=null;writeHash();
 function renderDetail(){
  const c=cand(S.sel);if(!c)return;
  $('dCodeTag').textContent=c.id;$('dName').textContent=c.name;
- $('dOrigin').innerHTML=c.origin?'原作灵感：<b>'+esc(c.origin)+'</b>':'';$('dEss').textContent=c.essence;
+ $('dOrigin').innerHTML=c.origin?'类似 <b>'+esc(c.origin)+'</b> 的风格':'';$('dEss').textContent=c.essence;
  const sc=S.useFor?scene(S.useFor):null;
  // 左边看哪组图，由右边「用在哪」决定；风格档案、原作参考作为「另见」
  const avail=IMG_GROUPS.filter(([g])=>stems(c,g).length);
  const want=sc?groupOf(sc.sample):null;
  S.grp=S.extra&&stems(c,S.extra).length?S.extra:((want&&stems(c,want).length)?want:((avail.find(([g])=>!['bd','anchor','same'].includes(g))||avail[0]||['same'])[0]));
  const order=stems(c,S.grp);
- const mo=S.grp==='mo'&&c.imgs.includes('mo-0')?moInfo(c):null;
- $('moCmp').hidden=!mo;$('mainImg').hidden=!!mo;$('thumbs').hidden=!!mo;
- if(mo)$('moCmp').innerHTML='<div class="mo-row"><figure class="mo-from"><img alt="'+esc(c.name)+' 静态原图" src="'+IMG(c.id,'mo-0')+'"><figcaption>静图</figcaption></figure><span class="mo-arrow" aria-hidden="true">→</span><figure class="mo-to"><img alt="'+esc(c.name)+' 动图" src="'+IMG(c.id,'mo')+'"><figcaption>动图 · '+esc(mo.how)+'</figcaption></figure></div><p class="mo-meta"><b>'+esc(mo.label)+'</b> · '+esc(mo.plat)+'。画风不变，只有一小块在动。</p>';
  if(!order.includes(S.img))S.img=order[0];
  const also=[['bd','风格档案'],['anchor','原作参考']].filter(([g])=>stems(c,g).length);
  $('also').innerHTML=also.length?'另见：'+also.map(([g,t])=>'<button class="chip small" data-extra="'+g+'" aria-pressed="'+(S.extra===g)+'">'+t+'</button>').join(''):'';
@@ -418,7 +418,7 @@ function renderDetail(){
   +bads.map(s=>'<button class="chip small off" disabled title="这个画风还没有为「'+esc(s.name)+'」做过">'+esc(s.name)+'</button>').join('');
  $('dUseNote').textContent=sc?sc.note:'';raf(()=>placeCaret($('dUses'),$('dUseNote')));
  const sh=sc?(sc.short||sc.name):'';$('btnDefault').textContent='设为'+sh+'默认';
- $('howNote').textContent='「复制，只用这次」：发给 Agent，只管这一次。「设为'+sh+'默认」：先记在右上角，选好几个用途后一起复制给 Agent，以后做'+sh+'都按它出。';
+ $('howNote').textContent='「复制给 AI」：粘贴给装了叁笙生图的 AI 助手，在末尾写上你的内容，这次就按这个画风出。「设为'+sh+'默认」：先记在右上角，选好几个用途后一起复制给 AI，以后做'+sh+'都按它出。';
  // 色彩
  const locked=c.recolor==='locked';
  $('dPals').innerHTML=M.pals.map(p=>{const dis=locked&&p.id!=='orig';const bar=p.id==='orig'?'<div class="bar orig"></div>':'<div class="bar">'+p.colors.map(x=>'<i style="background:'+x.hex+'"></i>').join('')+'</div>';return '<button class="pchip" data-p="'+p.id+'" aria-pressed="'+(S.pal===p.id)+'" '+(dis?'disabled':'')+'>'+bar+'<span>'+esc(p.name)+'</span></button>';}).join('');
@@ -453,13 +453,14 @@ function renderCodeBar(){const ok=codeOk();$('dCode').textContent=ok?applyCode()
 /* ---------- 复制与默认 ---------- */
 function toast(t){const d=document.createElement('div');d.className='toast';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),2200);}
 async function copy(text,done){try{await navigator.clipboard.writeText(text);toast(done);}catch(e){prompt('复制下面这段',text);}}
-function onceText(){const sc=scene(S.useFor);const code=applyCode();return code+'\n（这次做「'+sc.name+'」用上面这个画风，只用这一次，不要改我的默认设置。）';}
-function saveDefault(){const c=cand(S.sel),sc=scene(S.useFor);if(!c||!sc)return;mine[sc.id]={style:c.id,code:applyCode(),name:c.name};saveMine();renderHead();renderGrids();toast('已设为「'+sc.name+'」的默认；选好几个后，点右上角「我的默认」一起复制给 Agent');}
-function defaultsText(){const ids=Object.keys(mine);const lines=ids.map(id=>'- '+scene(id).name+'　'+mine[id].code);
- return '请把下面设为我的叁笙画风手册默认（长期有效：以后做对应内容，我没特别说明就用它）：\n'+lines.join('\n');}
+function palLabel(){if(S.pal==='brand')return '品牌色 '+S.hex.join(' ');const p=pal(S.pal);return p?p.name:'';}
+function onceText(){const sc=scene(S.useFor),c=cand(S.sel);return '用叁笙生图帮我出一组'+sc.name+'图：画风 '+c.id+' '+c.name+'，色系「'+palLabel()+'」（'+applyCode()+'）。内容是：';}
+function saveDefault(){const c=cand(S.sel),sc=scene(S.useFor);if(!c||!sc)return;mine[sc.id]={style:c.id,code:applyCode(),name:c.name};saveMine();renderHead();renderGrids();toast('已设为「'+sc.name+'」的默认；选好几个后，点右上角「我的默认」一起复制给 AI');}
+function defaultsText(){const ids=Object.keys(mine);const lines=ids.map(id=>'- '+scene(id).name+'：画风 '+mine[id].style+' '+mine[id].name+'（'+mine[id].code+'）');
+ return '请 AI 助手记住：以后用叁笙生图帮我做下面这些用途的图，我没特别说明，就按这里选好的画风和色系来：\n'+lines.join('\n');}
 function renderTray(){
  const ids=Object.keys(mine).filter(id=>scene(id));
- $('tlist').innerHTML=ids.length?ids.map(id=>'<div class="titem"><img alt="" src="'+IMG(mine[id].style,sampleKindFor(mine[id].style,id))+'"><div><div class="u">'+esc(scene(id).name)+'</div><div class="s">'+esc(mine[id].name)+'</div><code>'+esc(mine[id].code)+'</code></div><button data-rm="'+id+'" aria-label="移除">×</button></div>').join(''):'<div class="empty">还没有默认。在画风详情里点「设为我的默认」，这里会汇总成一段话，复制给 Agent 就行。</div>';
+ $('tlist').innerHTML=ids.length?ids.map(id=>'<div class="titem"><img alt="" src="'+IMG(mine[id].style,sampleKindFor(mine[id].style,id))+'"><div><div class="u">'+esc(scene(id).name)+'</div><div class="s">'+esc(mine[id].name)+'</div><code>'+esc(mine[id].code)+'</code></div><button data-rm="'+id+'" aria-label="移除">×</button></div>').join(''):'<div class="empty">还没有默认。在画风详情里点「设为我的默认」，这里会汇总成一段话，复制给 AI 就行。</div>';
  $('tCopy').disabled=!ids.length;$('tClear').disabled=!ids.length;}
 function sampleKindFor(styleId,sceneId){const c=cand(styleId),sc=scene(sceneId);if(!c)return 's1';const g=sc&&groupOf(sc.sample);for(const k of [sc&&sc.sample,...(g?GROUP_KINDS[g]:[]),'s1','cv','xhs','wxi','ppt','inf','cm','cx','ce'])if(k&&c.imgs.includes(k))return k;return c.imgs[0]||'s1';}
 function openTray(o){$('tray').classList.toggle('open',o);$('scrim').hidden=!o;if(o)renderTray();}
@@ -507,11 +508,11 @@ document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)r
  else if(t.dataset.usepal){S.pal=t.dataset.usepal;S.light=0;S.sat=0;S.hex=[];renderPals();renderPalBar();writeHash();toast('已选用「'+pal(S.pal).name+'」，回到「画风」点开任意画风就能看换色效果');}
  else if(t.dataset.rm){delete mine[t.dataset.rm];saveMine();renderHead();renderTray();renderGrids();}
  else if(t.id==='dlgX')closeDetail();
- else if(t.id==='btnOnce'){copy(onceText(),'已复制，只用这一次');}
+ else if(t.id==='btnOnce'){copy(onceText(),'已复制，发给 AI 助手，末尾补上内容');}
  else if(t.id==='btnDefault'){saveDefault();}
  else if(t.id==='trayBtn')openTray(true);
  else if(t.id==='tClose')openTray(false);
- else if(t.id==='tCopy'){copy(defaultsText(),'已复制，发给 Agent 即可');}
+ else if(t.id==='tCopy'){copy(defaultsText(),'已复制，发给 AI 助手即可');}
  else if(t.id==='tClear'){if(confirm('清空「我的默认」？')){mine={};saveMine();renderHead();renderTray();renderGrids();}}});
 document.addEventListener('input',e=>{const t=e.target;if(t.classList&&t.classList.contains('cmp-range')){S.cmp=+t.value;cmpVars(t.parentNode);}});
 $('scrim').addEventListener('click',()=>openTray(false));

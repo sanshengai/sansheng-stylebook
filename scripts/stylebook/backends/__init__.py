@@ -16,7 +16,7 @@ from .base import CONFIG_DIR, BackendError, Result, load_dotenv, now
 from . import providers as _providers
 from .providers import PROVIDERS
 
-LOG_DIR = Path(os.environ.get("STYLEBOOK_LOG_DIR", ROOT / "logs"))
+LOG_DIR = Path(os.environ.get("SANSHENG_IMAGE_LOG_DIR", ROOT / "logs"))
 
 # gpt-image-2 官方价（2026-09，美元 / 张，按质量与画幅）；其余服务未登记则不估算
 PRICE = {("gpt-image", "medium", "square"): 0.053, ("gpt-image", "medium", "rect"): 0.041,
@@ -101,9 +101,9 @@ def _spent_today() -> float:
 def paid_fallback(need_refs: bool) -> str | None:
     """Codex 不可用时是否退到按张付费的服务：默认不退；配置 allow_paid_fallback 后才退，且当天估算花费不超过上限。"""
     cfg = config()
-    if not (cfg.get("allow_paid_fallback") or os.environ.get("STYLEBOOK_ALLOW_PAID_FALLBACK") == "1"):
+    if not (cfg.get("allow_paid_fallback") or os.environ.get("SANSHENG_IMAGE_ALLOW_PAID_FALLBACK") == "1"):
         return None
-    cap = float(cfg.get("paid_fallback_cap_usd", os.environ.get("STYLEBOOK_PAID_FALLBACK_CAP_USD", 5)))
+    cap = float(cfg.get("paid_fallback_cap_usd", os.environ.get("SANSHENG_IMAGE_PAID_FALLBACK_CAP_USD", 5)))
     if _spent_today() >= cap:
         return None
     for cand in PAID:

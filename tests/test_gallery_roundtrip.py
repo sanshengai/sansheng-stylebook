@@ -124,7 +124,7 @@ def test_browser_preference_file_imports_into_agent_and_can_forget(page):
     with tab.expect_download() as dl:
         tab.locator("#prefDownload").click()
     dl.value.save_as(first)
-    env = {**os.environ, "STYLEBOOK_PROFILE": str(temp / "agent-profile")}
+    env = {**os.environ, "SANSHENG_IMAGE_PROFILE": str(temp / "agent-profile")}
     def cli(*args):
         done = subprocess.run([sys.executable, str(ROOT / "scripts" / "sb.py"), *args], env=env,
                               capture_output=True, text=True, cwd=ROOT)

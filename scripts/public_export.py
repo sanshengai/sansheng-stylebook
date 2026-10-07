@@ -22,7 +22,7 @@ PUBLIC_FILES = {
     "assets/C01-story-sample.png", "assets/C32-infographic-sample.png",
     "examples/book/plan.json", "examples/comic/plan.json",
     "examples/content-plan-v2/article.md", "examples/content-plan-v2/plan.json",
-    "examples/quickstart/manifest.json", "gallery/template.html", "gallery/picker.html",
+    "examples/quickstart/manifest.json", "gallery/template.html", "gallery/picker.html", "gallery/github-meta.json",
     "registry.json", "requirements-ppt.txt", "requirements.txt",
     "scripts/sb.py", "scripts/first_run.py", "scripts/public_export.py", "scripts/samples_sync.py",
 }

@@ -134,7 +134,7 @@ def test_matrix_rejects_missing_or_tampered_anchor(tmp_path):
 
 
 def test_builtin_reviewer_cannot_claim_another_source(tmp_path, monkeypatch):
-    monkeypatch.setenv("STYLEBOOK_QA_BACKEND", "claude_cli")
+    monkeypatch.setenv("SANSHENG_IMAGE_QA_BACKEND", "claude_cli")
     fake = Fake()
     with pytest.raises(ValueError, match="来源与实际后端不符"):
         MX.run("C99", contract=copy.deepcopy(K), out_dir=tmp_path / "m", gen_fn=fake,
@@ -403,7 +403,7 @@ def test_two_maintainer_reviews_do_not_count_as_independent(tmp_path):
 
 def test_default_reviewer_records_selected_backend(tmp_path, monkeypatch):
     from stylebook.qa import reviewer
-    monkeypatch.setenv("STYLEBOOK_QA_BACKEND", "ark_agent_plan")
+    monkeypatch.setenv("SANSHENG_IMAGE_QA_BACKEND", "ark_agent_plan")
     monkeypatch.setattr(reviewer, "review", review_all_ok)
     st = MX.run("C99", contract=K, out_dir=tmp_path / "m", model="gpt-image-2", quality="normal",
                 gen_fn=Fake(), reviews=2, log=lambda *_: None)

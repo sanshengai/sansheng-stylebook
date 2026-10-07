@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/sanshengai/sansheng-stylebook/styles/_schema/contract.schema.json",
+  "$id": "https://github.com/sanshengai/sansheng-image/styles/_schema/contract.schema.json",
   "title": "Style contract (风格合同)",
   "description": "One style = one contract. Machine-checkable: compile-time bans, post-generation checks, pixel thresholds, evidence and revision.",
   "type": "object",

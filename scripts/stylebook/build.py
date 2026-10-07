@@ -158,7 +158,7 @@ def _self_made_anchors() -> set[str]:
     if not ledger.is_file():
         return set()
     return {e["style"] for e in json.loads(ledger.read_text(encoding="utf-8"))["anchors"]
-            if (e.get("origin") or {}).get("repo") == "sanshengai/sansheng-stylebook"}
+            if (e.get("origin") or {}).get("repo") == "sanshengai/sansheng-image"}
 
 
 def collect_images(reg: dict, samples: list[Path] | None = None) -> dict[str, Path]:
@@ -236,7 +236,6 @@ SITE_KINDS = {
     "s1": "人物", "s2": "物件", "s3": "信息图（简）", "bd": "风格参考板",
     "cv": "封面", "au": "音乐封面", "wxi": "横版插图", "wxt": "竖版插图", "wxx": "推特单图", "xhs": "小红书", "ppt": "PPT", "inf": "信息图",
     "cm": "四格漫画", "cx": "日漫混排页", "ce": "知识条漫", "sb": "短剧分镜",
-    "mo": "动图", "mo-0": "动图的静态原图",   # mo 是动画 WebP（原样复制，不缩略）；mo-0 是对比用的静态首图
 }
 SET_KINDS = ["cv", "wxi", "wxt", "wxx", "xhs", "ppt", "inf", "cm", "cx", "ce", "sb"]
 # 一组图：<种类> 是第一张，<种类>-2、-3…… 是同组后面的图
@@ -297,6 +296,15 @@ def _thumb_bytes(p: Path, m: int = THUMB, q: int = 60) -> bytes:
     return b.getvalue()
 
 
+def _github_stars():
+    """发布时保存的公开星数快照；无有效值时只显示 GitHub。"""
+    try:
+        value = json.loads((CT.ROOT / "gallery/github-meta.json").read_text(encoding="utf-8")).get("stars")
+        return value if isinstance(value, int) and not isinstance(value, bool) and value >= 0 else ""
+    except (OSError, ValueError, AttributeError):
+        return ""
+
+
 def picker(out_dir: Path | None = None, private: bool = False) -> Path:
     """写出 index.html 与 img/<码>-<样图种类>.webp。样图缩成外部小文件懒加载；输出确定（无时间戳）。"""
     reg = registry(private)
@@ -314,7 +322,6 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
     ratios: dict[str, float] = {}
     pal_shots: dict[str, list[dict]] = {}
     pal_compare: dict[str, dict] = {}  # 码 -> {"ratio": 原色示例比例, "pals": [有换色图的色系]}
-    motion: dict[str, dict] = {}  # 码 -> {"sub": 子类, "how": 动效, "ratio": 宽高比}，取自合同里动图样图的 topic「动图·子类·动效」
     expected_imgs: list[str] = []  # 页面会引用的全部缩略图文件名（含公开包里没有文件的样图）
     from PIL import Image
     for s in reg["styles"]:
@@ -331,7 +338,7 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
             src, registered = entry if isinstance(entry, tuple) else (entry, None)
             base_kind = kind.split("-")[0]
             if src.is_file():
-                (img_dir / f"{code}-{kind}.webp").write_bytes(src.read_bytes() if kind == "mo" else _thumb_bytes(src))
+                (img_dir / f"{code}-{kind}.webp").write_bytes(_thumb_bytes(src))
                 with Image.open(src) as im:
                     actual = round(im.width / im.height, 3)
                 if registered is not None and abs(actual - registered) > 0.002:
@@ -342,10 +349,6 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
             else:
                 raise ValueError(f"{code} 的样图 {kind} 缺少文件，合同里也没有登记宽高比")
             expected_imgs.append(f"{code}-{kind}.webp")
-            if kind == "mo":
-                topic = next((x.get("topic", "") for x in contract.get("samples", []) if Path(x["file"]).stem == "mo"), "")
-                parts = topic.split("·")
-                motion[code] = {"sub": parts[1] if len(parts) > 1 else "", "how": parts[2] if len(parts) > 2 else "", "ratio": ratio}
             if _pal_kind(kind):  # 色系真图：只出现在「色系」页，不进画风详情的样图列表
                 topic = next((x.get("topic", "") for x in contract.get("samples", []) if Path(x["file"]).stem == kind), "")
                 pal_shots.setdefault(_pal_kind(kind), []).append({"code": code, "kind": kind, "k": PAL_SHOT_KEY.get(topic.split("·")[-1], ""), "ratio": ratio})
@@ -380,7 +383,7 @@ def picker(out_dir: Path | None = None, private: bool = False) -> Path:
                        "alternates": [a for a in sc["alternates"] if a in have], "pool": pools[sc["id"]]})
     pals = [{"id": p["id"], "name": p["name"], "en": p.get("en", ""), "group": p.get("group", ""), "story": p.get("story", ""),
              "colors": p.get("colors", [])} for p in reg["palettes"]["palettes"]]
-    meta = {"cands": cands, "scenes": scenes, "pals": pals, "kinds": SITE_KINDS, "labels": KIND_LABELS, "ratios": ratios, "first": "wxcover", "motion": dict(sorted(motion.items())),
+    meta = {"cands": cands, "scenes": scenes, "pals": pals, "kinds": SITE_KINDS, "labels": KIND_LABELS, "ratios": ratios, "first": "wxcover", "githubStars": _github_stars(),  # 快照随公开包分发，确保官网重建一致
             "palShots": {k: sorted(v, key=lambda x: ("poi".find(x["k"]), x["code"])) for k, v in sorted(pal_shots.items())},
             "palCompare": {k: {"ratio": v["ratio"], "pals": sorted(v["pals"])} for k, v in sorted(pal_compare.items()) if v["ratio"] and v["pals"]}}
     html = PICKER.read_text(encoding="utf-8").replace("__META__", json.dumps(meta, ensure_ascii=False, sort_keys=True).replace("</", "<\\/"))

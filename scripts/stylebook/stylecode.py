@@ -67,7 +67,7 @@ class StyleCode:
 
 
 def find(text: str) -> list[str]:
-    """从一段话里找出所有风格码（用户可能连同整句「用叁笙画风手册 sb1:… 做成…」一起贴过来）。"""
+    """从一段话里找出所有风格码（用户可能连同整句「用叁笙生图 sb1:… 做成…」一起贴过来）。"""
     return re.findall(r"sb[12]:[A-Za-z0-9@./\-]+", text or "")
 
 

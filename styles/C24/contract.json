@@ -287,20 +287,6 @@
       "ratio": 1.776
     },
     {
-      "topic": "动图·表情包·轻轻呼吸",
-      "file": "samples/mo.webp",
-      "renderer": "motion-local",
-      "date": "2026-10-05",
-      "ratio": 1.0
-    },
-    {
-      "topic": "动图·静态原图",
-      "file": "samples/mo-0.webp",
-      "renderer": "motion-local",
-      "date": "2026-10-05",
-      "ratio": 1.0
-    },
-    {
       "topic": "换色示例·原色",
       "file": "samples/pc-orig.webp",
       "renderer": "codex-builtin",

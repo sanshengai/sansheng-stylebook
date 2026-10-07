@@ -14,7 +14,7 @@ from stylebook import plan as PL  # noqa: E402
 
 @pytest.fixture(autouse=True)
 def _no_profile(tmp_path, monkeypatch):
-    monkeypatch.setenv("STYLEBOOK_PROFILE", str(tmp_path / "none"))
+    monkeypatch.setenv("SANSHENG_IMAGE_PROFILE", str(tmp_path / "none"))
     monkeypatch.setattr(PL.CT.Path, "home", staticmethod(lambda: tmp_path))
 
 
@@ -406,7 +406,7 @@ def test_plan_review_ark_includes_article_and_rejects_missing_verdict(tmp_path, 
 
     article = tmp_path / "article.md"
     article.write_text("仅在负责人确认后发送。未确认就不发送。", encoding="utf-8")
-    monkeypatch.setenv("STYLEBOOK_PLAN_REVIEW_BACKEND", "ark_agent_plan")
+    monkeypatch.setenv("SANSHENG_IMAGE_PLAN_REVIEW_BACKEND", "ark_agent_plan")
     monkeypatch.setenv("ARK_AGENT_PLAN_BASE_URL", RV.ARK_PLAN_URL)
     monkeypatch.setenv("ARK_AGENT_PLAN_API_KEY", "test-key")
     captured = []
@@ -445,7 +445,7 @@ def test_plan_review_ark_requires_bundled_endpoint(tmp_path, monkeypatch):
     from stylebook.qa.reviewer import ReviewerAuthUnavailable
     article = tmp_path / "article.md"
     article.write_text("原文", encoding="utf-8")
-    monkeypatch.setenv("STYLEBOOK_PLAN_REVIEW_BACKEND", "ark_agent_plan")
+    monkeypatch.setenv("SANSHENG_IMAGE_PLAN_REVIEW_BACKEND", "ark_agent_plan")
     monkeypatch.setenv("ARK_AGENT_PLAN_BASE_URL", "https://ark.cn-beijing.volces.com/api/v3")
     monkeypatch.setenv("ARK_AGENT_PLAN_API_KEY", "test-key")
     with pytest.raises(ReviewerAuthUnavailable):

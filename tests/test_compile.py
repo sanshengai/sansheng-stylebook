@@ -318,7 +318,7 @@ def test_gen_size_rules():
         assert w % 16 == 0 and h % 16 == 0 and max(w, h) <= 3840 and max(w, h) / min(w, h) <= 3
 
 
-@pytest.mark.skipif(not os.environ.get("STYLEBOOK_PROFILE"), reason="未设置私有 profile")
+@pytest.mark.skipif(not os.environ.get("SANSHENG_IMAGE_PROFILE"), reason="未设置私有 profile")
 def test_private_s01_compiles_and_blocks_dark():
     m = dict(copy.deepcopy(M), style="S01", palette={"family": "orig"})
     m["content"]["background"] = "a warm ivory tabletop"
