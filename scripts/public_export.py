@@ -24,7 +24,7 @@ PUBLIC_FILES = {
     "examples/content-plan-v2/article.md", "examples/content-plan-v2/plan.json",
     "examples/quickstart/manifest.json", "gallery/template.html", "gallery/picker.html",
     "registry.json", "requirements-ppt.txt", "requirements.txt",
-    "scripts/sb.py", "scripts/public_export.py", "scripts/samples_sync.py",
+    "scripts/sb.py", "scripts/first_run.py", "scripts/public_export.py", "scripts/samples_sync.py",
 }
 PUBLIC_DIRS = ("formats/", "palettes/", "references/", "scenes/",
                "scripts/stylebook/", "structures/", "styles/", "tests/")

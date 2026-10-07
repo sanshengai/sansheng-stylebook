@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""叁笙画风手册命令行入口：python3 scripts/sb.py <命令> ...
+"""叁笙生图命令行入口：python3 scripts/sb.py <命令> ...
 
 命令：
   compile  <清单.json>                 编译出提示词（不出图）
@@ -42,6 +42,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+import first_run as FR  # noqa: E402
 from stylebook import compile as CP  # noqa: E402
 
 
@@ -562,6 +563,8 @@ def cmd_batch(a) -> int:
                 base_path=Path(a.plan).resolve().parent)
     print(json.dumps(st["summary"], ensure_ascii=False, indent=2))
     print(f"报告：{Path(a.out) / 'report.md'}")
+    produced = [item for item in st.get("items", {}).values() if item.get("status") in {"passed", "generated"}]
+    FR.maybe_show_star(len(produced), complete=len(produced) == st["summary"]["total"] and not st["summary"]["failed"])
     return 0 if not st["summary"]["failed"] else 1
 
 
@@ -592,6 +595,7 @@ def cmd_make(a) -> int:
         for note in report["flywheel"]["notes"]:
             print(f"【飞轮】{note}", file=sys.stderr)
     print(json.dumps(report, ensure_ascii=False, indent=2))
+    FR.maybe_show_star(len(report.get("items", [])), complete=report.get("status") == "pending_visual_review")
     return 1 if report["status"] == "failed" else 0
 
 
@@ -659,6 +663,8 @@ def cmd_pptx(a) -> int:
 
 
 def main(argv=None) -> int:
+    if FR.ensure_dependencies(sys.argv[1:] if argv is None else argv):
+        return 2
     ap = argparse.ArgumentParser(prog="sb", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("compile"); p.add_argument("manifest"); p.add_argument("--json", action="store_true"); p.set_defaults(fn=cmd_compile)
